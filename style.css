@@ -1,0 +1,427 @@
+
+/* Food Tabs Redesign */
+.food-tabs-redesign {
+    padding: 120px 40px;
+    background-color: #FAF6EC;
+    font-family: var(--font-family--rubik), sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+.food-tabs-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.food-tabs-left {
+    flex: 0 0 35%;
+}
+.food-tabs-right {
+    flex: 1;
+    position: relative;
+    height: 600px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(49, 91, 38, 0.1);
+}
+.food-tabs-title {
+    font-family: 'Baloo 2', 'Rubik', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: #1E3F20;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+.food-tabs-subtitle {
+    font-size: 17px;
+    color: #5E6D5D;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 400px;
+}
+.food-tabs-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 45px;
+}
+.food-tab-btn {
+    background: transparent;
+    border: 1px solid rgba(49, 91, 38, 0.15);
+    color: #4A7B31;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 28px;
+    border-radius: 100px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+.food-tab-btn:hover {
+    background-color: rgba(74, 123, 49, 0.05);
+    transform: translateX(5px);
+}
+.food-tab-btn.active {
+    background-color: #709951;
+    color: #ffffff;
+    border-color: #709951;
+    box-shadow: 0 10px 25px rgba(112, 153, 81, 0.3);
+    transform: translateX(15px);
+}
+.food-tab-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #1E3F20;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 10px 0;
+}
+.food-tab-cta:hover {
+    color: #709951;
+}
+.food-tab-cta svg {
+    transition: transform 0.3s ease;
+}
+.food-tab-cta:hover svg {
+    transform: translateX(6px);
+}
+.food-tab-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.08) translateX(-10px);
+    transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+.food-tab-img.active {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    pointer-events: auto;
+    z-index: 2;
+}
+
+@media (max-width: 1100px) {
+    .food-tabs-container {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 991px) {
+    .food-tabs-redesign {
+        padding: 80px 20px;
+    }
+    .food-tabs-container {
+        flex-direction: column;
+    }
+    .food-tabs-left {
+        flex: 1;
+        width: 100%;
+        text-align: center;
+    }
+    .food-tabs-subtitle {
+        margin: 0 auto 40px auto;
+    }
+    .food-tabs-right {
+        width: 100%;
+        height: 450px;
+    }
+    .food-tabs-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .food-tab-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    .food-tab-btn:hover {
+        transform: translateY(-3px);
+    }
+    .food-tab-btn.active {
+        transform: translateY(-6px);
+    }
+    .food-tabs-title {
+        font-size: 44px;
+    }
+}
+@media (max-width: 479px) {
+    .food-tabs-right {
+        height: 300px;
+        border-radius: 20px;
+    }
+    .food-tabs-title {
+        font-size: 36px;
+    }
+    .food-tab-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* PREMIUM VALUES SECTION */
+.values-premium-section {
+    position: relative;
+    padding: 140px 0;
+    background-color: #1a3015; /* Deep luxury green */
+    color: #ffffff;
+    overflow: hidden;
+    font-family: var(--font-family--rubik), sans-serif;
+}
+
+.values-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Typography */
+.values-eyebrow {
+    color: #b2d270;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.values-title {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.values-title span {
+    color: #d1e5a5;
+    font-weight: 400;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+
+.values-subtitle {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    max-width: 480px;
+}
+
+/* Vertical Tabs */
+.values-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 45px;
+}
+
+.value-tab {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+    font-weight: 600;
+    padding: 16px 24px;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-tab::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+    transition: width 0.4s ease;
+    border-radius: 12px;
+}
+
+.value-tab:hover::before {
+    width: 100%;
+}
+
+.value-tab:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateX(5px);
+}
+
+.value-tab.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.value-tab.active::before {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.tab-num {
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 20px;
+    opacity: 0.6;
+    font-family: monospace;
+    position: relative;
+    z-index: 1;
+}
+
+.tab-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA Button */
+.values-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #b2d270;
+    color: #1a3015;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.values-cta-btn svg {
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+.values-cta-btn:hover {
+    background-color: #c9e48f;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(178, 210, 112, 0.3);
+}
+
+.values-cta-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* Visual Side */
+.values-visual {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.values-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.values-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 10s ease;
+}
+
+.values-img-wrapper:hover .values-img {
+    transform: scale(1.05);
+}
+
+.values-img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 60px 40px 40px;
+    background: linear-gradient(to top, rgba(15, 30, 12, 0.9) 0%, rgba(15, 30, 12, 0) 100%);
+    display: flex;
+    align-items: flex-end;
+}
+
+.values-img-desc {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 300;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Blob Decoration */
+.values-blob {
+    position: absolute;
+    top: -10%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(178, 210, 112, 0.15) 0%, rgba(178, 210, 112, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .values-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .values-visual {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .values-premium-section {
+        padding: 80px 0;
+    }
+    .values-title {
+        font-size: 42px;
+    }
+    .values-visual {
+        height: 400px;
+    }
+    .value-tab {
+        font-size: 18px;
+        padding: 12px 16px;
+    }
+}

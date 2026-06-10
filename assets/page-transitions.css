@@ -1,0 +1,48 @@
+/* page-transitions.css */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Only block clicks when active */
+    overflow: hidden;
+}
+
+.page-transition-overlay.active {
+    pointer-events: all;
+}
+
+.transition-circle {
+    position: absolute;
+    width: 250vmax; /* Large enough to cover the screen */
+    height: 250vmax;
+    border-radius: 50%;
+    transform: scale(1); /* Default to covering the screen */
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.transition-circle-1 {
+    background-color: #1E3F20; /* Deep Forest Green */
+    z-index: 1;
+}
+
+.transition-circle-2 {
+    background-color: #709951; /* Vibrant Lighter Green */
+    z-index: 2;
+}
+
+.transition-circle-3 {
+    background: linear-gradient(135deg, #2e5719 0%, #4A7A31 50%, #709951 100%);
+    z-index: 3;
+}
+
+/* Hide the logo entirely as requested */
+.page-transition-overlay .transition-logo {
+    display: none !important;
+}
