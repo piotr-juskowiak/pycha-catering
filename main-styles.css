@@ -3201,7 +3201,7 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
 .products-redesign {
   background-color: #26471e !important;
   /* rich dark olive-forest green */
-  background-image: url('assets/redesign/products_bg_bFXf4yd.png') !important;
+  background-image: url('https://i.imgur.com/6dx0VJH.jpeg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -3218,7 +3218,7 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
   right: 20px !important;
   width: 850px !important;
   height: 850px !important;
-  background-image: url('assets/redesign/bg_food_box_7CGZJZC.png') !important;
+  background-image: none !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   mix-blend-mode: normal !important;
@@ -3816,6 +3816,7 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
     text-align: center !important;
     margin-bottom: 30px !important;
   }
+
   .products-title {
     font-size: 42px !important;
     line-height: 1.2 !important;

@@ -120,18 +120,7 @@ html.weekly-popup-snapshot .menu-board-actions {
   outline: none;
 }
 
-/* Decorative corner leaves */
-.catering-modal::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  right: 32px;
-  width: 120px;
-  height: 120px;
-  background: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 10C80 10 55 28 50 60C78 56 98 38 100 10Z' stroke='%2378a44f' stroke-width='1.5' fill='none' stroke-dasharray='4 3' opacity='0.35'/%3E%3Cpath d='M108 30C93 25 74 35 70 55C87 54 103 44 108 30Z' stroke='%2378a44f' stroke-width='1.2' fill='none' opacity='0.25'/%3E%3Ccircle cx='52' cy='62' r='2.5' fill='%2378a44f' opacity='0.3'/%3E%3Ccircle cx='96' cy='18' r='2' fill='%23f7d967' opacity='0.5'/%3E%3Ccircle cx='110' cy='45' r='1.5' fill='%2378a44f' opacity='0.3'/%3E%3C/svg%3E") no-repeat top right;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Decorative corner leaves (top right removed) */
 
 .catering-modal::after {
   content: '';
@@ -167,20 +156,14 @@ html.weekly-popup-snapshot .menu-board-actions {
 
 .catering-header-icon-wrap {
   flex: 0 0 auto;
-  width: 52px;
-  height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(210, 192, 140, 0.7);
-  border-radius: 999px;
-  background: linear-gradient(160deg, #fffdf0 0%, #f4eec4 100%);
-  box-shadow: 0 6px 18px rgba(120, 164, 79, 0.12);
 }
 
 .catering-eyebrow-icon {
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
@@ -193,9 +176,9 @@ html.weekly-popup-snapshot .menu-board-actions {
 .catering-header-main {
   font-family: var(--pc-font-head);
   font-size: clamp(24px, 1.8vw, 34px);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1;
-  color: var(--pc-green-deep);
+  color: #345e29;
   letter-spacing: -0.01em;
 }
 
@@ -203,9 +186,10 @@ html.weekly-popup-snapshot .menu-board-actions {
   font-family: var(--pc-font-body);
   font-size: clamp(13px, 1vw, 16.5px);
   font-weight: 600;
-  color: var(--pc-muted);
+  color: #4b7530;
   line-height: 1;
   letter-spacing: 0.02em;
+  padding-top: 5px;
 }
 
 /* ─── Close button ───────────────────────────────────────── */
@@ -240,34 +224,35 @@ html.weekly-popup-snapshot .menu-board-actions {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(220, 208, 172, 0.8);
+  border: 1px solid rgba(210, 192, 140, 0.8);
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #fdf8ee 100%);
-  box-shadow: 0 6px 16px rgba(47, 107, 37, 0.12);
+  background: #fffdf5;
+  box-shadow: 0 4px 12px rgba(47, 107, 37, 0.06);
   cursor: pointer;
-  transition:
-    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 200ms ease,
-    background 200ms ease;
+  transition: all 250ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .catering-close-btn:hover {
-  transform: scale(1.08) rotate(8deg);
-  box-shadow: 0 10px 24px rgba(47, 107, 37, 0.20);
-  background: linear-gradient(180deg, #fff5d6 0%, #fdeaa0 100%);
-  border-color: var(--pc-yellow);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(47, 107, 37, 0.12);
+  background: #fdf2c8;
+  border-color: #e6d39a;
 }
 
 .catering-close-btn:active {
-  transform: scale(0.93) rotate(8deg);
+  transform: scale(0.95);
   transition-duration: 100ms;
 }
 
 .catering-close-icon {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
-  transition: opacity 160ms ease;
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.catering-close-btn:hover .catering-close-icon {
+  transform: rotate(90deg);
 }
 
 /* ─── Day tabs ────────────────────────────────────────────── */
@@ -330,11 +315,11 @@ html.weekly-popup-snapshot .menu-board-actions {
    ═══════════════════════════════════════════════════════════ */
 
 .weekly-board {
-  height: 100%;
-  min-height: 780px;
+  height: auto;
+  min-height: 800px;
   display: grid;
   grid-template-columns: 1.05fr 1.05fr 1.15fr;
-  grid-template-rows: 0.88fr 1.32fr 0.6fr;
+  grid-template-rows: 0.88fr 1.32fr auto;
   gap: clamp(14px, 1.2vw, 22px);
 }
 
@@ -385,18 +370,20 @@ html.weekly-popup-snapshot .menu-board-actions {
 .panel-starch { grid-column: 1 / span 2; grid-row: 3; }
 
 .right-stack {
+  display: contents;
+}
+
+.panel-desserts {
   grid-column: 3;
-  grid-row: 2 / span 2;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: 1fr 1fr auto;
-  gap: clamp(14px, 1.2vw, 22px);
+  grid-row: 2;
 }
 
 .right-lower-grid {
+  grid-column: 3;
+  grid-row: 3;
   min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: clamp(14px, 1.2vw, 22px);
 }
 
@@ -411,9 +398,18 @@ html.weekly-popup-snapshot .menu-board-actions {
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0 0 clamp(11px, 0.9vw, 17px);
   color: var(--panel-accent);
+}
+
+.section-heading .category-icon {
+  width: clamp(40px, 3vw, 54px);
+  height: clamp(40px, 3vw, 54px);
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 12px rgba(47, 107, 37, 0.08));
 }
 
 .section-heading svg {
@@ -619,6 +615,15 @@ html.weekly-popup-snapshot .menu-board-actions {
   color: var(--sub-accent, var(--pc-green));
 }
 
+.sub-title .category-icon {
+  width: clamp(24px, 1.8vw, 34px);
+  height: clamp(24px, 1.8vw, 34px);
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 9px rgba(47, 107, 37, 0.08));
+}
+
 .sub-title svg {
   width: clamp(15px, 1.1vw, 20px);
   height: clamp(15px, 1.1vw, 20px);
@@ -753,12 +758,12 @@ html.weekly-popup-snapshot .menu-board-actions {
   .panel-small,
   .panel-main,
   .panel-starch,
-  .right-stack {
+  .panel-desserts,
+  .right-lower-grid {
     grid-column: auto;
     grid-row: auto;
   }
 
-  .right-stack       { grid-template-rows: auto; }
   .panel-main        { min-height: 500px; }
 }
 
@@ -800,10 +805,10 @@ html.weekly-popup-snapshot .menu-board-actions {
   .catering-header-sub  { font-size: 11px; }
 
   .catering-header-icon-wrap {
-    width: 40px;
-    height: 40px;
+    width: auto;
+    height: auto;
   }
-  .catering-eyebrow-icon { width: 22px; height: 22px; }
+  .catering-eyebrow-icon { width: 44px; height: 44px; }
   .catering-close-btn    { width: 40px; height: 40px; }
   .catering-close-icon   { width: 15px; height: 15px; }
 

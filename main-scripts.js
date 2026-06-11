@@ -545,31 +545,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sectionBackgrounds = [
-    "https://i.imgur.com/RvHLEAI.png",
-    "https://i.imgur.com/78DqYOP.jpeg",
-    "https://i.imgur.com/nZ91gT5.jpeg"
-  ];
-  const targetSections = [
-    ".products-redesign",
-    ".choose-us-section",
-    ".testimonial-section"
-  ];
-  const shuffledBackgrounds = [...sectionBackgrounds].sort(() => Math.random() - 0.5);
 
-  targetSections.forEach((selector, index) => {
-    const section = document.querySelector(selector);
-    const background = shuffledBackgrounds[index % shuffledBackgrounds.length];
-
-    if (!section || !background) return;
-
-    section.style.setProperty("background-image", `url("${background}")`, "important");
-    section.style.setProperty("background-size", "cover", "important");
-    section.style.setProperty("background-position", "center", "important");
-    section.style.setProperty("background-repeat", "no-repeat", "important");
-  });
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("pychaCallbackPopup");

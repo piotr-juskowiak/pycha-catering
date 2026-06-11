@@ -92,17 +92,31 @@
     ]
   };
 
-  /* ─── SVG icons (liniowe, jeden styl) ────────────────── */
+  /* ─── Category badge icons ───────────────────────────── */
+  const categoryIconBase = 'assets/menu-popup/category-icons/';
+  const categoryIconPaths = {
+    soup:    `${categoryIconBase}category-icon-1.png`,
+    leaf:    `${categoryIconBase}category-icon-2.png`,
+    fork:    `${categoryIconBase}category-icon-3.png`,
+    chef:    `${categoryIconBase}category-icon-4.png`,
+    cupcake: `${categoryIconBase}category-icon-5.png`
+  };
+
+  function categoryIcon(name, src) {
+    return `<img class="category-icon category-icon-${name}" src="${src}" alt="" loading="lazy" />`;
+  }
+
+  /* ─── Icons ──────────────────────────────────────────── */
   const icons = {
-    leaf:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 39c14-1 28-12 31-31C21 9 10 20 9 39Z"/><path d="M12 36 34 14"/><path d="M22 26c-1-7-5-12-11-14"/><path d="M25 23c6 1 11 0 15-4"/></svg>`,
-    soup:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24h32v4c0 8-6 13-16 13S8 36 8 28v-4Z"/><path d="M5 24h38"/><path d="M15 17c3 2 15 2 18 0"/><path d="M20 10c-2 2 2 3 0 5"/><path d="M28 8c-2 2 2 3 0 5"/></svg>`,
-    fork:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6v16"/><path d="M9 6v16"/><path d="M19 6v16"/><path d="M9 22h10l-2 20h-6L9 22Z"/><path d="M34 6v36"/><path d="M34 6c5 3 7 9 7 16 0 5-3 8-7 8"/></svg>`,
-    chef:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21c-5-1-8-4-8-8 0-5 4-8 9-7 2-4 6-6 11-5 4 1 7 4 8 8 5 0 8 3 8 8 0 4-3 7-8 8"/><path d="M14 22h22v20H14z"/><path d="M20 31h16"/></svg>`,
-    meat:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 31c-6 0-10-4-10-9 0-8 9-15 20-15 8 0 12 4 12 9 0 8-11 15-22 15Z"/><path d="M20 23c-2 0-4-2-4-4 0-3 3-6 7-6 3 0 5 2 5 4 0 3-4 6-8 6Z"/><path d="M31 28 41 38"/><path d="M38 35c2-2 5-2 6 0s0 5-2 6-5 1-7-1"/></svg>`,
-    vegan:  `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42c0-14 0-25 12-35"/><path d="M25 27c12 1 18-7 18-20-13 0-20 8-18 20Z"/><path d="M20 33C9 30 5 22 8 12c11 3 16 10 12 21Z"/></svg>`,
-    cupcake:`<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20c-1-8 15-8 14 0 6-1 9 3 8 8H10c-1-5 2-9 6-8Z"/><path d="M14 28h20l-3 14H17l-3-14Z"/><path d="M24 9v6"/><path d="M20 9c0-3 8-3 8 0"/></svg>`,
-    salad:  `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 27h32l-3 12H11L8 27Z"/><path d="M14 27c-2-6 5-13 12-10 0 6-5 10-12 10Z"/><path d="M24 27c1-8 10-12 17-7-3 6-9 9-17 7Z"/><path d="M17 20c-1-5 4-10 9-10 1 5-3 9-9 10Z"/></svg>`,
-    sushi:  `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="13" height="13" rx="4"/><rect x="27" y="12" width="13" height="13" rx="4"/><rect x="17" y="28" width="14" height="12" rx="4"/><path d="M14 18h1"/><path d="M33 18h1"/><path d="M23 34h1"/></svg>`,
+    leaf:   categoryIcon('leaf', categoryIconPaths.leaf),
+    soup:   categoryIcon('soup', categoryIconPaths.soup),
+    fork:   categoryIcon('fork', categoryIconPaths.fork),
+    chef:   categoryIcon('chef', categoryIconPaths.chef),
+    meat:   categoryIcon('meat', categoryIconPaths.fork),
+    vegan:  categoryIcon('vegan', categoryIconPaths.leaf),
+    cupcake: categoryIcon('cupcake', categoryIconPaths.cupcake),
+    salad:  categoryIcon('salad', categoryIconPaths.leaf),
+    sushi:  categoryIcon('sushi', categoryIconPaths.fork),
     chat:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13h28a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5H23l-10 7v-7h-3a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5Z"/><path d="M16 24h.1M24 24h.1M32 24h.1"/></svg>`,
     pdf:    `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h15l9 9v29H14V5Z"/><path d="M29 5v10h9"/><path d="M20 31h2c2 0 3-1 3-3s-1-3-3-3h-2v9"/><path d="M29 34v-9h3c3 0 5 2 5 4.5S35 34 32 34h-3"/></svg>`
   };
@@ -178,10 +192,10 @@
           <div class="right-lower-grid">
             ${panel({ className: 'panel-salads tone-soft', title: 'SAŁATKI',  icon: 'salad',   items: menu.salads,  image: images.salad,   imageClass: 'image-salad' })}
             ${panel({ className: 'panel-sushi  tone-soft', title: 'SUSHI',    icon: 'sushi',   items: menu.sushi,   image: images.sushi,   imageClass: 'image-sushi' })}
-          </div>
-          <div class="menu-board-actions">
-            <a  class="menu-action-btn" href="contact.html">${icons.chat}<span>Kontakt</span></a>
-            <button class="menu-action-btn" type="button" data-print-menu>${icons.pdf}<span>Pobierz PDF</span></button>
+            <div class="menu-board-actions">
+              <a  class="menu-action-btn" href="contact.html">${icons.chat}<span>Kontakt</span></a>
+              <button class="menu-action-btn" type="button" data-print-menu>${icons.pdf}<span>Pobierz PDF</span></button>
+            </div>
           </div>
         </div>
       </div>
