@@ -1475,3 +1475,406 @@ img.about-leaf.about-leaf-left {
 .menu-card.simple-img-card:hover .simple-card-img {
     transform: scale(1.05);
 }
+
+/* Business-focused current menu section */
+.business-menu-section {
+    padding: 86px 0 94px;
+    background: linear-gradient(180deg, #fbf7ea 0%, #fffdf7 100%);
+}
+
+.business-menu-heading {
+    max-width: 760px;
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+.business-menu-heading .categories-eyebrow {
+    margin-bottom: 14px;
+    color: #7f6c2c;
+}
+
+.business-menu-title {
+    margin: 0;
+    color: #0b250c;
+    font-family: 'Baloo 2', 'Rubik', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.business-menu-intro {
+    max-width: 650px;
+    margin: 16px auto 0;
+    color: #50604c;
+    font-family: var(--font-family--rubik);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.business-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.business-menu-card {
+    min-height: 246px;
+    padding: 24px;
+    border: 1px solid rgba(74, 124, 61, 0.14);
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0b250c;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(34, 59, 31, 0.08);
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.business-menu-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 124, 61, 0.36);
+    box-shadow: 0 18px 38px rgba(34, 59, 31, 0.12);
+}
+
+.business-menu-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.business-menu-icon {
+    display: inline-flex;
+    width: 52px;
+    height: 52px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f2ead3;
+}
+
+.business-menu-icon img {
+    width: 31px;
+    height: 31px;
+    object-fit: contain;
+}
+
+.business-menu-tag {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: #edf6e8;
+    color: #315b26;
+    font-family: var(--font-family--rubik);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.business-menu-card-title {
+    margin: 0;
+    color: #0b250c;
+    font-family: var(--font-family--rubik);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.business-menu-card-desc {
+    margin: 12px 0 0;
+    color: #50604c;
+    font-family: var(--font-family--rubik);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.business-menu-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.business-menu-meta span {
+    padding: 7px 9px;
+    border: 1px solid rgba(194, 164, 63, 0.34);
+    border-radius: 8px;
+    background: #fff9e8;
+    color: #6e5b1e;
+    font-family: var(--font-family--rubik);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+@media (max-width: 991px) {
+    .business-menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .business-menu-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .business-menu-section {
+        padding: 64px 0 72px;
+    }
+
+    .business-menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-menu-card {
+        min-height: auto;
+    }
+
+    .business-menu-title {
+        font-size: 34px;
+    }
+}
+
+/* Google-style reviews */
+.testimonial-title-box .google-reviews-kicker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    padding: 9px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff7db;
+    font-family: var(--font-family--rubik);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.google-reviews-summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-family: var(--font-family--rubik);
+    line-height: 1;
+}
+
+.google-summary-rating {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.google-stars,
+.google-review-stars {
+    color: #fbbc04;
+    letter-spacing: 0;
+}
+
+.google-summary-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.testimonial-main-box.google-reviews-grid {
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    aspect-ratio: auto;
+    overflow: visible;
+}
+
+.google-review-card {
+    min-height: 242px;
+    padding: 22px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    color: #202124;
+    font-family: var(--font-family--rubik);
+}
+
+.google-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.google-review-avatar {
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.avatar-blue {
+    background: #1a73e8;
+}
+
+.avatar-green {
+    background: #188038;
+}
+
+.avatar-red {
+    background: #c5221f;
+}
+
+.avatar-yellow {
+    background: #f9ab00;
+    color: #202124;
+}
+
+.avatar-purple {
+    background: #8e24aa;
+}
+
+.avatar-teal {
+    background: #00897b;
+}
+
+.google-review-person {
+    min-width: 0;
+    flex: 1;
+}
+
+.google-review-name {
+    color: #202124;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.google-review-date {
+    margin-top: 3px;
+    color: #5f6368;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.google-review-badge {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e8eaed;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.16);
+}
+
+.google-g {
+    color: #4285f4;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.google-review-stars {
+    margin-top: 18px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.google-review-text {
+    margin: 14px 0 0;
+    color: #3c4043;
+    font-size: 15px;
+    line-height: 1.58;
+    font-weight: 400;
+}
+
+@media (max-width: 991px) {
+    .testimonial-main-box.google-reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .testimonial-main-box.google-reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .google-review-card {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .google-reviews-summary {
+        border-radius: 8px;
+    }
+}
+
+/* Mobile sticky menu preview */
+.mobile-menu-sticky-btn {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-sticky-btn {
+        position: fixed;
+        right: 16px;
+        bottom: calc(14px + env(safe-area-inset-bottom));
+        left: 16px;
+        z-index: 99990;
+        display: flex;
+        min-height: 58px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 2px solid #0c260d;
+        border-radius: 8px;
+        background: #c3db8a;
+        color: #0c260d;
+        font-family: var(--font-family--rubik);
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        box-shadow: 5px 5px 0 #0c260d, 0 14px 30px rgba(11, 37, 12, 0.24);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .mobile-menu-sticky-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 3px 3px 0 #0c260d, 0 10px 22px rgba(11, 37, 12, 0.2);
+    }
+
+    .mobile-menu-sticky-btn img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        filter: brightness(0) saturate(100%) invert(10%) sepia(24%) saturate(1723%) hue-rotate(73deg) brightness(92%) contrast(94%);
+    }
+}

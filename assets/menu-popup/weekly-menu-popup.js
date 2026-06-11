@@ -1,23 +1,32 @@
 /* ============================================================
-   PYCHA CATERING — Weekly Menu Popup — Premium JS Redesign
-   Wymaga: GSAP 3 (już w projekcie)
+   PYCHA CATERING — Weekly Menu Popup — Premium Redesign v3
    ============================================================ */
 
 (function () {
   /* ─── Asset paths ─────────────────────────────────────── */
   const assetBase = 'assets/menu-popup/generated/';
   const images = {
+    main:    `${assetBase}natural-plate.png`,
     soup:    `${assetBase}tomato-soup.jpg`,
-    pasta:   `${assetBase}spaghetti-bolognese.jpg`,
     small:   `${assetBase}chicken-burger.jpg`,
-    meat:    `${assetBase}pork-cutlet.jpg`,
-    vegan:   `${assetBase}vegan-curry-rice.jpg`,
-    wege:    `${assetBase}green-vege-noodles.jpg`,
-    starch:  `${assetBase}pierogi.jpg`,
-    dessert: `${assetBase}chocolate-dessert.jpg`,
     salad:   `${assetBase}greek-salad.jpg`,
-    sushi:   `${assetBase}sushi-salmon.jpg`
+    dessert: `${assetBase}chocolate-dessert.jpg`,
+    drink:   `assets/menu-popup/smoothie-bowl.jpg`,
   };
+
+  /* ─── Category icons ──────────────────────────────────── */
+  const iconBase = 'assets/menu-popup/category-icons/';
+  const catIcons = {
+    main:    `${iconBase}category-icon-4.png`,
+    soup:    `${iconBase}category-icon-1.png`,
+    small:   `${iconBase}category-icon-3.png`,
+    salad:   `${iconBase}category-icon-2.png`,
+    dessert: `${iconBase}category-icon-5.png`,
+    drink:   `${iconBase}category-icon-2.png`,
+  };
+
+  /* ─── Chef avatar (3D friendly style) ───────────────── */
+  const chefAvatar = 'assets/menu-popup/chef-avatar-3d.png';
 
   /* ─── Days data ───────────────────────────────────────── */
   const days = [
@@ -27,176 +36,202 @@
     { key: 'Czwartek',     short: 'Czw',  title: 'Czwartek',     date: '11.06.2026' },
     { key: 'Piątek',       short: 'Pt',   title: 'Piątek',       date: '12.06.2026' },
     { key: 'Sobota',       short: 'Sob',  title: 'Sobota',       date: '13.06.2026' },
-    { key: 'Niedziela',    short: 'Nd',   title: 'Niedziela',    date: '14.06.2026' }
+    { key: 'Niedziela',    short: 'Nd',   title: 'Niedziela',    date: '14.06.2026' },
+  ];
+
+  /* ─── Categories ──────────────────────────────────────── */
+  const categories = [
+    { key: 'main',    label: 'Dania główne' },
+    { key: 'soup',    label: 'Zupy' },
+    { key: 'small',   label: 'Przystawki' },
+    { key: 'salad',   label: 'Sałatki' },
+    { key: 'dessert', label: 'Desery' },
+    { key: 'drink',   label: 'Napoje' },
   ];
 
   /* ─── Menu data ───────────────────────────────────────── */
   const menu = {
-    soups: [
-      ['1.', 'Pomidorowa z makaronem (na wywarze warzywnym)', '11,00 zł'],
-      ['2.', 'Serowa z kurczakiem', '12,00 zł'],
-      ['3.', 'Chłodnik litewski', '12,00 zł']
+    main: [
+      ['1.', 'De volaille, ziemniaki puree, buraki zasmażane', '21,50 zł'],
+      ['2.', 'Potrawka wołowa z kremowym puree i warzywami', '24,00 zł'],
+      ['3.', 'Pierś z kurczaka z sosem śmietanowym, kluski śląskie, modra kapusta', '26,50 zł'],
+      ['4.', 'Łosoś pieczony z cytryną i ziołami, kasza bulgur, brokuły', '28,50 zł'],
     ],
-    pastas: [
-      ['17.', 'Spaghetti bolognese', '17,50 zł'],
-      ['18.', 'Penne carbonara', '17,50 zł'],
-      ['19.', 'Linguine z drobiem, szparagami i serem naciowym', '19,00 zł']
+    soup: [
+      ['1.', 'Pomidorowa z makaronem (na wywarze warzywnym)', '11,00 zł'],
+      ['2.', 'Serowa z kurczakiem i grzankami', '12,00 zł'],
+      ['3.', 'Chłodnik litewski z burakiem i śmietaną', '12,00 zł'],
+      ['4.', 'Krem z dyni z pestkami słonecznika', '12,50 zł'],
     ],
     small: [
-      ['20.', 'Wątróbka drobiowa z jabłkiem cynamonowym, ziemniaki pieczone, modra kapusta', '18,00 zł'],
-      ['21.', 'Tajskie Pad Kra Pao z udkiem indyczym, basmati, jajko sadzone', '19,00 zł'],
-      ['22.', 'Pożarski, ziemniaki puree, marchewka', '18,00 zł'],
-      ['23.', 'Tortilla z szarpaną wieprzowiną i warzywami, dip cheddar', '17,00 zł'],
-      ['24.', 'Cheeseburger smoked papryka', '20,00 zł']
+      ['1.', 'Wątróbka drobiowa z jabłkiem cynamonowym, ziemniaki pieczone, modra kapusta', '18,00 zł'],
+      ['2.', 'Tajskie Pad Kra Pao z udkiem indyczym, basmati, jajko sadzone', '19,00 zł'],
+      ['3.', 'Pożarski, ziemniaki puree, marchewka', '18,00 zł'],
+      ['4.', 'Tortilla z szarpaną wieprzowiną i warzywami, dip cheddar', '17,00 zł'],
     ],
-    meat: [
-      ['4.', 'De volaille, ziemniaki puree, buraki zasmażane', '21,50 zł'],
-      ['5.', 'Potrawka wołowa z kremowym sosem szpinakowym, kluski śląskie, kapusta modra', '23,50 zł'],
-      ['6.', 'Wieprzowina w płatkach kukurydzianych, ziemniaki w mundurkach, surówka z marchwi i jabłka fit', '20,50 zł'],
-      ['7.', 'Gołąbek domowy w sosie pomidorowym, ziemniaki puree, marchewka zasmażana', '20,50 zł', 'NOWOŚĆ'],
-      ['8.', 'Thai roll z kurczakiem', '16,00 zł']
+    salad: [
+      ['1.', 'Sałatka grecka z fetą i oliwkami', '14,00 zł'],
+      ['2.', 'Burak z pomarańczą, Blue Pote, kurczak, winogrono', '14,50 zł'],
+      ['3.', 'Szpinak, gruszka z pomarańczą, feta, łosoś z jajem', '19,50 zł'],
+      ['4.', 'Falafel bowl z hummusem i świeżymi warzywami', '20,50 zł'],
     ],
-    vegan: [
-      ['9.', 'Leczo z zieloną soczewicą z boczniakami, ryż biały, marchew baby', '18,50 zł', 'NOWOŚĆ']
+    dessert: [
+      ['1.', 'Kokosowa owsianka ze śliwką i ekspandowanym amarantusem', '10,50 zł'],
+      ['2.', 'Tapioka z mlekiem kokosowym i mango', '10,50 zł'],
+      ['3.', 'Jogurt z crunchy i musem mango marakuja', '10,00 zł'],
+      ['4.', 'Deser brzoskwiniowy z amaretto', '11,00 zł'],
     ],
-    wege: [
-      ['10.', 'Marynowany seitan na chińskich warzywach, makaron sojowy, fasolka szparagowa', '18,50 zł'],
-      ['11.', 'Placek szpinakowy z sosem warzywnym po grecku', '18,50 zł']
+    drink: [
+      ['1.', 'Woda mineralna 0,5 l', '3,50 zł'],
+      ['2.', 'Sok owocowy świeżo wyciskany', '7,00 zł'],
+      ['3.', 'Smoothie bowl truskawkowe', '10,00 zł'],
+      ['4.', 'Lemon ice tea z miętą', '8,00 zł'],
     ],
-    starch: [
-      ['12.', 'Naleśniki z serem czekoladowym i bananem', '16,50 zł'],
-      ['13.', 'Bazylikowe naleśniki z bakłażanikami warzywami, dip pomidorowy', '18,50 zł'],
-      ['14.', 'Bao YIN YANG z szarpaną wieprzowiną z marynowanym ogórkiem i sezamem z aioli czosnkowym', '21,00 zł'],
-      ['15.', 'Pierogi z mięsem, cebulka z boczkiem', '19,00 zł'],
-      ['16.', 'Leniwe', '16,00 zł']
-    ],
-    desserts: [
-      ['25.', 'Kokosowa owsianka ze śliwką i ekspandowanym amarantusem', '10,50 zł'],
-      ['26.', 'Tapioka', '10,50 zł'],
-      ['27.', 'Jogurt z crunchy i musem mango marakuja', '10,00 zł'],
-      ['28.', 'Banao - bez cukru', '10,50 zł'],
-      ['29.', 'Deser brzoskwiniowy z amaretto', '11,00 zł'],
-      ['30.', 'Snickers', '11,00 zł']
-    ],
-    salads: [
-      ['31.', 'Sałatka grecka', '14,00 zł'],
-      ['32.', 'Sałatka mała: Burak z pomarańczą, Blue Pote, kurczak, winogrono', '14,50 zł'],
-      ['33.', 'Sałatka premium: Szpinak, gruszka z pomarańczą, feta, łosoś z jajem', '19,50 zł'],
-      ['34.', 'Bowl: Falafel bowl', '20,50 zł']
-    ],
-    sushi: [
-      ['35.', 'Zestaw surowy łosoś', '28,00 zł'],
-      ['36.', 'Zestaw pieczony łosoś', '28,00 zł'],
-      ['37.', 'Zestaw mieszany', '28,00 zł'],
-      ['38.', 'Zestaw z krewetką', '28,00 zł']
-    ]
   };
 
-  /* ─── Category badge icons ───────────────────────────── */
-  const categoryIconBase = 'assets/menu-popup/category-icons/';
-  const categoryIconPaths = {
-    soup:    `${categoryIconBase}category-icon-1.png`,
-    leaf:    `${categoryIconBase}category-icon-2.png`,
-    fork:    `${categoryIconBase}category-icon-3.png`,
-    chef:    `${categoryIconBase}category-icon-4.png`,
-    cupcake: `${categoryIconBase}category-icon-5.png`
-  };
+  /* ─── SVG icons ───────────────────────────────────────── */
+  const svgCalendar = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
+  const svgDownload = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+  const svgClose = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 
-  function categoryIcon(name, src) {
-    return `<img class="category-icon category-icon-${name}" src="${src}" alt="" loading="lazy" />`;
-  }
+  /* Decorative branch near photo */
+  const svgBranch = `<svg class="wmp-photo-branch" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M110 10 C80 50 40 100 20 180" stroke="#3F8F35" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <path d="M100 30 C75 35 65 20 70 10 C75 0 95 10 100 30 Z" fill="#3F8F35" opacity="0.25"/>
+    <path d="M85 60 C55 60 45 40 55 30 C65 20 85 40 85 60 Z" fill="#3F8F35" opacity="0.20"/>
+    <path d="M65 100 C35 95 30 75 40 65 C50 55 70 80 65 100 Z" fill="#3F8F35" opacity="0.15"/>
+    <path d="M45 140 C20 130 20 110 30 105 C40 100 55 120 45 140 Z" fill="#3F8F35" opacity="0.12"/>
+  </svg>`;
 
-  /* ─── Icons ──────────────────────────────────────────── */
-  const icons = {
-    leaf:   categoryIcon('leaf', categoryIconPaths.leaf),
-    soup:   categoryIcon('soup', categoryIconPaths.soup),
-    fork:   categoryIcon('fork', categoryIconPaths.fork),
-    chef:   categoryIcon('chef', categoryIconPaths.chef),
-    meat:   categoryIcon('meat', categoryIconPaths.fork),
-    vegan:  categoryIcon('vegan', categoryIconPaths.leaf),
-    cupcake: categoryIcon('cupcake', categoryIconPaths.cupcake),
-    salad:  categoryIcon('salad', categoryIconPaths.leaf),
-    sushi:  categoryIcon('sushi', categoryIconPaths.fork),
-    chat:   `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13h28a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5H23l-10 7v-7h-3a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5Z"/><path d="M16 24h.1M24 24h.1M32 24h.1"/></svg>`,
-    pdf:    `<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h15l9 9v29H14V5Z"/><path d="M29 5v10h9"/><path d="M20 31h2c2 0 3-1 3-3s-1-3-3-3h-2v9"/><path d="M29 34v-9h3c3 0 5 2 5 4.5S35 34 32 34h-3"/></svg>`
-  };
+  /* Laurel wreath SVG for the chef avatar */
+  const svgLaurel = `<svg class="wmp-avatar-laurel" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Left laurel branch -->
+    <path d="M40 190 C30 150 30 110 50 70 C60 50 75 35 95 25" stroke="#3F8F35" stroke-width="2" fill="none" opacity="0.30" stroke-linecap="round"/>
+    <path d="M45 150 C30 145 25 130 35 125 C45 120 55 135 45 150 Z" fill="#3F8F35" opacity="0.15"/>
+    <path d="M38 120 C25 110 25 95 35 90 C45 85 55 100 38 120 Z" fill="#3F8F35" opacity="0.15"/>
+    <path d="M45 90 C35 75 40 60 50 55 C60 50 65 70 45 90 Z" fill="#3F8F35" opacity="0.12"/>
+    <path d="M60 65 C55 50 65 35 75 35 C85 35 85 55 60 65 Z" fill="#3F8F35" opacity="0.10"/>
+    
+    <!-- Right laurel branch -->
+    <path d="M180 190 C190 150 190 110 170 70 C160 50 145 35 125 25" stroke="#3F8F35" stroke-width="2" fill="none" opacity="0.30" stroke-linecap="round"/>
+    <path d="M175 150 C190 145 195 130 185 125 C175 120 165 135 175 150 Z" fill="#3F8F35" opacity="0.15"/>
+    <path d="M182 120 C195 110 195 95 185 90 C175 85 165 100 182 120 Z" fill="#3F8F35" opacity="0.15"/>
+    <path d="M175 90 C185 75 180 60 170 55 C160 50 155 70 175 90 Z" fill="#3F8F35" opacity="0.12"/>
+    <path d="M160 65 C165 50 155 35 145 35 C135 35 135 55 160 65 Z" fill="#3F8F35" opacity="0.10"/>
+  </svg>`;
 
-  /* ─── HTML helpers ────────────────────────────────────── */
-  function menuItems(items) {
-    return items.map(([num, name, price, badge]) => `
-      <div class="menu-item">
-        <span class="item-num">${num}</span>
-        <div class="item-main">
-          <span class="item-name">${name}${badge ? `<span class="item-badge">${badge}</span>` : ''}</span>
-          <span class="item-dots"></span>
-          <span class="item-price">${price}</span>
+  /* ─── Helper: render menu items ────────────────────────── */
+  function renderItems(items) {
+    return items.map(([num, name, price]) => `
+      <div class="wmp-menu-item">
+        <span class="wmp-item-num">${num}</span>
+        <div class="wmp-item-body">
+          <span class="wmp-item-name">${name}</span>
+          <span class="wmp-item-dots"></span>
+          <span class="wmp-item-price">${price}</span>
         </div>
       </div>
     `).join('');
   }
 
-  function heading(title, icon) {
+  /* ─── Render category view — premium card ──────────────── */
+  function renderCategoryView(catKey) {
+    const cat = categories.find(c => c.key === catKey);
+    const items = menu[catKey] || [];
+    const photo = images[catKey] || images.main;
+    const icon  = catIcons[catKey] || catIcons.main;
+
     return `
-      <div class="section-heading">
-        ${icons[icon]}
-        <h3>${title}</h3>
+      <div class="wmp-category-view">
+        <div class="wmp-content-card">
+          <div class="wmp-list-col">
+            <div class="wmp-cat-heading">
+              <div class="wmp-cat-heading-icon">
+                <img src="${icon}" alt="" loading="lazy" />
+              </div>
+              <h2>${cat ? cat.label : catKey}</h2>
+            </div>
+            <div class="wmp-heading-divider"></div>
+            <div class="wmp-items-list">
+              ${renderItems(items)}
+            </div>
+          </div>
+          <div class="wmp-photo-col">
+            ${svgBranch}
+            <img class="wmp-food-photo" src="${photo}" alt="${cat ? cat.label : ''}" loading="lazy" />
+          </div>
+        </div>
       </div>
     `;
   }
 
-  function panel(options) {
-    const food = options.image
-      ? `<img class="panel-food ${options.imageClass}" src="${options.image}" alt="" loading="lazy" />`
-      : '';
+  /* ─── Render sidebar — with laurel wreath ──────────────── */
+  function renderSidebar(activeCat, onCatClick) {
+    const catItems = categories.map(cat => `
+      <li>
+        <button class="wmp-cat-btn${cat.key === activeCat ? ' active' : ''}" data-cat="${cat.key}" type="button">
+          <div class="wmp-cat-icon-wrap">
+            <img src="${catIcons[cat.key]}" alt="" loading="lazy" />
+          </div>
+          ${cat.label}
+        </button>
+      </li>
+    `).join('');
+
     return `
-      <section class="menu-panel ${options.className || ''}">
-        ${heading(options.title, options.icon)}
-        <div class="menu-list">${menuItems(options.items)}</div>
-        ${food}
-      </section>
+      <aside class="wmp-sidebar">
+        <div class="wmp-avatar-wrap">
+          ${svgLaurel}
+          <div class="wmp-avatar">
+            <img src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
+          </div>
+        </div>
+        <div class="wmp-cat-label">Wybierz kategorię</div>
+        <ul class="wmp-cat-list">
+          ${catItems}
+        </ul>
+        <div class="wmp-fresh-box">
+          <h4>Świeże składniki</h4>
+          <p>Codziennie wybieramy najlepsze produkty od lokalnych dostawców.</p>
+        </div>
+        <button class="wmp-pdf-btn" type="button" data-print-menu>
+          ${svgDownload}
+          Pobierz PDF
+        </button>
+      </aside>
     `;
   }
 
-  function subPanel(className, title, icon, items, image, imageClass) {
-    return `
-      <div class="sub-panel ${className}">
-        <div class="sub-title">${icons[icon]}<span>${title}</span></div>
-        <div class="menu-list">${menuItems(items)}</div>
-        <img class="panel-food ${imageClass}" src="${image}" alt="" loading="lazy" />
-      </div>
-    `;
-  }
+  /* ─── Render main area ────────────────────────────────── */
+  function renderMain(day, activeCat) {
+    const dayTabs = days.map((d, i) => {
+      const isActive = d.key === day.key;
+      return `<button class="catering-day-btn${isActive ? ' active' : ''}" data-day="${d.key}" type="button" aria-label="${d.key}, ${d.date}">${d.short}</button>`;
+    }).join('');
 
-  function renderBoard() {
     return `
-      <div class="weekly-board">
-        ${panel({ className: 'top-panel panel-soups',  title: 'ZUPY',         icon: 'soup',   items: menu.soups,   image: images.soup,    imageClass: 'image-soup' })}
-        ${panel({ className: 'top-panel panel-pastas', title: 'PASTY',        icon: 'leaf',   items: menu.pastas,  image: images.pasta,   imageClass: 'image-pasta' })}
-        ${panel({ className: 'top-panel panel-small',  title: 'DANIA MAŁE',   icon: 'fork',   items: menu.small,   image: images.small,   imageClass: 'image-small' })}
-
-        <section class="menu-panel panel-main">
-          ${heading('DANIA GŁÓWNE', 'chef')}
-          <div class="main-layout">
-            ${subPanel('meat',  'MIĘSNE', 'meat',  menu.meat,  images.meat,  'image-meat')}
-            <div class="diet-column">
-              ${subPanel('vegan', 'VEGAN',  'vegan', menu.vegan, images.vegan, 'image-vegan')}
-              ${subPanel('wege',  'WEGE',   'vegan', menu.wege,  images.wege,  'image-wege')}
+      <div class="wmp-main">
+        <div class="wmp-header">
+          <div class="wmp-title-group">
+            <h1 class="wmp-title">Menu tygodniowe</h1>
+            <div class="wmp-date-row">
+              ${svgCalendar}
+              <span id="cateringSubtitle">${day.title}, ${day.date}</span>
             </div>
           </div>
-        </section>
+          <button class="catering-close-btn" id="cateringCloseBtn" aria-label="Zamknij menu">
+            ${svgClose}
+          </button>
+        </div>
 
-        ${panel({ className: 'panel-starch', title: 'DANIA MĄCZNE', icon: 'leaf', items: menu.starch, image: images.starch, imageClass: 'image-starch' })}
-
-        <div class="right-stack">
-          ${panel({ className: 'panel-desserts tone-purple', title: 'DESERY',   icon: 'cupcake', items: menu.desserts, image: images.dessert, imageClass: 'image-dessert' })}
-          <div class="right-lower-grid">
-            ${panel({ className: 'panel-salads tone-soft', title: 'SAŁATKI',  icon: 'salad',   items: menu.salads,  image: images.salad,   imageClass: 'image-salad' })}
-            ${panel({ className: 'panel-sushi  tone-soft', title: 'SUSHI',    icon: 'sushi',   items: menu.sushi,   image: images.sushi,   imageClass: 'image-sushi' })}
-            <div class="menu-board-actions">
-              <a  class="menu-action-btn" href="contact.html">${icons.chat}<span>Kontakt</span></a>
-              <button class="menu-action-btn" type="button" data-print-menu>${icons.pdf}<span>Pobierz PDF</span></button>
-            </div>
+        <div class="catering-tabs-container">
+          <div class="catering-days" id="cateringDays">
+            ${dayTabs}
           </div>
+        </div>
+
+        <div class="catering-body" id="cateringBody">
+          ${renderCategoryView(activeCat)}
         </div>
       </div>
     `;
@@ -222,7 +257,7 @@
     return () => modal.removeEventListener('keydown', handler);
   }
 
-  /* ─── Liquid-reveal animation (button morph) ─────────── */
+  /* ─── Liquid-reveal animation ─────────────────────────── */
   function createLiquidReveal(triggerEl, onComplete) {
     if (!window.gsap || !triggerEl) { onComplete(); return; }
 
@@ -232,7 +267,6 @@
     const maxDim  = Math.max(window.innerWidth, window.innerHeight);
     const endSize = maxDim * 2.8;
 
-    /* create ripple element */
     const ripple = document.createElement('div');
     ripple.className = 'menu-btn-ripple';
     const startSize = Math.max(rect.width, rect.height);
@@ -244,7 +278,6 @@
     });
     document.body.appendChild(ripple);
 
-    /* scatter food emoji particles */
     const emojis = ['🍃', '🌿', '🍴', '✨', '🌱'];
     const particles = [];
     for (let i = 0; i < 8; i++) {
@@ -266,122 +299,122 @@
       }
     });
 
-    /* animate ripple expansion */
-    tl.to(ripple, {
-      scale: endSize / startSize,
-      opacity: 1,
-      duration: 0.55,
-      ease: 'power2.inOut'
-    });
+    tl.to(ripple, { scale: endSize / startSize, opacity: 1, duration: 0.55, ease: 'power2.inOut' });
 
-    /* scatter particles */
     particles.forEach((p, i) => {
-      const angle  = (i / particles.length) * 360;
-      const dist   = 60 + Math.random() * 80;
-      const rad    = (angle * Math.PI) / 180;
-      tl.to(p, {
-        x: Math.cos(rad) * dist,
-        y: Math.sin(rad) * dist,
-        opacity: 0.9,
-        duration: 0.38,
-        ease: 'power2.out'
-      }, 0);
-      tl.to(p, {
-        opacity: 0,
-        y: `+=${20 + Math.random() * 30}`,
-        duration: 0.28,
-        ease: 'power2.in'
-      }, 0.28);
+      const angle = (i / particles.length) * 360;
+      const dist  = 60 + Math.random() * 80;
+      const rad   = (angle * Math.PI) / 180;
+      tl.to(p, { x: Math.cos(rad) * dist, y: Math.sin(rad) * dist, opacity: 0.9, duration: 0.38, ease: 'power2.out' }, 0);
+      tl.to(p, { opacity: 0, y: `+=${20 + Math.random() * 30}`, duration: 0.28, ease: 'power2.in' }, 0.28);
     });
   }
 
   /* ─── Main setup ──────────────────────────────────────── */
   function setupWeeklyPopup() {
-    const overlay        = document.getElementById('cateringOverlay');
-    const modal          = document.getElementById('cateringModal');
-    const closeBtn       = document.getElementById('cateringCloseBtn');
-    const daysContainer  = document.getElementById('cateringDays');
-    const bodyContainer  = document.getElementById('cateringBody');
-    const headerSubEl    = document.getElementById('cateringSubtitle');
+    const overlay  = document.getElementById('cateringOverlay');
+    const modal    = document.getElementById('cateringModal');
 
-    if (!overlay || !modal || !closeBtn || !daysContainer || !bodyContainer) return;
+    if (!overlay || !modal) return;
 
-    let activeIndex   = 1;  /* Tuesday */
-    let openTimeline  = null;
-    let closeTimeline = null;
-    let removeTrap    = () => {};
-    let isOpen        = false;
+    let activeDayIndex = 0;   /* Monday */
+    let activeCat      = 'main';
+    let isOpen         = false;
+    let openTimeline   = null;
+    let closeTimeline  = null;
+    let removeTrap     = () => {};
 
-    /* ── Update header subtitle ─────────────────────────── */
-    function setTitle(day) {
-      if (headerSubEl) headerSubEl.textContent = `${day.title}, ${day.date}`;
-    }
+    /* ── Full re-render of the modal contents ─────────────── */
+    function fullRender() {
+      const day = days[activeDayIndex];
+      modal.innerHTML = renderSidebar(activeCat) + renderMain(day, activeCat);
 
-    /* ── Board stagger animation ─────────────────────────── */
-    function animateBoard() {
-      if (!window.gsap) return;
-      const panels = bodyContainer.querySelectorAll('.menu-panel, .menu-board-actions');
-      gsap.fromTo(
-        panels,
-        { y: 16, opacity: 0, scale: 0.97 },
-        { y: 0,  opacity: 1, scale: 1, stagger: 0.022, duration: 0.36, ease: 'power2.out' }
-      );
-    }
+      /* Wire close button */
+      const closeBtn = modal.querySelector('#cateringCloseBtn');
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-    /* ── Render day ─────────────────────────────────────── */
-    function renderDay(index, animate = true) {
-      if (!window.gsap || !animate) {
-        activeIndex = index;
-        daysContainer.querySelectorAll('.catering-day-btn').forEach((btn, i) => {
-          btn.classList.toggle('active', i === activeIndex);
+      /* Wire day tabs */
+      modal.querySelectorAll('.catering-day-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.day;
+          const idx = days.findIndex(d => d.key === key);
+          if (idx === activeDayIndex) return;
+          activeDayIndex = idx;
+          switchDay(idx);
         });
-        setTitle(days[activeIndex]);
-        bodyContainer.innerHTML = renderBoard();
-        bodyContainer.scrollTop = 0;
-        attachPrintBtn();
+      });
+
+      /* Wire category buttons */
+      modal.querySelectorAll('.wmp-cat-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const cat = btn.dataset.cat;
+          if (cat === activeCat) return;
+          activeCat = cat;
+          switchCategory(cat);
+        });
+      });
+
+      /* Wire PDF button */
+      const pdfBtn = modal.querySelector('[data-print-menu]');
+      if (pdfBtn) pdfBtn.addEventListener('click', () => window.print());
+    }
+
+    /* ── Switch category (re-render body only) ────────────── */
+    function switchCategory(cat) {
+      /* update sidebar buttons */
+      modal.querySelectorAll('.wmp-cat-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.cat === cat);
+      });
+
+      const body = modal.querySelector('#cateringBody');
+      if (!body) return;
+
+      if (!window.gsap) {
+        body.innerHTML = renderCategoryView(cat);
         return;
       }
 
-      /* fade-out current content, then swap */
-      gsap.to(bodyContainer, {
-        opacity: 0, y: -6, duration: 0.16, ease: 'power2.in',
+      gsap.to(body, {
+        opacity: 0, y: -6, duration: 0.14, ease: 'power2.in',
         onComplete: () => {
-          activeIndex = index;
-          daysContainer.querySelectorAll('.catering-day-btn').forEach((btn, i) => {
-            btn.classList.toggle('active', i === activeIndex);
-          });
-          setTitle(days[activeIndex]);
-          bodyContainer.innerHTML = renderBoard();
-          bodyContainer.scrollTop = 0;
-          attachPrintBtn();
-          gsap.fromTo(bodyContainer, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' });
-          animateBoard();
+          body.innerHTML = renderCategoryView(cat);
+          body.scrollTop = 0;
+          gsap.fromTo(body, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out' });
         }
       });
     }
 
-    /* ── Print button ────────────────────────────────────── */
-    function attachPrintBtn() {
-      const printBtn = bodyContainer.querySelector('[data-print-menu]');
-      if (printBtn) printBtn.addEventListener('click', () => window.print());
-    }
+    /* ── Switch day ───────────────────────────────────────── */
+    function switchDay(idx) {
+      const day = days[idx];
 
-    /* ── Build day tab buttons ───────────────────────────── */
-    daysContainer.innerHTML = '';
-    days.forEach((day, index) => {
-      const button = document.createElement('button');
-      button.type      = 'button';
-      button.className = `catering-day-btn${index === activeIndex ? ' active' : ''}`;
-      button.textContent = day.short;
-      button.setAttribute('aria-label', `${day.key}, ${day.date}`);
-      button.addEventListener('click', () => {
-        if (index === activeIndex) return;
-        renderDay(index, true);
+      /* update tabs */
+      modal.querySelectorAll('.catering-day-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', btn.dataset.day === day.key);
       });
-      daysContainer.appendChild(button);
-    });
 
-    renderDay(activeIndex, false);
+      /* update subtitle */
+      const sub = modal.querySelector('#cateringSubtitle');
+      if (sub) sub.textContent = `${day.title}, ${day.date}`;
+
+      /* re-render body */
+      const body = modal.querySelector('#cateringBody');
+      if (!body) return;
+
+      if (!window.gsap) {
+        body.innerHTML = renderCategoryView(activeCat);
+        return;
+      }
+
+      gsap.to(body, {
+        opacity: 0, y: -5, duration: 0.13, ease: 'power2.in',
+        onComplete: () => {
+          body.innerHTML = renderCategoryView(activeCat);
+          body.scrollTop = 0;
+          gsap.fromTo(body, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.18, ease: 'power2.out' });
+        }
+      });
+    }
 
     /* ── OPEN modal ─────────────────────────────────────── */
     function openModal(event, triggerEl) {
@@ -394,6 +427,8 @@
       overlay.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
       isOpen = true;
+
+      fullRender();
 
       const doOpen = () => {
         if (!window.gsap) {
@@ -413,45 +448,46 @@
           }
         });
 
-        /* 1. Overlay fade in */
         openTimeline.fromTo(overlay,
           { opacity: 0 },
-          { opacity: 1, duration: 0.24, ease: 'power2.out' }
+          { opacity: 1, duration: 0.22, ease: 'power2.out' }
         );
 
-        /* 2. Modal scale + translateY spring */
         openTimeline.fromTo(modal,
-          { y: 36, scale: 0.92, opacity: 0 },
-          { y: 0,  scale: 1,    opacity: 1, duration: 0.52, ease: 'back.out(1.1)' },
-          '-=0.12'
+          { y: 32, scale: 0.93, opacity: 0 },
+          { y: 0,  scale: 1,    opacity: 1, duration: 0.48, ease: 'back.out(1.1)' },
+          '-=0.10'
         );
 
-        /* 3. Header elements stagger */
         openTimeline.fromTo(
-          modal.querySelectorAll('.catering-header-icon-wrap, .catering-header-titles, .catering-close-btn'),
+          modal.querySelectorAll('.wmp-sidebar, .wmp-header, .catering-tabs-container'),
           { y: 10, opacity: 0 },
           { y: 0,  opacity: 1, duration: 0.28, stagger: 0.06 },
-          '-=0.32'
+          '-=0.28'
         );
 
-        /* 4. Day tab pills stagger */
+        openTimeline.fromTo(
+          modal.querySelectorAll('.wmp-cat-btn'),
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.22, stagger: 0.04, ease: 'power2.out' },
+          '-=0.20'
+        );
+
         openTimeline.fromTo(
           modal.querySelectorAll('.catering-day-btn'),
-          { y: 8, opacity: 0, scale: 0.9 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.26, stagger: 0.04, ease: 'back.out(1.5)' },
-          '-=0.22'
+          { y: 6, opacity: 0, scale: 0.9 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.22, stagger: 0.035, ease: 'back.out(1.5)' },
+          '-=0.18'
         );
 
-        /* 5. Menu board panels stagger */
         openTimeline.fromTo(
-          bodyContainer.querySelectorAll('.menu-panel, .menu-board-actions'),
-          { y: 18, opacity: 0, scale: 0.97 },
-          { y: 0,  opacity: 1, scale: 1,   duration: 0.36, stagger: 0.018, ease: 'power2.out' },
-          '-=0.16'
+          modal.querySelector('#cateringBody'),
+          { y: 14, opacity: 0 },
+          { y: 0,  opacity: 1, duration: 0.28, ease: 'power2.out' },
+          '-=0.14'
         );
       };
 
-      /* Liquid reveal if trigger element present */
       if (triggerEl && window.gsap) {
         createLiquidReveal(triggerEl, doOpen);
       } else {
@@ -472,8 +508,7 @@
         overlay.classList.remove('active');
         overlay.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
-        /* reset modal transform for next open */
-        gsap.set(modal, { clearProps: 'all' });
+        if (window.gsap) gsap.set(modal, { clearProps: 'all' });
       };
 
       if (!window.gsap) {
@@ -485,29 +520,22 @@
 
       closeTimeline = gsap.timeline({ onComplete: finish });
 
-      /* 1. Panels fade out */
-      closeTimeline.to(
-        bodyContainer.querySelectorAll('.menu-panel, .menu-board-actions'),
-        { y: 8, opacity: 0, scale: 0.98, duration: 0.16, stagger: 0.01, ease: 'power2.in' }
+      closeTimeline.to(modal.querySelector('#cateringBody'),
+        { y: 8, opacity: 0, duration: 0.14, ease: 'power2.in' }
       );
 
-      /* 2. Modal shrink */
       closeTimeline.to(modal,
-        { y: 22, scale: 0.94, opacity: 0, duration: 0.22, ease: 'power3.in' },
-        '-=0.08'
+        { y: 20, scale: 0.94, opacity: 0, duration: 0.20, ease: 'power3.in' },
+        '-=0.06'
       );
 
-      /* 3. Overlay fade out */
       closeTimeline.to(overlay,
-        { opacity: 0, duration: 0.18, ease: 'power2.inOut' },
-        '-=0.1'
+        { opacity: 0, duration: 0.16, ease: 'power2.inOut' },
+        '-=0.08'
       );
     }
 
     /* ── Event listeners ─────────────────────────────────── */
-
-    /* Close button */
-    closeBtn.addEventListener('click', closeModal);
 
     /* Close on backdrop click */
     overlay.addEventListener('click', (event) => {
@@ -530,7 +558,7 @@
       }, { capture: true });
     });
 
-    /* Auto-open via ?menuPopup=1 URL param (screenshot mode) */
+    /* Auto-open via ?menuPopup=1 URL param */
     if (new URLSearchParams(window.location.search).get('menuPopup') === '1') {
       document.documentElement.classList.add('weekly-popup-snapshot');
       window.setTimeout(() => openModal(null, null), 150);
