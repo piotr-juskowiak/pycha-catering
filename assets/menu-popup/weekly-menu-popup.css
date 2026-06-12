@@ -169,27 +169,26 @@ html.weekly-popup-snapshot .catering-modal {
   z-index: 0;
 }
 
-/* Chef avatar — HUGE, premium, with laurel halo */
+/* Chef avatar — round clip with warm gold border */
 .wmp-avatar-wrap {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .wmp-avatar {
-  width: 160px;
-  height: 160px;
-  flex: 0 0 160px;
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
   border-radius: 50%;
   overflow: hidden;
-  border: 6px solid rgba(255, 255, 255, 0.98);
+  border: 3px solid rgba(194, 164, 63, 0.55);
   box-shadow:
-    0 12px 36px rgba(63, 143, 53, 0.20),
-    0 6px 16px rgba(63, 143, 53, 0.12),
-    0 0 0 8px rgba(63, 143, 53, 0.05);
-  background: #d8ecbc;
+    0 8px 28px rgba(63, 143, 53, 0.16),
+    0 0 0 6px rgba(194, 164, 63, 0.10);
+  background: var(--pc-cream-warm);
   position: relative;
   z-index: 1;
 }
@@ -203,17 +202,29 @@ html.weekly-popup-snapshot .catering-modal {
 
 .wmp-avatar-laurel {
   position: absolute;
-  width: 220px;
-  height: 220px;
+  width: 210px;
+  height: 210px;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.7;
 }
 
 /* "Wybierz kategorię" label */
+.wmp-chef-img {
+    display: block;
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+    position: relative;
+    z-index: 1;
+    margin-top: -30px;
+}
+
 .wmp-cat-label {
   font-family: var(--pc-font-head);
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--pc-green-mid);
   letter-spacing: 0.02em;
   margin-bottom: 24px;
@@ -237,49 +248,50 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-cat-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
-  border: none;
-  border-radius: var(--pc-radius-md);
-  background: transparent;
-  color: var(--pc-ink-light);
-  font-family: var(--pc-font-body);
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  text-align: left;
-  line-height: 1.25;
-  position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--pc-radius-md);
+    background: transparent;
+    color: var(--pc-ink-light);
+    font-family: var(--pc-font-body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+    line-height: 1.25;
+    position: relative;
 }
 
 .wmp-cat-icon-wrap {
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(33, 45, 27, 0.06);
+  background: transparent;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 220ms ease;
-  border: 1px solid rgba(63, 143, 53, 0.1);
+  border: none;
 }
 
 .wmp-cat-btn img {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   transition: opacity 200ms ease, filter 200ms ease, transform 200ms ease;
 }
 
-/* Inactive icon color */
+/* Inactive icon color — natural green tint */
 .wmp-cat-btn:not(.active) img {
-  filter: invert(36%) sepia(21%) saturate(1025%) hue-rotate(85deg) brightness(98%) contrast(85%); /* Greenish tint */
+  mix-blend-mode: normal;
+  filter: none;
 }
 
 .wmp-cat-btn:hover:not(.active) {
@@ -299,21 +311,19 @@ html.weekly-popup-snapshot .catering-modal {
 
 /* Active category — green gradient pill with leaf texture */
 .wmp-cat-btn.active {
-  background: var(--pc-green-pill);
-  color: #ffffff;
-  box-shadow:
-    0 8px 24px rgba(47, 125, 50, 0.40),
-    0 3px 8px rgba(47, 125, 50, 0.20);
-  padding: 16px 22px;
-  border-radius: 18px;
-  position: relative;
-  overflow: hidden;
+    background: url("https://i.imgur.com/j5R5EIY.png") no-repeat center / cover;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(47, 125, 50, 0.40), 0 3px 8px rgba(47, 125, 50, 0.20);
+    padding: 11px 25px;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
 }
 
 .wmp-cat-btn.active .wmp-cat-icon-wrap {
   background: transparent;
   box-shadow: none;
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border: none;
 }
 
 /* Subtle leaf texture on active category */
@@ -326,7 +336,7 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-cat-btn.active img {
-  filter: brightness(10);
+  filter: brightness(0) invert(1);
   transform: scale(1.05);
 }
 
@@ -334,11 +344,11 @@ html.weekly-popup-snapshot .catering-modal {
 .wmp-fresh-box {
   margin-top: auto;
   width: 100%;
-  padding: 26px 24px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 6px 20px rgba(33, 45, 27, 0.05);
+  padding: 24px 20px;
+  border-radius: 20px;
+  background: #f4f0e6;
+  border: none;
+  box-shadow: none;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -348,48 +358,54 @@ html.weekly-popup-snapshot .catering-modal {
 .wmp-fresh-box::before {
   content: '';
   position: absolute;
-  top: -10px;
-  right: -20px;
-  width: 100px;
-  height: 110px;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='110' viewBox='0 0 100 110' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M70 10 C45 25 20 50 30 90' stroke='%233F8F35' stroke-width='1.6' fill='none' opacity='0.15' stroke-linecap='round'/%3E%3Cpath d='M70 10 C85 45 70 80 30 90' stroke='%233F8F35' stroke-width='1.6' fill='none' opacity='0.10' stroke-linecap='round'/%3E%3Cellipse cx='70' cy='10' rx='10' ry='15' fill='%233F8F35' opacity='0.08' transform='rotate(-25,70,10)'/%3E%3C/svg%3E") no-repeat center / contain;
+  top: 0;
+  bottom: 0;
+  right: -10px;
+  width: 140px;
+  height: 100%;
+  background: url("https://i.imgur.com/Cz0Y9i4.png") no-repeat right center / contain;
   pointer-events: none;
 }
 
 .wmp-fresh-box h4 {
-  margin: 0 0 8px;
-  font-family: var(--pc-font-head);
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--pc-ink);
-  letter-spacing: 0;
-}
-
-.wmp-fresh-box p {
-  margin: 0;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--pc-muted);
-  font-weight: 600;
+    margin: 0 0 12px;
+    font-family: var(--pc-font-head);
+    font-size: 17px;
+    font-weight: 300;
+    color: #68893f;
+    letter-spacing: 0;
+    position: relative;
+    z-index: 2;
+    text-transform: capitalize;
+} .wmp-fresh-box p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #4c6250;
+    font-weight: 400;
+    padding-right: 30px;
+    position: relative;
+    z-index: 2;
+    font-family: 'Nunito';
 }
 
 /* PDF button — wide, elegant */
 .wmp-pdf-btn {
-  margin-top: 20px;
+  margin-top: 16px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 14px 20px;
-  border: 1.5px solid rgba(22, 60, 30, 0.12);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 12px rgba(33, 45, 27, 0.06);
-  color: var(--pc-green-mid);
+  padding: 16px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #f4f0e6;
+  box-shadow: none;
+  color: #1e4524;
   font-family: var(--pc-font-body);
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 220ms ease;
   text-decoration: none;
@@ -402,7 +418,7 @@ html.weekly-popup-snapshot .catering-modal {
   height: 20px;
   stroke-width: 2.5;
   flex: 0 0 20px;
-  color: var(--pc-green);
+  color: #1e4524;
 }
 
 .wmp-pdf-btn:hover {
@@ -444,30 +460,28 @@ html.weekly-popup-snapshot .catering-modal {
 
 .wmp-title {
   font-family: var(--pc-font-head);
-  font-size: clamp(38px, 3.5vw, 54px);
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 300;
   font-style: normal;
-  color: var(--pc-green-deep);
+  color: #0a410b;
   line-height: 1.10;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
 }
 
-.wmp-date-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--pc-green-mid);
-  font-size: 17px;
-  font-weight: 700;
-}
-
 .wmp-date-row svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 2.5;
-  flex: 0 0 20px;
-  color: var(--pc-green);
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
+    flex: 0 0 20px;
+    color: #2e492f;
+} .wmp-date-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f3d1e;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 /* Close button — bigger, round, premium */
@@ -527,20 +541,21 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .catering-day-btn {
-  flex: 1;
-  min-height: 56px;
-  padding: 14px 8px;
-  border: 1.5px solid rgba(22, 60, 30, 0.12);
-  border-radius: var(--pc-radius-pill);
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--pc-ink-light);
-  font-family: var(--pc-font-body);
-  font-size: clamp(15px, 1.3vw, 18px);
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(33, 45, 27, 0.05);
+    flex: 1;
+    min-height: 20px;
+    padding: 10px 18px;
+    border: 1.5px solid rgba(22, 60, 30, 0.12);
+    border-radius: var(--pc-radius-pill);
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--pc-ink-light);
+    font-family: var(--pc-font-body);
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(33, 45, 27, 0.05);
+    margin-top: 20px;
 }
 
 .catering-day-btn:hover:not(.active) {
@@ -553,15 +568,13 @@ html.weekly-popup-snapshot .catering-modal {
 
 /* Active day — green gradient with leaf texture */
 .catering-day-btn.active {
-  border-color: transparent;
-  color: #fff;
-  background: var(--pc-green-pill);
-  box-shadow:
-    0 8px 24px rgba(47, 125, 50, 0.40),
-    0 3px 8px rgba(47, 125, 50, 0.18);
-  transform: translateY(-1px);
-  position: relative;
-  overflow: hidden;
+    border-color: transparent;
+    color: #fff;
+    background: url("https://i.imgur.com/EVrO4hh.png") no-repeat center / cover;
+    box-shadow: 0 8px 24px rgba(47, 125, 50, 0.40), 0 3px 8px rgba(47, 125, 50, 0.18);
+    transform: translateY(-1px);
+    position: relative;
+    overflow: hidden;
 }
 
 .catering-day-btn.active::before {
@@ -647,9 +660,9 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-cat-heading-icon {
-  width: 64px;
-  height: 64px;
-  flex: 0 0 64px;
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
   border-radius: 50%;
   background: rgba(63, 143, 53, 0.08);
   display: flex;
@@ -659,20 +672,21 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-cat-heading-icon img {
-  width: 36px;
-  height: 36px;
+  width: 300px !important;
+  height: 300px !important;
   object-fit: contain;
+  /* mix-blend-mode: multiply; */
 }
 
 .wmp-cat-heading h2 {
-  font-family: var(--pc-font-head);
-  font-size: clamp(30px, 3vw, 42px);
-  font-weight: 800;
-  color: var(--pc-green-deep);
-  margin: 0;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  text-transform: none;
+    font-family: var(--pc-font-head);
+    font-size: clamp(30px, 3vw, 42px);
+    font-weight: 400;
+    color: #326141;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: none;
 }
 
 /* Decorative separator under heading */
@@ -687,17 +701,17 @@ html.weekly-popup-snapshot .catering-modal {
 
 /* Menu items — generous spacing, elegant */
 .wmp-menu-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 24px 0;
-  color: var(--pc-ink-light);
-  font-family: var(--pc-font-body);
-  font-size: clamp(16px, 1.3vw, 18px);
-  font-weight: 600;
-  line-height: 1.6;
-  border-bottom: 1px solid rgba(22, 60, 30, 0.04);
-  transition: background 160ms ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px 0;
+    color: var(--pc-ink-light);
+    font-family: var(--pc-font-body);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(22, 60, 30, 0.04);
+    transition: background 160ms ease;
 }
 
 .wmp-menu-item:last-child {
@@ -710,11 +724,11 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-item-num {
-  flex: 0 0 28px;
-  font-size: clamp(16px, 1.2vw, 18px);
-  font-weight: 800;
-  color: var(--pc-green-mid);
-  padding-top: 2px;
+    flex: 0 0 28px;
+    font-size: clamp(16px, 1.2vw, 18px);
+    font-weight: 500;
+    color: #315232;
+    padding-top: 2px;
 }
 
 .wmp-item-body {
@@ -749,16 +763,16 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 .wmp-item-price {
-  flex: 0 0 auto;
-  color: var(--pc-green-mid);
-  font-family: var(--pc-font-body);
-  font-weight: 900;
-  font-size: clamp(16px, 1.3vw, 20px);
-  min-width: 85px;
-  text-align: right;
-  white-space: nowrap;
-  padding-bottom: 2px;
-  transition: transform 160ms ease;
+    flex: 0 0 auto;
+    color: #224723;
+    font-family: var(--pc-font-body);
+    font-weight: 500;
+    font-size: clamp(16px, 1.3vw, 20px);
+    min-width: 85px;
+    text-align: right;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    transition: transform 160ms ease;
 }
 
 .wmp-menu-item:hover .wmp-item-price {

@@ -6,7 +6,7 @@
   /* ─── Asset paths ─────────────────────────────────────── */
   const assetBase = 'assets/menu-popup/generated/';
   const images = {
-    main:    `${assetBase}natural-plate.png`,
+    main:    `https://i.imgur.com/rjXAw0a.jpeg`,
     soup:    `${assetBase}tomato-soup.jpg`,
     small:   `${assetBase}chicken-burger.jpg`,
     salad:   `${assetBase}greek-salad.jpg`,
@@ -17,16 +17,16 @@
   /* ─── Category icons ──────────────────────────────────── */
   const iconBase = 'assets/menu-popup/category-icons/';
   const catIcons = {
-    main:    `${iconBase}category-icon-4.png`,
-    soup:    `${iconBase}category-icon-1.png`,
-    small:   `${iconBase}category-icon-3.png`,
-    salad:   `${iconBase}category-icon-2.png`,
-    dessert: `${iconBase}category-icon-5.png`,
-    drink:   `${iconBase}category-icon-2.png`,
+    main:    `https://i.imgur.com/mk96eYb.png`,
+    soup:    `https://i.imgur.com/fQPU7Q3.png`,
+    small:   `https://i.imgur.com/5dmembW.png`,
+    salad:   `https://i.imgur.com/VcumTo0.png`,
+    dessert: `https://i.imgur.com/hMAugNx.png`,
+    drink:   `https://i.imgur.com/LLotBhS.png`,
   };
 
   /* ─── Chef avatar (3D friendly style) ───────────────── */
-  const chefAvatar = 'assets/menu-popup/chef-avatar-3d.png';
+  const chefAvatar = 'https://i.imgur.com/sLSWSzH.png';
 
   /* ─── Days data ───────────────────────────────────────── */
   const days = [
@@ -180,12 +180,7 @@
 
     return `
       <aside class="wmp-sidebar">
-        <div class="wmp-avatar-wrap">
-          ${svgLaurel}
-          <div class="wmp-avatar">
-            <img src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
-          </div>
-        </div>
+        <img class="wmp-chef-img" src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
         <div class="wmp-cat-label">Wybierz kategorię</div>
         <ul class="wmp-cat-list">
           ${catItems}
