@@ -180,7 +180,12 @@
 
     return `
       <aside class="wmp-sidebar">
-        <img class="wmp-chef-img" src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
+        <div class="wmp-avatar-wrap">
+          ${svgLaurel}
+          <div class="wmp-avatar">
+            <img src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
+          </div>
+        </div>
         <div class="wmp-cat-label">Wybierz kategorię</div>
         <ul class="wmp-cat-list">
           ${catItems}
@@ -526,7 +531,7 @@
     });
 
     /* All "NASZE MENU" triggers */
-    document.querySelectorAll('#openMenuModal, #openMenuModal2, #openMenuModal3').forEach((trigger) => {
+    document.querySelectorAll('#openMenuModal, #openMenuModal2, #openMenuModal3, .mobile-menu-sticky-btn').forEach((trigger) => {
       trigger.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopImmediatePropagation();

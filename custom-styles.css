@@ -462,7 +462,7 @@
 /* Photo background for "Najlepszy powod" section */
 .choose-us-section {
     /* background-color: #1c3219; */
-    background-image: url('https://i.imgur.com/ZnjdTM7.png');
+    background-image: url('https://i.imgur.com/GPNYZL7.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -470,8 +470,8 @@
 }
 
 .testimonial-section {
-    background-color: #29431d;
-    background-image: url("https://i.imgur.com/tNyOd8e.png");
+    background-color: #26471e;
+    background-image: url("https://i.imgur.com/6dx0VJH.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1440,6 +1440,12 @@ img.about-leaf.about-leaf-left {
     grid-auto-flow: row;
     align-items: center;
     display: grid;
+}
+
+@media screen and (max-width: 991px) {
+    .home-hero-content-wrap {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ===== SIMPLE IMAGE CARDS — Smaki dla Twojego Zespołu ===== */
