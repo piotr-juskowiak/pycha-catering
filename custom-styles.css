@@ -471,7 +471,7 @@
 
 .testimonial-section {
     background-color: #29431d;
-    background-image: linear-gradient(rgba(22, 44, 15, 0.2), rgba(22, 44, 15, 0.32)), url("assets/redesign/testimonial-bg-6dx0vjh-variant.png");
+    background-image: url("https://i.imgur.com/tNyOd8e.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1067,7 +1067,7 @@ img.about-leaf.about-leaf-left {
 
 /* Home hero polish */
 .home-hero-section {
-    background-image: url('https://i.imgur.com/OZ9NJAy.png');
+    background-image: url('https://i.imgur.com/xRqOevr.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1479,7 +1479,7 @@ img.about-leaf.about-leaf-left {
 /* Business-focused current menu section */
 .business-menu-section {
     padding: 86px 0 94px;
-    background: linear-gradient(180deg, #fbf7ea 0%, #fffdf7 100%);
+    background: linear-gradient(180deg, #fceed9 0%, #fbedd9 100%);
 }
 
 .business-menu-heading {

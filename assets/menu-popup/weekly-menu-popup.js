@@ -273,36 +273,17 @@
     });
     document.body.appendChild(ripple);
 
-    const emojis = ['🍃', '🌿', '🍴', '✨', '🌱'];
-    const particles = [];
-    for (let i = 0; i < 8; i++) {
-      const p = document.createElement('div');
-      p.className = 'pc-btn-particle';
-      p.textContent = emojis[i % emojis.length];
-      p.style.cssText = `font-size: ${12 + Math.random() * 10}px; left: ${cx}px; top: ${cy}px;`;
-      document.body.appendChild(p);
-      particles.push(p);
-    }
-
     const tl = gsap.timeline({
       onComplete: () => {
         gsap.to(ripple, {
           opacity: 0, duration: 0.18,
-          onComplete: () => { ripple.remove(); particles.forEach(p => p.remove()); }
+          onComplete: () => { ripple.remove(); }
         });
         onComplete();
       }
     });
 
     tl.to(ripple, { scale: endSize / startSize, opacity: 1, duration: 0.55, ease: 'power2.inOut' });
-
-    particles.forEach((p, i) => {
-      const angle = (i / particles.length) * 360;
-      const dist  = 60 + Math.random() * 80;
-      const rad   = (angle * Math.PI) / 180;
-      tl.to(p, { x: Math.cos(rad) * dist, y: Math.sin(rad) * dist, opacity: 0.9, duration: 0.38, ease: 'power2.out' }, 0);
-      tl.to(p, { opacity: 0, y: `+=${20 + Math.random() * 30}`, duration: 0.28, ease: 'power2.in' }, 0.28);
-    });
   }
 
   /* ─── Main setup ──────────────────────────────────────── */

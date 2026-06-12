@@ -3810,6 +3810,19 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
   filter: invert(41%) sepia(21%) saturate(1005%) hue-rotate(69deg) brightness(97%) contrast(85%) !important;
 }
 
+/* Custom hover color for Zobacz menu button */
+#openMenuModal2 .main-button-bg-line-left,
+#openMenuModal2 .main-button-bg-line-right {
+  background-color: #64814a !important;
+}
+
+/* Custom hover color for header Nasze menu button */
+#openMenuModal .main-button-bg-line-left,
+#openMenuModal .main-button-bg-line-right {
+  background-color: #5a7c3b !important;
+}
+
+
 /* Fix products section title on mobile */
 @media screen and (max-width: 768px) {
   .products-header {
