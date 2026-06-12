@@ -1848,39 +1848,144 @@ img.about-leaf.about-leaf-left {
 @media (max-width: 767px) {
     .mobile-menu-sticky-btn {
         position: fixed;
-        right: 16px;
-        bottom: calc(14px + env(safe-area-inset-bottom));
-        left: 16px;
+        right: 0;
+        bottom: 0;
+        left: 0;
         z-index: 99990;
         display: flex;
-        min-height: 58px;
+        min-height: 64px;
+        padding-bottom: env(safe-area-inset-bottom);
         align-items: center;
         justify-content: center;
         gap: 10px;
-        border: 2px solid #0c260d;
-        border-radius: 8px;
-        background: #c3db8a;
-        color: #0c260d;
+        border: none;
+        border-radius: 0;
+        background: #709951;
+        color: #ffffff;
         font-family: var(--font-family--rubik);
-        font-size: 16px;
-        font-weight: 900;
+        font-size: 18px;
+        font-weight: 800;
         line-height: 1;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 0;
-        box-shadow: 5px 5px 0 #0c260d, 0 14px 30px rgba(11, 37, 12, 0.24);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
+        transition: background-color 0.2s ease;
     }
 
     .mobile-menu-sticky-btn:active {
-        transform: translate(2px, 2px);
-        box-shadow: 3px 3px 0 #0c260d, 0 10px 22px rgba(11, 37, 12, 0.2);
+        background: #5a7d40;
     }
 
     .mobile-menu-sticky-btn img {
         width: 24px;
         height: 24px;
         object-fit: contain;
-        filter: brightness(0) saturate(100%) invert(10%) sepia(24%) saturate(1723%) hue-rotate(73deg) brightness(92%) contrast(94%);
+    }
+}
+
+/* Categories Section Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+/* Responsive fixes for requested sections */
+@media (max-width: 991px) {
+    /* Kim jesteśmy */
+    .about-features {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px 20px !important;
+        justify-items: center;
+    }
+
+    /* Dlaczego warto nam zaufać */
+    .choose-us-section .choose-us-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .choose-us-signature {
+        margin-bottom: 40px !important;
+    }
+    .choose-us-section .choose-us-card.choose-us-card-col-one,
+    .choose-us-section .choose-us-card.choose-us-card-col-two,
+    .choose-us-section .choose-us-card.choose-us-card-col-three,
+    .choose-us-section .choose-us-card.choose-us-card-col-four {
+        padding: 30px !important;
+        min-height: auto !important;
+    }
+    .choose-us-section .choose-us-card.choose-us-card-col-one::after,
+    .choose-us-section .choose-us-card.choose-us-card-col-two::after,
+    .choose-us-section .choose-us-card.choose-us-card-col-three::after,
+    .choose-us-section .choose-us-card.choose-us-card-col-four::after {
+        display: none !important;
+    }
+
+    /* Zamów catering */
+    .cta-step-item {
+        gap: 15px !important;
+    }
+    .cta-step-icon-circle {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .cta-step-icon-circle img {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    .cta-timeline {
+        padding-left: 25px !important;
+        gap: 25px !important;
+    }
+    .cta-step-title-text {
+        font-size: 16px !important;
+    }
+    .cta-step-desc {
+        font-size: 14px !important;
+    }
+
+    /* Dobre jedzenie, lepszy dzień */
+    .testimonial-details-box {
+        padding: 24px !important;
+        border-radius: 16px !important;
+    }
+    .testimonial-description {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+        margin-top: 15px !important;
+    }
+    .testimonial-title-box .main_title {
+        font-size: 36px !important;
+        line-height: 1.1 !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Padding bottom to avoid overlap with sticky mobile menu */
+    .choose-us-section,
+    .cta-section-new,
+    .testimonial-section,
+    .about-redesign {
+        padding-bottom: 120px !important;
     }
 }

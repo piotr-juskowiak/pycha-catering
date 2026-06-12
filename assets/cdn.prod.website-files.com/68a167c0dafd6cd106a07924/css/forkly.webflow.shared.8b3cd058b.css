@@ -4281,9 +4281,9 @@ blockquote {
 }
 
 .nav-logo {
-  width: var(--line-height--line-height-100);
-  height: var(--line-height--line-height-100);
-  object-fit: cover;
+  width: 128px;
+  height: auto;
+  object-fit: contain;
   text-decoration: none;
 }
 

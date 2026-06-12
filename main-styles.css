@@ -16,6 +16,12 @@
 }
 
 /* Footer overrides */
+.nav-logo {
+  width: 128px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
 .footer-section {
   background-color: #0b250c !important;
 }
@@ -27,6 +33,31 @@
   width: 140px !important;
   height: 140px !important;
   object-fit: contain;
+}
+
+.pycha-footer__logo-img {
+  width: 170px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.pycha-callback-brand {
+  width: 170px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-logo {
+    width: 112px !important;
+  }
+
+  .pycha-footer__logo-img,
+  .pycha-callback-brand {
+    width: 150px !important;
+  }
 }
 
 .footer-title-override {

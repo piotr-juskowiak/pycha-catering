@@ -42,7 +42,11 @@
     z-index: 3;
 }
 
-/* Hide the logo entirely as requested */
-.page-transition-overlay .transition-logo {
-    display: none !important;
+.page-transition-overlay .transition-logo-img {
+    z-index: 4;
+    width: min(220px, 58vw);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.18));
+    position: relative;
 }
