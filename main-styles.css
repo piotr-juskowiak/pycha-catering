@@ -17,7 +17,7 @@
 
 /* Footer overrides */
 .nav-logo {
-  width: 128px !important;
+  width: 188px !important;
   height: auto !important;
   object-fit: contain !important;
 }
@@ -50,10 +50,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .nav-logo {
-    width: 112px !important;
-  }
-
   .pycha-footer__logo-img,
   .pycha-callback-brand {
     width: 150px !important;
