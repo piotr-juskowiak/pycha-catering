@@ -1989,3 +1989,33 @@ img.about-leaf.about-leaf-left {
         padding-bottom: 120px !important;
     }
 }
+
+@media (max-width: 767px) {
+    .header-section .nav-logo {
+        width: 172px !important;
+        max-width: 172px !important;
+        max-height: 72px !important;
+    }
+
+    .header-section .hamburger-trigger {
+        width: 46px !important;
+        height: 46px !important;
+        padding: 10px !important;
+        border: 1px solid rgba(21, 58, 25, 0.08) !important;
+        border-radius: 50% !important;
+        background: #fffdf4 !important;
+        box-shadow: 0 10px 24px rgba(25, 50, 23, 0.12) !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .header-section .hamburger-trigger.w--open {
+        background: #fff8e6 !important;
+        box-shadow: 0 8px 20px rgba(25, 50, 23, 0.16) !important;
+    }
+
+    .header-section .hamburger-lottie-animation {
+        width: 24px !important;
+        height: 24px !important;
+    }
+}
