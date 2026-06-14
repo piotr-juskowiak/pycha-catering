@@ -1,0 +1,27 @@
+.culini-import-frame,
+.culini-home-import-frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.culini-recipes-import-frame {
+  height: 820px;
+}
+
+.culini-footer-import-frame,
+.culini-home-import-frame {
+  height: 900px;
+}
+
+@media (max-width: 767px) {
+  .culini-recipes-import-frame {
+    height: 1180px;
+  }
+
+  .culini-footer-import-frame,
+  .culini-home-import-frame {
+    height: 2100px;
+  }
+}
