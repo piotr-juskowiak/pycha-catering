@@ -348,87 +348,65 @@
   }
 </style>
 
-<footer class="pycha-footer">
-  <div class="w-layout-blockcontainer container w-container pycha-footer__container">
+    <!-- CULINI FOOTER IMPORT -->
+  <style>
+    .culini-import-frame {
+      display: block;
+      width: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+    .culini-footer-import-frame {
+      height: 900px;
+    }
+    @media (max-width: 767px) {
+      .culini-footer-import-frame {
+        height: 2100px;
+      }
+    }
+  </style>
+  <iframe class="culini-import-frame culini-footer-import-frame" src="culini-footer-import.html" title="Culini footer" scrolling="no"></iframe>
+  <script>
+    (() => {
+      const frames = Array.from(document.querySelectorAll(".culini-import-frame"));
+      if (!frames.length) return;
+      let ticking = false;
 
-    <div class="pycha-footer__top">
-      <div class="pycha-footer__brand">
-        <a href="index.html" class="pycha-footer__logo-link">
-          <img src="assets/pycha-logo-transparent.png" alt="Pycha Catering" class="pycha-footer__logo-img" />
-        </a>
+      const sendFrameMetrics = () => {
+        frames.forEach((frame) => {
+          if (!frame.contentWindow) return;
+          const rect = frame.getBoundingClientRect();
+          frame.contentWindow.postMessage({
+            type: "culini-parent-scroll",
+            frameTop: rect.top,
+            viewportHeight: window.innerHeight
+          }, "*");
+        });
+        ticking = false;
+      };
 
-        <p class="pycha-footer__desc">
-          Świeże i pyszne posiłki na każdą okazję. Catering dla firm, eventowy
-          i okolicznościowy przygotowany z dbałością o smak.
-        </p>
-      </div>
+      const queueFrameMetrics = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(sendFrameMetrics);
+      };
 
-      <div class="pycha-footer__contact">
-        <a href="tel:+48500000000" class="pycha-footer__phone">
-          +48 500 000 000
-        </a>
+      window.addEventListener("message", (event) => {
+        const frame = frames.find((candidate) => candidate.contentWindow === event.source);
+        if (!frame) return;
+        if (!event.data || event.data.type !== "culini-import-height") return;
+            const nextHeight = Math.ceil(Number(event.data.height) || 0);
+            if (nextHeight < 240) return;
+            frame.style.height = nextHeight + "px";
+        queueFrameMetrics();
+      });
 
-        <div class="pycha-footer__divider"></div>
-
-        <div class="pycha-footer__socials">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">ig</a>
-          <a href="#" aria-label="TikTok">tt</a>
-          <a href="#" aria-label="Pinterest">p</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pycha-footer__main">
-      <div class="pycha-footer__gallery">
-        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=700&q=80" alt="Danie cateringowe">
-        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80" alt="Deser cateringowy">
-        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80" alt="Makaron cateringowy">
-      </div>
-
-      <nav class="pycha-footer__nav" aria-label="Nawigacja w stopce">
-        <div class="pycha-footer__col">
-          <span class="pycha-footer__title">Menu</span>
-          <a href="index.html">Strona główna</a>
-          <a href="about.html">Kim jesteśmy?</a>
-          <a href="menu.html">Nasza oferta</a>
-        </div>
-
-        <div class="pycha-footer__col">
-          <span class="pycha-footer__title">Oferta</span>
-          <a href="menu.html">Catering dla firm</a>
-          <a href="menu.html">Posiłki dla pracowników</a>
-          <a href="#" id="openMenuModal3">Menu tygodniowe</a>
-          <a href="contact.html">Wycena cateringu</a>
-        </div>
-
-        <div class="pycha-footer__col">
-          <span class="pycha-footer__title">Kontakt</span>
-          <a href="blog.html">Aktualności</a>
-          <a href="about.html">Realizacje</a>
-          <a href="contact.html">Kontakt</a>
-          <a href="#" onclick="window.print(); return false;">Pobierz menu PDF</a>
-        </div>
-      </nav>
-    </div>
-
-    <div class="pycha-footer__bottom">
-      <p>
-        © Pycha Catering. Wszelkie prawa zastrzeżone.
-        <a href="utility/privacy-policy.html">Polityka prywatności</a>
-      </p>
-
-      <p>
-        <a href="utility/terms-and-condition.html">Regulamin</a>
-        ·
-        <a href="index.html">Mapa strony</a>
-      </p>
-    </div>
-
-  </div>
-
-  <div class="pycha-footer__hero" aria-hidden="true"></div>
-</footer>
+      frames.forEach((frame) => frame.addEventListener("load", queueFrameMetrics));
+      window.addEventListener("scroll", queueFrameMetrics, { passive: true });
+      window.addEventListener("resize", queueFrameMetrics);
+    })();
+  </script>
+  <!-- END CULINI FOOTER IMPORT -->
 
 <script>
   (() => {
