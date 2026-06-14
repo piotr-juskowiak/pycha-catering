@@ -26,7 +26,7 @@
   };
 
   /* ─── Chef avatar (3D friendly style) ───────────────── */
-  const chefAvatar = 'https://i.imgur.com/sLSWSzH.png';
+  const chefAvatar = 'assets/menu-popup/chef-avatar-cutout.png';
 
   /* ─── Days data ───────────────────────────────────────── */
   const days = [
@@ -149,15 +149,16 @@
               <div class="wmp-cat-heading-icon">
                 <img src="${icon}" alt="" loading="lazy" />
               </div>
-              <h2>${cat ? cat.label : catKey}</h2>
+              <div class="wmp-cat-heading-copy">
+                <h2>${cat ? cat.label : catKey}</h2>
+                <div class="wmp-heading-divider"></div>
+              </div>
             </div>
-            <div class="wmp-heading-divider"></div>
             <div class="wmp-items-list">
               ${renderItems(items)}
             </div>
           </div>
           <div class="wmp-photo-col">
-            ${svgBranch}
             <img class="wmp-food-photo" src="${photo}" alt="${cat ? cat.label : ''}" loading="lazy" />
           </div>
         </div>
@@ -181,7 +182,6 @@
     return `
       <aside class="wmp-sidebar">
         <div class="wmp-avatar-wrap">
-          ${svgLaurel}
           <div class="wmp-avatar">
             <img src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
           </div>

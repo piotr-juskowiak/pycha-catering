@@ -943,7 +943,417 @@
         </div>
       </div>
     </div>
-  </header><section class="cta-section-new" id="zamow-catering">
+  </header>
+<section class="contact-hero-section"><div class="w-layout-blockcontainer container w-container"><div class="bread-crumbs-wrapper reveal-down"><div class="menu-shap blog-single-hero-shap"><img src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a6dee13d8ce19627807085_party-cards-shap.svg" loading="lazy" data-w-id="56476401-2c95-f68d-3c74-3ad01fcb66c6" alt="shap" class="menu-shap-img"/></div><div class="bread-crumbs-title-box"><h1 class="hero-title">Skontaktuj się z nami</h1></div></div></div></section><section class="contact-info-section"><div class="w-layout-blockcontainer container w-container"><div class="contact-info-wrapper reveal-up"><div class="contact-info-box color-one"><div class="contact-info-tag">Zadzwoń do nas:</div><a href="tel:888849509" class="contact-info-text-link w-inline-block"><div class="contact-info-text">888 849 509</div></a></div><div class="contact-info-box color-two"><div class="contact-info-tag">Napisz do nas:</div><a href="mailto:biuro@pycha-catering.pl" class="contact-info-text-link w-inline-block"><div class="contact-info-text">biuro@pycha-catering.pl</div></a></div><div class="contact-info-box color-three"><div class="contact-info-tag">Działamy w:</div><div class="contact-info-text-link">Warszawa i okolice</div></div></div></div></section><section class="contact-form-section"><div class="w-layout-blockcontainer container w-container"><div class="contact-form-wrapper reveal-up"><div class="contact-form-main-box"><div class="contact-form-box"><div class="contact-form-block w-form"><form id="email-form-two" name="email-form" data-name="Email Form" method="post" class="contact-form"><div class="contact-form-field-box"><div class="contact-form-field"><label for="Imie" class="contact-form-title">Imię i nazwisko</label><input class="contact-form-text-field w-input" maxlength="256" name="Imie" data-name="Imie" placeholder="Twoje imię i nazwisko" type="text" id="Imie" required=""/></div><div class="contact-form-field"><label for="Email" class="contact-form-title">Adres e-mail</label><input class="contact-form-text-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Twój adres e-mail" type="email" id="Email" required=""/></div><div class="contact-form-field"><label for="Telefon" class="contact-form-title">Numer telefonu</label><input class="contact-form-text-field w-input" maxlength="256" name="Telefon" data-name="Telefon" placeholder="Twój numer telefonu" type="tel" id="Telefon"/></div></div><div class="contact-form-text-field-box-two"><label for="Wiadomosc" class="contact-form-title">Wiadomość</label><textarea placeholder="Opisz czego potrzebujesz — liczba osób, rodzaj cateringu, termin..." maxlength="5000" id="Wiadomosc" name="Wiadomosc" data-name="Wiadomosc" class="contact-form-text-field-two w-input"></textarea></div><input type="submit" data-wait="Wysyłanie..." class="contact-form-submit-btn w-button" value="Wyślij wiadomość"/></form><div class="w-form-done"><div>Dziękujemy! Skontaktujemy się z Tobą wkrótce.</div></div><div class="w-form-fail"><div>Ups! Coś poszło nie tak. Spróbuj ponownie.</div></div></div></div></div><div class="contact-form-image"><img src="assets/catering-contact.png" loading="lazy" alt="contact" class="contact-form-img"/></div></div></div></section><script src="assets/d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8%EF%B9%96site=68a167c0dafd6cd106a07924.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/js/webflow.schunk.07a052941686489a.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/js/webflow.schunk.6b3d3b618ae12bf9.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/js/webflow.83c2bd76.0006559b1b5f09aa.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js" type="text/javascript"></script><script src="assets/cdn.prod.website-files.com/gsap/3.15.0/SplitText.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(ScrollTrigger,SplitText);</script><script>
+  
+//////////////////////////// MARQUEE //////////////////////////////////////////  
+  
+  window.addEventListener("load", () => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ModifiersPlugin);
+
+    const marquees = gsap.utils.toArray(".marquee");
+
+    marquees.forEach((marquee, index) => {
+      let items = marquee.querySelectorAll(".marquee-item");
+      if (!items.length) return;
+
+      // 🔥 Duplicate content for looping
+      marquee.innerHTML += marquee.innerHTML;
+
+      // use scrollWidth (includes items + gap)
+      const totalWidth = marquee.scrollWidth / 2;
+
+      // Animate container
+      gsap.to(marquee, {
+        x: `-=${totalWidth}`,
+        duration: 50,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+        }
+      });
+    });
+  });
+  
+  
+  
+  
+ 
+
+  
+  
+  //////////////////////////// Images //////////////////////////////////////////  
+  
+  
+    const cards = document.querySelectorAll(".img-hover-effect");
+
+    cards.forEach(card => {
+      const img = card.querySelector("img");
+      const ripple = card.querySelector(".ripple");
+
+      // subtle idle floating
+      gsap.to(card, {
+        y: "+=8",
+        rotateZ: "+=1",
+        duration: 3,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+
+      // Hover enter
+      card.addEventListener("mouseenter", () => {
+        gsap.to(img, {
+          scale: 1.15,
+          rotation: 2,
+          duration: 1.2,
+          ease: "elastic.out(1, 0.5)"
+        });
+        gsap.to(card, {
+          duration: 0.5
+        });
+      });
+
+      // Hover leave
+      card.addEventListener("mouseleave", () => {
+        gsap.to(img, {
+          scale: 1,
+          rotation: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+        gsap.to(card, {
+          duration: 0.5
+        });
+      });
+
+      // Ripple + click bounce
+      card.addEventListener("click", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        gsap.set(ripple, {
+          x: x,
+          y: y,
+          scale: 0,
+          opacity: 1
+        });
+
+        gsap.to(ripple, {
+          scale: 10,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+
+        // bounce image
+        gsap.fromTo(img,
+          { scale: 0.9, rotation: -3 },
+          { scale: 1.15, rotation: 3, duration: 0.6, ease: "elastic.out(1, 0.4)" }
+        );
+      });
+
+      // Mouse move tilt
+      card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = -(y - rect.height / 2) / 15;
+        const rotateY = (x - rect.width / 2) / 15;
+
+        gsap.to(card, {
+          rotationX: rotateX,
+          rotationY: rotateY,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      });
+
+      // Reset tilt
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          rotationX: 0,
+          rotationY: 0,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.5)"
+        });
+      });
+    });
+  
+  
+  
+    //////////////////////////// Text-Animation //////////////////////////////////////////  
+  
+  
+  var Webflow = Webflow || [];
+  Webflow.push(function () {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // bottom → top
+    gsap.utils.toArray('.reveal-up').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40, filter: "blur(12px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+    // top → bottom
+    gsap.utils.toArray('.reveal-down').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: -40, filter: "blur(12px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+    // left → right
+    gsap.utils.toArray('.reveal-left').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, x: -40, filter: "blur(12px)" },
+        { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+    // right → left
+    gsap.utils.toArray('.reveal-right').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, x: 40, filter: "blur(12px)" },
+        { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+    // zoom in
+    gsap.utils.toArray('.reveal-zoom').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, scale: 0.85, filter: "blur(12px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+    // Oops! fun 404 animation
+    gsap.utils.toArray('.reveal-opps').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, scale: 0.7, rotation: -10, filter: "blur(12px)" },
+        { opacity: 1, scale: 1, rotation: 0, filter: "blur(0px)",
+          duration: 1.2, ease: "elastic.out(1, 0.5)",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true }
+        });
+    });
+
+  });
+  
+
+
+
+    //////////////////////////// Fade-Animation //////////////////////////////////////////  
+
+
+  const fadeArray = gsap.utils.toArray(".has_fade_anim");
+fadeArray.forEach((t, a) => {
+  var e = "bottom",
+    r = 1,
+    o = 1,
+    i = 50,
+    s = 0.05,
+    g = "power2.out";
+  t.getAttribute("data-fade-offset") &&
+    (i = t.getAttribute("data-fade-offset")),
+    t.getAttribute("data-duration") && (o = t.getAttribute("data-duration")),
+    t.getAttribute("data-fade-from") && (e = t.getAttribute("data-fade-from")),
+    t.getAttribute("data-on-scroll") && (r = t.getAttribute("data-on-scroll")),
+    t.getAttribute("data-delay") && (s = t.getAttribute("data-delay")),
+    t.getAttribute("data-ease") && (g = t.getAttribute("data-ease")),
+    1 == r
+      ? ("top" == e &&
+          gsap.from(t, {
+            y: -i,
+            opacity: 0,
+            ease: g,
+            duration: o,
+            delay: s,
+            scrollTrigger: { trigger: t, start: "top 85%" },
+          }),
+        "left" == e &&
+          gsap.from(t, {
+            x: -i,
+            opacity: 0,
+            ease: g,
+            duration: o,
+            delay: s,
+            scrollTrigger: { trigger: t, start: "top 85%" },
+          }),
+        "bottom" == e &&
+          gsap.from(t, {
+            y: i,
+            opacity: 0,
+            ease: g,
+            duration: o,
+            delay: s,
+            scrollTrigger: { trigger: t, start: "top 85%" },
+          }),
+        "right" == e &&
+          gsap.from(t, {
+            x: i,
+            opacity: 0,
+            ease: g,
+            duration: o,
+            delay: s,
+            scrollTrigger: { trigger: t, start: "top 85%" },
+          }),
+        "in" == e &&
+          gsap.from(t, {
+            opacity: 0,
+            ease: g,
+            duration: o,
+            delay: s,
+            scrollTrigger: { trigger: t, start: "top 85%" },
+          }))
+      : ("top" == e &&
+          gsap.from(t, { y: -i, opacity: 0, ease: g, duration: o, delay: s }),
+        "left" == e &&
+          gsap.from(t, { x: -i, opacity: 0, ease: g, duration: o, delay: s }),
+        "bottom" == e &&
+          gsap.from(t, { y: i, opacity: 0, ease: g, duration: o, delay: s }),
+        "right" == e &&
+          gsap.from(t, { x: i, opacity: 0, ease: g, duration: o, delay: s }),
+        "in" == e &&
+          gsap.from(t, { opacity: 0, ease: g, duration: o, delay: s }));
+});
+
+
+      //////////////////////////// video-Animation //////////////////////////////////////////  
+  
+  
+  
+document.querySelectorAll(".video-box").forEach(box => {
+  const btn = box.querySelector(".video-play-btn");
+
+  // Show button on hover
+  box.addEventListener("mouseenter", () => {
+    gsap.to(btn, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.4,
+      ease: "back.out(1.7)"
+    });
+  });
+
+  // Move button with cursor
+  box.addEventListener("mousemove", (e) => {
+    const rect = box.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(btn, {
+      x: x * 0.25,
+      y: y * 0.25,
+      duration: 0.4,
+      ease: "power3.out"
+    });
+  });
+
+  // Hide button on hover out
+  box.addEventListener("mouseleave", () => {
+    gsap.to(btn, {
+      opacity: 0,
+      scale: 0.5,
+      x: 0,
+      y: 0,
+      duration: 0.5,
+      ease: "back.in(1.5)"
+    });
+  });
+});
+  
+
+  
+
+  
+  
+  
+          ////////////////////////////Image-Move ///////////////////////////////////// 
+const parentBox = document.querySelector('.parent-box');
+const movers = Array.from(parentBox.querySelectorAll('.child-image'));
+
+// Apply essential styles
+Object.assign(parentBox.style, {
+  position: 'relative',
+  overflow: 'hidden',
+  width: '100vw',
+  height: '100vh'
+});
+
+movers.forEach(el => {
+  Object.assign(el.style, {
+    position: 'absolute',
+ 
+    height: 'auto'
+  });
+});
+
+// Random start position inside parent
+function setRandomStart(el) {
+  const elWidth = el.offsetWidth;
+  const elHeight = el.offsetHeight;
+  const parentWidth = parentBox.clientWidth;
+  const parentHeight = parentBox.clientHeight;
+
+  const startX = Math.random() * (parentWidth - elWidth);
+  const startY = Math.random() * (parentHeight - elHeight);
+
+  gsap.set(el, { x: startX, y: startY });
+}
+
+// Animate each image
+function animateRandomly(el) {
+  const elWidth = el.offsetWidth;
+  const elHeight = el.offsetHeight;
+  const parentWidth = parentBox.clientWidth;
+  const parentHeight = parentBox.clientHeight;
+
+  const minX = 0;
+  const maxX = parentWidth - elWidth;
+  const minY = 0;
+  const maxY = parentHeight - elHeight;
+
+  const newX = Math.random() * (maxX - minX) + minX;
+  const newY = Math.random() * (maxY - minY) + minY;
+
+  gsap.to(el, {
+    duration: 8 + Math.random() * 6, // slow floating
+    x: newX,
+    y: newY,
+    ease: 'power1.inOut',
+    onComplete: () => animateRandomly(el)
+  });
+}
+
+// Start animations with random positions
+movers.forEach(el => {
+  setRandomStart(el);
+  animateRandomly(el);
+});
+
+// Re-run on resize
+window.addEventListener('resize', () => {
+  movers.forEach(el => {
+    gsap.killTweensOf(el);
+    setRandomStart(el);
+    animateRandomly(el);
+  });
+});
+
+  
+</script><style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style><script>(function(){var SEL='#__framer-badge-container,#__framer-badge,a[href*="framer.com/?utm_source=framer-banner-"]';function k(n){if(!n||!n.matches)return;if(n.id==="__framer-badge-container"||n.id==="__framer-badge"||n.matches('a[href*="framer.com/?utm_source=framer-banner-"]')){n.remove()}}new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){k(n);if(n.querySelectorAll){n.querySelectorAll(SEL).forEach(function(e){e.remove()})}})})}).observe(document.documentElement,{childList:true,subtree:true});function sweep(){document.querySelectorAll(SEL).forEach(function(e){e.remove()})}if(document.readyState==='complete'){setTimeout(sweep,0)}else{window.addEventListener('load',function(){setTimeout(sweep,0)},{once:true})}})()</script><style>.w-webflow-badge{display:none!important}</style><script>new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.classList&&n.classList.contains("w-webflow-badge"))n.remove()})})}).observe(document.body,{childList:true,subtree:true})</script>
+<section class="cta-section-new" id="zamow-catering">
     <div class="container w-container cta-container">
       <div class="cta-badge-wrapper">
         <span class="cta-badge">
@@ -1584,4 +1994,51 @@ window.addEventListener('resize', () => {
 
   
 </script><style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style><script>(function(){var SEL='#__framer-badge-container,#__framer-badge,a[href*="framer.com/?utm_source=framer-banner-"]';function k(n){if(!n||!n.matches)return;if(n.id==="__framer-badge-container"||n.id==="__framer-badge"||n.matches('a[href*="framer.com/?utm_source=framer-banner-"]')){n.remove()}}new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){k(n);if(n.querySelectorAll){n.querySelectorAll(SEL).forEach(function(e){e.remove()})}})})}).observe(document.documentElement,{childList:true,subtree:true});function sweep(){document.querySelectorAll(SEL).forEach(function(e){e.remove()})}if(document.readyState==='complete'){setTimeout(sweep,0)}else{window.addEventListener('load',function(){setTimeout(sweep,0)},{once:true})}})()</script><style>.w-webflow-badge{display:none!important}</style><script>new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.classList&&n.classList.contains("w-webflow-badge"))n.remove()})})}).observe(document.body,{childList:true,subtree:true})</script>  <script src="assets/page-transitions.js"></script>
-</body></html>
+  <div aria-hidden="true" class="catering-overlay" id="cateringOverlay">
+    <div aria-labelledby="cateringTitle" aria-modal="true" class="catering-modal" id="cateringModal" role="dialog"
+      tabindex="-1">
+      <div class="catering-header">
+        <div class="catering-header-left">
+          <div class="catering-header-icon-wrap">
+            <img alt="" class="catering-eyebrow-icon" src="https://i.imgur.com/6HIIfVE.png" />
+          </div>
+          <div class="catering-header-titles">
+            <div class="catering-header-main" id="cateringTitle">Menu tygodniowe</div>
+            <div class="catering-header-sub" id="cateringSubtitle">Wtorek, 09.06.2026</div>
+          </div>
+        </div>
+        <button aria-label="Zamknij menu" class="catering-close-btn" id="cateringCloseBtn">
+          <img alt="" class="catering-close-icon" src="assets/menu-popup/icon-close.png" />
+        </button>
+      </div>
+      <div class="catering-tabs-container">
+        <div class="catering-days" id="cateringDays">
+        </div>
+      </div>
+      <div class="catering-body" id="cateringBody">
+      </div>
+      <div class="catering-footer">
+        <div class="catering-footer-col">
+          <img alt="" class="catering-footer-icon" src="assets/menu-popup/icon-leaf-cluster-circle.png" />
+          <div class="catering-footer-text">
+            <h4>Menu może zmieniać się sezonowo</h4>
+            <p>Korzystamy z najlepszych, świeżych składników.</p>
+          </div>
+        </div>
+        <div class="catering-footer-col">
+          <img alt="" class="catering-footer-icon" src="assets/menu-popup/icon-chat-circle.png" />
+          <div class="catering-footer-text">
+            <h4>Masz pytania? Skontaktuj się z nami</h4>
+            <p>Z przyjemnością pomożemy i doradzimy.</p>
+          </div>
+        </div>
+        <button class="catering-pdf-btn">
+          <img alt="" class="catering-pdf-icon" src="assets/menu-popup/icon-pdf.png" />
+          Pobierz menu PDF
+        </button>
+      </div>
+    </div>
+  </div>
+  <link href="assets/menu-popup/weekly-menu-popup.css" rel="stylesheet" type="text/css" />
+  <script src="assets/menu-popup/weekly-menu-popup.js"></script>
+<script src="assets/cart-popup-fix.js"></script></body></html>
