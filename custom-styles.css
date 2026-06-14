@@ -1848,33 +1848,58 @@ img.about-leaf.about-leaf-left {
 @media (max-width: 767px) {
     .mobile-menu-sticky-btn {
         position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        right: 20px;
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        left: 20px;
         z-index: 99990;
         display: flex;
-        min-height: 64px;
-        padding-bottom: env(safe-area-inset-bottom);
+        min-height: 72px;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        border: none;
-        border-radius: 0;
-        background: #709951;
+        gap: 12px;
+        border-radius: 100px;
+        
+        /* Premium Background: Gradient + Noise Texture + Glassmorphism */
+        background: 
+            linear-gradient(135deg, rgba(136, 194, 91, 0.9) 0%, rgba(65, 122, 38, 0.95) 50%, rgba(20, 64, 21, 0.95) 100%),
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        
         color: #ffffff;
         font-family: var(--font-family--rubik);
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 800;
         line-height: 1;
         text-decoration: none;
         text-transform: uppercase;
-        letter-spacing: 0;
-        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
-        transition: background-color 0.2s ease;
+        letter-spacing: 1px;
+        box-shadow: 0 15px 35px rgba(11, 37, 12, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.15);
+        transition: transform 0.2s ease, filter 0.2s ease;
+        overflow: hidden;
+    }
+    
+    /* Optional: subtle shine effect overlay */
+    .mobile-menu-sticky-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%; width: 50%; height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+        transform: skewX(-25deg);
+        animation: shine 4s infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes shine {
+        0% { left: -100%; }
+        20% { left: 200%; }
+        100% { left: 200%; }
     }
 
     .mobile-menu-sticky-btn:active {
-        background: #5a7d40;
+        filter: brightness(1.1);
+        transform: scale(0.96);
     }
 
     .mobile-menu-sticky-btn img {
@@ -2203,11 +2228,21 @@ img.image-cover {
 
 .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-pycha-cart-open="true"],
 body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-pycha-cart-open="true"] {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
     display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 24px !important;
+    overflow: auto !important;
     z-index: 100200 !important;
 }
 
 .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-pycha-cart-open="true"] .cart-container {
+    width: min(480px, calc(100vw - 32px)) !important;
     max-height: calc(100vh - 40px);
 }
 
