@@ -594,7 +594,7 @@
 }
 
 .choose-us-section .choose-us-card.choose-us-card-col-one::after {
-    background-image: url("assets/choose-card-people-cutout.png");
+    background-image: url("assets/choose-card-organizer-cutout.png");
 }
 
 .choose-us-section .choose-us-card.choose-us-card-col-two::after {
@@ -2018,4 +2018,8 @@ img.about-leaf.about-leaf-left {
         width: 24px !important;
         height: 24px !important;
     }
+}
+
+img.image-cover {
+    border-radius: 20px;
 }

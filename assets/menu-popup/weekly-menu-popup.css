@@ -886,6 +886,8 @@ html.weekly-popup-snapshot .catering-modal {
   .catering-overlay { padding: 0; align-items: flex-end; }
 
   .catering-modal {
+    --wmp-mobile-scroll-gap: 12px;
+    --wmp-mobile-scroll-item: calc((100vw - 64px) / 3);
     width: 100%;
     height: 94vh;
     max-height: 94vh;
@@ -989,19 +991,39 @@ html.weekly-popup-snapshot .catering-modal {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 12px;
+    gap: var(--wmp-mobile-scroll-gap);
+    padding-bottom: 16px;
     margin: 0 -20px;
     padding-left: 20px;
     padding-right: 20px;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
     background: transparent;
     border: none;
     box-shadow: none;
     position: relative;
     top: 0;
   }
-  .wmp-cat-list::-webkit-scrollbar { display: none; }
+  .wmp-cat-list::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+  .wmp-cat-list::-webkit-scrollbar-track {
+    background: rgba(91, 135, 69, 0.14);
+    border-radius: 999px;
+  }
+  .wmp-cat-list::-webkit-scrollbar-thumb {
+    background: rgba(91, 135, 69, 0.72);
+    border-radius: 999px;
+  }
+
+  .wmp-cat-list > li {
+    flex: 0 0 var(--wmp-mobile-scroll-item);
+    scroll-snap-align: start;
+  }
 
   .wmp-cat-btn {
     flex-direction: column;
@@ -1009,8 +1031,9 @@ html.weekly-popup-snapshot .catering-modal {
     justify-content: center;
     gap: 8px;
     padding: 12px 10px;
-    width: 85px;
-    flex: 0 0 85px;
+    width: 100%;
+    min-height: 104px;
+    flex: none;
     background: #fff;
     border-radius: 12px;
     border: 1px solid rgba(0,0,0,0.04);
@@ -1055,23 +1078,38 @@ html.weekly-popup-snapshot .catering-modal {
 
   .catering-days {
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: var(--wmp-mobile-scroll-gap);
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding-bottom: 14px;
     margin: 0 -20px;
     padding-left: 20px;
     padding-right: 20px;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
   }
-  .catering-days::-webkit-scrollbar { display: none; }
+  .catering-days::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+  .catering-days::-webkit-scrollbar-track {
+    background: rgba(91, 135, 69, 0.14);
+    border-radius: 999px;
+  }
+  .catering-days::-webkit-scrollbar-thumb {
+    background: rgba(91, 135, 69, 0.72);
+    border-radius: 999px;
+  }
 
   .catering-day-btn {
-    flex: 0 0 auto;
-    min-width: 48px;
-    height: 36px;
-    padding: 0 14px;
+    flex: 0 0 var(--wmp-mobile-scroll-item);
+    min-width: 0;
+    height: 38px;
+    padding: 0 12px;
     border-radius: 20px;
     background: #fff;
     border: 1px solid rgba(0,0,0,0.04);
@@ -1083,6 +1121,7 @@ html.weekly-popup-snapshot .catering-modal {
     justify-content: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     margin-top: 0;
+    scroll-snap-align: start;
   }
 
   .catering-day-btn.active {
@@ -1100,32 +1139,37 @@ html.weekly-popup-snapshot .catering-modal {
 
   .wmp-category-view {
     flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 
   /* White Content Card */
   .wmp-content-card {
-    padding: 24px;
+    width: 100%;
+    padding: 18px 16px 20px;
     background: #fff;
     border: none;
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.03);
     min-height: auto;
     flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
   }
 
   .wmp-photo-col {
     position: relative;
     width: 100%;
-    height: 180px;
-    flex: 0 0 180px;
-    border-radius: 16px;
+    height: 160px;
+    flex: 0 0 160px;
+    border-radius: 14px;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     order: -1;
   }
 
   .wmp-food-photo {
-    border-radius: 16px;
+    border-radius: 14px;
   }
 
   .wmp-photo-branch { display: none; }
@@ -1138,13 +1182,16 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-cat-heading {
     display: flex;
     align-items: center;
-    gap: 16px;
+    justify-content: flex-start;
+    gap: 12px;
     margin-bottom: 0;
+    text-align: left;
   }
 
   .wmp-cat-heading-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
     border-radius: 50%;
     background: #f1f4ea;
     display: flex;
@@ -1159,13 +1206,14 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .wmp-cat-heading h2 {
-    font-size: 22px;
+    font-size: 21px;
     color: #0b250c;
+    text-align: left;
   }
 
   .wmp-heading-divider {
-    margin-left: 64px;
-    margin-bottom: 24px;
+    margin-left: 56px;
+    margin-bottom: 16px;
     margin-top: 4px;
     width: 40px;
     height: 3px;
@@ -1175,11 +1223,12 @@ html.weekly-popup-snapshot .catering-modal {
 
   /* Item list */
   .wmp-menu-item {
-    padding: 14px 0;
+    padding: 12px 0;
     font-size: 13px;
     border-bottom: 1px dotted rgba(0,0,0,0.12);
-    gap: 12px;
+    gap: 10px;
     align-items: flex-start;
+    text-align: left;
   }
 
   .wmp-menu-item:last-child {
@@ -1190,20 +1239,24 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-item-num {
     color: #47843d;
     font-weight: 700;
-    flex: 0 0 16px;
+    flex: 0 0 18px;
     font-size: 14px;
   }
 
   .wmp-item-body {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
   }
 
   .wmp-item-name {
     color: #2e4d2b;
     font-weight: 600;
-    flex: 1 1 100%;
-    margin-bottom: 4px;
+    flex: 0 1 auto;
+    margin-bottom: 0;
+    text-align: left;
   }
 
   .wmp-item-dots {
@@ -1213,9 +1266,10 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-item-price {
     font-weight: 700;
     color: #0b250c;
-    flex: 1 1 100%;
-    text-align: right;
+    flex: 0 0 auto;
+    text-align: left;
     font-size: 14.5px;
+    min-width: 0;
   }
 
   /* Fresh box */
@@ -1297,6 +1351,18 @@ html.weekly-popup-snapshot .catering-modal {
 }
 
 @media (max-width: 440px) {
-  .catering-day-btn { font-size: 12px; min-width: 42px; padding: 0 10px; }
-  .wmp-cat-btn { width: 80px; flex: 0 0 80px; font-size: 11px; padding: 10px; }
+  .catering-day-btn {
+    flex-basis: var(--wmp-mobile-scroll-item);
+    min-width: 0;
+    font-size: 12px;
+    padding: 0 8px;
+  }
+
+  .wmp-cat-btn {
+    width: 100%;
+    min-height: 96px;
+    flex: none;
+    font-size: 11px;
+    padding: 10px 6px;
+  }
 }
