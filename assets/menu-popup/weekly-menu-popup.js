@@ -35,8 +35,6 @@
     { key: 'Środa',        short: 'Śr',   title: 'Środa',        date: '10.06.2026' },
     { key: 'Czwartek',     short: 'Czw',  title: 'Czwartek',     date: '11.06.2026' },
     { key: 'Piątek',       short: 'Pt',   title: 'Piątek',       date: '12.06.2026' },
-    { key: 'Sobota',       short: 'Sob',  title: 'Sobota',       date: '13.06.2026' },
-    { key: 'Niedziela',    short: 'Nd',   title: 'Niedziela',    date: '14.06.2026' },
   ];
 
   /* ─── Categories ──────────────────────────────────────── */
