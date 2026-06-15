@@ -44,7 +44,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
         .pycha-cookie-actions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             justify-content: flex-end;
+            align-items: center;
+        }
+
+        .pycha-cookie-btn-secondary {
+            background-color: transparent;
+            color: #5D675C;
+            border: 1px solid #d4ded3;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Baloo 2', 'Rubik', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pycha-cookie-btn-secondary:hover {
+            background-color: rgba(120, 164, 79, 0.1);
+            color: #0b250c;
+            border-color: #78a44f;
         }
 
         .pycha-cookie-btn {
@@ -81,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="pycha-cookie-text">Nasza strona używa plików cookies, aby zapewnić Ci najwyższą jakość przeglądania i dostosować treści do Twoich potrzeb. Klikając „Akceptuję”, zgadzasz się na ich użycie.</div>
             </div>
             <div class="pycha-cookie-actions">
+                <button id="pycha-details-cookies" class="pycha-cookie-btn-secondary">Szczegóły</button>
+                <button id="pycha-decline-cookies" class="pycha-cookie-btn-secondary">Odmawiam</button>
                 <button id="pycha-accept-cookies" class="pycha-cookie-btn">Akceptuję</button>
             </div>
         `;
@@ -98,6 +124,21 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => {
                 popup.style.display = 'none';
             }, 600);
+        });
+
+        // Handle decline
+        document.getElementById('pycha-decline-cookies').addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            popup.classList.remove('show');
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 600);
+        });
+
+        // Handle details
+        document.getElementById('pycha-details-cookies').addEventListener('click', function() {
+            // Przejście do polityki prywatności lub pokazanie szczegółów
+            alert('Tutaj znajdą się szczegółowe informacje o polityce prywatności i ciasteczkach.');
         });
     }
 });
