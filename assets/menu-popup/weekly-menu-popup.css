@@ -879,8 +879,9 @@ html.weekly-popup-snapshot .catering-modal {
   .catering-overlay { padding: 0; align-items: flex-end; }
 
   .catering-modal {
-    --wmp-mobile-scroll-gap: 12px;
-    --wmp-mobile-scroll-item: calc((100vw - 64px) / 3);
+    --wmp-mobile-scroll-gap: 8px;
+    --wmp-mobile-cat-item: calc((100vw - 40px - 32px) / 5.2);
+    --wmp-mobile-day-item: calc((100vw - 40px - 24px) / 4.2);
     width: 100%;
     height: 94vh;
     max-height: 94vh;
@@ -1014,7 +1015,7 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .wmp-cat-list > li {
-    flex: 0 0 var(--wmp-mobile-scroll-item);
+    flex: 0 0 var(--wmp-mobile-cat-item);
     scroll-snap-align: start;
   }
 
@@ -1099,7 +1100,7 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .catering-day-btn {
-    flex: 0 0 var(--wmp-mobile-scroll-item);
+    flex: 0 0 var(--wmp-mobile-day-item);
     min-width: 0;
     height: 38px;
     padding: 0 12px;
@@ -1174,17 +1175,18 @@ html.weekly-popup-snapshot .catering-modal {
 
   .wmp-cat-heading {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    margin-bottom: 0;
-    text-align: left;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-align: center;
   }
 
   .wmp-cat-heading-icon {
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
     border-radius: 50%;
     background: #f1f4ea;
     display: flex;
@@ -1194,21 +1196,27 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .wmp-cat-heading-icon img {
-    width: 26px !important;
-    height: 26px !important;
+    width: 28px !important;
+    height: 28px !important;
   }
 
   .wmp-cat-heading h2 {
-    font-size: 21px;
+    font-size: 22px;
     color: #0b250c;
-    text-align: left;
+    text-align: center;
+  }
+
+  .wmp-cat-heading-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .wmp-heading-divider {
-    margin-left: 56px;
-    margin-bottom: 16px;
-    margin-top: 4px;
-    width: 40px;
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 8px;
+    width: 48px;
     height: 3px;
     background: #a9cd93;
     border-radius: 3px;
@@ -1216,10 +1224,10 @@ html.weekly-popup-snapshot .catering-modal {
 
   /* Item list */
   .wmp-menu-item {
-    padding: 12px 0;
+    padding: 14px 0;
     font-size: 13px;
     border-bottom: 1px dotted rgba(0,0,0,0.12);
-    gap: 10px;
+    gap: 12px;
     align-items: flex-start;
     text-align: left;
   }
@@ -1232,24 +1240,25 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-item-num {
     color: #47843d;
     font-weight: 700;
-    flex: 0 0 18px;
+    flex: 0 0 16px;
     font-size: 14px;
   }
 
   .wmp-item-body {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
+    justify-content: space-between;
+    gap: 16px;
     text-align: left;
   }
 
   .wmp-item-name {
     color: #2e4d2b;
     font-weight: 600;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     margin-bottom: 0;
     text-align: left;
+    line-height: 1.4;
   }
 
   .wmp-item-dots {
@@ -1260,7 +1269,7 @@ html.weekly-popup-snapshot .catering-modal {
     font-weight: 700;
     color: #0b250c;
     flex: 0 0 auto;
-    text-align: left;
+    text-align: right;
     font-size: 14.5px;
     min-width: 0;
   }
@@ -1270,13 +1279,13 @@ html.weekly-popup-snapshot .catering-modal {
     grid-column: 1 / 4;
     grid-row: 5 / 6;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     margin-top: 16px;
     background: #f4f0e6;
     border-radius: 16px;
-    padding: 18px 20px;
+    padding: 20px;
     position: relative;
     overflow: hidden;
   }
@@ -1298,20 +1307,20 @@ html.weekly-popup-snapshot .catering-modal {
 
   .wmp-fresh-box h4 {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     color: #47843d;
-    flex: 0 0 70px;
-    line-height: 1.1;
+    flex: none;
+    line-height: 1.2;
     text-transform: capitalize;
   }
   
   .wmp-fresh-box p {
     margin: 0;
-    font-size: 11px;
+    font-size: 12.5px;
     color: #555;
     line-height: 1.4;
-    flex: 1;
-    padding-right: 36px;
+    flex: none;
+    padding-right: 24px;
     position: relative;
     z-index: 2;
   }
@@ -1345,7 +1354,7 @@ html.weekly-popup-snapshot .catering-modal {
 
 @media (max-width: 440px) {
   .catering-day-btn {
-    flex-basis: var(--wmp-mobile-scroll-item);
+    flex-basis: var(--wmp-mobile-day-item);
     min-width: 0;
     font-size: 12px;
     padding: 0 8px;
