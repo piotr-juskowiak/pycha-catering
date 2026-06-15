@@ -9,16 +9,16 @@ document.addEventListener("DOMContentLoaded", function() {
             left: 30px;
             width: 380px;
             max-width: calc(100% - 60px);
-            background-color: #1E3F20;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            background-color: #fff8e8;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 24px 48px rgba(11, 37, 12, 0.12);
             z-index: 99999;
             font-family: 'Baloo 2', 'Rubik', sans-serif;
             transform: translateY(150%);
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(120, 164, 79, 0.2);
         }
 
         .pycha-cookie-popup.show {
@@ -27,18 +27,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         .pycha-cookie-title {
-            color: #DDE5B6;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            color: #0b250c;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
             line-height: 1.2;
         }
 
         .pycha-cookie-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            color: #5D675C;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 24px;
             font-family: 'Rubik', sans-serif;
         }
 
@@ -48,24 +48,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         .pycha-cookie-btn {
-            background-color: #DDE5B6;
-            color: #1E3F20;
+            background-color: #78a44f;
+            color: #fff;
             border: none;
-            padding: 10px 24px;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 14px;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             font-family: 'Baloo 2', 'Rubik', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            box-shadow: 0 8px 16px rgba(120, 164, 79, 0.24);
         }
 
         .pycha-cookie-btn:hover {
-            background-color: #ffffff;
+            background-color: #5f8b3d;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(221, 229, 182, 0.3);
+            box-shadow: 0 12px 24px rgba(120, 164, 79, 0.32);
         }
         `;
         document.head.appendChild(style);

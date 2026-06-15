@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pychacatering.pl/sitemap.xml
