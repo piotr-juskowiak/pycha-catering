@@ -92,6 +92,29 @@ document.addEventListener("DOMContentLoaded", function() {
             transform: translateY(-2px);
             box-shadow: 0 12px 24px rgba(120, 164, 79, 0.32);
         }
+
+        @media (max-width: 480px) {
+            .pycha-cookie-popup {
+                left: 15px;
+                bottom: 15px;
+                width: calc(100% - 30px);
+                max-width: none;
+                padding: 24px 20px;
+            }
+            .pycha-cookie-actions {
+                flex-wrap: nowrap;
+                gap: 8px;
+                justify-content: space-between;
+            }
+            .pycha-cookie-btn-secondary, .pycha-cookie-btn {
+                padding: 10px 4px;
+                font-size: 10px;
+                flex: 1;
+                text-align: center;
+                min-width: 0;
+                letter-spacing: 0;
+            }
+        }
         `;
         document.head.appendChild(style);
 

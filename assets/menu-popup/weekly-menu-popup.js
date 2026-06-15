@@ -11,7 +11,6 @@
     small:   `${assetBase}chicken-burger.jpg`,
     salad:   `${assetBase}greek-salad.jpg`,
     dessert: `${assetBase}chocolate-dessert.jpg`,
-    drink:   `assets/menu-popup/smoothie-bowl.jpg`,
   };
 
   /* ─── Category icons ──────────────────────────────────── */
@@ -22,11 +21,10 @@
     small:   `https://i.imgur.com/5dmembW.png`,
     salad:   `https://i.imgur.com/VcumTo0.png`,
     dessert: `https://i.imgur.com/hMAugNx.png`,
-    drink:   `https://i.imgur.com/LLotBhS.png`,
   };
 
   /* ─── Chef avatar (3D friendly style) ───────────────── */
-  const chefAvatar = 'assets/menu-popup/chef-avatar-cutout.png';
+  const chefAvatar = 'assets/menu-popup/logo-chef-avatar.png';
 
   /* ─── Days data ───────────────────────────────────────── */
   const days = [
@@ -44,7 +42,6 @@
     { key: 'small',   label: 'Przystawki' },
     { key: 'salad',   label: 'Sałatki' },
     { key: 'dessert', label: 'Desery' },
-    { key: 'drink',   label: 'Napoje' },
   ];
 
   /* ─── Menu data ───────────────────────────────────────── */
@@ -78,12 +75,6 @@
       ['2.', 'Tapioka z mlekiem kokosowym i mango', '10,50 zł'],
       ['3.', 'Jogurt z crunchy i musem mango marakuja', '10,00 zł'],
       ['4.', 'Deser brzoskwiniowy z amaretto', '11,00 zł'],
-    ],
-    drink: [
-      ['1.', 'Woda mineralna 0,5 l', '3,50 zł'],
-      ['2.', 'Sok owocowy świeżo wyciskany', '7,00 zł'],
-      ['3.', 'Smoothie bowl truskawkowe', '10,00 zł'],
-      ['4.', 'Lemon ice tea z miętą', '8,00 zł'],
     ],
   };
 
