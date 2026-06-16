@@ -787,7 +787,7 @@
 
   /* ─── Render sidebar ──────────────────────────────────── */
   function renderSidebar(weekName, dayName, activeCat) {
-    const availableCats = [...getAvailableCats(weekName, dayName), SANDWICHES_KEY];
+    const availableCats = [...getAvailableCats(weekName, dayName)];
 
     const catItems = availableCats.map(cat => `
       <li>
@@ -944,9 +944,9 @@
     function normalizeActiveCat() {
       const weekName  = WEEKS[activeWeekIdx];
       const dayName   = DAYS_ORDER[activeDayIdx];
-      const available = [...getAvailableCats(weekName, dayName), SANDWICHES_KEY];
+      const available = [...getAvailableCats(weekName, dayName)];
       if (!available.includes(activeCat)) {
-        activeCat = available[0] || SANDWICHES_KEY;
+        activeCat = available[0] || CAT_ORDER[0];
       }
     }
 
