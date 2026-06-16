@@ -37,6 +37,12 @@
 
   /* ─── Fixed structure ─────────────────────────────────── */
   const WEEKS       = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];
+  const WEEK_LABELS = {
+    'Tydzień 1': '15.06 - 19.06',
+    'Tydzień 2': '22.06 - 26.06',
+    'Tydzień 3': '29.06 - 03.07',
+    'Tydzień 4': '06.07 - 10.07'
+  };
   const TOTAL_WEEKS = WEEKS.length;
   const DAYS_ORDER  = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   const DAYS_SHORT  = { 'Poniedziałek': 'Pon', 'Wtorek': 'Wt', 'Środa': 'Śr', 'Czwartek': 'Czw', 'Piątek': 'Pt' };
@@ -821,6 +827,7 @@
   function renderMain(weekIdx, dayIdx, activeCat) {
     const weekName = WEEKS[weekIdx];
     const dayName  = DAYS_ORDER[dayIdx];
+    const displayWeek = WEEK_LABELS[weekName] || weekName;
 
     const dayTabs = DAYS_ORDER.map((d, i) =>
       `<button class="catering-day-btn${i === dayIdx ? ' active' : ''}" data-day-idx="${i}" type="button" aria-label="${d}">${DAYS_SHORT[d]}</button>`
@@ -833,7 +840,7 @@
             <h1 class="wmp-title">Menu tygodniowe</h1>
             <div class="wmp-date-row">
               ${svgCalendar}
-              <span id="cateringSubtitle">${weekName} · ${dayName}</span>
+              <span id="cateringSubtitle">${displayWeek} · ${dayName}</span>
             </div>
           </div>
           <button class="catering-close-btn" id="cateringCloseBtn" aria-label="Zamknij menu">
@@ -845,7 +852,7 @@
           <button class="wmp-week-arrow" id="wmpWeekPrev" type="button" aria-label="Poprzedni tydzień"${weekIdx <= 0 ? ' disabled' : ''}>
             ${svgChevronLeft}
           </button>
-          <span class="wmp-week-label" id="wmpWeekLabel">${weekName}</span>
+          <span class="wmp-week-label" id="wmpWeekLabel">${displayWeek}</span>
           <button class="wmp-week-arrow" id="wmpWeekNext" type="button" aria-label="Następny tydzień"${weekIdx >= TOTAL_WEEKS - 1 ? ' disabled' : ''}>
             ${svgChevronRight}
           </button>
