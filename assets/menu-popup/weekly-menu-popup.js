@@ -7,15 +7,15 @@
   const assetBase = '/assets/menu-popup/generated/';
 
   const categoryPhotos = {
-    'Dania mięsne':     `https://i.imgur.com/rjXAw0a.jpeg`,
-    'Dania wege':       `${assetBase}greek-salad.jpg`,
-    'Zupy':             `${assetBase}tomato-soup.jpg`,
-    'Mączne':           `${assetBase}chicken-burger.jpg`,
-    'Desery':           `${assetBase}chocolate-dessert.jpg`,
-    'Sałatki':          `${assetBase}greek-salad.jpg`,
-    'Makaron':          `${assetBase}chicken-burger.jpg`,
-    'Stałe codziennie': `https://i.imgur.com/rjXAw0a.jpeg`,
-    'Kanapki':          `${assetBase}chicken-burger.jpg`,
+    'Dania mięsne':     `${assetBase}danie_miesne_1781601930040.png`,
+    'Dania wege':       `${assetBase}danie_wege_1781601858442.png`,
+    'Zupy':             `${assetBase}zupa_krem_1781601919024.png`,
+    'Mączne':           `${assetBase}maczne_pierogi_1781601847671.png`,
+    'Desery':           `${assetBase}deser_premium_1781601967825.png`,
+    'Sałatki':          `${assetBase}salatka_premium_1781601908870.png`,
+    'Makaron':          `${assetBase}makaron_pasta_1781601870171.png`,
+    'Stałe codziennie': `${assetBase}stale_codziennie_1781602007202.png`,
+    'Kanapki':          `${assetBase}kanapka_premium_1781601880882.png`,
   };
 
   /* ─── Category icons ──────────────────────────────────── */
@@ -1034,19 +1034,17 @@
       const body = modal.querySelector('#cateringBody');
       if (!window.gsap || !body) { fullRender(); return; }
 
-      gsap.timeline()
-        .to([nav, body].filter(Boolean), { opacity: 0, y: -6 * dir, duration: 0.15, ease: 'power2.in' })
-        .call(() => {
+      gsap.to([nav, body].filter(Boolean), {
+        opacity: 0, y: -6 * dir, duration: 0.15, ease: 'power2.in',
+        onComplete: () => {
           fullRender();
           const newBody = modal.querySelector('#cateringBody');
           const newNav  = modal.querySelector('#wmpWeekNav');
           if (newBody) newBody.scrollTop = 0;
-          if (newBody) gsap.set(newBody, { opacity: 0, y: 8 * dir });
-          if (newNav)  gsap.set(newNav,  { opacity: 0, y: 8 * dir });
-        })
-        .to([modal.querySelector('#wmpWeekNav'), modal.querySelector('#cateringBody')].filter(Boolean),
-          { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' }
-        );
+          if (newBody) gsap.fromTo(newBody, { opacity: 0, y: 8 * dir }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' });
+          if (newNav)  gsap.fromTo(newNav,  { opacity: 0, y: 8 * dir }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' });
+        }
+      });
     }
 
     /* ── OPEN modal ─────────────────────────────────────── */
