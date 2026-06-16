@@ -4,7 +4,8 @@
 
 (function () {
   /* ─── Asset paths ─────────────────────────────────────── */
-  const assetBase = '/assets/menu-popup/generated/';
+  const scriptTag = document.querySelector('script[src*="weekly-menu-popup.js"]');
+  const assetBase = scriptTag ? scriptTag.getAttribute('src').replace('weekly-menu-popup.js', 'generated/') : 'assets/menu-popup/generated/';
 
   const categoryPhotos = {
     'Dania mięsne':     `${assetBase}danie_miesne_1781601930040.png`,
