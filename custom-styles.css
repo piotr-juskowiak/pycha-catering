@@ -1912,7 +1912,7 @@ img.about-leaf.about-leaf-left {
 /* Categories Section Grid */
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     max-width: 100%;
     margin: 0 auto;

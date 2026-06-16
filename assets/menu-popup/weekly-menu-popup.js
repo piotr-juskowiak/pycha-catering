@@ -24,7 +24,7 @@
   };
 
   /* ─── Chef avatar (3D friendly style) ───────────────── */
-  const chefAvatar = 'assets/menu-popup/logo-chef-avatar.png';
+  const chefAvatar = 'https://i.imgur.com/f0sl5oR.png';
 
   /* ─── Days data ───────────────────────────────────────── */
   const days = [
