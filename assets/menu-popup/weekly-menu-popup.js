@@ -442,7 +442,9 @@
           "12 zł meksykanska 18zł1",
           "11 zł Kalafiorowa"
         ],
-        "Mączne": [],
+        "Mączne": [
+          "18 zł Burrito"
+        ],
         "Desery": [
           "12 zł kinder country z prażonym ryżem",
           "12 zł malina z bezą i mascarpone"
