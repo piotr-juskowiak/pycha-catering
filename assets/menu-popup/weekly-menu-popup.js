@@ -1188,7 +1188,7 @@
       }
     });
 
-    document.querySelectorAll('#openMenuModal, #openMenuModal2, #openMenuModal3, .mobile-menu-sticky-btn').forEach((trigger) => {
+    document.querySelectorAll('#openMenuModal, #openMenuModal2, #openMenuModal3, .mobile-menu-sticky-btn, a[href="/menu"]').forEach((trigger) => {
       trigger.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopImmediatePropagation();
