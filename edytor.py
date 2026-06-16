@@ -5,6 +5,7 @@ import os
 import webbrowser
 import threading
 import time
+import base64
 
 PORT = 5050
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -14,7 +15,33 @@ class EditorHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def do_AUTHHEAD(self):
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm="Edytor Menu Pycha Catering"')
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
+    def check_auth(self):
+        # Base64 encoded 'admin:Pycha2026'
+        expected = 'Basic ' + base64.b64encode(b'admin:Pycha2026').decode('utf-8')
+        auth_header = self.headers.get('Authorization')
+        if auth_header == expected:
+            return True
+        return False
+
+    def do_GET(self):
+        if not self.check_auth():
+            self.do_AUTHHEAD()
+            self.wfile.write(b"Brak dostepu. Wprowadz login i haslo.")
+            return
+        super().do_GET()
+
     def do_POST(self):
+        if not self.check_auth():
+            self.do_AUTHHEAD()
+            self.wfile.write(b"Brak dostepu. Wprowadz login i haslo.")
+            return
+
         if self.path == '/save_menu':
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
