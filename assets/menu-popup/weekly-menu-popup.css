@@ -238,6 +238,19 @@ html.weekly-popup-snapshot .catering-modal {
   gap: 8px;
   position: relative;
   z-index: 1;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 135, 69, 0.4) transparent;
+}
+
+.wmp-cat-list::-webkit-scrollbar {
+  width: 4px;
+}
+.wmp-cat-list::-webkit-scrollbar-thumb {
+  background: rgba(91, 135, 69, 0.4);
+  border-radius: 4px;
 }
 
 .wmp-cat-btn {
@@ -345,6 +358,7 @@ html.weekly-popup-snapshot .catering-modal {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* Decorative leaf in fresh box background */
@@ -518,6 +532,67 @@ html.weekly-popup-snapshot .catering-modal {
   transform: rotate(90deg);
 }
 
+/* ─── Week navigator ─────────────────────────────────── */
+.wmp-week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 4px 4px;
+  margin-bottom: 8px;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.wmp-week-arrow {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(22, 60, 30, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--pc-green-mid);
+  cursor: pointer;
+  transition: all 220ms cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 2px 8px rgba(33, 45, 27, 0.06);
+}
+
+.wmp-week-arrow:hover:not(:disabled) {
+  background: #fff;
+  border-color: rgba(47, 125, 50, 0.35);
+  color: var(--pc-green-deep);
+  box-shadow: 0 6px 20px rgba(63, 143, 53, 0.18);
+  transform: scale(1.08);
+}
+
+.wmp-week-arrow:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.wmp-week-arrow:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.wmp-week-label {
+  flex: 1 1 auto;
+  text-align: center;
+  font-family: var(--pc-font-head);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 600;
+  color: var(--pc-green-deep);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
+}
+
 /* ─── Day tabs — larger, stretched ───────────────────── */
 .catering-tabs-container {
   flex: 0 0 auto;
@@ -639,7 +714,7 @@ html.weekly-popup-snapshot .catering-modal {
   flex: 1 1 auto;
   min-width: 0;
   padding-right: 48px;
-  max-width: 55%;
+  max-width: 75%;
   position: relative;
   z-index: 2;
 }
@@ -768,6 +843,25 @@ html.weekly-popup-snapshot .catering-modal {
   color: #3f8f35;
 }
 
+.wmp-price-badge-end {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: var(--pc-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(93, 168, 73, 0.08);
+  color: var(--pc-green-mid);
+  white-space: nowrap;
+  transition: all 300ms ease;
+  margin-left: auto;
+}
+
+.wmp-menu-item:hover .wmp-price-badge-end {
+  background: rgba(93, 168, 73, 0.15);
+  color: #3f8f35;
+}
+
 .wmp-item-body {
   flex: 1 1 auto;
   min-width: 0;
@@ -820,7 +914,7 @@ html.weekly-popup-snapshot .catering-modal {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 45%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -871,8 +965,8 @@ html.weekly-popup-snapshot .catering-modal {
   .catering-modal { width: 95vw; min-height: 780px; }
   .wmp-main { padding: 52px 52px 40px; }
   .wmp-content-card { padding: 48px 52px; min-height: 520px; }
-  .wmp-photo-col { width: 44%; }
-  .wmp-list-col { max-width: 56%; }
+  .wmp-photo-col { width: 28%; }
+  .wmp-list-col { max-width: 76%; }
 }
 
 @media (max-width: 1400px) {
@@ -883,8 +977,8 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-avatar-laurel { width: 200px; height: 200px; }
   .wmp-main { padding: 44px 44px 32px; }
   .wmp-content-card { padding: 40px 44px; min-height: 480px; }
-  .wmp-photo-col { width: 42%; }
-  .wmp-list-col { max-width: 58%; padding-right: 32px; }
+  .wmp-photo-col { width: 26%; }
+  .wmp-list-col { max-width: 78%; padding-right: 32px; }
 }
 
 @media (max-width: 1200px) {
@@ -892,8 +986,8 @@ html.weekly-popup-snapshot .catering-modal {
   :root { --sidebar-w: 280px; }
   .wmp-main { padding: 36px 36px 28px; }
   .wmp-content-card { padding: 32px 36px; min-height: 440px; }
-  .wmp-photo-col { width: 40%; }
-  .wmp-list-col { max-width: 60%; padding-right: 24px; }
+  .wmp-photo-col { width: 24%; }
+  .wmp-list-col { max-width: 80%; padding-right: 24px; }
   .catering-days { gap: 10px; }
 }
 
@@ -901,8 +995,8 @@ html.weekly-popup-snapshot .catering-modal {
   :root { --sidebar-w: 240px; }
   .wmp-sidebar { padding: 32px 20px 24px; }
   .wmp-main { padding: 28px 28px 22px; }
-  .wmp-photo-col { width: 36%; }
-  .wmp-list-col { max-width: 64%; padding-right: 18px; }
+  .wmp-photo-col { width: 20%; }
+  .wmp-list-col { max-width: 84%; padding-right: 18px; }
   .wmp-content-card { padding: 26px 28px; min-height: 400px; }
   .wmp-avatar { width: 110px; height: 110px; flex: 0 0 110px; }
   .wmp-avatar-laurel { width: 160px; height: 160px; }
@@ -1019,6 +1113,7 @@ html.weekly-popup-snapshot .catering-modal {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     gap: var(--wmp-mobile-scroll-gap);
     padding-bottom: 16px;
     margin: 0 -20px;
@@ -1097,12 +1192,42 @@ html.weekly-popup-snapshot .catering-modal {
     object-fit: contain;
   }
 
+  /* Week Navigator */
+  .wmp-week-nav {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    margin-bottom: 0;
+    padding: 4px 0 0;
+    gap: 8px;
+  }
+
+  .wmp-week-arrow {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .wmp-week-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0b250c;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 2px;
+  }
+
   /* Day Tabs */
   .catering-tabs-container {
     grid-column: 1 / 4;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
     margin-bottom: 12px;
   }
+
 
   .catering-days {
     display: flex;
@@ -1161,7 +1286,7 @@ html.weekly-popup-snapshot .catering-modal {
   /* Body */
   .catering-body {
     grid-column: 1 / 4;
-    grid-row: 4 / 5;
+    grid-row: 5 / 6;
     overflow: visible;
   }
 
@@ -1311,7 +1436,7 @@ html.weekly-popup-snapshot .catering-modal {
   /* Fresh box */
   .wmp-fresh-box {
     grid-column: 1 / 4;
-    grid-row: 5 / 6;
+    grid-row: 6 / 7;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1362,7 +1487,7 @@ html.weekly-popup-snapshot .catering-modal {
   /* PDF Button */
   .wmp-pdf-btn {
     grid-column: 1 / 4;
-    grid-row: 6 / 7;
+    grid-row: 7 / 8;
     display: flex;
     margin-top: 16px;
     width: 100%;
