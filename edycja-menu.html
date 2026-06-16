@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edycja Menu - Pycha Catering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <style>
+    :root {
+      --pc-cream:         #FBF7EF;
+      --pc-cream-light:   #FDFAF4;
+      --pc-sidebar-bg:    #F5EFDF;
+      --pc-card-bg:       #FFFDF8;
+      --pc-green-deep:    #0F3D1E;
+      --pc-green-mid:     #2F7D32;
+      --pc-green:         #3F8F35;
+      --pc-ink:           #0F3D1E;
+      --pc-ink-light:     #1C4A24;
+      --pc-border-subtle: rgba(22, 60, 30, 0.12);
+      --pc-shadow:        rgba(33, 45, 27, 0.08);
+      
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --font-body: 'Nunito', sans-serif;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--pc-cream);
+      background-image: radial-gradient(var(--pc-border-subtle) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--pc-ink);
+      padding: 0;
+    }
+
+    header.main-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 253, 248, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid var(--pc-border-subtle);
+      box-shadow: 0 4px 20px rgba(33, 45, 27, 0.05);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .header-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: white;
+      border: 1px solid var(--pc-border-subtle);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: var(--pc-green-deep);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--pc-ink-light);
+      font-weight: 600;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .container {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 2.5rem;
+    }
+
+    button {
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3F8F35 0%, #2F7D32 50%, #1B5E20 100%);
+      color: white;
+      padding: 0.85rem 1.8rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 16px rgba(47, 125, 50, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(47, 125, 50, 0.35);
+    }
+    
+    .btn-primary svg { width: 20px; height: 20px; stroke-width: 2.5; }
+    
+    .unsaved-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #f59e0b;
+      border-radius: 50%;
+      margin-left: 8px;
+      box-shadow: 0 0 0 2px white;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .unsaved-dot.visible { opacity: 1; }
+
+    .btn-icon {
+      background-color: #fff;
+      border: 1px solid rgba(22, 60, 30, 0.15);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--pc-ink-light);
+    }
+    .btn-icon:hover {
+      background-color: var(--pc-cream);
+      border-color: var(--pc-green-mid);
+      color: var(--pc-green-deep);
+    }
+
+    .btn-danger {
+      color: #ef4444;
+      border-color: #fca5a5;
+    }
+    .btn-danger:hover {
+      background-color: #fef2f2;
+      border-color: #ef4444;
+      color: #dc2626;
+    }
+    .btn-icon svg { width: 18px; height: 18px; stroke-width: 2.5; }
+
+    .btn-add {
+      background-color: transparent;
+      color: var(--pc-green-mid);
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      border-radius: var(--radius-md);
+      border: 2px dashed rgba(63, 143, 53, 0.3);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .btn-add:hover {
+      background-color: rgba(63, 143, 53, 0.04);
+      border-color: var(--pc-green);
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--pc-border-subtle);
+      color: var(--pc-ink);
+      padding: 0.6rem 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-secondary:hover {
+      background: var(--pc-sidebar-bg);
+      border-color: var(--pc-green-mid);
+    }
+    .btn-secondary svg { width: 16px; height: 16px; }
+
+    /* Nav Tabs */
+    .nav-container {
+      background: var(--pc-card-bg);
+      padding: 1.5rem 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 24px var(--pc-shadow);
+      border: 1px solid var(--pc-border-subtle);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.8rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      background: var(--pc-sidebar-bg);
+      border: 1px solid var(--pc-border-subtle);
+      padding: 0.8rem 1.6rem;
+      border-radius: 100px;
+      color: var(--pc-ink-light);
+      font-weight: 700;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      background: url(https://i.imgur.com/EVrO4hh.png) no-repeat center / cover;
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(47, 125, 50, 0.25);
+    }
+    
+    .tab:hover:not(.active) {
+      border-color: var(--pc-green-mid);
+      background: white;
+    }
+
+    .day-tabs {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--pc-border-subtle);
+    }
+
+    .day-actions {
+      display: flex;
+      gap: 12px;
+      position: absolute;
+      right: 2rem;
+      bottom: 1.5rem;
+    }
+
+    /* Grid */
+    .editor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .category-card {
+      background: var(--pc-card-bg);
+      border-radius: var(--radius-xl);
+      padding: 1.8rem;
+      box-shadow: 0 8px 32px var(--pc-shadow);
+      border: 1px solid var(--pc-border-subtle);
+      position: relative;
+    }
+
+    .category-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--pc-sidebar-bg);
+      color: var(--pc-green-deep);
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .cat-icon-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--pc-border-subtle);
+    }
+
+    .item-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 0.8rem;
+      background: var(--pc-cream-light);
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(22, 60, 30, 0.06);
+      transition: background 0.2s;
+    }
+    .item-row:hover {
+      background: #fff;
+      border-color: rgba(22, 60, 30, 0.2);
+    }
+
+    .item-top-row, .item-bottom-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .drag-handle {
+      cursor: grab;
+      color: var(--pc-muted);
+      opacity: 0.5;
+      padding: 4px;
+    }
+    .drag-handle:hover { opacity: 1; color: var(--pc-green-mid); }
+    .drag-handle:active { cursor: grabbing; }
+
+    .item-num {
+      font-weight: 900;
+      color: var(--pc-green-mid);
+      width: 20px;
+      text-align: right;
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+
+    input[type="text"] {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid rgba(22, 60, 30, 0.15);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      outline: none;
+      transition: all 0.2s;
+      background: #ffffff;
+      color: var(--pc-ink);
+    }
+    input[type="text"]:focus {
+      border-color: var(--pc-green);
+      box-shadow: 0 0 0 3px rgba(63, 143, 53, 0.15);
+    }
+    input::placeholder { color: #a1b0a3; font-weight: 400; }
+
+    .input-price { width: 95px; font-weight: 800; color: var(--pc-green-deep); text-align: center; }
+    .input-name { flex: 1; min-width: 0; }
+    .input-weight { width: 120px; }
+    .input-allergens { flex: 1; min-width: 0; }
+
+    .actions-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      text-align: center;
+      background: var(--pc-sidebar-bg);
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(22, 60, 30, 0.2);
+      margin-bottom: 1rem;
+    }
+    .empty-state svg {
+      width: 32px;
+      height: 32px;
+      color: var(--pc-muted);
+      margin-bottom: 8px;
+      opacity: 0.5;
+    }
+    .empty-state p { font-size: 0.95rem; color: var(--pc-ink-light); font-weight: 600; margin: 0; }
+
+    /* Section headers */
+    .section-header {
+      margin: 4rem 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-header h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--pc-green-deep);
+    }
+    .section-header-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(63, 143, 53, 0.2) 0%, transparent 100%);
+    }
+
+    /* Copy Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+      z-index: 2000; display: none; align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: var(--pc-card-bg); padding: 2rem; border-radius: var(--radius-xl);
+      width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    .modal-box h3 { margin-bottom: 1rem; color: var(--pc-green-deep); font-size: 1.4rem; }
+    .modal-box select {
+      width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--pc-border-subtle);
+      font-family: inherit; font-size: 1rem; margin-bottom: 1.5rem; outline: none;
+    }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+    /* Misc */
+    .save-banner {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-100px);
+      background: linear-gradient(135deg, #3F8F35 0%, #2F7D32 50%, #1B5E20 100%); color: white;
+      padding: 14px 28px; border-radius: 100px; font-weight: 800;
+      box-shadow: 0 8px 32px rgba(47, 125, 50, 0.4); z-index: 999999;
+      opacity: 0; visibility: hidden; transition: all 0.4s; display: flex; align-items: center; gap: 10px;
+    }
+    .save-banner.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .btn-primary.loading svg { animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .media-preview-box { width: 100%; height: 180px; background: var(--pc-cream-light); border: 1px solid var(--pc-border-subtle); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 0.5rem; }
+    .media-preview-img { width: 100%; height: 100%; object-fit: cover; }
+    .media-preview-empty { color: var(--pc-muted); font-size: 0.9rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div id="saveBanner" class="save-banner">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Zapisano pomyślnie!
+  </div>
+
+  <div class="modal-overlay" id="copyModal">
+    <div class="modal-box">
+      <h3>Skopiuj menu z innego dnia</h3>
+      <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">Wybierz dzień, z którego chcesz skopiować dania na <strong id="copyTargetLabel"></strong>. Obecne dania zostaną nadpisane.</p>
+      <select id="copySelect"></select>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="cancelCopyBtn">Anuluj</button>
+        <button class="btn-primary" id="confirmCopyBtn" style="padding: 0.6rem 1rem;">Skopiuj</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="header-left">
+      <img src="https://i.imgur.com/f0sl5oR.png" alt="Pycha Catering" class="header-logo">
+      <div>
+        <h1>Edytor Menu</h1>
+        <div class="subtitle" id="headerSubtitle">Ładowanie...</div>
+      </div>
+    </div>
+    <button id="downloadBtn" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Zapisz Zmiany
+      <span id="unsavedDot" class="unsaved-dot" title="Masz niezapisane zmiany"></span>
+    </button>
+  </header>
+
+  <div class="container">
+    <div class="section-header" style="margin-top: 0;">
+      <h2>Daty Tygodni</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div class="nav-container" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+      <div style="flex: 1; min-width: 200px;">
+        <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 1</label>
+        <input type="text" class="input-week-label" data-week="Tydzień 1" style="width: 100%;" placeholder="np. 8.06 - 12.06" />
+      </div>
+      <div style="flex: 1; min-width: 200px;">
+        <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 2</label>
+        <input type="text" class="input-week-label" data-week="Tydzień 2" style="width: 100%;" placeholder="np. 15.06 - 19.06" />
+      </div>
+      <div style="flex: 1; min-width: 200px;">
+        <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 3</label>
+        <input type="text" class="input-week-label" data-week="Tydzień 3" style="width: 100%;" placeholder="np. 22.06 - 26.06" />
+      </div>
+      <div style="flex: 1; min-width: 200px;">
+        <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 4</label>
+        <input type="text" class="input-week-label" data-week="Tydzień 4" style="width: 100%;" placeholder="np. 29.06 - 03.07" />
+      </div>
+    </div>
+
+    <div class="nav-container">
+      <div id="weekTabs" class="tabs"></div>
+      <div id="dayTabs" class="tabs day-tabs"></div>
+      
+      <div class="day-actions">
+        <button class="btn-secondary" id="copyDayBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Skopiuj z...
+        </button>
+        <button class="btn-secondary btn-danger" id="clearDayBtn" style="background: white;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+          Wyczyść dzień
+        </button>
+      </div>
+    </div>
+
+    <div id="editorGrid" class="editor-grid"></div>
+
+    <div class="section-header">
+      <h2>Kanapki (Stałe codziennie)</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div id="sandwichesGrid" class="category-card" style="max-width: 900px; margin-bottom: 2rem;"></div>
+
+    <div class="section-header">
+      <h2>Zdjęcia i Ikony Kategorii</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div id="mediaGrid" class="editor-grid"></div>
+  </div>
+
+  <script src="assets/menu-popup/weekly-menu-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.PYCHA_MENU_DATA) {
+        alert("Błąd: Nie znaleziono danych menu! Upewnij się, że serwer działa prawidłowo.");
+        return;
+      }
+
+      const state = {
+        data: JSON.parse(JSON.stringify(window.PYCHA_MENU_DATA)),
+        activeWeek: 'Tydzień 1',
+        activeDay: 'Poniedziałek',
+        unsavedChanges: false,
+        sortables: [] // Track sortable instances
+      };
+
+      const WEEKS = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];
+      const DAYS = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
+      const CATEGORIES = ['Dania mięsne', 'Dania wege', 'Zupy', 'Mączne', 'Desery', 'Sałatki', 'Makaron', 'Stałe codziennie'];
+
+      if (!state.data.categoryPhotos) state.data.categoryPhotos = {};
+      if (!state.data.catIcons) state.data.catIcons = {};
+      if (!state.data.weekLabels) state.data.weekLabels = {
+        'Tydzień 1': '8.06 - 12.06',
+        'Tydzień 2': '15.06 - 19.06',
+        'Tydzień 3': '22.06 - 26.06',
+        'Tydzień 4': '29.06 - 03.07'
+      };
+
+      const weekTabsEl = document.getElementById('weekTabs');
+      const dayTabsEl = document.getElementById('dayTabs');
+      const editorGridEl = document.getElementById('editorGrid');
+      const sandwichesGridEl = document.getElementById('sandwichesGrid');
+      const mediaGridEl = document.getElementById('mediaGrid');
+      const downloadBtn = document.getElementById('downloadBtn');
+      const headerSubtitle = document.getElementById('headerSubtitle');
+      const unsavedDot = document.getElementById('unsavedDot');
+
+      const iconTrash = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>`;
+      const iconPlus = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
+      const iconDrag = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`;
+      const iconEmpty = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`;
+
+      function markUnsaved() { state.unsavedChanges = true; unsavedDot.classList.add('visible'); }
+      function markSaved() { state.unsavedChanges = false; unsavedDot.classList.remove('visible'); }
+
+      window.addEventListener('beforeunload', function (e) {
+        if (state.unsavedChanges) { e.preventDefault(); e.returnValue = ''; }
+      });
+
+      // Parses legacy strings OR modern objects
+      function parseDishObj(item) {
+        if (typeof item === 'string') {
+          const m = String(item).match(/^(\d+\s*zł)\s+([\s\S]*)/);
+          if (m) return { price: m[1].trim(), name: m[2].trim(), weight: '', allergens: '' };
+          return { price: '', name: String(item).trim(), weight: '', allergens: '' };
+        }
+        return { 
+          price: item.price || '', 
+          name: item.name || '', 
+          weight: item.weight || '', 
+          allergens: item.allergens || '' 
+        };
+      }
+      
+      function formatPrice(val) {
+        val = val.trim();
+        if (/^\d+$/.test(val)) return val + " zł";
+        return val;
+      }
+      
+      function getIconForCat(cat) { return state.data.catIcons[cat] || 'https://i.imgur.com/mk96eYb.png'; }
+
+      function initWeekLabels() {
+        document.querySelectorAll('.input-week-label').forEach(input => {
+          const w = input.dataset.week;
+          input.value = state.data.weekLabels[w] || '';
+          
+          input.addEventListener('input', (e) => {
+            state.data.weekLabels[w] = e.target.value;
+            markUnsaved();
+            renderTabs(); // to update tabs text
+          });
+        });
+      }
+
+      function renderTabs() {
+        headerSubtitle.textContent = `Edytujesz: ${state.activeWeek} • ${state.activeDay}`;
+        weekTabsEl.innerHTML = WEEKS.map(w => {
+          const label = state.data.weekLabels[w] ? `${w} (${state.data.weekLabels[w]})` : w;
+          return `<button class="tab ${w === state.activeWeek ? 'active' : ''}" data-week="${w}">${label}</button>`
+        }).join('');
+        dayTabsEl.innerHTML = DAYS.map(d => `<button class="tab ${d === state.activeDay ? 'active' : ''}" data-day="${d}">${d}</button>`).join('');
+
+        weekTabsEl.querySelectorAll('button').forEach(btn => btn.addEventListener('click', (e) => {
+          state.activeWeek = e.target.dataset.week; renderTabs(); renderEditor();
+        }));
+        dayTabsEl.querySelectorAll('button').forEach(btn => btn.addEventListener('click', (e) => {
+          state.activeDay = e.target.dataset.day; renderTabs(); renderEditor();
+        }));
+      }
+
+      function updateData(category, index, field, value) {
+        let item = parseDishObj(state.data.weeklyMenu[state.activeWeek][state.activeDay][category][index]);
+        item[field] = value;
+        state.data.weeklyMenu[state.activeWeek][state.activeDay][category][index] = item;
+        markUnsaved();
+      }
+
+      function updateSandwich(index, field, value) {
+        let item = parseDishObj(state.data.sandwiches[index]);
+        item[field] = value;
+        state.data.sandwiches[index] = item;
+        markUnsaved();
+      }
+
+      function getEmptyItem() { return { price: '', name: '', weight: '', allergens: '' }; }
+
+      function initSortables() {
+        // Destroy old
+        state.sortables.forEach(s => s.destroy());
+        state.sortables = [];
+
+        // Init new
+        document.querySelectorAll('.items-list').forEach(list => {
+          if (!list.dataset.cat) return;
+          const s = Sortable.create(list, {
+            handle: '.drag-handle',
+            animation: 150,
+            onEnd: function (evt) {
+              const cat = evt.from.dataset.cat;
+              const isSandwich = cat === 'Sandwiches';
+              const arr = isSandwich ? state.data.sandwiches : state.data.weeklyMenu[state.activeWeek][state.activeDay][cat];
+              
+              // Move item in array
+              const item = arr.splice(evt.oldIndex, 1)[0];
+              arr.splice(evt.newIndex, 0, item);
+              
+              markUnsaved();
+              if (isSandwich) renderSandwiches(); else renderEditor();
+            }
+          });
+          state.sortables.push(s);
+        });
+      }
+
+      function renderEditor() {
+        const dayData = state.data.weeklyMenu[state.activeWeek][state.activeDay];
+        
+        editorGridEl.innerHTML = CATEGORIES.map(cat => {
+          const items = dayData[cat] || [];
+          let itemsHtml = items.length === 0 ? `<div class="empty-state">${iconEmpty}<p>Brak przypisanych dań</p></div>` : items.map((item, i) => {
+            const parsed = parseDishObj(item);
+            return `
+              <div class="item-row" data-index="${i}">
+                <div class="item-top-row">
+                  <div class="drag-handle" title="Przeciągnij by zmienić kolejność">${iconDrag}</div>
+                  <span class="item-num">${i+1}.</span>
+                  <input type="text" class="input-price" data-index="${i}" data-field="price" value="${parsed.price}" placeholder="np. 25 zł" />
+                  <input type="text" class="input-name" data-index="${i}" data-field="name" value="${parsed.name}" placeholder="Nazwa dania..." />
+                  <button class="btn-icon btn-danger btn-remove" data-index="${i}" title="Usuń pozycję">${iconTrash}</button>
+                </div>
+                <div class="item-bottom-row" style="padding-left: 38px;">
+                  <input type="text" class="input-weight" data-index="${i}" data-field="weight" value="${parsed.weight}" placeholder="Gramatura (np. 400g)" style="font-size: 0.85rem;" />
+                  <input type="text" class="input-allergens" data-index="${i}" data-field="allergens" value="${parsed.allergens}" placeholder="Alergeny (np. 1, 3, 7)" style="font-size: 0.85rem;" />
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          return `
+            <div class="category-card">
+              <div class="category-title"><img src="${getIconForCat(cat)}" class="cat-icon-img" alt=""/>${cat}</div>
+              <div class="items-list" data-cat="${cat}">${itemsHtml}</div>
+              <button class="btn-add" data-cat="${cat}">${iconPlus} Dodaj pozycję</button>
+            </div>
+          `;
+        }).join('');
+
+        attachListenersToGrid(editorGridEl, false);
+        initSortables();
+      }
+
+      function renderSandwiches() {
+        const items = state.data.sandwiches || [];
+        let itemsHtml = items.length === 0 ? `<div class="empty-state">${iconEmpty}<p>Brak kanapek</p></div>` : items.map((item, i) => {
+          const parsed = parseDishObj(item);
+          return `
+            <div class="item-row" data-index="${i}">
+              <div class="item-top-row">
+                <div class="drag-handle" title="Przeciągnij by zmienić kolejność">${iconDrag}</div>
+                <span class="item-num">${i+1}.</span>
+                <input type="text" class="input-price" data-index="${i}" data-field="price" value="${parsed.price}" placeholder="Cena" />
+                <input type="text" class="input-name" data-index="${i}" data-field="name" value="${parsed.name}" placeholder="Nazwa kanapki..." />
+                <button class="btn-icon btn-danger btn-remove" data-index="${i}" title="Usuń kanapkę">${iconTrash}</button>
+              </div>
+              <div class="item-bottom-row" style="padding-left: 38px;">
+                <input type="text" class="input-weight" data-index="${i}" data-field="weight" value="${parsed.weight}" placeholder="Gramatura" style="font-size: 0.85rem;" />
+                <input type="text" class="input-allergens" data-index="${i}" data-field="allergens" value="${parsed.allergens}" placeholder="Alergeny" style="font-size: 0.85rem;" />
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        sandwichesGridEl.innerHTML = `
+          <div class="items-list" data-cat="Sandwiches">${itemsHtml}</div>
+          <button class="btn-add" id="addSandwichBtn">${iconPlus} Dodaj kanapkę</button>
+        `;
+        attachListenersToGrid(sandwichesGridEl, true);
+        document.getElementById('addSandwichBtn').addEventListener('click', () => {
+          state.data.sandwiches.push(getEmptyItem());
+          markUnsaved(); renderSandwiches();
+        });
+        initSortables();
+      }
+
+      function attachListenersToGrid(container, isSandwich) {
+        container.querySelectorAll('input[type="text"]').forEach(input => {
+          input.addEventListener('input', (e) => {
+            const cat = e.target.closest('.items-list').dataset.cat;
+            const idx = parseInt(e.target.dataset.index);
+            const field = e.target.dataset.field;
+            if (isSandwich) updateSandwich(idx, field, e.target.value);
+            else updateData(cat, idx, field, e.target.value);
+          });
+          
+          if (input.classList.contains('input-price')) {
+            input.addEventListener('blur', (e) => {
+              const formatted = formatPrice(e.target.value);
+              if (formatted !== e.target.value) {
+                e.target.value = formatted;
+                const cat = e.target.closest('.items-list').dataset.cat;
+                const idx = parseInt(e.target.dataset.index);
+                if (isSandwich) updateSandwich(idx, 'price', formatted);
+                else updateData(cat, idx, 'price', formatted);
+              }
+            });
+          }
+
+          if (input.classList.contains('input-name')) {
+            input.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                const cat = e.target.closest('.items-list').dataset.cat;
+                if (isSandwich) { state.data.sandwiches.push(getEmptyItem()); renderSandwiches(); } 
+                else {
+                  if (!state.data.weeklyMenu[state.activeWeek][state.activeDay][cat]) state.data.weeklyMenu[state.activeWeek][state.activeDay][cat] = [];
+                  state.data.weeklyMenu[state.activeWeek][state.activeDay][cat].push(getEmptyItem());
+                  renderEditor();
+                }
+                markUnsaved();
+                setTimeout(() => {
+                  const nameInputs = container.closest('.container').querySelectorAll(`.items-list[data-cat="${cat}"] .input-name`);
+                  if (nameInputs.length > 0) nameInputs[nameInputs.length - 1].focus();
+                }, 50);
+              }
+            });
+          }
+        });
+
+        container.querySelectorAll('.btn-remove').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const cat = e.currentTarget.closest('.items-list').dataset.cat;
+            const idx = parseInt(e.currentTarget.dataset.index);
+            if (isSandwich) { state.data.sandwiches.splice(idx, 1); renderSandwiches(); } 
+            else { state.data.weeklyMenu[state.activeWeek][state.activeDay][cat].splice(idx, 1); renderEditor(); }
+            markUnsaved();
+          });
+        });
+
+        if (!isSandwich) {
+          container.querySelectorAll('.btn-add').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const cat = e.currentTarget.dataset.cat;
+              if (!state.data.weeklyMenu[state.activeWeek][state.activeDay][cat]) state.data.weeklyMenu[state.activeWeek][state.activeDay][cat] = [];
+              state.data.weeklyMenu[state.activeWeek][state.activeDay][cat].push(getEmptyItem());
+              markUnsaved(); renderEditor();
+            });
+          });
+        }
+      }
+
+      function renderMedia() {
+        mediaGridEl.innerHTML = CATEGORIES.map(cat => {
+          const photo = state.data.categoryPhotos ? (state.data.categoryPhotos[cat] || '') : '';
+          const icon = state.data.catIcons ? (state.data.catIcons[cat] || '') : '';
+          let photoHtml = photo ? `<img src="assets/menu-popup/generated/${photo}" class="media-preview-img" alt="Podgląd" onerror="this.outerHTML='<div class=\\'media-preview-empty\\' style=\\'color:#ef4444;\\'>Nie znaleziono pliku</div>'" />` : `<div class="media-preview-empty">Brak zdjęcia głównego</div>`;
+
+          return `
+            <div class="category-card media-card">
+              <div class="category-title"><img src="${getIconForCat(cat)}" class="cat-icon-img" alt=""/>${cat}</div>
+              <div class="media-preview-box">${photoHtml}</div>
+              <div>
+                <label class="media-label">Plik zdjęcia głównego (w folderze generated/)</label>
+                <input type="text" class="media-input" data-cat="${cat}" data-type="photo" value="${photo}" style="width: 100%;" />
+              </div>
+              <div style="margin-top: 0.5rem;">
+                <label class="media-label">URL Ikony (Imgur)</label>
+                <input type="text" class="media-input" data-cat="${cat}" data-type="icon" value="${icon}" style="width: 100%;" />
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        mediaGridEl.querySelectorAll('.media-input').forEach(input => {
+          input.addEventListener('change', (e) => { 
+            const cat = e.target.dataset.cat;
+            if (e.target.dataset.type === 'photo') state.data.categoryPhotos[cat] = e.target.value;
+            else state.data.catIcons[cat] = e.target.value;
+            markUnsaved(); renderMedia(); renderEditor();
+          });
+        });
+      }
+
+      // Copy & Clear Day Logic
+      document.getElementById('clearDayBtn').addEventListener('click', () => {
+        if (confirm(`Czy na pewno chcesz usunąć WSZYSTKIE dania z dnia: ${state.activeWeek} - ${state.activeDay}?`)) {
+          CATEGORIES.forEach(cat => {
+            state.data.weeklyMenu[state.activeWeek][state.activeDay][cat] = [];
+          });
+          markUnsaved(); renderEditor();
+        }
+      });
+
+      const copyModal = document.getElementById('copyModal');
+      const copySelect = document.getElementById('copySelect');
+      
+      document.getElementById('copyDayBtn').addEventListener('click', () => {
+        document.getElementById('copyTargetLabel').textContent = `${state.activeWeek} - ${state.activeDay}`;
+        let options = [];
+        WEEKS.forEach(w => DAYS.forEach(d => {
+          if (w === state.activeWeek && d === state.activeDay) return;
+          options.push(`<option value="${w}|${d}">${w} - ${d}</option>`);
+        }));
+        copySelect.innerHTML = options.join('');
+        copyModal.classList.add('active');
+      });
+
+      document.getElementById('cancelCopyBtn').addEventListener('click', () => copyModal.classList.remove('active'));
+      document.getElementById('confirmCopyBtn').addEventListener('click', () => {
+        const [sourceW, sourceD] = copySelect.value.split('|');
+        CATEGORIES.forEach(cat => {
+          const sourceItems = state.data.weeklyMenu[sourceW][sourceD][cat] || [];
+          // Deep copy source items
+          state.data.weeklyMenu[state.activeWeek][state.activeDay][cat] = JSON.parse(JSON.stringify(sourceItems));
+        });
+        markUnsaved(); renderEditor();
+        copyModal.classList.remove('active');
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        downloadBtn.classList.add('loading');
+        downloadBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg> Zapisywanie...`;
+        
+        fetch('/save_menu', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(state.data)
+        }).then(res => res.json()).then(data => {
+          downloadBtn.classList.remove('loading');
+          downloadBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Zapisz Zmiany <span id="unsavedDot" class="unsaved-dot"></span>`;
+          if (data.status === 'success') {
+            markSaved();
+            const banner = document.getElementById('saveBanner');
+            banner.classList.add('show');
+            setTimeout(() => banner.classList.remove('show'), 3000);
+          } else alert("Błąd podczas zapisywania: " + data.message);
+        }).catch(err => {
+          downloadBtn.classList.remove('loading');
+          downloadBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Zapisz Zmiany <span id="unsavedDot" class="unsaved-dot visible" title="Masz niezapisane zmiany"></span>`;
+          alert("Wystąpił błąd połączenia! Upewnij się, że uruchomiłeś edytor komendą 'python3 edytor.py'.");
+        });
+      });
+
+      initWeekLabels();
+      renderTabs(); renderEditor(); renderSandwiches(); renderMedia();
+    });
+  </script>
+</body>
+</html>
