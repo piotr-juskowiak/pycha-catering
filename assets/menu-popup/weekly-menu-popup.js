@@ -4,7 +4,7 @@
 
 (function () {
   /* ─── Asset paths ─────────────────────────────────────── */
-  const assetBase = 'assets/menu-popup/generated/';
+  const assetBase = '/assets/menu-popup/generated/';
 
   const categoryPhotos = {
     'Dania mięsne':     `https://i.imgur.com/rjXAw0a.jpeg`,
@@ -49,11 +49,11 @@
         "Dania mięsne": [
           "22 zł Domowy Schabowy z kapustą zasmażaną, ziemniaki gotowane",
           "21 zł Udziec z kurczaka z ragu, purée ziemniaczane, surówka",
-          "20 zł Klopsiki z sosem pieczarkowym, purée ziemniaczane, surówka z marchewki",
-          "20 zł Cukinia faszerowana mięsem z mozzarellą"
+          "20 zł Klopsiki z sosem pieczarkowym , purée ziemniaczane, surówka z marchewki",
+          "20 zł Cukinia faszerowana mięsem z mozarellą"
         ],
         "Dania wege": [
-          "19 zł Spaghetti Aglio Olio",
+          "19 zł Spaghetti Aglio Oglio",
           "19 zł Kotleciki sojowe"
         ],
         "Zupy": [
@@ -82,11 +82,11 @@
         "Dania mięsne": [
           "20 zł Domowy mielony z buraczkami, purée ziemniaczane",
           "21 zł Karkówka pieczona w sosie grzybowym z kaszą gryczaną, surówka z kiszonych ogórków",
-          "20 zł Skrzydełka buffalo z sosem gorgonzola, marchewka i seler naciowy w słupkach",
+          "20 zł Skrzydełka buffalo z sosem gorgonzola , marchewka i seler naciowy w słupkach",
           "20 zł Kurczak curry z ryżem"
         ],
         "Dania wege": [
-          "19 zł Tajskie curry z tofu marynowym i ryż jaśminowy",
+          "19 zł Tajskie curry z tofu marynowym i ryż jasminowy",
           "19 zł farfalle milanese"
         ],
         "Zupy": [
@@ -111,14 +111,14 @@
       },
       "Środa": {
         "Dania mięsne": [
-          "21 zł Zrazy schabowe w sosie Dijon z kopytkami, surówka",
-          "20 zł Kurczak pieczony w pomidorach, ziemniaki zapiekane, surówka",
+          "21 zł Zrazy schabowe w sosie Dijon z koptykami , surówka",
+          "20 zł Kurczak pieczony w pomidorach , ziemniaki zapiekane, surówka",
           "23 zł kociołek węgierski z plackiem ziemniaczanym",
           "22 zł de volaille z serem, purée ziemniaczane, buraczki zasmażane"
         ],
         "Dania wege": [
           "19 zł Marynowane Tofu w sosie bbq z ryżem, surówka",
-          "19 zł Cukinia faszerowana mozzarellą i suszonymi pomidorami"
+          "19 zł Cukinia faszerowana mozzarella i suszonymi pomidorami"
         ],
         "Zupy": [
           "11 zł jarzynowa",
@@ -128,7 +128,7 @@
           "18 zł krokiety z kapustą i pieczarkami"
         ],
         "Desery": [
-          "12 zł Kinder Country z prażonym ryżem",
+          "12 zł kinder country z prażonym ryżem",
           "12 zł malina z bezą i mascarpone"
         ],
         "Sałatki": [
@@ -145,7 +145,7 @@
           "20 zł Pieczony udziec z kurczaka, ziemniaki młode, marchewka z groszkiem",
           "20 zł Kotlet mielony z młodymi ziemniakami i mizeria",
           "19 zł Fasolka po bretońsku",
-          "22 zł Roladki z kurczaka ze szpinakiem na sosie serowym z kopytkami i surówką"
+          "22 zł Roladki z kurczaka ze szpinakiem na sosie serowym z kopytkami i surówka"
         ],
         "Dania wege": [
           "18 zł Placki z cukinii z sosem czosnkowym",
@@ -203,7 +203,7 @@
         "Stałe codziennie": []
       }
     },
-
+  
     "Tydzień 2": {
       "Poniedziałek": {
         "Dania mięsne": [
@@ -238,10 +238,10 @@
       },
       "Wtorek": {
         "Dania mięsne": [
-          "21 zł Kofta grecka z tzatziki, ziemniaki opiekane, sałata z winegret",
+          "21 zł Kofta grecka z tzatziki, ziemniaki opiekane, sałata z vinegret",
           "20 zł Bakłażan faszerowany mięsem",
           "23 zł gulasz węgierski",
-          "21 zł kurczak z mozzarellą i pieczarkami, ryż, surówka"
+          "21 zł kurczak z mozzarella i pieczarkami, ryż, surówka"
         ],
         "Dania wege": [
           "20 zł tagliatelle z leśnymi grzybami",
@@ -256,7 +256,7 @@
         ],
         "Desery": [
           "12 zł serniczek z czekoladą",
-          "12 zł Kinder Bueno deser"
+          "12 zł kinder bueno deser"
         ],
         "Sałatki": [
           "21 zł sałatka z arbuzem typu feta",
@@ -270,8 +270,8 @@
       "Środa": {
         "Dania mięsne": [
           "21 zł udziki zapiekane w bekonie, ziemniaki zapiekane, surówka",
-          "20 zł Gołąbki w sosie pomidorowym z purée",
-          "22 zł schab milanese, sałatka z rukoli z winegret, ziemniaki z wody",
+          "20 zł Gołąbki w sosie pomidorówym z purée",
+          "22 zł schab milanese, sałatka z rukoli z vinegret, ziemniaki z wody",
           "21 zł butter chicken z ryżem"
         ],
         "Dania wege": [
@@ -300,10 +300,10 @@
       },
       "Czwartek": {
         "Dania mięsne": [
-          "20 zł gyros z ryżem, surówka",
+          "20 zł gyros z ryżem , surówka",
           "22 zł schab wołyński w sosie kurkowym z purée ziemniaczanym, fasolka szparagowa",
           "20 zł kurczak w sosie słodko kwasnym z ryżem",
-          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane, surówka"
+          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane , surówka"
         ],
         "Dania wege": [
           "18 zł tarta ze szpinakiem",
@@ -334,7 +334,7 @@
           "22 zł dorsz panierowany z ziemniakami, surówka z kapusty kiszonej",
           "19 zł Leczo",
           "21 zł szynka pieczona w ziołach z kaszą bulgur, surówka",
-          "21 zł sznycel z kurczaka z mozzarellą, z ziemniakami opiekanymi, surówka"
+          "21 zł sznycel z kurczaka z mozzarella, z ziemniakami opiekanymi, surówka"
         ],
         "Dania wege": [
           "18 zł udon wege",
@@ -361,13 +361,13 @@
         "Stałe codziennie": []
       }
     },
-
+  
     "Tydzień 3": {
       "Poniedziałek": {
         "Dania mięsne": [
           "23 zł Zeberka w sosie BBQ Jack Daniels, Pieczone ziemniaki, Coleslaw",
           "22 zł Chilli con carne z ryżem, sałatka ze świeżych warzyw",
-          "22 zł Długopieczona Łopatka wieprzowa w jabłkachch, Kasza pęczak, kiszona cebula",
+          "22 zł Długopieczona Łopatka wieprzowa w jabłkachch, Kasza pęczak , kiszona cebula",
           "21 zł Rolada z indyka z suszonym pomidorem, Quinoa, Surówka",
           "21 zł Marynowana pierść z kurczaka z grilla,warzywa grillowane, kasza bulgur"
         ],
@@ -444,7 +444,7 @@
         ],
         "Mączne": [],
         "Desery": [
-          "12 zł Kinder Country z prażonym ryżem",
+          "12 zł kinder country z prażonym ryżem",
           "12 zł malina z bezą i mascarpone"
         ],
         "Sałatki": [
@@ -458,11 +458,11 @@
       },
       "Czwartek": {
         "Dania mięsne": [
-          "22 zł Tikka Masalla w formie szaszłyków, ryż basmati. sałatka z sosem winegret",
+          "22 zł Tikka Masalla w formie szaszłyków, ryż basmati. sałatka z sosem vinegret",
           "23 zł Gulasz z plackiem ziemniacznym",
           "23 zł Strogonow",
           "21 zł Musaka",
-          "20 zł Gołąbki w sosie pomidorowym z purée"
+          "20 zł Gołąbki w sosie pomidorówym z purée"
         ],
         "Dania wege": [
           "19 zł Korma z nerkowca, bakłażan, kalafior, Bataty",
@@ -520,14 +520,14 @@
         "Stałe codziennie": []
       }
     },
-
+  
     "Tydzień 4": {
       "Poniedziałek": {
         "Dania mięsne": [
           "21 zł Kotleciki Shu Shu z purée ziemniaczanym, surówka",
-          "21 zł Udziki z czerwoną cebulą i balsamika, ryż, surówka",
+          "21 zł Udziki z czerwoną cebulą i balsamika, ryż , surówka",
           "21 zł Medaliony z polędwiczki wieprzowej w sosie szparagowym, ziemniaki gotowane, surówka",
-          "21 zł Sznycel z indyka z jajkiem sadzonym i cytryną, ziemniaki opiekane, sałatka winegret"
+          "21 zł Sznycel z indyka z jajkiem sadzonym i cytryną, ziemniaki opiekane, sałatka vinegret"
         ],
         "Dania wege": [
           "19 zł Kotlety z buraka, płatków owsianych i słonecznika",
@@ -556,12 +556,12 @@
       "Wtorek": {
         "Dania mięsne": [
           "22 zł Karkówka z jabłkiem w boczku, ziemniaki opiekane, surówka z buraków",
-          "22 zł Kotlet szwajcarski, purée ziemniaczne, mizeria",
+          "22 zł Kotlet szwajcarski, purée ziemniaczne , mizeria",
           "21 zł Sakiewki z mięsa drobiowego z pieczarkami, purée, surówka",
           "20 zł Kotlet mielony, purée ziemniaczane, buraczki"
         ],
         "Dania wege": [
-          "19 zł Tajskie curry z tofu marynowym i ryż jaśminowy",
+          "19 zł Tajskie curry z tofu marynowym i ryż jasminowy",
           "20 zł Risotto grzybowe"
         ],
         "Zupy": [
@@ -573,7 +573,7 @@
         ],
         "Desery": [
           "12 zł serniczek z czekoladą",
-          "12 zł Kinder Bueno deser"
+          "12 zł kinder bueno deser"
         ],
         "Sałatki": [
           "21 zł burrata z pomidorem z malinowym balsamico",
@@ -588,12 +588,12 @@
         "Dania mięsne": [
           "21 zł Kotlet z kurczaka w panierce, purée ziemniaczane, mizeria",
           "20 zł Wątróbka z cebulką i jabłkami, purée ziemniaczane, surówka z kiszonego ogórka",
-          "21 zł Pulpety w sosie warzywno pomidorowym, ziemniaki gotowane, surówka",
+          "21 zł Pulpety w sosie warzywno pomidorówym, ziemniaki gotowane, surówka",
           "22 zł Bitki wieprzowe, ziemniaki gotowane, surówka"
         ],
         "Dania wege": [
           "19 zł Marynowane Tofu w sosie bbq z ryżem, surówka",
-          "19 zł Cukinia faszerowana mozzarellą i suszonymi pomidorami"
+          "19 zł Cukinia faszerowana mozzarella i suszonymi pomidorami"
         ],
         "Zupy": [
           "11 zł Flaki drobiowe",
@@ -649,12 +649,12 @@
       "Piątek": {
         "Dania mięsne": [
           "22 zł Dorsz w cieście piwnym, purée ziemniaczane, surówka z kiszonej kapusty",
-          "20 zł Gołąbki w sosie pomidorowym, purée ziemniaczane",
+          "20 zł Gołąbki w sosie pomidorówym, purée ziemniaczane",
           "20 zł kurczak w sosie słodko kwasnym z ryżem",
-          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane, surówka"
+          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane , surówka"
         ],
         "Dania wege": [
-          "19 zł Spaghetti Aglio Olio",
+          "19 zł Spaghetti Aglio Oglio",
           "19 zł Kotleciki sojowe"
         ],
         "Zupy": [
@@ -679,8 +679,7 @@
       }
     }
   };
-
-  /* ─── Sandwiches ──────────────────────────────────────── */
+  
   const sandwiches = [
     "Tuńczyk z kukurydzą z majonezem",
     "Pulled Pork BBQ, piklowana cebula, ogórek po tajsku",
@@ -689,7 +688,7 @@
     "Bajgiel z łososiem",
     "Kurczak teriyaki z ogórkiem z cebulą"
   ];
-
+  
   /* ─── SVG icons ─────────────────────────────────────────── */
   const svgCalendar = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
   const svgDownload = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;

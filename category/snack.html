@@ -1485,4 +1485,53 @@ window.addEventListener('resize', () => {
   
 </script><style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style><script>(function(){var SEL='#__framer-badge-container,#__framer-badge,a[href*="framer.com/?utm_source=framer-banner-"]';function k(n){if(!n||!n.matches)return;if(n.id==="__framer-badge-container"||n.id==="__framer-badge"||n.matches('a[href*="framer.com/?utm_source=framer-banner-"]')){n.remove()}}new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){k(n);if(n.querySelectorAll){n.querySelectorAll(SEL).forEach(function(e){e.remove()})}})})}).observe(document.documentElement,{childList:true,subtree:true});function sweep(){document.querySelectorAll(SEL).forEach(function(e){e.remove()})}if(document.readyState==='complete'){setTimeout(sweep,0)}else{window.addEventListener('load',function(){setTimeout(sweep,0)},{once:true})}})()</script><style>.w-webflow-badge{display:none!important}</style><script>new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.classList&&n.classList.contains("w-webflow-badge"))n.remove()})})}).observe(document.body,{childList:true,subtree:true})</script>  <script src="../assets/page-transitions.js"></script>
 <script src="../cookies.js"></script>
-<script src="../assets/cart-popup-fix.js"></script></body></html>
+<script src="../assets/cart-popup-fix.js"></script>
+  <div aria-hidden="true" class="catering-overlay" id="cateringOverlay">
+    <div aria-labelledby="cateringTitle" aria-modal="true" class="catering-modal" id="cateringModal" role="dialog"
+      tabindex="-1">
+      <div class="catering-header">
+        <div class="catering-header-left">
+          <div class="catering-header-icon-wrap">
+            <img alt="" class="catering-eyebrow-icon" src="https://i.imgur.com/6HIIfVE.png" />
+          </div>
+          <div class="catering-header-titles">
+            <div class="catering-header-main" id="cateringTitle">Menu tygodniowe</div>
+            <div class="catering-header-sub" id="cateringSubtitle">Wtorek, 09.06.2026</div>
+          </div>
+        </div>
+        <button aria-label="Zamknij menu" class="catering-close-btn" id="cateringCloseBtn">
+          <img alt="" class="catering-close-icon" src="/assets/menu-popup/icon-close.png" />
+        </button>
+      </div>
+      <div class="catering-tabs-container">
+        <div class="catering-days" id="cateringDays">
+        </div>
+      </div>
+      <div class="catering-body" id="cateringBody">
+      </div>
+      <div class="catering-footer">
+        <div class="catering-footer-col">
+          <img alt="" class="catering-footer-icon" src="/assets/menu-popup/icon-leaf-cluster-circle.png" />
+          <div class="catering-footer-text">
+            <h4>Menu może zmieniać się sezonowo</h4>
+            <p>Korzystamy z najlepszych, świeżych składników.</p>
+          </div>
+        </div>
+        <div class="catering-footer-col">
+          <img alt="" class="catering-footer-icon" src="/assets/menu-popup/icon-chat-circle.png" />
+          <div class="catering-footer-text">
+            <h4>Masz pytania? Skontaktuj się z nami</h4>
+            <p>Z przyjemnością pomożemy i doradzimy.</p>
+          </div>
+        </div>
+        <button class="catering-pdf-btn">
+          <img alt="" class="catering-pdf-icon" src="/assets/menu-popup/icon-pdf.png" />
+          Pobierz menu PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <link href="/assets/menu-popup/weekly-menu-popup.css" rel="stylesheet" type="text/css" />
+  <script src="/assets/menu-popup/weekly-menu-popup.js"></script>
+</body></html>
