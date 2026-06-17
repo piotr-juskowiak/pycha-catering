@@ -1852,8 +1852,8 @@ img.about-leaf.about-leaf-left {
         left: 0;
         right: 0;
         padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-        background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0) 100%);
-        backdrop-filter: blur(10px);
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgb(255 255 255 / 21%) 70%, rgba(255, 255, 255, 0) 100%);
+        backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(10px);
         z-index: 99990;
         display: flex;
