@@ -22,10 +22,10 @@
   /* ─── Fixed structure ─────────────────────────────────── */
   const WEEKS       = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];
   const WEEK_LABELS = window.PYCHA_MENU_DATA.weekLabels || {
-    'Tydzień 1': '8.06 - 12.06',
-    'Tydzień 2': '15.06 - 19.06',
-    'Tydzień 3': '22.06 - 26.06',
-    'Tydzień 4': '29.06 - 03.07',
+    'Tydzień 1': '15.06 - 19.06',
+    'Tydzień 2': '22.06 - 26.06',
+    'Tydzień 3': '29.06 - 03.07',
+    'Tydzień 4': '06.07 - 10.07',
   };
   const TOTAL_WEEKS = WEEKS.length;
   const DAYS_ORDER  = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
