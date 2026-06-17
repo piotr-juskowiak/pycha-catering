@@ -92,8 +92,8 @@
       return `
         <div class="wmp-menu-item" style="align-items: flex-start;">
           ${numberBadge}
-          <div class="wmp-item-body" style="display: flex; flex-direction: column; flex: 1;">
-            <div><span class="wmp-item-name">${name}</span>${weightHtml}</div>
+          <div class="wmp-item-body" style="display: flex; flex-direction: column; flex: 1; align-items: flex-start; text-align: left;">
+            <div style="text-align: left;"><span class="wmp-item-name">${name}</span>${weightHtml}</div>
             ${allergensHtml}
           </div>
           ${priceBadge}
@@ -197,24 +197,24 @@
       <div class="wmp-main">
         <div class="wmp-header">
           <div class="wmp-title-group">
-            <h1 class="wmp-title">Menu tygodniowe</h1>
-            <div class="wmp-date-row">
-              ${svgCalendar}
-              <span id="cateringSubtitle">${displayWeek} · ${dayName}</span>
+            <h1 class="wmp-title" style="margin-bottom: 12px;">Menu tygodniowe</h1>
+            <div class="wmp-week-nav" id="wmpWeekNav" style="justify-content: flex-start; padding: 0; margin: 0; gap: 12px; transform: translateX(-4px);">
+              <button class="wmp-week-arrow" id="wmpWeekPrev" type="button" aria-label="Poprzedni tydzień"${weekIdx <= 0 ? ' disabled' : ''} style="width: 32px; height: 32px; flex: 0 0 32px;">
+                ${svgChevronLeft}
+              </button>
+              
+              <div class="wmp-date-row" style="margin: 0; padding: 0; gap: 8px;">
+                ${svgCalendar}
+                <span id="cateringSubtitle" class="wmp-week-label" style="text-align: left; padding: 0; font-size: 15px; flex: 0 0 auto;">${displayWeek} · ${dayName}</span>
+              </div>
+              
+              <button class="wmp-week-arrow" id="wmpWeekNext" type="button" aria-label="Następny tydzień"${weekIdx >= TOTAL_WEEKS - 1 ? ' disabled' : ''} style="width: 32px; height: 32px; flex: 0 0 32px;">
+                ${svgChevronRight}
+              </button>
             </div>
           </div>
           <button class="catering-close-btn" id="cateringCloseBtn" aria-label="Zamknij menu">
             ${svgClose}
-          </button>
-        </div>
-
-        <div class="wmp-week-nav" id="wmpWeekNav">
-          <button class="wmp-week-arrow" id="wmpWeekPrev" type="button" aria-label="Poprzedni tydzień"${weekIdx <= 0 ? ' disabled' : ''}>
-            ${svgChevronLeft}
-          </button>
-          <span class="wmp-week-label" id="wmpWeekLabel">${displayWeek}</span>
-          <button class="wmp-week-arrow" id="wmpWeekNext" type="button" aria-label="Następny tydzień"${weekIdx >= TOTAL_WEEKS - 1 ? ' disabled' : ''}>
-            ${svgChevronRight}
           </button>
         </div>
 
