@@ -461,7 +461,7 @@
         );
 
         openTimeline.fromTo(
-          modal.querySelectorAll('.wmp-sidebar, .wmp-header, .wmp-week-nav, .catering-tabs-container'),
+          modal.querySelectorAll('.wmp-sidebar, .wmp-title-group, .catering-tabs-container'),
           { y: 10, opacity: 0 },
           { y: 0,  opacity: 1, duration: 0.28, stagger: 0.06 },
           '-=0.28'
