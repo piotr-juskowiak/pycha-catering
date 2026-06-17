@@ -3898,3 +3898,48 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
     font-size: 32px !important;
   }
 }
+
+.section-title {
+    color: #0b250c !important;
+    font-weight: 800 !important;
+    line-height: 1.02 !important;
+    text-transform: uppercase;
+}
+
+.left-arrow-recipe {
+    border: 1.5px solid var(--primary-dark);
+    background-color: #01310f;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    transition: all .3s;
+    display: flex;
+    inset: -120px 76px auto auto;
+}
+
+.right-arrow-recipe {
+    border: 1.5px solid var(--primary-dark);
+    background-color: #01310f;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    transition: all .3s;
+    display: flex;
+    inset: -120px 0 auto auto;
+}
+
+.right-arrow-recipe:hover {
+    border-color: #63782b;
+    background-color: #6a7f34;
+    transform: rotate(40deg);
+}
+
+.left-arrow-recipe:hover {
+    border-color: #6a7f34;
+    background-color: #6a7f34;
+    transform: rotate(-40deg);
+}

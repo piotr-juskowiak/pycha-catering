@@ -1846,66 +1846,42 @@ img.about-leaf.about-leaf-left {
 }
 
 @media (max-width: 767px) {
-    .mobile-menu-sticky-btn {
+    .mobile-menu-sticky-wrapper {
         position: fixed;
-        right: 20px;
-        bottom: calc(20px + env(safe-area-inset-bottom));
-        left: 20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+        background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         z-index: 99990;
         display: flex;
-        min-height: 72px;
-        align-items: center;
         justify-content: center;
-        gap: 12px;
-        border-radius: 100px;
-        
-        /* Premium Background: Gradient + Noise Texture + Glassmorphism */
-        background: 
-            linear-gradient(135deg, rgba(136, 194, 91, 0.9) 0%, rgba(65, 122, 38, 0.95) 50%, rgba(20, 64, 21, 0.95) 100%),
-            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        
-        color: #ffffff;
-        font-family: var(--font-family--rubik);
-        font-size: 20px;
-        font-weight: 800;
-        line-height: 1;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 15px 35px rgba(11, 37, 12, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.15);
-        transition: transform 0.2s ease, filter 0.2s ease;
-        overflow: hidden;
-    }
-    
-    /* Optional: subtle shine effect overlay */
-    .mobile-menu-sticky-btn::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%; width: 50%; height: 100%;
-        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-        transform: skewX(-25deg);
-        animation: shine 4s infinite;
         pointer-events: none;
     }
     
-    @keyframes shine {
-        0% { left: -100%; }
-        20% { left: 200%; }
-        100% { left: 200%; }
+    .mobile-menu-sticky-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        pointer-events: auto;
     }
-
-    .mobile-menu-sticky-btn:active {
-        filter: brightness(1.1);
-        transform: scale(0.96);
+    
+    .mobile-menu-sticky-btn.pramiry-btn {
+        padding: 19px 24px !important;
     }
-
-    .mobile-menu-sticky-btn img {
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
+    
+    .mobile-menu-sticky-btn.pramiry-btn .button-text {
+        font-size: 16px !important;
+        font-weight: 800 !important;
+    }
+    
+    .mobile-menu-sticky-btn.pramiry-btn img {
+        width: 19px !important;
+        height: 19px !important;
+        top: -1px !important;
     }
 }
 

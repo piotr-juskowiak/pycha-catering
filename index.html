@@ -693,11 +693,7 @@
             src="assets/hero-arrow-doodle-transparent.png" />
         </div>
         <div class="home-hero-video-with-banner-box reveal-right video-box">
-          <div class="home-hero-video-with-banner"><img alt="Banner" class="home-hero-video-banner" loading="lazy"
-              sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.984375px, 927px"
-              src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a1c6777045f35ec90014f5_Banner.avif"
-              srcset="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a1c6777045f35ec90014f5_Banner-p-500.avif 500w, assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a1c6777045f35ec90014f5_Banner.avif 927w"
-              width="Auto" />
+          <div class="home-hero-video-with-banner">
             <div class="home-hero-video w-background-video w-background-video-atom" data-autoplay="true"
               data-loop="true" data-video-urls="film.mp4" data-wf-ignore="true"><video autoplay=""
                 data-object-fit="cover" data-wf-ignore="true" id="6f78dc88-b49a-e0f0-9d7d-572588cdf288-video" loop=""
@@ -979,26 +975,6 @@
         <div class="menu-card simple-img-card" data-category="obiady zestawy">
           <img alt="Danie 6" class="simple-card-img"
             src="https://i.imgur.com/qYCxYcS.jpeg" />
-        </div>
-        <!-- Card 7 -->
-        <div class="menu-card simple-img-card" data-category="obiady">
-          <img alt="Danie 7" class="simple-card-img"
-            src="https://i.imgur.com/gwlxwEP.png" />
-        </div>
-        <!-- Card 8 -->
-        <div class="menu-card simple-img-card" data-category="zestawy">
-          <img alt="Danie 8" class="simple-card-img"
-            src="https://i.imgur.com/juHBL47.png" />
-        </div>
-        <!-- Card 9 -->
-        <div class="menu-card simple-img-card" data-category="zestawy">
-          <img alt="Danie 9" class="simple-card-img"
-            src="https://i.imgur.com/DMaTBHL.png" />
-        </div>
-        <!-- Card 10 -->
-        <div class="menu-card simple-img-card" data-category="zestawy">
-          <img alt="Danie 10" class="simple-card-img"
-            src="https://i.imgur.com/m2V9TEo.png" />
         </div>
       </div>
     </div>
@@ -1871,114 +1847,18 @@
   </div>
   <!-- END CALLBACK POPUP -->
   <!-- INTERACTIVE MENU OVERLAY -->
-  <a aria-label="Otwórz podgląd menu" class="mobile-menu-sticky-btn" href="/menu"
-    onclick="openInteractiveMenu(event)">
-    <span>Podgląd menu</span>
-    <img alt="" aria-hidden="true" src="assets/white_forks.png" />
-  </a>
-  <div id="interactive-menu-overlay">
-    <div class="interactive-menu-card">
-      <button class="interactive-menu-close" onclick="closeInteractiveMenu()">×</button>
-      <div class="interactive-menu-title">Poznaj <span>Nasze Menu</span></div>
-      <div class="interactive-menu-grid">
-        <!-- Item 1 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-badge">Bestseller</div>
-          <div class="interactive-menu-img-wrap">
-            <img alt="Śniadanie Mistrzów" class="interactive-menu-img" src="https://i.imgur.com/7synHWz.png" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Śniadanie Mistrzów</div>
-            <div class="interactive-menu-item-desc">Najwyższej jakości wypieki, świeże wędliny, sery i chrupiące
-              warzywa. Idealny start na produktywny dzień w biurze.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">35,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
-        <!-- Item 2 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-img-wrap">
-            <img alt="Lekki Świt" class="interactive-menu-img" src="https://i.imgur.com/T5njIhv.jpeg" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Lekki Świt</div>
-            <div class="interactive-menu-item-desc">Delikatne jogurty z owocami, granola, owsianki i lekkie sałatki
-              owocowe. Pełne witamin poranne przebudzenie.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">28,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
-        <!-- Item 3 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-img-wrap">
-            <img alt="Klasyka o Poranku" class="interactive-menu-img"
-              src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68aad4dca112084fd9fbd570_hero-1.png" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Klasyka o Poranku</div>
-            <div class="interactive-menu-item-desc">Tradycyjne polskie smaki w nowoczesnym wydaniu. Regionalne specjały,
-              jajecznica na maśle i swojski chleb.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">40,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
-        <!-- Item 4 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-badge badge-green">Polecamy</div>
-          <div class="interactive-menu-img-wrap">
-            <img alt="Domowy Klasyk" class="interactive-menu-img" src="https://i.imgur.com/YDePnDk.jpeg" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Domowy Klasyk</div>
-            <div class="interactive-menu-item-desc">Rozgrzewająca, domowa zupa i sycące danie główne. Obiad, który
-              smakuje jak w najlepszej domowej kuchni.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">45,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
-        <!-- Item 5 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-img-wrap">
-            <img alt="Lekkie Popołudnie" class="interactive-menu-img" src="https://i.imgur.com/ZdmFXda.png" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Lekkie Popołudnie</div>
-            <div class="interactive-menu-item-desc">Pożywne kremy warzywne, chude ryby i mięsa oraz bukiety świeżych
-              sałat dla poszukujących lżejszych smaków.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">42,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
-        <!-- Item 6 -->
-        <a class="interactive-menu-item" href="/menu">
-          <div class="interactive-menu-badge">Nowość</div>
-          <div class="interactive-menu-img-wrap">
-            <img alt="Specjał Szefa" class="interactive-menu-img" src="https://i.imgur.com/gEUz0Uh.png" />
-          </div>
-          <div class="interactive-menu-content">
-            <div class="interactive-menu-item-name">Specjał Szefa</div>
-            <div class="interactive-menu-item-desc">Autorskie propozycje naszego Szefa Kuchni, łączące światowe trendy z
-              doskonałej jakości lokalnymi składnikami.</div>
-            <div class="interactive-menu-footer">
-              <div class="interactive-menu-price">55,00 zł <span>/ os.</span></div>
-              <div class="interactive-menu-btn">Zobacz</div>
-            </div>
-          </div>
-        </a>
+  <div class="mobile-menu-sticky-wrapper">
+    <a aria-label="Otwórz podgląd menu" class="mobile-menu-sticky-btn pramiry-btn w-inline-block" href="/menu">
+      <div class="button-text">PODGLĄD MENU <img src="https://i.imgur.com/uO6OWwT.png" alt="" style="margin-left: 8px; vertical-align: middle; display: inline-block; width: 20px; height: 20px; filter: brightness(0) invert(1); position: relative; top: -2px;" /></div>
+      <div class="main-button-bg">
+        <div class="main-button-bg-line-wrap"><div class="main-button-bg-line-left"></div></div>
+        <div class="main-button-bg-line-wrap"><div class="main-button-bg-line-right"></div></div>
+        <div class="main-button-bg-line-wrap"><div class="main-button-bg-line-left"></div></div>
+        <div class="main-button-bg-line-wrap"><div class="main-button-bg-line-right"></div></div>
       </div>
-    </div>
+    </a>
   </div>
-  <!-- END INTERACTIVE MENU -->
+
   <div aria-hidden="true" class="catering-overlay" id="cateringOverlay">
     <div aria-labelledby="cateringTitle" aria-modal="true" class="catering-modal" id="cateringModal" role="dialog"
       tabindex="-1">

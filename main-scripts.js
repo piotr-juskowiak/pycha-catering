@@ -525,19 +525,17 @@ document.addEventListener("DOMContentLoaded", () => {
               card.style.display = "flex";
               setTimeout(() => {
                 card.style.opacity = "1";
-              }, 50);
+              }, 10);
             } else {
               const category = card.getAttribute("data-category") || "";
               if (category.includes(target)) {
                 card.style.display = "flex";
                 setTimeout(() => {
                   card.style.opacity = "1";
-                }, 50);
+                }, 10);
               } else {
                 card.style.opacity = "0";
-                setTimeout(() => {
-                  card.style.display = "none";
-                }, 300);
+                card.style.display = "none";
               }
             }
           });
