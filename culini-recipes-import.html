@@ -78,20 +78,11 @@
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
     const getContentHeight = () => {
-      const visualChildren = Array.from(document.body.children).filter((child) => {
-        return child.tagName !== "SCRIPT" && child.tagName !== "STYLE";
-      });
-      const visualBottom = visualChildren.reduce((bottom, child) => {
-        return Math.max(bottom, child.getBoundingClientRect().bottom + window.scrollY);
-      }, 0);
-
-      return Math.ceil(Math.max(
-        visualBottom,
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight,
-        document.documentElement.offsetHeight,
-        document.body.offsetHeight
-      ));
+      const wrapper = document.querySelector('.section.overflow-hidden-no-bottom');
+      if (wrapper) {
+        return Math.ceil(wrapper.offsetHeight);
+      }
+      return 0;
     };
 
     const sendHeight = () => {

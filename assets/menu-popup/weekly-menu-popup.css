@@ -1023,6 +1023,7 @@ html.weekly-popup-snapshot .catering-modal {
     background: #fdfcf5;
     overflow-y: auto;
     overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   .wmp-sidebar, .wmp-main {
@@ -1092,18 +1093,29 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .wmp-date-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 13px;
     color: #4c6250;
-    gap: 4px;
-    flex-shrink: 1;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 1 auto !important;
     overflow: hidden;
   }
   
   .wmp-week-label {
-    font-size: 12px !important;
-    white-space: normal;
-    text-align: center;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #0b250c !important;
+    white-space: nowrap !important;
+    text-align: center !important;
     line-height: 1.2;
+    padding: 0 2px !important;
+    flex: 0 1 auto !important;
+    margin: 0 !important;
+    display: inline-block;
   }
 
   .catering-close-btn {
@@ -1119,6 +1131,10 @@ html.weekly-popup-snapshot .catering-modal {
     flex-shrink: 0;
     margin-top: 0;
     z-index: 100;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #47843d !important;
   }
 
   .wmp-cat-label { display: none; }
@@ -1214,6 +1230,7 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-week-nav {
     display: flex;
     justify-content: center !important;
+    align-items: center !important;
     transform: none !important;
     gap: 6px !important;
     margin-bottom: 0;
@@ -1230,16 +1247,22 @@ html.weekly-popup-snapshot .catering-modal {
     background: #fff;
     border: 1px solid rgba(0,0,0,0.07);
     box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #47843d !important;
+    padding: 0 !important;
   }
 
-  .wmp-week-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #0b250c;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.3;
-    padding: 0 2px;
+  .wmp-week-arrow svg {
+    width: 14px !important;
+    height: 14px !important;
+    display: block !important;
+  }
+
+  .wmp-calendar-icon {
+    flex-shrink: 0 !important;
+    color: #47843d !important;
   }
 
   /* Day Tabs */
@@ -1456,7 +1479,7 @@ html.weekly-popup-snapshot .catering-modal {
 
   /* Fresh box */
   .wmp-fresh-box {
-    grid-column: 1 / 4;
+    grid-column: 1 / 2;
     grid-row: 6 / 7;
     display: flex;
     flex-direction: column;
@@ -1468,6 +1491,7 @@ html.weekly-popup-snapshot .catering-modal {
     padding: 20px;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .wmp-fresh-box::before {
@@ -1507,7 +1531,7 @@ html.weekly-popup-snapshot .catering-modal {
 
   /* PDF Button */
   .wmp-pdf-btn {
-    grid-column: 1 / 4;
+    grid-column: 1 / 2;
     grid-row: 7 / 8;
     display: flex;
     margin-top: 16px;
@@ -1523,6 +1547,7 @@ html.weekly-popup-snapshot .catering-modal {
     border: none;
     border-radius: 30px;
     box-shadow: 0 8px 24px rgba(91, 135, 69, 0.2);
+    box-sizing: border-box;
   }
 
   .wmp-pdf-btn svg {
