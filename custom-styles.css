@@ -800,17 +800,12 @@
     border-width: 8px 2px 2px 8px !important;
 }
 
+/* Hide background elements (blob, particles, burger doodle) as requested */
+.about-redesign .about-blob,
+.about-redesign .about-ray,
 .about-redesign::before,
 .about-redesign::after {
-    background-image: url(assets/about-divider-cutout.png) !important;
-}
-
-.about-redesign::before {
-    top: -40px;
-}
-
-.about-redesign::after {
-    bottom: -60px;
+    display: none !important;
 }
 
 .about-feature-icon {

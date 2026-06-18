@@ -1585,7 +1585,7 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
     border-width: 1px 4px 4px 1px;
     border-color: var(--_colors---accent-color--accent-3);
     border-radius: var(--bordar-radius--bordar-radius-12);
-    background-color: #c6dfaf52;
+    background-color: #fbedd9 !important;
     grid-template-rows: auto;
     grid-template-columns: 1.5fr;
     grid-auto-columns: 1fr;
