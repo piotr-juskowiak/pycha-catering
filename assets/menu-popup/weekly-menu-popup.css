@@ -1038,8 +1038,8 @@ html.weekly-popup-snapshot .catering-modal {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     margin: 0 auto 4px auto;
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
     position: relative;
     display: flex;
     align-items: center;
@@ -1047,9 +1047,9 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .wmp-avatar {
-    width: 60px;
-    height: 60px;
-    flex: 0 0 60px;
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
     border-width: 2px;
     box-shadow: none;
   }
@@ -1193,18 +1193,28 @@ html.weekly-popup-snapshot .catering-modal {
     flex: none;
     background: #fff;
     border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.04);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1.5px solid rgba(91, 135, 69, 0.18);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     text-align: center;
     font-size: 11.5px;
     white-space: normal;
     line-height: 1.2;
     color: #4c6250;
+    transition: all 180ms ease;
+  }
+
+  .wmp-cat-btn:hover:not(.active) {
+    background: rgba(91, 135, 69, 0.06);
+    border-color: rgba(91, 135, 69, 0.4);
+    color: #2e5c28;
+    transform: none;
   }
 
   .wmp-cat-btn.active {
     background: #5b8745;
     color: #fff;
+    border-color: #5b8745;
+    box-shadow: 0 4px 14px rgba(91, 135, 69, 0.35);
   }
 
   .wmp-cat-btn.active img {
@@ -1309,22 +1319,30 @@ html.weekly-popup-snapshot .catering-modal {
     padding: 0 12px;
     border-radius: 20px;
     background: #fff;
-    border: 1px solid rgba(0,0,0,0.04);
+    border: 1.5px solid rgba(91, 135, 69, 0.2);
     color: #4c6250;
     font-size: 13px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     margin-top: 0;
     scroll-snap-align: start;
+    transition: all 180ms ease;
+  }
+
+  .catering-day-btn:hover:not(.active) {
+    background: rgba(91, 135, 69, 0.06);
+    border-color: rgba(91, 135, 69, 0.45);
+    color: #2e5c28;
   }
 
   .catering-day-btn.active {
     background: #5b8745;
     color: #fff;
     border-color: #5b8745;
+    box-shadow: 0 4px 12px rgba(91, 135, 69, 0.35);
   }
 
   /* Body */
@@ -1354,19 +1372,22 @@ html.weekly-popup-snapshot .catering-modal {
     box-sizing: border-box;
   }
 
+  /* Photo + heading as one overlapping element */
   .wmp-photo-col {
     position: relative;
     width: 100%;
-    height: 160px;
-    flex: 0 0 160px;
-    border-radius: 14px;
+    height: 190px;
+    flex: 0 0 190px;
+    border-radius: 16px;
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     order: -1;
   }
 
   .wmp-food-photo {
-    border-radius: 14px;
+    border-radius: 16px;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   .wmp-photo-branch { display: none; }
@@ -1376,37 +1397,43 @@ html.weekly-popup-snapshot .catering-modal {
     padding: 0;
   }
 
+  /* Cat heading overlaps the photo from below */
   .wmp-cat-heading {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-bottom: 20px;
     text-align: center;
+    margin-top: -28px;
+    position: relative;
+    z-index: 2;
   }
 
   .wmp-cat-heading-icon {
-    width: 48px;
-    height: 48px;
-    flex: 0 0 48px;
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
     border-radius: 50%;
-    background: #f1f4ea;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2px solid rgba(91, 135, 69, 0.18);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   }
 
   .wmp-cat-heading-icon img {
-    width: 28px !important;
-    height: 28px !important;
+    width: 30px !important;
+    height: 30px !important;
   }
 
   .wmp-cat-heading h2 {
-    font-size: 22px;
+    font-size: 20px;
     color: #0b250c;
     text-align: center;
+    margin-top: 4px;
   }
 
   .wmp-cat-heading-copy {
@@ -1418,7 +1445,7 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-heading-divider {
     margin-left: 0;
     margin-bottom: 0;
-    margin-top: 8px;
+    margin-top: 4px;
     width: 48px;
     height: 3px;
     background: #a9cd93;
