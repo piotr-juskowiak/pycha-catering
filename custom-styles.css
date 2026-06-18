@@ -717,9 +717,9 @@
     .choose-us-section .choose-us-card.choose-us-card-col-one,
     .choose-us-section .choose-us-card.choose-us-card-col-two,
     .choose-us-section .choose-us-card.choose-us-card-col-three {
-        min-height: 390px;
-        padding: 30px 28px 185px;
-        gap: 18px;
+        min-height: auto;
+        padding: 24px 20px 140px;
+        gap: 14px;
     }
 
     .choose-us-section .choose-us-card.choose-us-card-col-one::after,
@@ -728,7 +728,7 @@
         top: auto;
         left: 0;
         width: 100%;
-        height: 205px;
+        height: 150px;
         background-position: right bottom;
         background-size: contain;
     }
@@ -736,45 +736,46 @@
     .choose-us-section .choose-us-card.choose-us-card-col-one .choose-us-card-image,
     .choose-us-section .choose-us-card.choose-us-card-col-two .choose-us-card-image,
     .choose-us-section .choose-us-card.choose-us-card-col-three .choose-us-card-image {
-        width: 82px;
-        height: 82px;
+        width: 60px;
+        height: 60px;
     }
 
     .choose-us-section .choose-us-card.choose-us-card-col-one .choose-us-card-title,
     .choose-us-section .choose-us-card.choose-us-card-col-two .choose-us-card-title,
     .choose-us-section .choose-us-card.choose-us-card-col-three .choose-us-card-title {
-        font-size: 22px;
+        font-size: 18px;
     }
 
-    .choose-us-section .choose-us-descrption {
-        font-size: 16px;
-        line-height: 1.6;
+    .choose-us-section .choose-us-descrption,
+    .choose-us-section .choose-us-card-description {
+        font-size: 15px;
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 767px) {
     .choose-us-section .choose-us-card.choose-us-card-col-four {
-        min-height: 390px;
-        padding: 30px 28px 185px;
-        gap: 18px;
+        min-height: auto;
+        padding: 24px 20px 140px;
+        gap: 14px;
     }
 
     .choose-us-section .choose-us-card.choose-us-card-col-four::after {
         top: auto;
         left: 0;
         width: 100%;
-        height: 205px;
+        height: 150px;
         background-position: right bottom;
         background-size: contain;
     }
 
     .choose-us-section .choose-us-card.choose-us-card-col-four .choose-us-card-image {
-        width: 82px;
-        height: 82px;
+        width: 60px;
+        height: 60px;
     }
 
     .choose-us-section .choose-us-card.choose-us-card-col-four .choose-us-card-title {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 

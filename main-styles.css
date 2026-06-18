@@ -2656,6 +2656,7 @@ body {
 @media screen and (max-width: 767px) {
   .cta-timeline {
     padding-left: 35px;
+    gap: 20px;
   }
 
   .why-us-box {
@@ -2664,6 +2665,35 @@ body {
 
   .cta-steps-column::before {
     bottom: 40px;
+  }
+
+  /* Mobile adjustments for "Zamówienie" section */
+  .cta-step-desc {
+    display: none;
+  }
+
+  .cta-step-title-text {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .cta-step-icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cta-step-icon-circle img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .cta-step-item {
+    gap: 15px;
+    align-items: center;
+  }
+
+  .cta-step-text {
+    padding-top: 0;
   }
 }
 
@@ -3919,8 +3949,8 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
 }
 
 .left-arrow-recipe {
-    border: 1.5px solid var(--primary-dark);
-    background-color: #01310f;
+    border: 1.5px solid #83ab65;
+    background-color: #83ab65;
     border-radius: 50px;
     justify-content: center;
     align-items: center;
@@ -3932,8 +3962,8 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
 }
 
 .right-arrow-recipe {
-    border: 1.5px solid var(--primary-dark);
-    background-color: #01310f;
+    border: 1.5px solid #83ab65;
+    background-color: #83ab65;
     border-radius: 50px;
     justify-content: center;
     align-items: center;
