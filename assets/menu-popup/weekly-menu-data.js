@@ -133,7 +133,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
           "22 zł Dorsz w cieście piwnym z ziemniakami opiekanymi, surówka z kiszonej kapusty",
           "20 zł Potrawka z kurczaka z ryżem, surówka z marchewki",
           "20 zł Stripsy w panko z sosem chipotle, zapiekane ziemniaki, surówka",
-          "24 zł Stifado wołowe z kopytkami, buraczki zasmażane"
+          "24 zł Stifado wołowe z kaszą bulgur, buraczki zasmażane"
         ],
         "Dania wege": [
           "18 zł Kotlet jajeczno-ziemniaczany z sosem pieczarkowym, Surówka",
@@ -151,7 +151,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
           "12 zł Chia z owocami"
         ],
         "Sałatki": [
-          "20 zł Makaronowa z wędzonym kurczakiem i ananasem, sos jogurtowo-ziołowy",
+          "20 zł Sałatka z grillowanym Halloumi",
           "18 zł Grecka"
         ],
         "Makaron": [
