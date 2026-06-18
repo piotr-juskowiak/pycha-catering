@@ -89,17 +89,17 @@
 }
 
 .cta-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #EEF7E8;
-  color: #4A7C3D;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 8px 18px;
-  border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #78a44f;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 8px 18px;
+    border-radius: 100px;
 }
 
 .cta-badge svg {
@@ -1535,12 +1535,24 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
 /* Custom hover color for Zobacz menu button */
 #openMenuModal2 .main-button-bg-line-left,
 #openMenuModal2 .main-button-bg-line-right {
-  background-color: #64814a !important;
+  background-color: #5a7c3b !important;
 }
 
 /* Custom hover color for header Nasze menu button */
 #openMenuModal .main-button-bg-line-left,
 #openMenuModal .main-button-bg-line-right {
+  background-color: #5a7c3b !important;
+}
+
+/* Custom hover color for Zapytaj o catering buttons */
+a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-left,
+a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
+  background-color: #5a7c3b !important;
+}
+
+/* Custom hover color for top menu card buttons */
+.top-menu-card-btn .main-button-bg-line-left,
+.top-menu-card-btn .main-button-bg-line-right {
   background-color: #5a7c3b !important;
 }
 
@@ -1563,4 +1575,20 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
   .products-title {
     font-size: 32px !important;
   }
+}
+
+.top-menu-card {
+    padding: var(--_spacing---padding--margin--spacing-16) var(--_spacing---padding--margin--spacing-20) var(--_spacing---padding--margin--spacing-16) var(--_spacing---padding--margin--spacing-16);
+    grid-column-gap: var(--_spacing---flex-grid-gap--gap-20);
+    grid-row-gap: var(--_spacing---flex-grid-gap--gap-20);
+    border-style: solid;
+    border-width: 1px 4px 4px 1px;
+    border-color: var(--_colors---accent-color--accent-3);
+    border-radius: var(--bordar-radius--bordar-radius-12);
+    background-color: #c6dfaf52;
+    grid-template-rows: auto;
+    grid-template-columns: 1.5fr;
+    grid-auto-columns: 1fr;
+    text-decoration: none;
+    display: grid;
 }
