@@ -774,24 +774,13 @@ html.weekly-popup-snapshot .catering-modal {
 
 /* Decorative separator under heading */
 .wmp-heading-divider {
-  width: 140px;
-  height: 1px;
-  margin: 0;
-  background: linear-gradient(90deg, rgba(63, 143, 53, 0.6) 0%, rgba(63, 143, 53, 0) 100%);
-  position: relative;
+  width: 40px;
+  height: 2px;
+  margin: 6px 0 0 0;
+  background: #5b8745;
+  border-radius: 2px;
+  opacity: 0.85;
 }
-
-.wmp-heading-divider::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #3f8f35;
-}
-
 /* Menu items — delicate, elegant layout */
 .wmp-menu-item {
   display: flex;
@@ -1022,7 +1011,7 @@ html.weekly-popup-snapshot .catering-modal {
     gap: 16px 0;
     background: #fdfcf5;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
     box-sizing: border-box;
   }
 
@@ -1149,10 +1138,10 @@ html.weekly-popup-snapshot .catering-modal {
     overflow-x: auto;
     overflow-y: hidden;
     gap: var(--wmp-mobile-scroll-gap);
-    padding-bottom: 16px;
+    padding-bottom: 4px;
     margin: 0 -20px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 0;
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
     -webkit-overflow-scrolling: touch;
@@ -1163,6 +1152,12 @@ html.weekly-popup-snapshot .catering-modal {
     box-shadow: none;
     position: relative;
     top: 0;
+  }
+
+  .wmp-cat-list::after {
+    content: '';
+    flex: 0 0 20px;
+    min-width: 20px;
   }
   .wmp-cat-list::-webkit-scrollbar {
     display: block;
@@ -1215,6 +1210,9 @@ html.weekly-popup-snapshot .catering-modal {
     color: #fff;
     border-color: #5b8745;
     box-shadow: 0 4px 14px rgba(91, 135, 69, 0.35);
+    border-radius: 12px;
+    padding: 12px 10px;
+    overflow: hidden;
   }
 
   .wmp-cat-btn.active img {
@@ -1292,12 +1290,18 @@ html.weekly-popup-snapshot .catering-modal {
     padding-bottom: 14px;
     margin: 0 -20px;
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 0;
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+  }
+
+  .catering-days::after {
+    content: '';
+    flex: 0 0 20px;
+    min-width: 20px;
   }
   .catering-days::-webkit-scrollbar {
     display: block;
@@ -1376,8 +1380,8 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-photo-col {
     position: relative;
     width: 100%;
-    height: 190px;
-    flex: 0 0 190px;
+    height: 95px;
+    flex: 0 0 95px;
     border-radius: 16px;
     display: block;
     margin-bottom: 0;
@@ -1445,11 +1449,12 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-heading-divider {
     margin-left: 0;
     margin-bottom: 0;
-    margin-top: 4px;
-    width: 48px;
-    height: 3px;
-    background: #a9cd93;
-    border-radius: 3px;
+    margin-top: 6px;
+    width: 32px;
+    height: 2px;
+    background: #5b8745;
+    border-radius: 2px;
+    opacity: 0.85;
   }
 
   /* Item list */
@@ -1458,7 +1463,7 @@ html.weekly-popup-snapshot .catering-modal {
     font-size: 13px;
     border-bottom: 1px dotted rgba(0,0,0,0.12);
     gap: 12px;
-    align-items: flex-start;
+    align-items: center !important;
     text-align: left;
   }
 
@@ -1470,8 +1475,13 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-item-num {
     color: #47843d;
     font-weight: 700;
-    flex: 0 0 16px;
-    font-size: 14px;
+    flex: 0 0 24px;
+    height: 24px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
   }
 
   .wmp-item-body {

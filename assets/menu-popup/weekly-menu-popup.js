@@ -83,16 +83,16 @@
         allergens = item.allergens || '';
       }
       
-      const numberBadge = `<span class="wmp-item-num" style="align-self: flex-start; margin-top: 2px;">${i + 1}.</span>`;
-      const priceBadge = price ? `<span class="wmp-price-badge-end" style="align-self: flex-start;">${price}</span>` : '';
+      const numberBadge = `<span class="wmp-item-num">${i + 1}.</span>`;
+      const priceBadge = price ? `<span class="wmp-price-badge-end">${price}</span>` : '';
       
       const weightHtml = weight ? `<span class="wmp-item-weight" style="color: #88a88f; font-size: 0.85em; font-weight: 600; padding-left: 8px;">${weight}</span>` : '';
       const allergensHtml = allergens ? `<div class="wmp-item-allergens" style="font-size: 0.75em; color: #88a88f; margin-top: 2px;">Alergeny: ${allergens}</div>` : '';
       
       return `
-        <div class="wmp-menu-item" style="align-items: flex-start;">
+        <div class="wmp-menu-item">
           ${numberBadge}
-          <div class="wmp-item-body" style="display: flex; flex-direction: column; flex: 1; align-items: flex-start; text-align: left;">
+          <div class="wmp-item-body" style="display: flex; flex-direction: column; flex: 1; align-items: flex-start; text-align: left; justify-content: center;">
             <div style="text-align: left;"><span class="wmp-item-name">${name}</span>${weightHtml}</div>
             ${allergensHtml}
           </div>
