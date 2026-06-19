@@ -348,64 +348,63 @@
   }
 </style>
 
-    <!-- CULINI FOOTER IMPORT -->
-  <style>
-    .culini-import-frame {
-      display: block;
-      width: 100%;
-      border: 0;
-      background: #ffffff;
-    }
-    .culini-footer-import-frame {
-      height: 900px;
-    }
-    @media (max-width: 767px) {
-      .culini-footer-import-frame {
-        height: 2100px;
-      }
-    }
-  </style>
-  <iframe class="culini-import-frame culini-footer-import-frame" src="/culini-footer-import" title="Culini footer" scrolling="no"></iframe>
-  <script>
-    (() => {
-      const frames = Array.from(document.querySelectorAll(".culini-import-frame"));
-      if (!frames.length) return;
-      let ticking = false;
-
-      const sendFrameMetrics = () => {
-        frames.forEach((frame) => {
-          if (!frame.contentWindow) return;
-          const rect = frame.getBoundingClientRect();
-          frame.contentWindow.postMessage({
-            type: "culini-parent-scroll",
-            frameTop: rect.top,
-            viewportHeight: window.innerHeight
-          }, "*");
-        });
-        ticking = false;
-      };
-
-      const queueFrameMetrics = () => {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(sendFrameMetrics);
-      };
-
-      window.addEventListener("message", (event) => {
-        const frame = frames.find((candidate) => candidate.contentWindow === event.source);
-        if (!frame) return;
-        if (!event.data || event.data.type !== "culini-import-height") return;
-            const nextHeight = Math.ceil(Number(event.data.height) || 0);
-            if (nextHeight < 240) return;
-            frame.style.height = nextHeight + "px";
-        queueFrameMetrics();
-      });
-
-      frames.forEach((frame) => frame.addEventListener("load", queueFrameMetrics));
-      window.addEventListener("scroll", queueFrameMetrics, { passive: true });
-      window.addEventListener("resize", queueFrameMetrics);
-    })();
-  </script>
+  <!-- CULINI FOOTER IMPORT -->
+  <link href="/assets/inline-sections.css" rel="stylesheet" type="text/css" />
+  <footer class="pycha-site-footer">
+    <div class="pycha-site-footer__container">
+      <div class="pycha-site-footer__top">
+        <div class="pycha-site-footer__brand">
+          <a href="/" aria-label="Pycha Catering — strona główna">
+            <img class="pycha-site-footer__logo" src="/assets/pycha-logo-transparent.png" loading="lazy" alt="Pycha Catering" />
+          </a>
+          <p class="pycha-site-footer__description">Catering dla firm, spotkań i eventów. Dowozimy jedzenie gotowe do podania, bez pilnowania każdego szczegółu.</p>
+        </div>
+        <div class="pycha-site-footer__contact">
+          <a class="pycha-site-footer__phone" href="tel:888849509">888 849 509</a>
+          <a class="pycha-site-footer__email" href="mailto:biuro@pycha-catering.pl">biuro@pycha-catering.pl</a>
+          <div class="pycha-site-footer__socials" aria-label="Media społecznościowe">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="pycha-site-footer__main">
+        <div class="pycha-site-footer__gallery">
+          <a href="/menu"><img src="/assets/footer-catering/pracownik-je-catering.png" loading="lazy" alt="Catering dla pracowników" /></a>
+          <a href="/menu"><img src="/assets/footer-catering/spotkanie-eventowe-catering.png" loading="lazy" alt="Catering na spotkanie i event" /></a>
+          <a href="/menu"><img src="/assets/footer-catering/zespol-napoje-cateringowe.png" loading="lazy" alt="Catering dla zespołu" /></a>
+        </div>
+        <nav class="pycha-site-footer__links" aria-label="Strona">
+          <div class="pycha-site-footer__heading">Strona</div>
+          <a class="pycha-site-footer__link" href="/kim-jestesmy">Kim jesteśmy?</a>
+          <a class="pycha-site-footer__link" href="/menu">Menu</a>
+          <a class="pycha-site-footer__link" href="/#zamow-catering">Zamówienie</a>
+        </nav>
+        <nav class="pycha-site-footer__links" aria-label="Oferta">
+          <div class="pycha-site-footer__heading">Oferta</div>
+          <a class="pycha-site-footer__link" href="/menu">Imprezy firmowe</a>
+          <a class="pycha-site-footer__link" href="/menu">Szkolenia i konferencje</a>
+          <a class="pycha-site-footer__link" href="/menu">Uroczystości rodzinne</a>
+          <a class="pycha-site-footer__link" href="/menu">Eventy i premiery</a>
+        </nav>
+        <nav class="pycha-site-footer__links" aria-label="Kontakt">
+          <div class="pycha-site-footer__heading">Kontakt</div>
+          <a class="pycha-site-footer__link" href="/kontakt">Kontakt</a>
+          <a class="pycha-site-footer__link" href="/#zamow-catering">Zamów catering</a>
+          <a class="pycha-site-footer__link" href="/menu">Nasze menu</a>
+          <a class="pycha-site-footer__link" href="/menu">Spotkania biznesowe</a>
+        </nav>
+      </div>
+      <div class="pycha-site-footer__bottom">
+        <p>© Pycha Catering. Wszystkie prawa zastrzeżone.</p>
+        <p>Catering dla firm, spotkań i eventów. Świeże jedzenie gotowe do podania.</p>
+      </div>
+    </div>
+  </footer>
+  <section class="pycha-footer-photo" aria-label="Kuchnia Pycha Catering">
+    <img src="/assets/footer-catering/kucharz-pudelka-parallax.png" loading="lazy" alt="Kucharz przygotowujący posiłki w pudełkach cateringowych" />
+  </section>
+  <script src="/assets/inline-sections.js" defer></script>
   <!-- END CULINI FOOTER IMPORT -->
 
 <script>
