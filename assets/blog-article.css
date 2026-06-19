@@ -1,0 +1,151 @@
+.pycha-article {
+  padding: 78px 0 110px;
+  background: #fff;
+  color: #0b250c;
+  font-family: "Rubik", sans-serif;
+}
+
+.pycha-article * {
+  box-sizing: border-box;
+}
+
+.pycha-article__container {
+  width: min(100% - 80px, 1320px);
+  margin: 0 auto;
+}
+
+.pycha-article__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 40px;
+  color: #4a7a31;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.pycha-article__back:hover {
+  color: #709951;
+}
+
+.pycha-article__meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #4a7a31;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pycha-article__title {
+  max-width: 1100px;
+  margin: 0 0 30px;
+  color: #0b250c;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: clamp(48px, 6vw, 92px);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: .98;
+  text-transform: uppercase;
+}
+
+.pycha-article__lead {
+  max-width: 850px;
+  margin: 0 0 48px;
+  color: #355034;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.55;
+}
+
+.pycha-article__hero {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 53vw, 720px);
+  margin-bottom: 64px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+.pycha-article__body {
+  max-width: 850px;
+  margin: 0 auto;
+  color: #243f24;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.pycha-article__body h2 {
+  margin: 54px 0 18px;
+  color: #0b250c;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.pycha-article__body p {
+  margin: 0 0 24px;
+}
+
+.pycha-article__body ul,
+.pycha-article__body ol {
+  margin: 0 0 30px;
+  padding-left: 25px;
+}
+
+.pycha-article__body li {
+  margin-bottom: 12px;
+}
+
+.pycha-article__note {
+  margin: 42px 0;
+  padding: 30px 34px;
+  border-left: 5px solid #709951;
+  border-radius: 0 18px 18px 0;
+  background: #f5f7eb;
+  color: #0b250c;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pycha-article__cta {
+  display: inline-flex;
+  margin-top: 20px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  background: #0b250c;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pycha-article__cta:hover {
+  background: #709951;
+}
+
+@media (max-width: 700px) {
+  .pycha-article {
+    padding: 55px 0 80px;
+  }
+
+  .pycha-article__container {
+    width: min(100% - 40px, 1320px);
+  }
+
+  .pycha-article__title {
+    font-size: 46px;
+  }
+
+  .pycha-article__hero {
+    height: 340px;
+    margin-bottom: 45px;
+    border-radius: 16px;
+  }
+
+  .pycha-article__body {
+    font-size: 17px;
+  }
+}
