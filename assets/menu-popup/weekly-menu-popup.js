@@ -3,6 +3,9 @@
    ============================================================ */
 
 (function () {
+  const menuDataReady = window.PYCHA_MENU_DATA_READY || Promise.resolve(window.PYCHA_MENU_DATA);
+
+  menuDataReady.catch(() => window.PYCHA_MENU_DATA).then(() => {
   /* ─── Asset paths ─────────────────────────────────────── */
   const scriptTag = document.querySelector('script[src*="weekly-menu-popup.js"]');
   const assetBase = scriptTag ? scriptTag.getAttribute('src').replace('weekly-menu-popup.js', 'generated/') : 'assets/menu-popup/generated/';
@@ -568,4 +571,5 @@
   } else {
     setupWeeklyPopup();
   }
+  });
 })();

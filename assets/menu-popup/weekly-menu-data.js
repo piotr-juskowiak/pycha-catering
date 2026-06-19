@@ -671,3 +671,21 @@ window.PYCHA_MENU_DATA.catIcons = {
     'Stałe codziennie': `https://i.imgur.com/fQPU7Q3.png`,
     'Kanapki':          `https://i.imgur.com/5dmembW.png`,
 };
+
+// Keep the bundled menu as a safe fallback, but prefer the shared online copy.
+// The popup and editor wait for this promise before they render their content.
+window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
+  method: 'GET',
+  headers: { Accept: 'application/json' },
+  cache: 'no-store',
+})
+  .then(async (response) => {
+    if (!response.ok) throw new Error(`Nie udało się pobrać menu (${response.status}).`);
+    const payload = await response.json();
+    if (!payload.menu || typeof payload.menu !== 'object') {
+      throw new Error('Serwer zwrócił nieprawidłowe dane menu.');
+    }
+    window.PYCHA_MENU_DATA = payload.menu;
+    return window.PYCHA_MENU_DATA;
+  })
+  .catch(() => window.PYCHA_MENU_DATA);
