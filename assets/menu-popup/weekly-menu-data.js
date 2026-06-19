@@ -136,7 +136,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
           "24 zł Stifado wołowe z kaszą bulgur, buraczki zasmażane"
         ],
         "Dania wege": [
-          "18 zł Kotlet jajeczno-ziemniaczany z sosem pieczarkowym, Surówka",
+          "18 zł Kotlet jajeczno-ziemniaczany z sosem porowym, Surówka",
           "19 zł Penne ze szpinakiem i gorgonzolą"
         ],
         "Zupy": [
