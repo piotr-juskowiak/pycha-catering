@@ -24,6 +24,10 @@
   margin: 0 auto;
 }
 
+.pycha-catering-types__container {
+  position: relative;
+}
+
 .pycha-catering-types__eyebrow,
 .pycha-site-footer__heading {
   color: #4a7a31;
@@ -56,6 +60,7 @@
 
 .pycha-catering-types__viewport {
   overflow: hidden;
+  margin-right: calc(50% - 50vw);
 }
 
 .pycha-catering-types__track {
@@ -65,7 +70,7 @@
 }
 
 .pycha-catering-card {
-  flex: 0 0 calc((100% - 60px) / 3);
+  flex: 0 0 calc((min(100vw - 120px, 1650px) - 60px) * .333333);
   min-width: 0;
 }
 
@@ -96,10 +101,13 @@
 }
 
 .pycha-catering-types__controls {
+  position: absolute;
+  top: 20px;
+  right: 0;
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 38px;
+  margin: 0;
 }
 
 .pycha-catering-types__arrow {
@@ -184,6 +192,13 @@
   border: 1px solid rgba(74, 122, 49, .35);
   border-radius: 50%;
   font-size: 15px;
+}
+
+.pycha-site-footer__socials svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
 .pycha-site-footer__contact a,
@@ -306,7 +321,7 @@
   }
 
   .pycha-catering-card {
-    flex-basis: calc((100% - 24px) / 2);
+    flex-basis: calc((100vw - 72px) * .5);
   }
 
   .pycha-catering-types__track {
@@ -352,8 +367,9 @@
   }
 
   .pycha-catering-types__controls {
-    justify-content: flex-start;
-    margin-top: 28px;
+    position: static;
+    justify-content: flex-end;
+    margin: -14px 0 28px;
   }
 
   .pycha-site-footer {
