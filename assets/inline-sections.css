@@ -420,8 +420,8 @@
 /* Culini-inspired footer layout in the Pycha Catering identity. */
 .pycha-site-footer {
   padding: 132px 0 38px;
-  background: #1d4b52;
-  color: #fff1a6;
+  background: #fff9e0;
+  color: #0b250c;
 }
 
 .pycha-site-footer__container {
@@ -451,7 +451,7 @@
 }
 
 .pycha-site-footer__description {
-  color: #fff1a6;
+  color: #0b250c;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -463,7 +463,7 @@
 
 .pycha-site-footer__contact a,
 .pycha-site-footer__link {
-  color: #fff1a6;
+  color: #0b250c;
 }
 
 .pycha-site-footer__phone {
@@ -477,7 +477,7 @@
 .pycha-site-footer__socials {
   gap: 13px;
   padding-left: 20px;
-  border-left: 1px solid rgba(255, 241, 166, .45);
+  border-left: 1px solid rgba(11, 37, 12, .3);
 }
 
 .pycha-site-footer__socials a {
@@ -485,7 +485,7 @@
   height: 34px;
   border: 0;
   border-radius: 0;
-  color: #fff1a6;
+  color: #0b250c;
 }
 
 .pycha-site-footer__socials svg {
@@ -518,7 +518,7 @@
 
 .pycha-site-footer__heading {
   margin-bottom: 13px;
-  color: #fff1a6;
+  color: #4a7a31;
   font-size: 13px;
 }
 
@@ -530,7 +530,7 @@
 .pycha-site-footer__bottom {
   padding-top: 27px;
   border-top: 0;
-  color: #fff1a6;
+  color: #0b250c;
   font-size: 13px;
 }
 

@@ -2,8 +2,6 @@
    PYCHA CATERING — Weekly Menu Popup — Premium Redesign v3
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap');
-
 :root {
   /* ─── Color palette ────────────────────────────────────── */
   --pc-cream:         #FBF7EF;
@@ -35,8 +33,8 @@
   --pc-radius-pill:   999px;
 
   /* ─── Typography ───────────────────────────────────────── */
-  --pc-font-body:     'Nunito', 'Nunito Sans', system-ui, -apple-system, sans-serif;
-  --pc-font-head:     'Nunito', system-ui, sans-serif;
+  --pc-font-body:     'Rubik', system-ui, -apple-system, sans-serif;
+  --pc-font-head:     'Rubik', system-ui, sans-serif;
 
   /* ─── Layout ───────────────────────────────────────────── */
   --sidebar-w:        360px;
@@ -393,7 +391,7 @@ html.weekly-popup-snapshot .catering-modal {
     padding-right: 30px;
     position: relative;
     z-index: 2;
-    font-family: 'Nunito';
+    font-family: 'Rubik', system-ui, sans-serif;
 }
 
 /* PDF button — wide, elegant */
