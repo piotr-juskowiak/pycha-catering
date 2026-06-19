@@ -416,3 +416,176 @@
     height: 260px;
   }
 }
+
+/* Culini-inspired footer layout in the Pycha Catering identity. */
+.pycha-site-footer {
+  padding: 132px 0 38px;
+  background: #1d4b52;
+  color: #fff1a6;
+}
+
+.pycha-site-footer__container {
+  width: min(100% - 120px, 1440px);
+}
+
+.pycha-site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 70px;
+  padding-bottom: 70px;
+  border-bottom: 0;
+}
+
+.pycha-site-footer__brand {
+  display: grid;
+  grid-template-columns: 175px minmax(240px, 390px);
+  align-items: center;
+  gap: 34px;
+  max-width: 650px;
+}
+
+.pycha-site-footer__logo {
+  width: 175px;
+  margin: 0;
+}
+
+.pycha-site-footer__description {
+  color: #fff1a6;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pycha-site-footer__contact {
+  gap: 20px;
+  padding-top: 0;
+}
+
+.pycha-site-footer__contact a,
+.pycha-site-footer__link {
+  color: #fff1a6;
+}
+
+.pycha-site-footer__phone {
+  font-size: 22px;
+}
+
+.pycha-site-footer__email {
+  font-size: 14px;
+}
+
+.pycha-site-footer__socials {
+  gap: 13px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(255, 241, 166, .45);
+}
+
+.pycha-site-footer__socials a {
+  width: 24px;
+  height: 34px;
+  border: 0;
+  border-radius: 0;
+  color: #fff1a6;
+}
+
+.pycha-site-footer__socials svg {
+  width: 19px;
+  height: 19px;
+}
+
+.pycha-site-footer__main {
+  grid-template-columns: minmax(530px, 1.55fr) repeat(3, minmax(135px, .55fr));
+  gap: 52px;
+  padding: 0 0 62px;
+}
+
+.pycha-site-footer__gallery {
+  gap: 14px;
+}
+
+.pycha-site-footer__gallery img {
+  height: 210px;
+  border-radius: 0;
+}
+
+.pycha-site-footer__gallery a {
+  border-radius: 0;
+}
+
+.pycha-site-footer__links {
+  gap: 14px;
+}
+
+.pycha-site-footer__heading {
+  margin-bottom: 13px;
+  color: #fff1a6;
+  font-size: 13px;
+}
+
+.pycha-site-footer__link {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.pycha-site-footer__bottom {
+  padding-top: 27px;
+  border-top: 0;
+  color: #fff1a6;
+  font-size: 13px;
+}
+
+@media (max-width: 1180px) {
+  .pycha-site-footer__top {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .pycha-site-footer__main {
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 0;
+  }
+
+  .pycha-site-footer__gallery {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .pycha-site-footer {
+    padding-top: 72px;
+  }
+
+  .pycha-site-footer__container {
+    width: min(100% - 40px, 1440px);
+  }
+
+  .pycha-site-footer__brand {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .pycha-site-footer__contact {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pycha-site-footer__socials {
+    padding-top: 8px;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .pycha-site-footer__main {
+    grid-template-columns: 1fr 1fr;
+    gap: 38px 24px;
+    padding-bottom: 45px;
+  }
+
+  .pycha-site-footer__gallery {
+    grid-column: 1 / -1;
+  }
+
+  .pycha-site-footer__gallery img {
+    height: 130px;
+  }
+}

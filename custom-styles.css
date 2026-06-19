@@ -462,7 +462,7 @@
 /* Photo background for "Najlepszy powod" section */
 .choose-us-section {
     /* background-color: #1c3219; */
-    background-image: url('https://i.imgur.com/GPNYZL7.png');
+    background-image: url('assets/optimized-images/dlaczego-warto-bg.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1063,7 +1063,7 @@ img.about-leaf.about-leaf-left {
 
 /* Home hero polish */
 .home-hero-section {
-    background-image: url('https://i.imgur.com/fwBaYgL.png');
+    background-image: url('assets/optimized-images/hero-catering.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
