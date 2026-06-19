@@ -1460,6 +1460,11 @@ img.about-leaf.about-leaf-left {
     line-height: 0;
 }
 
+.products-redesign .menu-card.simple-img-card.is-filtered-out,
+.products-redesign .products-grid > .menu-card.simple-img-card:nth-child(n + 7) {
+    display: none !important;
+}
+
 .products-redesign .menu-card.simple-img-card:hover {
     transform: translateY(-6px) scale(1.02) !important;
     border-color: transparent !important;

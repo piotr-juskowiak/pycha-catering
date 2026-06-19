@@ -511,8 +511,11 @@ let interactiveTimeline = null;
     });
 
 document.addEventListener("DOMContentLoaded", () => {
-      const filters = document.querySelectorAll(".products-filter");
-      const cards = document.querySelectorAll(".menu-card");
+      const productsSection = document.querySelector(".products-redesign");
+      if (!productsSection) return;
+
+      const filters = productsSection.querySelectorAll(".products-filter");
+      const cards = Array.from(productsSection.querySelectorAll(".products-grid > .menu-card")).slice(0, 6);
 
       filters.forEach(filter => {
         filter.addEventListener("click", () => {
@@ -521,23 +524,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const target = filter.getAttribute("data-filter");
           cards.forEach(card => {
-            if (target === "wszystkie" || !target) {
-              card.style.display = "flex";
-              setTimeout(() => {
-                card.style.opacity = "1";
-              }, 10);
-            } else {
-              const category = card.getAttribute("data-category") || "";
-              if (category.includes(target)) {
-                card.style.display = "flex";
-                setTimeout(() => {
-                  card.style.opacity = "1";
-                }, 10);
-              } else {
-                card.style.opacity = "0";
-                card.style.display = "none";
-              }
-            }
+            const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+            const isVisible = target === "wszystkie" || !target || categories.includes(target);
+
+            card.classList.toggle("is-filtered-out", !isVisible);
+            card.style.opacity = isVisible ? "1" : "0";
           });
         });
       });
