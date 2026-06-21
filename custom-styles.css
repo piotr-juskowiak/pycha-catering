@@ -2543,3 +2543,164 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 .top-menu-card-btn:hover .main-button-bg {
     background-color: #5a7c3b !important;
 }
+
+/* Contact page — mobile layout */
+@media (max-width: 767px) {
+    .contact-hero-section {
+        padding-top: 122px !important;
+        padding-bottom: 34px !important;
+    }
+
+    .contact-hero-section .hero-title {
+        max-width: 310px;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        font-size: 36px !important;
+        line-height: 1.04 !important;
+    }
+
+    .contact-info-section,
+    .contact-form-section {
+        overflow: hidden;
+    }
+
+    .contact-info-wrapper.reveal-up {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .contact-info-box,
+    .contact-info-box.color-three {
+        min-width: 0;
+        padding: 22px 18px !important;
+        border-radius: 14px !important;
+    }
+
+    .contact-info-text,
+    .contact-info-text-link {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        font-size: 18px !important;
+    }
+
+    .contact-form-section {
+        padding-top: 20px !important;
+        padding-bottom: 118px !important;
+    }
+
+    .contact-form-wrapper,
+    .contact-form-wrapper.reveal-up {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        border-radius: 22px !important;
+    }
+
+    .contact-form-main-box {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 16px !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-form-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 24px 20px !important;
+        border-radius: 18px !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-form-block,
+    .contact-form,
+    .contact-form-field-box,
+    .contact-form-field,
+    .contact-form-text-field-box-two {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-form-field-box {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 18px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .contact-form-field,
+    .contact-form-field:nth-child(3) {
+        grid-column: auto !important;
+    }
+
+    .contact-form-title {
+        display: block;
+        margin-bottom: 8px !important;
+        font-size: 15px !important;
+        line-height: 1.35 !important;
+    }
+
+    .contact-form-text-field,
+    .contact-form-text-field-two {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        font-size: 16px !important;
+    }
+
+    .contact-form-text-field {
+        height: 52px !important;
+    }
+
+    .contact-form-text-field-two {
+        min-height: 142px !important;
+        line-height: 1.5 !important;
+    }
+
+    .contact-form-submit-btn {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 52px;
+        margin-top: 20px !important;
+        padding: 14px 18px !important;
+        white-space: normal;
+        box-sizing: border-box !important;
+    }
+
+    .contact-form-image {
+        display: none !important;
+    }
+
+    .mobile-menu-sticky-btn .main-button-bg {
+        overflow: hidden;
+        border-radius: inherit;
+        background-color: #7eaa55 !important;
+    }
+
+    .mobile-menu-sticky-btn .main-button-bg-line-wrap {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 479px) {
+    .contact-hero-section .hero-title {
+        font-size: 32px !important;
+    }
+
+    .contact-form-main-box {
+        padding: 12px !important;
+    }
+
+    .contact-form-box {
+        padding: 22px 18px !important;
+    }
+}
