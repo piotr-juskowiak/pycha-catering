@@ -1145,11 +1145,11 @@ html.weekly-popup-snapshot .catering-modal {
     overflow-x: auto;
     overflow-y: hidden;
     gap: var(--wmp-mobile-scroll-gap);
-    padding-bottom: 4px;
-    margin-right: calc(-1 * var(--wmp-mobile-inline));
-    margin-left: calc(-1 * var(--wmp-mobile-inline));
-    padding-right: var(--wmp-mobile-inline);
-    padding-left: var(--wmp-mobile-inline);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0 4px;
+    box-sizing: border-box;
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
     -webkit-overflow-scrolling: touch;
@@ -1283,21 +1283,23 @@ html.weekly-popup-snapshot .catering-modal {
   .catering-tabs-container {
     grid-column: 1 / 2;
     grid-row: 4 / 5;
+    width: 100%;
+    min-width: 0;
     margin-bottom: 12px;
   }
 
 
   .catering-days {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: var(--wmp-mobile-scroll-gap);
     flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 14px;
-    margin-right: calc(-1 * var(--wmp-mobile-inline));
-    margin-left: calc(-1 * var(--wmp-mobile-inline));
-    padding-right: var(--wmp-mobile-inline);
-    padding-left: var(--wmp-mobile-inline);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0 0 14px;
+    box-sizing: border-box;
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 135, 69, 0.7) rgba(91, 135, 69, 0.14);
     -webkit-overflow-scrolling: touch;
@@ -1322,7 +1324,7 @@ html.weekly-popup-snapshot .catering-modal {
   }
 
   .catering-day-btn {
-    flex: 0 0 var(--wmp-mobile-day-item);
+    flex: 1 1 0;
     min-width: 0;
     height: 38px;
     padding: 0 12px;
@@ -1601,7 +1603,7 @@ html.weekly-popup-snapshot .catering-modal {
 
 @media (max-width: 440px) {
   .catering-day-btn {
-    flex-basis: var(--wmp-mobile-day-item);
+    flex: 1 1 0;
     min-width: 0;
     font-size: 12px;
     padding: 0 8px;
