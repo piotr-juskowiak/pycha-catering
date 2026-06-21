@@ -2515,3 +2515,31 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     background-color: #1E3F20 !important;
     transform: translateY(-2px) !important;
 }
+
+/* Desktop alignment: keep the about copy clear of the large left-hand photo. */
+@media (min-width: 1281px) {
+    .about-redesign .about-text-content {
+        max-width: 760px;
+        margin-left: 230px;
+    }
+
+    .about-redesign .about-title {
+        max-width: 760px;
+    }
+}
+
+/* Use one solid hover layer so the price buttons are filled edge to edge. */
+.top-menu-card-btn .main-button-bg {
+    overflow: hidden;
+    border-radius: inherit;
+    background-color: var(--_colors---accent-color--accent-2) !important;
+    transition: background-color 0.2s ease;
+}
+
+.top-menu-card-btn .main-button-bg-line-wrap {
+    visibility: hidden;
+}
+
+.top-menu-card-btn:hover .main-button-bg {
+    background-color: #5a7c3b !important;
+}
