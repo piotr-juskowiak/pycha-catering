@@ -166,7 +166,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
         "Dania mięsne": [
           "21 zł Czerwone Curry z kurczakiem z ryżem",
           "20 zł Klopsiki w sosie koperkowym, purée ziemniaczane, surówka",
-          "23 zł Żeberka Teriyaki, Ziemniaki zapiekane, colesław",
+          "23 zł Policzki wieprzowe z ziemniakami i surówką",
           "23 zł Strogonow"
         ],
         "Dania wege": [
