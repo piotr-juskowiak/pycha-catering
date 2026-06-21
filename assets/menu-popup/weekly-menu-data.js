@@ -205,7 +205,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
           "19 zł Kotleciki z soczewicy z purée i grillowanymi warzywami"
         ],
         "Zupy": [
-          "12 zł harira",
+          "12 zł chłodnik",
           "11 zł szczawiowa z jajkiem"
         ],
         "Mączne": [
