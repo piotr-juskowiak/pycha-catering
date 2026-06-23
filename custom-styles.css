@@ -3110,8 +3110,10 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 }
 
 .contact-form-section .contact-form-submit-btn {
+    display: block !important;
     min-height: 54px !important;
     margin-top: 18px !important;
+    background-color: var(--pycha-cta-green) !important;
 }
 
 .contact-form-section .contact-form-image {
