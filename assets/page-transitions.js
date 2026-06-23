@@ -41,75 +41,53 @@
 
     overlay.classList.add("active");
     overlay.innerHTML = `
-      <div class="transition-circle transition-circle-1"></div>
-      <div class="transition-circle transition-circle-2"></div>
-      <div class="transition-circle transition-circle-3"></div>
+      <div class="transition-wipe"></div>
     `;
+    overlay.classList.add("is-ready");
 
     return {
       overlay,
-      circles: [
-        overlay.querySelector(".transition-circle-1"),
-        overlay.querySelector(".transition-circle-2"),
-        overlay.querySelector(".transition-circle-3"),
-      ],
+      wipe: overlay.querySelector(".transition-wipe"),
     };
   };
 
-  const setCircleScale = (circles, scale) => {
-    circles.forEach((circle) => {
-      circle.style.transform = `scale(${scale})`;
-      circle.style.opacity = "1";
-    });
-  };
-
-  const playEnter = ({ overlay, circles }) => {
+  const playEnter = ({ overlay, wipe }) => {
     if (reduceMotion) {
       overlay.classList.remove("active");
       return;
     }
 
     overlay.classList.add("active");
-    setCircleScale(circles, 1);
+    wipe.style.transform = "translate3d(0, 0, 0)";
 
     requestAnimationFrame(() => {
-      const circleAnimations = [circles[2], circles[1], circles[0]].map((circle, index) => animate(circle, [
-        { transform: "scale(1)", opacity: "1" },
-        { transform: "scale(.18)", opacity: "1", offset: .64 },
-        { transform: "scale(.04)", opacity: ".82", offset: .9 },
-        { transform: "scale(0)", opacity: "0" },
+      animate(wipe, [
+        { transform: "translate3d(0, 0, 0)" },
+        { transform: "translate3d(0, -104%, 0)" },
       ], {
-        duration: 1500,
-        delay: index * 155,
-      }));
-
-      Promise.all(circleAnimations).then(() => {
+        duration: 640,
+      }).then(() => {
         overlay.classList.remove("active");
       });
     });
   };
 
-  const playExit = ({ overlay, circles }, href) => {
+  const playExit = ({ overlay, wipe }, href) => {
     if (reduceMotion) {
       window.location.href = href;
       return;
     }
 
     overlay.classList.add("active");
-    setCircleScale(circles, 0);
+    wipe.style.transform = "translate3d(0, 104%, 0)";
 
     requestAnimationFrame(() => {
-      const circleAnimations = [circles[0], circles[1], circles[2]].map((circle, index) => animate(circle, [
-        { transform: "scale(0)", opacity: "1" },
-        { transform: "scale(.2)", opacity: "1", offset: .32 },
-        { transform: "scale(1.035)", opacity: "1", offset: .86 },
-        { transform: "scale(1)", opacity: "1" },
+      animate(wipe, [
+        { transform: "translate3d(0, 104%, 0)" },
+        { transform: "translate3d(0, 0, 0)" },
       ], {
-        duration: 1180,
-        delay: index * 135,
-      }));
-
-      Promise.all(circleAnimations).then(() => {
+        duration: 560,
+      }).then(() => {
         window.location.href = href;
       });
     });
@@ -213,7 +191,7 @@
       element.classList.add("is-visible");
       window.setTimeout(() => {
         element.classList.remove("is-waiting");
-      }, 950);
+      }, 520);
     };
 
     if ("IntersectionObserver" in window) {
@@ -224,15 +202,15 @@
           observer.unobserve(entry.target);
         });
       }, {
-        rootMargin: "0px 0px -8% 0px",
-        threshold: .12,
+        rootMargin: "0px 0px -4% 0px",
+        threshold: .04,
       });
     }
 
     const registerItems = () => {
       collectFadeItems().forEach((element, index) => {
         element.classList.add("pycha-fade-item", "is-waiting");
-        element.style.setProperty("--pycha-fade-delay", `${Math.min(index % 6, 5) * 65}ms`);
+        element.style.setProperty("--pycha-fade-delay", `${Math.min(index % 5, 4) * 32}ms`);
 
         if (observer) {
           observer.observe(element);
@@ -260,7 +238,9 @@
     window.addEventListener("pageshow", (event) => {
       if (!event.persisted) return;
       transition.overlay.classList.remove("active");
-      setCircleScale(transition.circles, 0);
+      if (transition.wipe) {
+        transition.wipe.style.transform = "translate3d(0, -104%, 0)";
+      }
     });
   });
 })();

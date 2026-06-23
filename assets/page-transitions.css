@@ -3,16 +3,15 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  display: grid;
-  place-items: center;
+  display: block;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #fff9e0;
+  background: transparent;
   pointer-events: all;
   opacity: 1;
   visibility: visible;
-  transition: opacity .65s cubic-bezier(.16, 1, .3, 1), visibility .65s cubic-bezier(.16, 1, .3, 1);
+  transition: visibility .01s linear;
   contain: layout style paint;
 }
 
@@ -20,6 +19,29 @@
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
+}
+
+.page-transition-overlay.active:not(.is-ready)::before {
+  content: "";
+  position: absolute;
+  inset: -2vh 0;
+  z-index: 1;
+  width: 100%;
+  height: 104vh;
+  background:
+    linear-gradient(135deg, #0b250c 0%, #1e3f20 42%, #78a44f 100%);
+}
+
+.transition-wipe {
+  position: absolute;
+  inset: -2vh 0;
+  z-index: 1;
+  width: 100%;
+  height: 104vh;
+  background:
+    linear-gradient(135deg, #0b250c 0%, #1e3f20 42%, #78a44f 100%);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .transition-circle {
@@ -81,15 +103,15 @@
 
 .pycha-fade-item.is-waiting:not(.is-visible) {
   opacity: 0;
-  transform: translate3d(0, 22px, 0);
+  transform: translate3d(0, 14px, 0);
 }
 
 .pycha-fade-item.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   transition:
-    opacity .78s cubic-bezier(.16, 1, .3, 1),
-    transform .78s cubic-bezier(.16, 1, .3, 1);
+    opacity .42s cubic-bezier(.16, 1, .3, 1),
+    transform .42s cubic-bezier(.16, 1, .3, 1);
   transition-delay: var(--pycha-fade-delay, 0ms);
 }
 

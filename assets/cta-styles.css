@@ -1812,3 +1812,113 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
     text-align: left !important;
   }
 }
+
+/* Slow striped hover for unified buttons */
+:root {
+  --pycha-cta-hover-striped-background:
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 0 0 / 0 18px no-repeat,
+    linear-gradient(var(--pycha-cta-green-hover), var(--pycha-cta-green-hover)) 9px 0 / 0 18px no-repeat,
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 100% 0 / 0 18px no-repeat,
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 0 18px / 0 18px no-repeat,
+    linear-gradient(var(--pycha-cta-green-hover), var(--pycha-cta-green-hover)) 9px 18px / 0 18px no-repeat,
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 100% 18px / 0 18px no-repeat,
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 0 36px / 0 18px no-repeat,
+    linear-gradient(var(--pycha-cta-green-hover), var(--pycha-cta-green-hover)) 9px 36px / 0 18px no-repeat,
+    radial-gradient(circle at 9px 9px, var(--pycha-cta-green-hover) 0 9px, transparent 9.25px) 100% 36px / 0 18px no-repeat,
+    var(--pycha-cta-striped-background);
+  --pycha-cta-hover-striped-size:
+    18px 18px,
+    calc(100% - 18px) 18px,
+    18px 18px,
+    18px 18px,
+    calc(100% - 18px) 18px,
+    18px 18px,
+    18px 18px,
+    calc(100% - 18px) 18px,
+    18px 18px,
+    auto,
+    auto,
+    calc(100% - 18px) 18px,
+    auto,
+    auto,
+    calc(100% - 18px) 18px,
+    auto,
+    auto,
+    calc(100% - 18px) 18px;
+}
+
+.pramiry-btn:hover {
+  --pycha-unified-button-bg: var(--pycha-cta-green);
+}
+
+.pramiry-btn .main-button-bg-line-wrap {
+  background-color: var(--pycha-cta-green) !important;
+}
+
+.pramiry-btn .main-button-bg-line-left,
+.pramiry-btn .main-button-bg-line-right,
+.pramiry-btn .main-button-bg-line-left.button-white,
+.pramiry-btn .main-button-bg-line-right.button-white {
+  background-color: var(--pycha-cta-green-hover) !important;
+  transform: scaleX(0) !important;
+  transition: transform .72s cubic-bezier(.16, 1, .3, 1) !important;
+}
+
+.pramiry-btn .main-button-bg-line-left,
+.pramiry-btn .main-button-bg-line-left.button-white {
+  transform-origin: left center !important;
+}
+
+.pramiry-btn .main-button-bg-line-right,
+.pramiry-btn .main-button-bg-line-right.button-white {
+  transform-origin: right center !important;
+}
+
+.pramiry-btn .main-button-bg-line-wrap:nth-child(2) .main-button-bg-line-left,
+.pramiry-btn .main-button-bg-line-wrap:nth-child(2) .main-button-bg-line-right {
+  transition-delay: .06s !important;
+}
+
+.pramiry-btn .main-button-bg-line-wrap:nth-child(3) .main-button-bg-line-left,
+.pramiry-btn .main-button-bg-line-wrap:nth-child(3) .main-button-bg-line-right {
+  transition-delay: .12s !important;
+}
+
+.pramiry-btn:hover .main-button-bg-line-left,
+.pramiry-btn:hover .main-button-bg-line-right,
+.pramiry-btn:hover .main-button-bg-line-left.button-white,
+.pramiry-btn:hover .main-button-bg-line-right.button-white {
+  transform: scaleX(1) !important;
+}
+
+.top-menu-card-btn:hover .main-button-bg {
+  background-color: transparent !important;
+}
+
+.contact-form-submit-btn,
+.cta-submit-btn,
+.values-cta-btn,
+.food-tab-cta,
+.products-btn,
+.pycha-callback-submit,
+.interactive-menu-btn,
+.mobile-menu-sticky-btn:not(.pramiry-btn),
+.pycha-article__cta {
+  --pycha-unified-button-bg: var(--pycha-cta-green);
+  background: var(--pycha-cta-hover-striped-background) !important;
+  transition: background-size .72s cubic-bezier(.16, 1, .3, 1), transform .2s ease, color .2s ease !important;
+}
+
+.contact-form-submit-btn:hover,
+.cta-submit-btn:hover,
+.values-cta-btn:hover,
+.food-tab-cta:hover,
+.products-btn:hover,
+.pycha-callback-submit:hover,
+.interactive-menu-item:hover .interactive-menu-btn,
+.mobile-menu-sticky-btn:not(.pramiry-btn):hover,
+.pycha-article__cta:hover {
+  --pycha-unified-button-bg: var(--pycha-cta-green);
+  background: var(--pycha-cta-hover-striped-background) !important;
+  background-size: var(--pycha-cta-hover-striped-size) !important;
+}
