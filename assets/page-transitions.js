@@ -52,45 +52,11 @@
   };
 
   const playEnter = ({ overlay, wipe }) => {
-    if (reduceMotion) {
-      overlay.classList.remove("active");
-      return;
-    }
-
-    overlay.classList.add("active");
-    wipe.style.transform = "translate3d(0, 0, 0)";
-
-    requestAnimationFrame(() => {
-      animate(wipe, [
-        { transform: "translate3d(0, 0, 0)" },
-        { transform: "translate3d(0, -104%, 0)" },
-      ], {
-        duration: 640,
-      }).then(() => {
-        overlay.classList.remove("active");
-      });
-    });
+    overlay.classList.remove("active");
   };
 
   const playExit = ({ overlay, wipe }, href) => {
-    if (reduceMotion) {
-      window.location.href = href;
-      return;
-    }
-
-    overlay.classList.add("active");
-    wipe.style.transform = "translate3d(0, 104%, 0)";
-
-    requestAnimationFrame(() => {
-      animate(wipe, [
-        { transform: "translate3d(0, 104%, 0)" },
-        { transform: "translate3d(0, 0, 0)" },
-      ], {
-        duration: 560,
-      }).then(() => {
-        window.location.href = href;
-      });
-    });
+    window.location.href = href;
   };
 
   const shouldTransitionLink = (link, event) => {
@@ -132,16 +98,7 @@
   };
 
   const bindPageLinks = (transition) => {
-    document.addEventListener("click", (event) => {
-      const link = event.target.closest ? event.target.closest("a[href]") : null;
-      if (!link) return;
-
-      const targetHref = shouldTransitionLink(link, event);
-      if (!targetHref) return;
-
-      event.preventDefault();
-      playExit(transition, targetHref);
-    });
+    // Disabled link interception for page transitions
   };
 
   const isFadeCandidate = (element) => {

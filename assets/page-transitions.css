@@ -3,14 +3,14 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  display: block;
+  display: none !important;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: transparent;
-  pointer-events: all;
-  opacity: 1;
-  visibility: visible;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
   transition: visibility .01s linear;
   contain: layout style paint;
 }
