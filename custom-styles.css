@@ -2841,7 +2841,6 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     margin-left: 0 !important;
 }
 
-.contact-form-submit-btn,
 .cta-submit-btn,
 .values-cta-btn,
 .food-tab-cta,
@@ -2891,7 +2890,6 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     width: 100% !important;
 }
 
-.contact-form-submit-btn:hover,
 .cta-submit-btn:hover,
 .values-cta-btn:hover,
 .food-tab-cta:hover,
@@ -3110,10 +3108,18 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 }
 
 .contact-form-section .contact-form-submit-btn {
-    display: block !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
     min-height: 54px !important;
     margin-top: 18px !important;
-    background-color: var(--pycha-cta-green) !important;
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+.contact-form-section .contact-form-submit-btn:hover {
+    background-color: transparent !important;
 }
 
 .contact-form-section .contact-form-image {
@@ -3255,7 +3261,6 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     background-color: transparent !important;
 }
 
-.contact-form-submit-btn,
 .cta-submit-btn,
 .values-cta-btn,
 .food-tab-cta,
@@ -3269,7 +3274,6 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     transition: background-size .72s cubic-bezier(.16, 1, .3, 1), transform .2s ease, color .2s ease !important;
 }
 
-.contact-form-submit-btn:hover,
 .cta-submit-btn:hover,
 .values-cta-btn:hover,
 .food-tab-cta:hover,
