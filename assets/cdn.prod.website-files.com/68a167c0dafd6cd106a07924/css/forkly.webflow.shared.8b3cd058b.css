@@ -8497,7 +8497,7 @@ blockquote {
     width: 50px;
     height: 50px;
     display: flex;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .hamburger-trigger.w--open {
@@ -10158,5 +10158,40 @@ blockquote {
 @media screen and (max-width: 479px) {
   #w-node-_7b1ad2cf-f2fa-7a5b-a5fd-2329b8d8cd79-06a0792a {
     order: -9999;
+  }
+}
+
+/* Hide header cart everywhere for now */
+.header-section .w-commerce-commercecartwrapper,
+.header-section .cart,
+.header-section .cart-button,
+.header-section .hamburger-trigger-with-cart .w-commerce-commercecartwrapper,
+.header-section .hamburger-trigger-with-cart .cart {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .header-section .hamburger-trigger,
+  .hamburger-trigger {
+    overflow: visible !important;
+  }
+
+  .header-section .hamburger-lottie-animation,
+  .hamburger-lottie-animation {
+    width: 32px !important;
+    height: 32px !important;
+    overflow: visible !important;
+  }
+
+  .header-section .hamburger-lottie-animation svg,
+  .header-section .hamburger-lottie-animation canvas,
+  .hamburger-lottie-animation svg,
+  .hamburger-lottie-animation canvas {
+    width: 32px !important;
+    height: 32px !important;
+    overflow: visible !important;
   }
 }

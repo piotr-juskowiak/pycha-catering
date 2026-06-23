@@ -2106,13 +2106,14 @@ img.about-leaf.about-leaf-left {
     .header-section .hamburger-trigger {
         width: 46px !important;
         height: 46px !important;
-        padding: 10px !important;
+        padding: 7px !important;
         border: 1px solid rgba(21, 58, 25, 0.08) !important;
         border-radius: 50% !important;
         background: #fffdf4 !important;
         box-shadow: 0 10px 24px rgba(25, 50, 23, 0.12) !important;
         justify-content: center !important;
         align-items: center !important;
+        overflow: visible !important;
     }
 
     .header-section .hamburger-trigger.w--open {
@@ -2121,8 +2122,16 @@ img.about-leaf.about-leaf-left {
     }
 
     .header-section .hamburger-lottie-animation {
-        width: 24px !important;
-        height: 24px !important;
+        width: 32px !important;
+        height: 32px !important;
+        overflow: visible !important;
+    }
+
+    .header-section .hamburger-lottie-animation svg,
+    .header-section .hamburger-lottie-animation canvas {
+        width: 32px !important;
+        height: 32px !important;
+        overflow: visible !important;
     }
 }
 
@@ -2702,5 +2711,236 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 
     .contact-form-box {
         padding: 22px 18px !important;
+    }
+}
+
+/* Unified CTA buttons */
+:root {
+    --pycha-cta-green: #78a44f;
+    --pycha-cta-green-hover: #5a7c3b;
+    --pycha-cta-striped-background:
+        radial-gradient(circle at 6.75px 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        radial-gradient(circle at calc(100% - 6.75px) 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 0 / calc(100% - 13.5px) 13.5px no-repeat,
+        radial-gradient(circle at 6.75px 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        radial-gradient(circle at calc(100% - 6.75px) 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 13.5px / calc(100% - 13.5px) 13.5px no-repeat,
+        radial-gradient(circle at 6.75px 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        radial-gradient(circle at calc(100% - 6.75px) 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 27px / calc(100% - 13.5px) 13.5px no-repeat,
+        radial-gradient(circle at 6.75px 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        radial-gradient(circle at calc(100% - 6.75px) 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 40.5px / calc(100% - 13.5px) 13.5px no-repeat;
+}
+
+.pramiry-btn,
+.pramiry-btn.button-white,
+.pramiry-btn.cta-submit-bg {
+    --pycha-unified-button-bg: var(--pycha-cta-green);
+    isolation: isolate !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-family: "Baloo 2", "Rubik", sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.pramiry-btn:not(.small) {
+    min-height: 54px !important;
+    padding: 15px 28px !important;
+}
+
+.pramiry-btn.small {
+    min-height: 38px !important;
+    padding: 9px 20px !important;
+}
+
+.pramiry-btn:hover {
+    --pycha-unified-button-bg: var(--pycha-cta-green-hover);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) !important;
+}
+
+#openMenuModal3 {
+    color: #ffffff !important;
+}
+
+.pramiry-btn .button-text,
+.pramiry-btn .button-text.button-white,
+.pramiry-btn .button-text.button-text-orienge,
+#openMenuModal3 .button-text {
+    z-index: 2 !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-family: "Baloo 2", "Rubik", sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+}
+
+.pramiry-btn .main-button-bg,
+.pramiry-btn.button-white .main-button-bg,
+#openMenuModal3 .main-button-bg {
+    z-index: 0 !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+.pramiry-btn .main-button-bg-line-wrap,
+.pramiry-btn .main-button-bg-line-wrap.small,
+.pramiry-btn .main-button-bg-line-wrap.button-white {
+    flex: 1 1 25% !important;
+    height: 25% !important;
+    min-height: 0 !important;
+    visibility: visible !important;
+    border-radius: 999px !important;
+    background-color: var(--pycha-unified-button-bg) !important;
+}
+
+.pramiry-btn .main-button-bg-line-left,
+.pramiry-btn .main-button-bg-line-right,
+.pramiry-btn .main-button-bg-line-left.button-white,
+.pramiry-btn .main-button-bg-line-right.button-white {
+    border-radius: 999px !important;
+    background-color: var(--pycha-cta-green-hover) !important;
+}
+
+#openMenuModal3 .main-button-bg-line-left,
+#openMenuModal3 .main-button-bg-line-right {
+    background-color: var(--pycha-cta-green-hover) !important;
+}
+
+.pramiry-btn img,
+#openMenuModal3 img {
+    filter: brightness(0) invert(1) !important;
+}
+
+.pramiry-btn .button-text svg,
+.pramiry-btn .button-text img {
+    flex: 0 0 auto !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.contact-form-submit-btn,
+.cta-submit-btn,
+.values-cta-btn,
+.food-tab-cta,
+.products-btn,
+.pycha-callback-submit,
+.interactive-menu-btn,
+.mobile-menu-sticky-btn:not(.pramiry-btn),
+.pycha-article__cta {
+    --pycha-unified-button-bg: var(--pycha-cta-green);
+    min-height: 54px !important;
+    padding: 15px 28px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    background: var(--pycha-cta-striped-background) !important;
+    color: #ffffff !important;
+    font-family: "Baloo 2", "Rubik", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.cta-submit-btn,
+.values-cta-btn,
+.food-tab-cta,
+.products-btn,
+.pycha-callback-submit,
+.interactive-menu-btn,
+.mobile-menu-sticky-btn:not(.pramiry-btn),
+.pycha-article__cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.contact-form-submit-btn,
+.cta-submit-btn,
+.pycha-callback-submit {
+    width: 100% !important;
+}
+
+.contact-form-submit-btn:hover,
+.cta-submit-btn:hover,
+.values-cta-btn:hover,
+.food-tab-cta:hover,
+.products-btn:hover,
+.pycha-callback-submit:hover,
+.interactive-menu-item:hover .interactive-menu-btn,
+.mobile-menu-sticky-btn:not(.pramiry-btn):hover,
+.pycha-article__cta:hover {
+    --pycha-unified-button-bg: var(--pycha-cta-green-hover);
+    background-color: transparent !important;
+    background: var(--pycha-cta-striped-background) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    transform: translateY(-2px) !important;
+}
+
+.products-btn svg path {
+    stroke: #ffffff !important;
+}
+
+.cta-submit-btn svg,
+.values-cta-btn svg,
+.food-tab-cta svg,
+.products-btn svg {
+    flex: 0 0 auto !important;
+}
+
+/* Hide header cart everywhere for now */
+.header-section .w-commerce-commercecartwrapper,
+.header-section .cart,
+.header-section .cart-button,
+.header-section .hamburger-trigger-with-cart .w-commerce-commercecartwrapper,
+.header-section .hamburger-trigger-with-cart .cart {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+@media (max-width: 767px) {
+    .cta-form-footer {
+        justify-content: flex-start !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 10px !important;
+        text-align: left !important;
+    }
+
+    .cta-form-footer svg {
+        align-self: center !important;
+        margin-top: 0 !important;
+    }
+
+    .cta-form-footer span {
+        display: block !important;
+        flex: 1 1 auto !important;
+        text-align: left !important;
     }
 }

@@ -331,9 +331,35 @@
   padding-top: 250px !important;
 }
 
+.blog-hero-right-content {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  max-height: 430px;
+  min-height: 0 !important;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 122, 49, .18);
+  box-shadow: 0 24px 48px rgba(11, 37, 12, .12);
+}
+
+.blog-hero-right-content-img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: inherit;
+}
+
 @media(max-width:900px){
   .blog-hero-section {
     padding-top: 180px !important;
+  }
+
+  .blog-hero-right-content {
+    aspect-ratio: 16 / 10;
+    max-height: none;
+    border-radius: 22px;
   }
 }
 </style>
@@ -341,7 +367,7 @@
 <link href="assets/cta-styles.css" rel="stylesheet"/>
 <link rel="canonical" href="https://pychacatering.pl/blog" />
 </head><body>
-<div class="page-transition-overlay">
+<div class="page-transition-overlay active">
 <img alt="Pycha Catering" class="transition-logo-img" src="assets/pycha-logo-transparent.png"/>
 </div>
 <header class="header-section">
@@ -823,9 +849,6 @@
 <section class="blog-hero-section">
 <div class="w-layout-blockcontainer container w-container">
 <div class="blog-hero-wrapper">
-<div class="menu-shap">
-<img alt="shap" class="menu-shap-img" data-w-id="03588ef3-c64e-52fa-a8d4-ff35b99d7697" src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a6dee13d8ce19627807085_party-cards-shap.svg"/>
-</div>
 <div class="blog-hero-left-content reveal-left">
 <div class="menu-hero-title-box">
 <h1 class="hero-title stroke-two">Nasze</h1>
@@ -838,16 +861,9 @@
 </div>
 </div>
 <div class="blog-hero-right-content reveal-right">
-<img alt="blog
-" class="blog-hero-right-content-img" src="assets/healthy_catering_blog.png"/>
-<div class="border-shap-bg-two">
-<img alt="shap" class="border-shap-bg-two-img" data-w-id="0b4fb21f-251d-9321-552e-4ef840ac1209" src="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68adabf24f52fc626fb515f5_c15df19e1a408c883f5a1ec5fa2eb301_border-shap.png"/>
+<img alt="Catering firmowy na spotkaniu biznesowym" class="blog-hero-right-content-img" src="assets/about/pycha-about-business-buffet.jpg"/>
 </div>
 </div>
-</div>
-</div>
-<div class="home-hero-bg-shape-inner">
-<img alt="Shape" class="home-hero-shape-two" data-w-id="73599228-4d0e-e0bb-7fc6-60f10cec819b" src="https://cdn.prod.website-files.com/68a167c0dafd6cd106a07924/68a2ad85bb1b4a667216bcae_Shape%20(1).svg"/>
 </div>
 </section>
 <section class="blog-product-section">
@@ -863,10 +879,6 @@
 </a>
 <div class="blog-product-item-details">
 <div class="blog-product-item-details-tag">
-<div class="blog-product-item-tag">(Ogłoszenia)</div>
-<div class="blog-product-item-tag">
-           .
-          </div>
 <div class="blog-product-item-tag">18 czerwca 2026</div>
 </div>
 <a class="blog-product-item-title w-inline-block" href="post/otwieramy-nowa-strone-pycha-catering.html">
@@ -885,10 +897,6 @@
 </a>
 <div class="blog-product-item-details">
 <div class="blog-product-item-details-tag">
-<div class="blog-product-item-tag">(Zamówienia)</div>
-<div class="blog-product-item-tag">
-           .
-          </div>
 <div class="blog-product-item-tag">18 czerwca 2026</div>
 </div>
 <a class="blog-product-item-title w-inline-block" href="post/przyjmujemy-zamowienia-na-catering.html">

@@ -47,7 +47,7 @@
   margin: 0 0 54px;
   color: #0b250c;
   font-family: "Baloo 2", "Rubik", sans-serif;
-  font-size: clamp(44px, 5.2vw, 82px);
+  font-size: clamp(40px, 4.6vw, 70px);
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: 1.02;
@@ -55,7 +55,7 @@
 }
 
 .pycha-catering-types__title span {
-  color: #709951;
+  color: inherit;
 }
 
 .pycha-catering-types__viewport {
@@ -351,7 +351,7 @@
 
   .pycha-catering-types__title {
     margin-bottom: 36px;
-    font-size: 42px;
+    font-size: 36px;
   }
 
   .pycha-catering-types__track {
@@ -369,7 +369,7 @@
   .pycha-catering-types__controls {
     position: static;
     justify-content: flex-end;
-    margin: -14px 0 28px;
+    margin: 4px 0 28px;
   }
 
   .pycha-site-footer {

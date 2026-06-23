@@ -435,8 +435,10 @@
     .media-preview-img { width: 100%; height: 100%; object-fit: cover; }
     .media-preview-empty { color: var(--pc-muted); font-size: 0.9rem; font-weight: 600; }
   </style>
+  <link href="assets/page-transitions.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <div class="page-transition-overlay active"></div>
   <div id="saveBanner" class="save-banner">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     Zapisano pomyślnie!
@@ -936,5 +938,6 @@
       renderTabs(); renderEditor(); renderSandwiches(); renderMedia();
     });
   </script>
+  <script src="assets/page-transitions.js"></script>
 </body>
 </html>

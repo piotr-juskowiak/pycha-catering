@@ -3999,3 +3999,15 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
     text-decoration: none;
     display: grid;
 }
+
+/* Hide header cart everywhere for now */
+.header-section .w-commerce-commercecartwrapper,
+.header-section .cart,
+.header-section .cart-button,
+.header-section .hamburger-trigger-with-cart .w-commerce-commercecartwrapper,
+.header-section .hamburger-trigger-with-cart .cart {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
