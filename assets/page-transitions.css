@@ -12,7 +12,7 @@
   pointer-events: all;
   opacity: 1;
   visibility: visible;
-  transition: opacity .35s ease, visibility .35s ease;
+  transition: opacity .65s cubic-bezier(.16, 1, .3, 1), visibility .65s cubic-bezier(.16, 1, .3, 1);
   contain: layout style paint;
 }
 
@@ -52,7 +52,7 @@
 .transition-brand {
   position: relative;
   z-index: 4;
-  display: grid;
+  display: none;
   gap: 14px;
   place-items: center;
   color: #fff;
@@ -60,6 +60,7 @@
 }
 
 .transition-logo-img {
+  display: none !important;
   width: min(220px, 58vw);
   height: auto;
   object-fit: contain;

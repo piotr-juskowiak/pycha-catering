@@ -2104,16 +2104,16 @@ img.about-leaf.about-leaf-left {
     }
 
     .header-section .hamburger-trigger {
-        width: 46px !important;
-        height: 46px !important;
-        padding: 7px !important;
+        width: 48px !important;
+        height: 48px !important;
+        padding: 6px !important;
         border: 1px solid rgba(21, 58, 25, 0.08) !important;
         border-radius: 50% !important;
         background: #fffdf4 !important;
         box-shadow: 0 10px 24px rgba(25, 50, 23, 0.12) !important;
         justify-content: center !important;
         align-items: center !important;
-        overflow: visible !important;
+        overflow: hidden !important;
     }
 
     .header-section .hamburger-trigger.w--open {
@@ -2122,16 +2122,18 @@ img.about-leaf.about-leaf-left {
     }
 
     .header-section .hamburger-lottie-animation {
-        width: 32px !important;
-        height: 32px !important;
-        overflow: visible !important;
+        width: 36px !important;
+        height: 36px !important;
+        overflow: hidden !important;
+        line-height: 0 !important;
     }
 
     .header-section .hamburger-lottie-animation svg,
     .header-section .hamburger-lottie-animation canvas {
-        width: 32px !important;
-        height: 32px !important;
-        overflow: visible !important;
+        display: block !important;
+        width: 36px !important;
+        height: 36px !important;
+        overflow: hidden !important;
     }
 }
 
@@ -2719,18 +2721,15 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     --pycha-cta-green: #78a44f;
     --pycha-cta-green-hover: #5a7c3b;
     --pycha-cta-striped-background:
-        radial-gradient(circle at 6.75px 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        radial-gradient(circle at calc(100% - 6.75px) 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 0 / calc(100% - 13.5px) 13.5px no-repeat,
-        radial-gradient(circle at 6.75px 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        radial-gradient(circle at calc(100% - 6.75px) 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 13.5px / calc(100% - 13.5px) 13.5px no-repeat,
-        radial-gradient(circle at 6.75px 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        radial-gradient(circle at calc(100% - 6.75px) 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 27px / calc(100% - 13.5px) 13.5px no-repeat,
-        radial-gradient(circle at 6.75px 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        radial-gradient(circle at calc(100% - 6.75px) 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 40.5px / calc(100% - 13.5px) 13.5px no-repeat;
+        radial-gradient(circle at 9px 9px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        radial-gradient(circle at calc(100% - 9px) 9px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 0 / calc(100% - 18px) 18px no-repeat,
+        radial-gradient(circle at 9px 27px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        radial-gradient(circle at calc(100% - 9px) 27px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 18px / calc(100% - 18px) 18px no-repeat,
+        radial-gradient(circle at 9px 45px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        radial-gradient(circle at calc(100% - 9px) 45px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+        linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 36px / calc(100% - 18px) 18px no-repeat;
 }
 
 .pramiry-btn,
@@ -2801,12 +2800,16 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 .pramiry-btn .main-button-bg-line-wrap,
 .pramiry-btn .main-button-bg-line-wrap.small,
 .pramiry-btn .main-button-bg-line-wrap.button-white {
-    flex: 1 1 25% !important;
-    height: 25% !important;
+    flex: 1 1 33.333% !important;
+    height: 33.333% !important;
     min-height: 0 !important;
     visibility: visible !important;
     border-radius: 999px !important;
     background-color: var(--pycha-unified-button-bg) !important;
+}
+
+.pramiry-btn .main-button-bg-line-wrap:nth-child(n+4) {
+    display: none !important;
 }
 
 .pramiry-btn .main-button-bg-line-left,
@@ -2942,5 +2945,224 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
         display: block !important;
         flex: 1 1 auto !important;
         text-align: left !important;
+    }
+}
+
+/* Unified contact info cards */
+.contact-info-section .contact-info-wrapper {
+    gap: 22px !important;
+    align-items: stretch !important;
+}
+
+.contact-info-section .contact-info-box,
+.contact-info-section .contact-info-box.color-one,
+.contact-info-section .contact-info-box.color-two,
+.contact-info-section .contact-info-box.color-three {
+    min-height: 138px !important;
+    padding: 30px 26px !important;
+    border: 1px solid rgba(74, 122, 49, 0.16) !important;
+    border-radius: 18px !important;
+    background: #eef7e8 !important;
+    box-shadow: 0 16px 36px rgba(11, 37, 12, 0.08) !important;
+    text-align: center !important;
+}
+
+.contact-info-section .contact-info-box:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 20px 44px rgba(11, 37, 12, 0.11) !important;
+}
+
+.contact-info-section .contact-info-tag {
+    color: #0b250c !important;
+    font-family: 'Baloo 2', 'Rubik', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+    text-transform: none !important;
+}
+
+.contact-info-section .contact-info-text,
+.contact-info-section .contact-info-text-link {
+    color: #6fa64f !important;
+    font-family: 'Baloo 2', 'Rubik', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    overflow-wrap: anywhere !important;
+}
+
+@media (max-width: 767px) {
+    .contact-info-section .contact-info-wrapper {
+        gap: 14px !important;
+    }
+
+    .contact-info-section .contact-info-box,
+    .contact-info-section .contact-info-box.color-one,
+    .contact-info-section .contact-info-box.color-two,
+    .contact-info-section .contact-info-box.color-three {
+        min-height: 118px !important;
+        padding: 24px 18px !important;
+        border-radius: 16px !important;
+    }
+
+    .contact-info-section .contact-info-text,
+    .contact-info-section .contact-info-text-link {
+        font-size: 20px !important;
+    }
+}
+
+/* Contact form polish */
+.contact-form-section .contact-form-wrapper,
+.contact-form-section .contact-form-wrapper.reveal-up {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    padding: 18px !important;
+    border: 1px solid rgba(74, 122, 49, .14) !important;
+    border-radius: 28px !important;
+    background: #fff7e6 !important;
+    box-shadow: 0 24px 54px rgba(11, 37, 12, .09) !important;
+}
+
+.contact-form-section .contact-form-main-box {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    overflow: visible !important;
+}
+
+.contact-form-section .contact-form-box {
+    width: 100% !important;
+    padding: 42px 40px !important;
+    border: 1px solid rgba(74, 122, 49, .12) !important;
+    border-radius: 22px !important;
+    background: #ffffff !important;
+    box-shadow: 0 14px 34px rgba(11, 37, 12, .06) !important;
+}
+
+.contact-form-section .contact-form-field-box {
+    gap: 22px 18px !important;
+    margin-bottom: 22px !important;
+}
+
+.contact-form-section .contact-form-field,
+.contact-form-section .contact-form-text-field-box-two {
+    gap: 10px !important;
+}
+
+.contact-form-section .contact-form-text-field-box-two {
+    margin-top: 0 !important;
+}
+
+.contact-form-section .contact-form-title {
+    color: #0b250c !important;
+    font-family: 'Baloo 2', 'Rubik', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+}
+
+.contact-form-section .contact-form-text-field,
+.contact-form-section .contact-form-text-field-two {
+    width: 100% !important;
+    border: 1px solid rgba(11, 37, 12, .14) !important;
+    border-radius: 14px !important;
+    background: #fffdf8 !important;
+    color: #0b250c !important;
+    font-family: 'Rubik', sans-serif !important;
+    font-size: 16px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85) !important;
+}
+
+.contact-form-section .contact-form-text-field {
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 18px !important;
+}
+
+.contact-form-section .contact-form-text-field-two {
+    min-height: 142px !important;
+    padding: 18px !important;
+    line-height: 1.55 !important;
+    resize: vertical !important;
+}
+
+.contact-form-section .contact-form-text-field:focus,
+.contact-form-section .contact-form-text-field-two:focus {
+    border-color: #78a44f !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(120, 164, 79, .14) !important;
+    outline: none !important;
+}
+
+.contact-form-section .contact-form-submit-btn {
+    min-height: 54px !important;
+    margin-top: 18px !important;
+}
+
+.contact-form-section .contact-form-image {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+}
+
+.contact-form-section .contact-form-img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+@media (max-width: 991px) {
+    .contact-form-section .contact-form-wrapper,
+    .contact-form-section .contact-form-wrapper.reveal-up {
+        grid-template-columns: minmax(0, 1fr) !important;
+        padding: 14px !important;
+        border-radius: 24px !important;
+    }
+
+    .contact-form-section .contact-form-image {
+        min-height: 320px !important;
+        border-radius: 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-form-section .contact-form-wrapper,
+    .contact-form-section .contact-form-wrapper.reveal-up {
+        display: block !important;
+        padding: 12px !important;
+        overflow: visible !important;
+        border-radius: 22px !important;
+    }
+
+    .contact-form-section .contact-form-box {
+        padding: 24px 20px !important;
+        border-radius: 18px !important;
+    }
+
+    .contact-form-section .contact-form-field-box {
+        gap: 18px !important;
+    }
+
+    .contact-form-section .contact-form-text-field-two {
+        resize: none !important;
     }
 }

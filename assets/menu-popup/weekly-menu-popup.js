@@ -40,6 +40,64 @@
   const weeklyMenu = window.PYCHA_MENU_DATA.weeklyMenu;
   
   const sandwiches = window.PYCHA_MENU_DATA.sandwiches;
+
+  function parseWeekDate(dateText, fallbackYear) {
+    const match = String(dateText || '').trim().match(/(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?/);
+    if (!match) return null;
+
+    const day = parseInt(match[1], 10);
+    const month = parseInt(match[2], 10) - 1;
+    let year = match[3] ? parseInt(match[3], 10) : fallbackYear;
+
+    if (year < 100) year += 2000;
+    if (Number.isNaN(day) || Number.isNaN(month) || Number.isNaN(year)) return null;
+
+    const parsedDate = new Date(year, month, day);
+    return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+  }
+
+  function parseWeekRange(label, fallbackYear) {
+    const parts = String(label || '').split(/\s*(?:-|–|—|do)\s*/i);
+    if (parts.length < 2) return null;
+
+    const start = parseWeekDate(parts[0], fallbackYear);
+    if (!start) return null;
+
+    const end = parseWeekDate(parts[1], start.getFullYear());
+    if (!end) return null;
+
+    if (end < start) {
+      end.setFullYear(end.getFullYear() + 1);
+    }
+
+    start.setHours(0, 0, 0, 0);
+    end.setHours(23, 59, 59, 999);
+
+    return { start, end };
+  }
+
+  function getCurrentWeekIndex(referenceDate = new Date()) {
+    const today = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate());
+    const ranges = WEEKS.map((weekName, index) => ({
+      index,
+      range: parseWeekRange(WEEK_LABELS[weekName], today.getFullYear()),
+    })).filter((entry) => entry.range);
+
+    const activeRange = ranges.find(({ range }) => today >= range.start && today <= range.end);
+    if (activeRange) return activeRange.index;
+
+    const nextRange = ranges.find(({ range }) => today < range.start);
+    if (nextRange) return nextRange.index;
+
+    return ranges.length ? ranges[ranges.length - 1].index : 0;
+  }
+
+  function getCurrentDayIndex(referenceDate = new Date()) {
+    const dayIndex = referenceDate.getDay() - 1;
+    if (dayIndex < 0) return 0;
+    if (dayIndex >= DAYS_ORDER.length) return DAYS_ORDER.length - 1;
+    return dayIndex;
+  }
   
   /* ─── SVG icons ─────────────────────────────────────────── */
   const svgCalendar = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
@@ -313,6 +371,14 @@
       }
     }
 
+    function resetToCurrentWeek() {
+      const now = new Date();
+      activeWeekIdx = getCurrentWeekIndex(now);
+      activeDayIdx = getCurrentDayIndex(now);
+      activeCat = CAT_ORDER[0];
+      normalizeActiveCat();
+    }
+
     /* ── Full re-render of the modal contents ────────────── */
     function fullRender() {
       normalizeActiveCat();
@@ -432,6 +498,7 @@
       document.body.classList.add('modal-open');
       isOpen = true;
 
+      resetToCurrentWeek();
       fullRender();
 
       const doOpen = () => {

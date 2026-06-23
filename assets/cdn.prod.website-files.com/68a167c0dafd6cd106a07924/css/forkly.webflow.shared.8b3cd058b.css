@@ -10176,22 +10176,27 @@ blockquote {
 @media screen and (max-width: 991px) {
   .header-section .hamburger-trigger,
   .hamburger-trigger {
-    overflow: visible !important;
+    width: 48px !important;
+    height: 48px !important;
+    padding: 6px !important;
+    overflow: hidden !important;
   }
 
   .header-section .hamburger-lottie-animation,
   .hamburger-lottie-animation {
-    width: 32px !important;
-    height: 32px !important;
-    overflow: visible !important;
+    width: 36px !important;
+    height: 36px !important;
+    overflow: hidden !important;
+    line-height: 0 !important;
   }
 
   .header-section .hamburger-lottie-animation svg,
   .header-section .hamburger-lottie-animation canvas,
   .hamburger-lottie-animation svg,
   .hamburger-lottie-animation canvas {
-    width: 32px !important;
-    height: 32px !important;
-    overflow: visible !important;
+    display: block !important;
+    width: 36px !important;
+    height: 36px !important;
+    overflow: hidden !important;
   }
 }

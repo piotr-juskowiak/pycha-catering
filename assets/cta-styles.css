@@ -1598,18 +1598,15 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
   --pycha-cta-green: #78a44f;
   --pycha-cta-green-hover: #5a7c3b;
   --pycha-cta-striped-background:
-    radial-gradient(circle at 6.75px 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    radial-gradient(circle at calc(100% - 6.75px) 6.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 0 / calc(100% - 13.5px) 13.5px no-repeat,
-    radial-gradient(circle at 6.75px 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    radial-gradient(circle at calc(100% - 6.75px) 20.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 13.5px / calc(100% - 13.5px) 13.5px no-repeat,
-    radial-gradient(circle at 6.75px 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    radial-gradient(circle at calc(100% - 6.75px) 33.75px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 27px / calc(100% - 13.5px) 13.5px no-repeat,
-    radial-gradient(circle at 6.75px 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    radial-gradient(circle at calc(100% - 6.75px) 47.25px, var(--pycha-unified-button-bg) 0 6.75px, transparent 7px),
-    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 6.75px 40.5px / calc(100% - 13.5px) 13.5px no-repeat;
+    radial-gradient(circle at 9px 9px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    radial-gradient(circle at calc(100% - 9px) 9px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 0 / calc(100% - 18px) 18px no-repeat,
+    radial-gradient(circle at 9px 27px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    radial-gradient(circle at calc(100% - 9px) 27px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 18px / calc(100% - 18px) 18px no-repeat,
+    radial-gradient(circle at 9px 45px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    radial-gradient(circle at calc(100% - 9px) 45px, var(--pycha-unified-button-bg) 0 9px, transparent 9.25px),
+    linear-gradient(var(--pycha-unified-button-bg), var(--pycha-unified-button-bg)) 9px 36px / calc(100% - 18px) 18px no-repeat;
 }
 
 .pramiry-btn,
@@ -1680,12 +1677,16 @@ a.pramiry-btn[href="#zamow-catering"] .main-button-bg-line-right {
 .pramiry-btn .main-button-bg-line-wrap,
 .pramiry-btn .main-button-bg-line-wrap.small,
 .pramiry-btn .main-button-bg-line-wrap.button-white {
-  flex: 1 1 25% !important;
-  height: 25% !important;
+  flex: 1 1 33.333% !important;
+  height: 33.333% !important;
   min-height: 0 !important;
   visibility: visible !important;
   border-radius: 999px !important;
   background-color: var(--pycha-unified-button-bg) !important;
+}
+
+.pramiry-btn .main-button-bg-line-wrap:nth-child(n+4) {
+  display: none !important;
 }
 
 .pramiry-btn .main-button-bg-line-left,

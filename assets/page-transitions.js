@@ -1,8 +1,5 @@
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const scriptUrl = document.currentScript ? document.currentScript.src : "";
-  const assetBase = scriptUrl ? new URL(".", scriptUrl).href : "/assets/";
-  const logoSrc = new URL("pycha-logo-transparent.png", assetBase).href;
 
   const runWhenBodyExists = (callback) => {
     if (document.body) {
@@ -47,10 +44,6 @@
       <div class="transition-circle transition-circle-1"></div>
       <div class="transition-circle transition-circle-2"></div>
       <div class="transition-circle transition-circle-3"></div>
-      <div class="transition-brand">
-        <img src="${logoSrc}" alt="Pycha Catering" class="transition-logo-img" />
-        <span class="transition-brand-mark" aria-hidden="true"></span>
-      </div>
     `;
 
     return {
@@ -60,7 +53,6 @@
         overlay.querySelector(".transition-circle-2"),
         overlay.querySelector(".transition-circle-3"),
       ],
-      brand: overlay.querySelector(".transition-brand"),
     };
   };
 
@@ -71,7 +63,7 @@
     });
   };
 
-  const playEnter = ({ overlay, circles, brand }) => {
+  const playEnter = ({ overlay, circles }) => {
     if (reduceMotion) {
       overlay.classList.remove("active");
       return;
@@ -79,34 +71,25 @@
 
     overlay.classList.add("active");
     setCircleScale(circles, 1);
-    brand.style.opacity = "1";
-    brand.style.transform = "translate3d(0, 0, 0) scale(1)";
 
     requestAnimationFrame(() => {
       const circleAnimations = [circles[2], circles[1], circles[0]].map((circle, index) => animate(circle, [
         { transform: "scale(1)", opacity: "1" },
-        { transform: "scale(.04)", opacity: "1", offset: .78 },
+        { transform: "scale(.18)", opacity: "1", offset: .64 },
+        { transform: "scale(.04)", opacity: ".82", offset: .9 },
         { transform: "scale(0)", opacity: "0" },
       ], {
-        duration: 980,
-        delay: index * 110,
+        duration: 1500,
+        delay: index * 155,
       }));
 
-      const brandAnimation = animate(brand, [
-        { opacity: "1", transform: "translate3d(0, 0, 0) scale(1)" },
-        { opacity: "0", transform: "translate3d(0, -16px, 0) scale(.94)" },
-      ], {
-        duration: 520,
-        delay: 260,
-      });
-
-      Promise.all([...circleAnimations, brandAnimation]).then(() => {
+      Promise.all(circleAnimations).then(() => {
         overlay.classList.remove("active");
       });
     });
   };
 
-  const playExit = ({ overlay, circles, brand }, href) => {
+  const playExit = ({ overlay, circles }, href) => {
     if (reduceMotion) {
       window.location.href = href;
       return;
@@ -114,28 +97,19 @@
 
     overlay.classList.add("active");
     setCircleScale(circles, 0);
-    brand.style.opacity = "0";
-    brand.style.transform = "translate3d(0, 14px, 0) scale(.96)";
 
     requestAnimationFrame(() => {
       const circleAnimations = [circles[0], circles[1], circles[2]].map((circle, index) => animate(circle, [
         { transform: "scale(0)", opacity: "1" },
-        { transform: "scale(1.04)", opacity: "1" },
+        { transform: "scale(.2)", opacity: "1", offset: .32 },
+        { transform: "scale(1.035)", opacity: "1", offset: .86 },
         { transform: "scale(1)", opacity: "1" },
       ], {
-        duration: 780,
-        delay: index * 95,
+        duration: 1180,
+        delay: index * 135,
       }));
 
-      const brandAnimation = animate(brand, [
-        { opacity: "0", transform: "translate3d(0, 14px, 0) scale(.96)" },
-        { opacity: "1", transform: "translate3d(0, 0, 0) scale(1)" },
-      ], {
-        duration: 420,
-        delay: 380,
-      });
-
-      Promise.all([...circleAnimations, brandAnimation]).then(() => {
+      Promise.all(circleAnimations).then(() => {
         window.location.href = href;
       });
     });
