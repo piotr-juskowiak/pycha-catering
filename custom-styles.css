@@ -3417,3 +3417,13 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     background: var(--pycha-cta-hover-striped-background) !important;
     background-size: var(--pycha-cta-hover-striped-size) !important;
 }
+
+@media (max-width: 767px) {
+    .products-redesign {
+        background-color: #618c49 !important;
+        background-image: url('assets/optimized-images/mobile-company-menu-bg.png') !important;
+        background-size: 360px auto !important;
+        background-position: top center !important;
+        background-repeat: repeat !important;
+    }
+}
