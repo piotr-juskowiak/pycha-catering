@@ -3420,10 +3420,10 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 
 @media (max-width: 767px) {
     .products-redesign {
-        background-color: #618c49 !important;
-        background-image: url('assets/optimized-images/mobile-company-menu-bg.png') !important;
-        background-size: 360px auto !important;
+        background-color: #8faa72 !important;
+        background-image: url('assets/optimized-images/mobile-company-menu-bg-v2.webp') !important;
+        background-size: max(100vw, 480px) auto !important;
         background-position: top center !important;
-        background-repeat: repeat !important;
+        background-repeat: repeat-y !important;
     }
 }
