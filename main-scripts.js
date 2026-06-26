@@ -504,11 +504,14 @@ let interactiveTimeline = null;
       closeTl.to(card, { y: -40, scale: 0.9, opacity: 0, rotationX: 10, duration: 0.3, ease: "power3.in" });
       closeTl.to(overlay, { opacity: 0, backdropFilter: "blur(0px)", duration: 0.3, ease: "power2.inOut" }, "-=0.2");
     }
-    document.getElementById("interactive-menu-overlay").addEventListener("click", function (e) {
-      if (e.target === this) {
-        closeInteractiveMenu();
-      }
-    });
+    const interactiveOverlay = document.getElementById("interactive-menu-overlay");
+    if (interactiveOverlay) {
+      interactiveOverlay.addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeInteractiveMenu();
+        }
+      });
+    }
 
     function initProductsFilter() {
       const productsSection = document.querySelector(".products-redesign");
