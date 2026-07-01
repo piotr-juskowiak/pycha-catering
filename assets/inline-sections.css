@@ -257,14 +257,15 @@
   transform: translateY(-1px);
 }
 
-.pycha-site-footer__socials .fa-brands {
+.pycha-site-footer__social-icon {
   display: block;
-  font-size: 18px;
-  line-height: 1;
+  width: 18px;
+  height: 18px;
 }
 
-.pycha-site-footer__social-link--facebook .fa-brands {
-  font-size: 17px;
+.pycha-site-footer__social-link--facebook .pycha-site-footer__social-icon {
+  width: 17px;
+  height: 17px;
 }
 
 .pycha-site-footer__contact a,
@@ -555,12 +556,14 @@
   color: #315920;
 }
 
-.pycha-site-footer__socials .fa-brands {
-  font-size: 18px;
+.pycha-site-footer__social-icon {
+  width: 18px;
+  height: 18px;
 }
 
-.pycha-site-footer__social-link--facebook .fa-brands {
-  font-size: 17px;
+.pycha-site-footer__social-link--facebook .pycha-site-footer__social-icon {
+  width: 17px;
+  height: 17px;
 }
 
 .pycha-site-footer__main {
