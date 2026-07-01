@@ -699,7 +699,7 @@ html.weekly-popup-snapshot .catering-modal {
   border: 1px solid var(--pc-border-subtle);
   border-radius: var(--pc-radius-lg);
   box-shadow: 0 8px 32px rgba(33, 45, 27, 0.05);
-  padding: 56px 64px;
+  padding: 56px 0 56px 0;
   min-height: 560px;
   display: flex;
   gap: 0;
@@ -713,8 +713,8 @@ html.weekly-popup-snapshot .catering-modal {
 .wmp-list-col {
   flex: 1 1 auto;
   min-width: 0;
-  padding-right: 48px;
-  max-width: 75%;
+  padding-right: 36px;
+  max-width: 62%;
   position: relative;
   z-index: 2;
 }
@@ -786,7 +786,7 @@ html.weekly-popup-snapshot .catering-modal {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 16px 12px;
+  padding: 16px 12px 16px 0;
   margin-bottom: 8px;
   background: transparent;
   border-bottom: 1px solid rgba(93, 168, 73, 0.08);
@@ -807,8 +807,8 @@ html.weekly-popup-snapshot .catering-modal {
   background: rgba(93, 168, 73, 0.03);
   border-radius: 12px;
   border-bottom-color: transparent;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 8px;
+  padding-right: 14px;
 }
 
 .wmp-item-num {
@@ -903,7 +903,7 @@ html.weekly-popup-snapshot .catering-modal {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -920,8 +920,8 @@ html.weekly-popup-snapshot .catering-modal {
   object-position: center;
   display: block;
   /* Smoothly blend the left edge of the photo into the card background */
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 100%);
   transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -953,9 +953,9 @@ html.weekly-popup-snapshot .catering-modal {
 @media (max-width: 1600px) {
   .catering-modal { width: 95vw; min-height: 780px; }
   .wmp-main { padding: 52px 52px 40px; }
-  .wmp-content-card { padding: 48px 52px; min-height: 520px; }
-  .wmp-photo-col { width: 28%; }
-  .wmp-list-col { max-width: 76%; }
+  .wmp-content-card { padding: 48px 0; min-height: 520px; }
+  .wmp-photo-col { width: 40%; }
+  .wmp-list-col { max-width: 62%; padding-right: 34px; }
 }
 
 @media (max-width: 1400px) {
@@ -965,18 +965,18 @@ html.weekly-popup-snapshot .catering-modal {
   .wmp-avatar { width: 140px; height: 140px; flex: 0 0 140px; }
   .wmp-avatar-laurel { width: 200px; height: 200px; }
   .wmp-main { padding: 44px 44px 32px; }
-  .wmp-content-card { padding: 40px 44px; min-height: 480px; }
-  .wmp-photo-col { width: 26%; }
-  .wmp-list-col { max-width: 78%; padding-right: 32px; }
+  .wmp-content-card { padding: 40px 0; min-height: 480px; }
+  .wmp-photo-col { width: 38%; }
+  .wmp-list-col { max-width: 64%; padding-right: 30px; }
 }
 
 @media (max-width: 1200px) {
   .catering-modal { width: 97vw; min-height: 660px; }
   :root { --sidebar-w: 280px; }
   .wmp-main { padding: 36px 36px 28px; }
-  .wmp-content-card { padding: 32px 36px; min-height: 440px; }
-  .wmp-photo-col { width: 24%; }
-  .wmp-list-col { max-width: 80%; padding-right: 24px; }
+  .wmp-content-card { padding: 32px 0; min-height: 440px; }
+  .wmp-photo-col { width: 36%; }
+  .wmp-list-col { max-width: 66%; padding-right: 24px; }
   .catering-days { gap: 10px; }
 }
 
@@ -984,9 +984,9 @@ html.weekly-popup-snapshot .catering-modal {
   :root { --sidebar-w: 240px; }
   .wmp-sidebar { padding: 32px 20px 24px; }
   .wmp-main { padding: 28px 28px 22px; }
-  .wmp-photo-col { width: 20%; }
-  .wmp-list-col { max-width: 84%; padding-right: 18px; }
-  .wmp-content-card { padding: 26px 28px; min-height: 400px; }
+  .wmp-photo-col { width: 30%; }
+  .wmp-list-col { max-width: 72%; padding-right: 18px; }
+  .wmp-content-card { padding: 26px 0; min-height: 400px; }
   .wmp-avatar { width: 110px; height: 110px; flex: 0 0 110px; }
   .wmp-avatar-laurel { width: 160px; height: 160px; }
   .catering-days { gap: 8px; }

@@ -33,13 +33,13 @@
   const TOTAL_WEEKS = WEEKS.length;
   const DAYS_ORDER  = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   const DAYS_SHORT  = { 'Poniedziałek': 'Pon', 'Wtorek': 'Wt', 'Środa': 'Śr', 'Czwartek': 'Czw', 'Piątek': 'Pt' };
-  const CAT_ORDER   = ['Dania mięsne', 'Dania wege', 'Zupy', 'Mączne', 'Desery', 'Sałatki', 'Makaron', 'Stałe codziennie'];
+  const CAT_ORDER   = ['Dania mięsne', 'Dania wege', 'Zupy', 'Mączne', 'Desery', 'Sałatki', 'Makaron', 'Stałe codziennie', 'Kanapki'];
   const SANDWICHES_KEY = 'Kanapki';
 
   /* ─── Menu data ───────────────────────────────────────── */
   const weeklyMenu = window.PYCHA_MENU_DATA.weeklyMenu;
   
-  const sandwiches = window.PYCHA_MENU_DATA.sandwiches;
+  const sandwiches = [];
 
   function parseWeekDate(dateText, fallbackYear) {
     const match = String(dateText || '').trim().match(/(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?/);
@@ -167,6 +167,7 @@
   function getAvailableCats(weekName, dayName) {
     const dayData = ((weeklyMenu[weekName] || {})[dayName]) || {};
     return CAT_ORDER.filter(cat => {
+      if (cat === SANDWICHES_KEY) return true;
       const items = dayData[cat];
       return Array.isArray(items) && items.length > 0;
     });

@@ -639,14 +639,7 @@ window.PYCHA_MENU_DATA.weeklyMenu = {
     }
   };
 
-window.PYCHA_MENU_DATA.sandwiches = [
-    "Tuńczyk z kukurydzą z majonezem",
-    "Pulled Pork BBQ, piklowana cebula, ogórek po tajsku",
-    "A la Cezar",
-    "Krewetki Mary Rose, Sałata, Kiełki",
-    "Bajgiel z łososiem",
-    "Kurczak teriyaki z ogórkiem z cebulą"
-  ];
+window.PYCHA_MENU_DATA.sandwiches = [];
 
 window.PYCHA_MENU_DATA.categoryPhotos = {
     'Dania mięsne':     `danie_miesne_1781601930040.png`,
