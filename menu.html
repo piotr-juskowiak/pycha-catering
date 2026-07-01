@@ -1260,7 +1260,14 @@ window.addEventListener('resize', () => {
 </div>
 </div>
 </div>
-<div class="weekly-menu-week-tabs" id="weeklyMenuWeekTabs" aria-label="Wybór tygodnia"></div>
+<div class="weekly-menu-controls" aria-label="Sterowanie menu tygodniowym">
+<div class="weekly-menu-week-tabs" id="weeklyMenuWeekTabs" role="tablist" aria-label="Wybór tygodnia"></div>
+<div class="weekly-menu-filter-panel">
+<div class="weekly-menu-filter-label">Kategorie</div>
+<div class="weekly-menu-filter-scroll" id="weeklyMenuCategoryFilters" aria-label="Filtr kategorii"></div>
+<button class="weekly-menu-filter-reset" id="weeklyMenuFilterReset" type="button" hidden>Wyczyść</button>
+</div>
+</div>
 <div class="weekly-menu-grid" id="weeklyMenuGrid" aria-live="polite"></div>
 </div>
 </div>
