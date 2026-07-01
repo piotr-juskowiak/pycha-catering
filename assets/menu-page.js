@@ -1,5 +1,12 @@
 (function () {
   const dayOrder = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"];
+  const dayShort = {
+    "Poniedziałek": "Pon",
+    "Wtorek": "Wt",
+    "Środa": "Śr",
+    "Czwartek": "Czw",
+    "Piątek": "Pt",
+  };
   const categoryOrder = [
     "Dania mięsne",
     "Dania wege",
@@ -32,6 +39,14 @@
   }
 
   function parseDish(rawDish) {
+    if (rawDish && typeof rawDish === "object") {
+      return {
+        name: String(rawDish.name || rawDish.title || "").trim(),
+        price: String(rawDish.price || "").trim(),
+        weight: String(rawDish.weight || "").trim(),
+      };
+    }
+
     const text = String(rawDish || "").replace(/\s+/g, " ").trim();
     const match = text.match(/^(\d+(?:[,.]\d{1,2})?)\s*zł\s+(.+)$/i);
 
@@ -42,6 +57,7 @@
     return {
       name: match[2].trim(),
       price: `${match[1].replace(".", ",")} zł`,
+      weight: "",
     };
   }
 
@@ -58,6 +74,7 @@
 
   function renderCategory(category, dishes, icons) {
     const block = createElement("section", "weekly-category-block");
+    const header = createElement("div", "weekly-category-header");
     const title = createElement("h4", "weekly-category-title");
     const iconSrc = icons[category] || fallbackIcons[category];
 
@@ -70,8 +87,11 @@
       title.appendChild(icon);
     }
 
-    title.appendChild(document.createTextNode(category));
-    block.appendChild(title);
+    const titleText = createElement("span", "weekly-category-title-text", category);
+    title.appendChild(titleText);
+    header.appendChild(title);
+    header.appendChild(createElement("span", "weekly-category-count", `${dishes.length}`));
+    block.appendChild(header);
 
     const list = createElement("ul", "weekly-dish-list");
     dishes.forEach((dish) => {
@@ -79,10 +99,17 @@
       if (!parsed.name) return;
 
       const item = createElement("li", "weekly-dish-item");
-      item.appendChild(createElement("span", "weekly-dish-name", parsed.name));
+      const copy = createElement("span", "weekly-dish-copy");
+      copy.appendChild(createElement("span", "weekly-dish-name", parsed.name));
+      if (parsed.weight) {
+        copy.appendChild(createElement("span", "weekly-dish-weight", parsed.weight));
+      }
+      item.appendChild(copy);
 
       if (parsed.price) {
         item.appendChild(createElement("span", "weekly-dish-price", parsed.price));
+      } else {
+        item.appendChild(createElement("span", "weekly-dish-price weekly-dish-price-empty", ""));
       }
 
       list.appendChild(item);
@@ -95,18 +122,31 @@
   function renderDay(dayName, dayData, icons) {
     const card = createElement("article", "weekly-day-card");
     const header = createElement("div", "weekly-day-header");
-    const title = createElement("h3", "weekly-day-name", dayName);
     const dishCount = countDishes(dayData);
-    const count = createElement("span", "weekly-day-count", `${dishCount} dań`);
+    const categories = orderedCategories(dayData);
+    const dayLabel = createElement("div", "weekly-day-label");
+    const dayBadge = createElement("span", "weekly-day-short", dayShort[dayName] || dayName.slice(0, 3));
+    const title = createElement("h3", "weekly-day-name", dayName);
+    const meta = createElement("div", "weekly-day-meta");
+    meta.appendChild(createElement("span", "", `${dishCount} dań`));
+    meta.appendChild(createElement("span", "", `${categories.length} kategorii`));
 
-    header.appendChild(title);
-    header.appendChild(count);
+    dayLabel.appendChild(dayBadge);
+    dayLabel.appendChild(title);
+
+    header.appendChild(dayLabel);
+    header.appendChild(meta);
     card.appendChild(header);
 
     const body = createElement("div", "weekly-day-body");
-    orderedCategories(dayData).forEach((category) => {
+    categories.forEach((category) => {
       body.appendChild(renderCategory(category, dayData[category], icons));
     });
+
+    if (!categories.length) {
+      body.appendChild(createElement("p", "weekly-day-empty", "Menu na ten dzień pojawi się wkrótce."));
+    }
+
     card.appendChild(body);
 
     return card;
