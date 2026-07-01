@@ -257,11 +257,14 @@
   transform: translateY(-1px);
 }
 
-.pycha-site-footer__socials svg {
+.pycha-site-footer__socials .fa-brands {
   display: block;
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.pycha-site-footer__social-link--facebook .fa-brands {
+  font-size: 17px;
 }
 
 .pycha-site-footer__contact a,
@@ -552,9 +555,12 @@
   color: #315920;
 }
 
-.pycha-site-footer__socials svg {
-  width: 18px;
-  height: 18px;
+.pycha-site-footer__socials .fa-brands {
+  font-size: 18px;
+}
+
+.pycha-site-footer__social-link--facebook .fa-brands {
+  font-size: 17px;
 }
 
 .pycha-site-footer__main {
