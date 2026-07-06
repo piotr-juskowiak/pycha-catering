@@ -52,7 +52,7 @@
   function parseDish(rawDish) {
     if (rawDish && typeof rawDish === "object") {
       return {
-        name: String(rawDish.name || rawDish.title || "").trim(),
+        name: String(rawDish.name || rawDish.title || rawDish.label || rawDish.text || "").trim(),
         price: String(rawDish.price || "").trim(),
         weight: String(rawDish.weight || "").trim(),
       };
@@ -72,8 +72,15 @@
     };
   }
 
+  function normalizeDishes(dishes) {
+    return (Array.isArray(dishes) ? dishes : []).filter((dish) => {
+      const parsed = parseDish(dish);
+      return Boolean(parsed.name || parsed.price || parsed.weight);
+    });
+  }
+
   function getSandwiches(menuData) {
-    return Array.isArray(menuData && menuData.sandwiches) ? menuData.sandwiches : [];
+    return normalizeDishes(menuData && menuData.sandwiches);
   }
 
   function getCategoryDishes(dayData, category, sandwiches) {
@@ -83,7 +90,7 @@
       return sandwiches;
     }
 
-    return Array.isArray(dayItems) ? dayItems : [];
+    return normalizeDishes(dayItems);
   }
 
   function orderedCategories(dayData, activeCategory, sandwiches) {

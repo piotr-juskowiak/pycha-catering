@@ -713,10 +713,35 @@ html.weekly-popup-snapshot .catering-modal {
 .wmp-list-col {
   flex: 1 1 auto;
   min-width: 0;
+  min-height: 0;
   padding-right: 36px;
   max-width: 62%;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.wmp-items-list {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(63, 143, 53, 0.22) transparent;
+}
+
+.wmp-items-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wmp-items-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wmp-items-list::-webkit-scrollbar-thumb {
+  border-radius: var(--pc-radius-pill);
+  background: rgba(63, 143, 53, 0.22);
 }
 
 /* Category heading with icon */
