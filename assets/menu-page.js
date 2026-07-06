@@ -19,6 +19,7 @@
     "Stałe codziennie",
     "Kanapki",
   ];
+  const sandwichesCategory = "Kanapki";
 
   const categoryLabels = {
     all: "Wszystkie",
@@ -71,10 +72,23 @@
     };
   }
 
-  function orderedCategories(dayData, activeCategory) {
+  function getSandwiches(menuData) {
+    return Array.isArray(menuData && menuData.sandwiches) ? menuData.sandwiches : [];
+  }
+
+  function getCategoryDishes(dayData, category, sandwiches) {
+    const dayItems = dayData && dayData[category];
+
+    if (category === sandwichesCategory && Array.isArray(sandwiches) && sandwiches.length) {
+      return sandwiches;
+    }
+
+    return Array.isArray(dayItems) ? dayItems : [];
+  }
+
+  function orderedCategories(dayData, activeCategory, sandwiches) {
     const categories = categoryOrder.filter((category) => {
-      const items = dayData && dayData[category];
-      return Array.isArray(items) && items.length;
+      return getCategoryDishes(dayData, category, sandwiches).length;
     });
 
     const extraCategories = Object.keys(dayData || {}).filter((category) => {
@@ -87,23 +101,32 @@
     return allCategories.filter((category) => category === activeCategory);
   }
 
-  function countDishes(dayData, activeCategory) {
-    return orderedCategories(dayData, activeCategory).reduce((total, category) => total + dayData[category].length, 0);
+  function countDishes(dayData, activeCategory, sandwiches) {
+    return orderedCategories(dayData, activeCategory, sandwiches).reduce((total, category) => {
+      return total + getCategoryDishes(dayData, category, sandwiches).length;
+    }, 0);
   }
 
-  function getWeekCategoryCounts(weekData) {
+  function getWeekCategoryCounts(weekData, sandwiches) {
     const counts = {};
     let total = 0;
+    const sandwichCount = Array.isArray(sandwiches) ? sandwiches.length : 0;
 
     dayOrder.forEach((dayName) => {
       const dayData = weekData[dayName] || {};
       Object.keys(dayData).forEach((category) => {
+        if (category === sandwichesCategory && sandwichCount) return;
         const items = dayData[category];
         if (!Array.isArray(items) || !items.length) return;
         counts[category] = (counts[category] || 0) + items.length;
         total += items.length;
       });
     });
+
+    if (sandwichCount) {
+      counts[sandwichesCategory] = sandwichCount * dayOrder.length;
+      total += counts[sandwichesCategory];
+    }
 
     return { counts, total };
   }
@@ -152,10 +175,10 @@
     return block;
   }
 
-  function renderDay(dayName, dayData, icons, activeCategory) {
+  function renderDay(dayName, dayData, icons, activeCategory, sandwiches) {
     const card = createElement("article", "weekly-day-card");
-    const categories = orderedCategories(dayData, activeCategory);
-    const dishCount = countDishes(dayData, activeCategory);
+    const categories = orderedCategories(dayData, activeCategory, sandwiches);
+    const dishCount = countDishes(dayData, activeCategory, sandwiches);
     const header = createElement("div", "weekly-day-header");
     const dayLabel = createElement("div", "weekly-day-label");
     const meta = createElement("div", "weekly-day-meta");
@@ -171,7 +194,7 @@
 
     const body = createElement("div", "weekly-day-body");
     categories.forEach((category) => {
-      body.appendChild(renderCategory(category, dayData[category], icons));
+      body.appendChild(renderCategory(category, getCategoryDishes(dayData, category, sandwiches), icons));
     });
 
     if (!categories.length) {
@@ -225,8 +248,8 @@
     });
   }
 
-  function renderCategoryFilters(filters, resetButton, weekData, activeCategory, setCategory) {
-    const { counts, total } = getWeekCategoryCounts(weekData);
+  function renderCategoryFilters(filters, resetButton, weekData, activeCategory, setCategory, sandwiches) {
+    const { counts, total } = getWeekCategoryCounts(weekData, sandwiches);
     const categories = categoryOrder.filter((category) => counts[category]);
     const extras = Object.keys(counts).filter((category) => !categoryOrder.includes(category));
     const filterItems = ["all"].concat(categories, extras);
@@ -250,12 +273,12 @@
     resetButton.onclick = () => setCategory("all");
   }
 
-  function renderWeek(weeklyMenu, icons, weekName, grid, activeCategory) {
+  function renderWeek(weeklyMenu, icons, weekName, grid, activeCategory, sandwiches) {
     const weekData = weeklyMenu[weekName] || {};
     grid.textContent = "";
 
     dayOrder.forEach((dayName) => {
-      grid.appendChild(renderDay(dayName, weekData[dayName] || {}, icons, activeCategory));
+      grid.appendChild(renderDay(dayName, weekData[dayName] || {}, icons, activeCategory, sandwiches));
     });
   }
 
@@ -275,13 +298,14 @@
     }
 
     const icons = (menuData && menuData.catIcons) || fallbackIcons;
+    const sandwiches = getSandwiches(menuData);
     const weekNames = Object.keys(weeklyMenu);
     let activeWeek = weekNames[0];
     let activeCategory = "all";
 
     function setWeek(weekName) {
       activeWeek = weekName;
-      const { counts } = getWeekCategoryCounts(weeklyMenu[activeWeek] || {});
+      const { counts } = getWeekCategoryCounts(weeklyMenu[activeWeek] || {}, sandwiches);
       if (activeCategory !== "all" && !counts[activeCategory]) {
         activeCategory = "all";
       }
@@ -295,8 +319,8 @@
 
     function renderAll() {
       renderWeekTabs(tabs, weekNames, activeWeek, setWeek);
-      renderCategoryFilters(filters, resetButton, weeklyMenu[activeWeek] || {}, activeCategory, setCategory);
-      renderWeek(weeklyMenu, icons, activeWeek, grid, activeCategory);
+      renderCategoryFilters(filters, resetButton, weeklyMenu[activeWeek] || {}, activeCategory, setCategory, sandwiches);
+      renderWeek(weeklyMenu, icons, activeWeek, grid, activeCategory, sandwiches);
     }
 
     renderAll();

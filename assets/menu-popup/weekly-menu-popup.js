@@ -38,8 +38,9 @@
 
   /* ─── Menu data ───────────────────────────────────────── */
   const weeklyMenu = window.PYCHA_MENU_DATA.weeklyMenu;
-  
-  const sandwiches = [];
+  const sandwiches = Array.isArray(window.PYCHA_MENU_DATA.sandwiches)
+    ? window.PYCHA_MENU_DATA.sandwiches
+    : [];
 
   function parseWeekDate(dateText, fallbackYear) {
     const match = String(dateText || '').trim().match(/(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?/);
@@ -167,7 +168,7 @@
   function getAvailableCats(weekName, dayName) {
     const dayData = ((weeklyMenu[weekName] || {})[dayName]) || {};
     return CAT_ORDER.filter(cat => {
-      if (cat === SANDWICHES_KEY) return true;
+      if (cat === SANDWICHES_KEY) return sandwiches.length > 0;
       const items = dayData[cat];
       return Array.isArray(items) && items.length > 0;
     });
