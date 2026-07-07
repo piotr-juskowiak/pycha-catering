@@ -1078,6 +1078,18 @@ img.about-leaf.about-leaf-left {
     position: relative;
 }
 
+.home-hero-video {
+    overflow: hidden;
+}
+
+.home-hero-video video {
+    width: 112%;
+    height: 112%;
+    max-width: none;
+    object-fit: cover;
+    transform: translate(-5%, -6%);
+}
+
 .home-hero-title-btn-with-para.reveal-left {
     padding: 80px 60px;
 }
@@ -1608,8 +1620,9 @@ img.about-leaf.about-leaf-left {
     height: 100%;
     object-fit: cover;
     object-position: left center;
-    border-radius: 14px;
+    border-radius: 999px 8px 8px 999px;
     display: block;
+    clip-path: inset(0 round 999px 8px 8px 999px);
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
