@@ -5366,6 +5366,14 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
         linear-gradient(180deg, #f8f1d8 0%, #fff8e6 42%, #fffdf5 100%);
 }
 
+.menu-static.pycha-fade-item,
+.menu-static .pycha-fade-item,
+.menu-static.pycha-fade-item.is-waiting:not(.is-visible),
+.menu-static .pycha-fade-item.is-waiting:not(.is-visible) {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 .menu-static .menu-redesign-shell {
     gap: clamp(24px, 4vw, 42px);
 }

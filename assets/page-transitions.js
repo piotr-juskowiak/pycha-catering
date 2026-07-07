@@ -103,6 +103,7 @@
 
   const isFadeCandidate = (element) => {
     if (!(element instanceof HTMLElement)) return false;
+    if (element.closest("[data-static-menu-page]")) return false;
     if (element.closest(".page-transition-overlay, .catering-overlay, #interactive-menu-overlay, .w-commerce-commercecartcontainerwrapper")) return false;
     if (element.matches("script, style, link, meta, noscript, br")) return false;
     if (element.classList.contains("pycha-fade-item")) return false;
