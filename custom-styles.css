@@ -4455,26 +4455,42 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 
 .menu-filter-groups {
     display: grid;
-    gap: 12px;
+    gap: 10px;
 }
 
 .menu-filter-group {
-    border: 1px solid rgba(29, 43, 22, .08);
+    position: relative;
+    border: 0;
     border-radius: 8px;
-    background: #fffaf0;
+    background: transparent;
 }
 
 .menu-filter-group summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 46px;
-    padding: 12px 13px;
+    position: relative;
+    display: grid;
+    gap: 4px;
+    min-height: 58px;
+    padding: 11px 44px 11px 14px;
+    border: 1px solid rgba(29, 43, 22, .1);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, rgba(255, 253, 245, .98), rgba(255, 248, 230, .86));
     color: #102010;
-    font-size: 14px;
-    font-weight: 900;
+    box-shadow: 0 10px 24px rgba(16, 32, 16, .055);
     cursor: pointer;
     list-style: none;
+    transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.menu-filter-group summary:hover {
+    border-color: rgba(79, 127, 50, .24);
+    box-shadow: 0 14px 30px rgba(16, 32, 16, .08);
+}
+
+.menu-filter-group[open] summary {
+    border-color: rgba(79, 127, 50, .34);
+    background: #fffdf5;
+    box-shadow: 0 16px 34px rgba(16, 32, 16, .1);
 }
 
 .menu-filter-group summary::-webkit-details-marker {
@@ -4482,23 +4498,59 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 }
 
 .menu-filter-group summary::after {
-    content: "+";
-    color: #78a44f;
-    font-size: 18px;
-    line-height: 1;
+    content: "";
+    position: absolute;
+    top: 22px;
+    right: 18px;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #4f7f32;
+    border-bottom: 2px solid #4f7f32;
+    transform: rotate(45deg);
+    transition: transform .18s ease, top .18s ease;
 }
 
 .menu-filter-group[open] summary::after {
-    content: "−";
+    top: 26px;
+    transform: rotate(225deg);
+}
+
+.menu-filter-summary-label {
+    color: #6c7b61;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.menu-filter-current {
+    min-width: 0;
+    overflow: hidden;
+    color: #102010;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .menu-filter-options {
-    padding: 0 10px 12px;
+    padding: 8px 0 0;
+}
+
+.menu-filter-dropdown[open] .menu-filter-options {
+    animation: menuDropdownIn .18s ease both;
 }
 
 .menu-filter-stack {
     display: grid;
-    gap: 7px;
+    gap: 6px;
+    padding: 8px;
+    border: 1px solid rgba(29, 43, 22, .08);
+    border-radius: 8px;
+    background: rgba(255, 253, 245, .96);
+    box-shadow: 0 16px 36px rgba(16, 32, 16, .09);
 }
 
 .menu-filter-option,
@@ -4509,7 +4561,7 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     align-items: center;
     min-height: 42px;
     width: 100%;
-    padding: 9px 10px;
+    padding: 9px 11px;
     border: 1px solid transparent;
     border-radius: 8px;
     background: transparent;
@@ -4546,7 +4598,7 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 .menu-filter-option:hover,
 .menu-check-option:has(input:checked) {
     border-color: rgba(79, 127, 50, .2);
-    background: #eaf4dc;
+    background: linear-gradient(135deg, #edf7e5, #fff8df);
     color: #102010;
 }
 
@@ -5160,6 +5212,17 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
     }
 }
 
+@keyframes menuDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes menuSkeleton {
     to {
         background-position: -220% 0;
@@ -5360,6 +5423,7 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 
 /* Static full menu polish */
 .menu-static {
+    padding-top: clamp(30px, 4vw, 56px);
     background:
         radial-gradient(circle at 10% 4%, rgba(247, 217, 103, .26), transparent 30%),
         radial-gradient(circle at 86% 0%, rgba(120, 164, 79, .18), transparent 32%),

@@ -30,7 +30,6 @@
     'Tydzień 3': '29.06 - 03.07',
     'Tydzień 4': '06.07 - 10.07',
   };
-  const TOTAL_WEEKS = WEEKS.length;
   const DAYS_ORDER  = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   const DAYS_SHORT  = { 'Poniedziałek': 'Pon', 'Wtorek': 'Wt', 'Środa': 'Śr', 'Czwartek': 'Czw', 'Piątek': 'Pt' };
   const CAT_ORDER   = ['Dania mięsne', 'Dania wege', 'Zupy', 'Mączne', 'Desery', 'Sałatki', 'Makaron', 'Stałe codziennie', 'Kanapki'];
@@ -87,8 +86,10 @@
     const activeRange = ranges.find(({ range }) => today >= range.start && today <= range.end);
     if (activeRange) return activeRange.index;
 
-    const nextRange = ranges.find(({ range }) => today < range.start);
-    if (nextRange) return nextRange.index;
+    const latestStartedRange = [...ranges]
+      .reverse()
+      .find(({ range }) => today >= range.start);
+    if (latestStartedRange) return latestStartedRange.index;
 
     return ranges.length ? ranges[ranges.length - 1].index : 0;
   }
@@ -104,8 +105,6 @@
   const svgCalendar = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
   const svgDownload = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
   const svgClose = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-  const svgChevronLeft  = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
-  const svgChevronRight = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
 
   /* ─── Price badge parser ──────────────────────────────── */
   function parseDish(text) {
@@ -261,19 +260,11 @@
         <div class="wmp-header">
           <div class="wmp-title-group">
             <h1 class="wmp-title" style="margin-bottom: 12px;">Menu tygodniowe</h1>
-            <div class="wmp-week-nav" id="wmpWeekNav" style="justify-content: flex-start; padding: 0; margin: 0; gap: 12px; transform: translateX(-4px);">
-              <button class="wmp-week-arrow" id="wmpWeekPrev" type="button" aria-label="Poprzedni tydzień"${weekIdx <= 0 ? ' disabled' : ''} style="width: 32px; height: 32px; flex: 0 0 32px;">
-                ${svgChevronLeft}
-              </button>
-              
+            <div class="wmp-week-nav" style="justify-content: flex-start; padding: 0; margin: 0; gap: 8px;">
               <div class="wmp-date-row" style="margin: 0; padding: 0; gap: 8px;">
                 ${svgCalendar}
                 <span id="cateringSubtitle" class="wmp-week-label" style="text-align: left; padding: 0; font-size: 15px; flex: 0 0 auto;">${displayWeek} · ${dayName}</span>
               </div>
-              
-              <button class="wmp-week-arrow" id="wmpWeekNext" type="button" aria-label="Następny tydzień"${weekIdx >= TOTAL_WEEKS - 1 ? ' disabled' : ''} style="width: 32px; height: 32px; flex: 0 0 32px;">
-                ${svgChevronRight}
-              </button>
             </div>
           </div>
           <button class="catering-close-btn" id="cateringCloseBtn" aria-label="Zamknij menu">
@@ -395,11 +386,6 @@
       modal.querySelector('#cateringCloseBtn')
         ?.addEventListener('click', closeModal);
 
-      modal.querySelector('#wmpWeekPrev')
-        ?.addEventListener('click', () => switchWeek(activeWeekIdx - 1));
-      modal.querySelector('#wmpWeekNext')
-        ?.addEventListener('click', () => switchWeek(activeWeekIdx + 1));
-
       modal.querySelectorAll('.catering-day-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = parseInt(btn.dataset.dayIdx, 10);
@@ -460,32 +446,6 @@
       activeDayIdx = idx;
       normalizeActiveCat();
       animateBody(() => fullRender());
-    }
-
-    /* ── Switch week ──────────────────────────────────────── */
-    function switchWeek(newIdx) {
-      if (newIdx < 0 || newIdx >= TOTAL_WEEKS) return;
-      const prevIdx    = activeWeekIdx;
-      activeWeekIdx    = newIdx;
-      normalizeActiveCat();
-      const dir = newIdx > prevIdx ? 1 : -1;
-
-      /* animate week-nav + body together */
-      const nav  = modal.querySelector('#wmpWeekNav');
-      const body = modal.querySelector('#cateringBody');
-      if (!window.gsap || !body) { fullRender(); return; }
-
-      gsap.to([nav, body].filter(Boolean), {
-        opacity: 0, y: -6 * dir, duration: 0.15, ease: 'power2.in',
-        onComplete: () => {
-          fullRender();
-          const newBody = modal.querySelector('#cateringBody');
-          const newNav  = modal.querySelector('#wmpWeekNav');
-          if (newBody) newBody.scrollTop = 0;
-          if (newBody) gsap.fromTo(newBody, { opacity: 0, y: 8 * dir }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' });
-          if (newNav)  gsap.fromTo(newNav,  { opacity: 0, y: 8 * dir }, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' });
-        }
-      });
     }
 
     /* ── OPEN modal ─────────────────────────────────────── */

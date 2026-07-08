@@ -79,6 +79,12 @@
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
+
+    root.querySelectorAll('[data-filter-current]').forEach((current) => {
+      const type = current.dataset.filterCurrent;
+      const activeButton = root.querySelector(`[data-filter-type="${type}"][data-filter-value="${state[type]}"]`);
+      current.textContent = activeButton?.querySelector('span')?.textContent || filterLabel(type, state[type]);
+    });
   }
 
   function renderActiveFilters() {
@@ -162,6 +168,7 @@
     state.sort = 'default';
     search.value = '';
     sort.value = 'default';
+    root.querySelectorAll('.menu-filter-dropdown[open]').forEach((dropdown) => dropdown.removeAttribute('open'));
     render();
   }
 
@@ -230,8 +237,10 @@
   root.addEventListener('click', (event) => {
     const filterButton = event.target.closest('[data-filter-type]');
     if (filterButton) {
+      const dropdown = filterButton.closest('.menu-filter-dropdown');
       state[filterButton.dataset.filterType] = filterButton.dataset.filterValue;
       render();
+      if (dropdown) dropdown.removeAttribute('open');
       return;
     }
     if (event.target.closest('[data-menu-clear]')) { clearFilters(); return; }
@@ -249,6 +258,15 @@
   });
 
   root.querySelector('#weeklyMenuOpenFilters').addEventListener('click', openDrawer);
+  root.querySelectorAll('.menu-filter-dropdown').forEach((dropdown) => {
+    dropdown.addEventListener('toggle', () => {
+      if (!dropdown.open) return;
+      const group = dropdown.closest('.menu-filter-groups');
+      group?.querySelectorAll('.menu-filter-dropdown[open]').forEach((item) => {
+        if (item !== dropdown) item.removeAttribute('open');
+      });
+    });
+  });
   drawerPanel.addEventListener('keydown', (event) => trapFocus(event, drawerPanel, closeDrawer));
   modalPanel.addEventListener('keydown', (event) => trapFocus(event, modalPanel, closeModal));
   search.addEventListener('input', () => { state.search = search.value.trim(); render(); });
