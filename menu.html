@@ -1281,12 +1281,14 @@ window.addEventListener('resize', () => {
         </aside>
 
         <main class="menu-results" aria-label="Lista dań w menu">
-          <div class="menu-results-toolbar">
-            <label class="menu-search" for="weeklyMenuSearch"><span aria-hidden="true">⌕</span><input id="weeklyMenuSearch" type="search" placeholder="Szukaj po nazwie, składnikach lub kategorii" autocomplete="off" /><button class="menu-search-clear" id="weeklyMenuSearchClear" type="button" aria-label="Wyczyść wyszukiwanie" hidden>×</button></label>
-            <button class="menu-mobile-filter-button" id="weeklyMenuOpenFilters" type="button" aria-haspopup="dialog">Filtry <span id="weeklyMenuMobileFilterCount">0</span></button>
-            <label class="menu-sort" for="weeklyMenuSort"><span>Sortuj</span><select id="weeklyMenuSort"><option value="default">Domyślnie</option><option value="price-asc">Cena rosnąco</option><option value="price-desc">Cena malejąco</option><option value="name-asc">Nazwa A-Z</option></select></label>
+          <div class="menu-controls-panel">
+            <div class="menu-results-toolbar">
+              <label class="menu-search" for="weeklyMenuSearch"><span class="menu-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></span><input id="weeklyMenuSearch" type="search" placeholder="Szukaj po nazwie, składnikach lub kategorii" autocomplete="off" /><button class="menu-search-clear" id="weeklyMenuSearchClear" type="button" aria-label="Wyczyść wyszukiwanie" hidden>×</button></label>
+              <button class="menu-mobile-filter-button" id="weeklyMenuOpenFilters" type="button" aria-haspopup="dialog">Filtry <span id="weeklyMenuMobileFilterCount">0</span></button>
+              <label class="menu-sort" for="weeklyMenuSort"><span>Sortuj</span><select id="weeklyMenuSort"><option value="default">Domyślnie</option><option value="price-asc">Cena rosnąco</option><option value="price-desc">Cena malejąco</option><option value="name-asc">Nazwa A-Z</option></select></label>
+            </div>
+            <div class="menu-results-meta"><p id="weeklyMenuResultCount">284 potraw</p><div class="menu-active-filters" id="weeklyMenuActiveFilters" aria-label="Aktywne filtry"></div></div>
           </div>
-          <div class="menu-results-meta"><p id="weeklyMenuResultCount">284 potraw</p><div class="menu-active-filters" id="weeklyMenuActiveFilters" aria-label="Aktywne filtry"></div></div>
           <div class="weekly-menu-grid menu-dish-grid menu-static-grid" id="weeklyMenuGrid" aria-live="polite"><article class="menu-dish-card" tabindex="0" data-week="Tydzień 1" data-day="Poniedziałek" data-category="Dania mięsne" data-diet="Mięsne" data-price="22" data-price-band="21-plus" data-search="domowy schabowy z kapusta zasmazana ziemniaki gotowane 22 zł domowy schabowy z kapusta zasmazana, ziemniaki gotowane tydzien 1 poniedziałek dania miesne miesne 22 zł" data-title="Domowy Schabowy z kapustą zasmażaną" data-description="ziemniaki gotowane" data-meta="Tydzień 1 • Poniedziałek • Dania mięsne" style="--card-index:0">
   <div class="menu-dish-media"><img src="assets/menu-popup/generated/danie_miesne_1781601930040.png" alt="Domowy Schabowy z kapustą zasmażaną" loading="lazy" decoding="async" width="640" height="430" /></div>
   <div class="menu-dish-body">
