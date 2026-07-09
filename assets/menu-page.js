@@ -23,9 +23,10 @@
   const modalDescription = root.querySelector('#weeklyMenuDishDescription');
   const modalDetails = root.querySelector('#weeklyMenuDishDetails');
 
-  const labels = { week: 'Tydzień', day: 'Dzień', category: 'Kategoria', diet: 'Dieta', price: 'Cena' };
-  const priceLabels = { all: 'Każda cena', 'to-15': 'Do 15 zł', '16-20': '16-20 zł', '21-plus': 'Od 21 zł', quote: 'Do ustalenia' };
-  const state = { week: 'all', day: 'all', category: 'all', diet: 'all', price: 'all', search: '', sort: 'default', lastDrawerTrigger: null, lastModalTrigger: null };
+  const labels = { week: 'Tydzień', day: 'Dzień', category: 'Typ dania', diet: 'Dieta', price: 'Poziom kcal', popularity: 'Popularność' };
+  const priceLabels = { all: 'Każdy poziom', 'to-15': 'do 300', '16-20': '300 - 500', '21-plus': '500+', quote: 'Do ustalenia' };
+  const popularityLabels = { all: '', bestseller: 'Bestsellery', new: 'Nowości' };
+  const state = { week: 'all', day: 'all', category: 'all', diet: 'all', price: 'all', popularity: 'all', search: '', sort: 'default', lastDrawerTrigger: null, lastModalTrigger: null };
 
   function normalize(value) {
     return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
@@ -33,12 +34,13 @@
 
   function filterLabel(type, value) {
     if (type === 'price') return priceLabels[value] || value;
+    if (type === 'popularity') return popularityLabels[value] || value;
     if (value === 'all') return '';
     return value;
   }
 
   function activeFilterCount() {
-    return ['week', 'day', 'category', 'diet', 'price'].filter((type) => state[type] !== 'all').length + (state.search ? 1 : 0);
+    return ['week', 'day', 'category', 'diet', 'price', 'popularity'].filter((type) => state[type] !== 'all').length + (state.search ? 1 : 0);
   }
 
   function matches(card) {
@@ -47,6 +49,8 @@
     if (state.category !== 'all' && card.dataset.category !== state.category) return false;
     if (state.diet !== 'all' && card.dataset.diet !== state.diet) return false;
     if (state.price !== 'all' && card.dataset.priceBand !== state.price) return false;
+    if (state.popularity === 'bestseller' && cards.indexOf(card) >= 120) return false;
+    if (state.popularity === 'new' && cards.indexOf(card) >= 32) return false;
     if (state.search && !card.dataset.search.includes(normalize(state.search))) return false;
     return true;
   }
@@ -80,6 +84,15 @@
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
+    root.querySelectorAll('.menu-quick-filter[data-filter-type]').forEach((button) => {
+      let active = state[button.dataset.filterType] === button.dataset.filterValue;
+      if (button.dataset.filterType === 'popularity' && button.dataset.filterValue === 'bestseller' && state.popularity === 'all') {
+        active = ['week', 'day', 'category', 'diet', 'price'].every((type) => state[type] === 'all') && !state.search;
+      }
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
     root.querySelectorAll('[data-filter-current]').forEach((current) => {
       const type = current.dataset.filterCurrent;
       const activeButton = root.querySelector(`[data-filter-type="${type}"][data-filter-value="${state[type]}"]`);
@@ -90,7 +103,7 @@
   function renderActiveFilters() {
     activeFilters.textContent = '';
     const items = [];
-    ['week', 'day', 'category', 'diet', 'price'].forEach((type) => {
+    ['week', 'day', 'category', 'diet', 'price', 'popularity'].forEach((type) => {
       if (state[type] !== 'all') items.push({ type, value: state[type], label: labels[type] + ': ' + filterLabel(type, state[type]) });
     });
     if (state.search) items.push({ type: 'search', value: state.search, label: 'Szukasz: ' + state.search });
@@ -164,11 +177,11 @@
     state.category = 'all';
     state.diet = 'all';
     state.price = 'all';
+    state.popularity = 'all';
     state.search = '';
     state.sort = 'default';
     search.value = '';
     sort.value = 'default';
-    root.querySelectorAll('.menu-filter-dropdown[open]').forEach((dropdown) => dropdown.removeAttribute('open'));
     render();
   }
 
@@ -215,7 +228,7 @@
     modalTitle.textContent = card.dataset.title || '';
     modalDescription.textContent = card.dataset.description || '';
     modalDetails.textContent = '';
-    [['Tydzień', card.dataset.week], ['Dzień', card.dataset.day], ['Kategoria', card.dataset.category], ['Dieta', card.dataset.diet === 'none' ? '' : card.dataset.diet], ['Cena', card.querySelector('.menu-dish-price')?.textContent || '']].forEach(([name, value]) => {
+    [['Kategoria', card.dataset.category], ['Dieta', card.dataset.diet === 'none' ? '' : card.dataset.diet]].forEach(([name, value]) => {
       if (!value) return;
       const dt = document.createElement('dt'); dt.textContent = name;
       const dd = document.createElement('dd'); dd.textContent = value;
@@ -237,10 +250,8 @@
   root.addEventListener('click', (event) => {
     const filterButton = event.target.closest('[data-filter-type]');
     if (filterButton) {
-      const dropdown = filterButton.closest('.menu-filter-dropdown');
       state[filterButton.dataset.filterType] = filterButton.dataset.filterValue;
       render();
-      if (dropdown) dropdown.removeAttribute('open');
       return;
     }
     if (event.target.closest('[data-menu-clear]')) { clearFilters(); return; }
@@ -259,13 +270,7 @@
 
   root.querySelector('#weeklyMenuOpenFilters').addEventListener('click', openDrawer);
   root.querySelectorAll('.menu-filter-dropdown').forEach((dropdown) => {
-    dropdown.addEventListener('toggle', () => {
-      if (!dropdown.open) return;
-      const group = dropdown.closest('.menu-filter-groups');
-      group?.querySelectorAll('.menu-filter-dropdown[open]').forEach((item) => {
-        if (item !== dropdown) item.removeAttribute('open');
-      });
-    });
+    dropdown.open = true;
   });
   drawerPanel.addEventListener('keydown', (event) => trapFocus(event, drawerPanel, closeDrawer));
   modalPanel.addEventListener('keydown', (event) => trapFocus(event, modalPanel, closeModal));
