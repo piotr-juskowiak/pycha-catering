@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-WebFont.load({ google: { families: ["Rubik:300,regular,500,600,700,800,900", "Baloo 2:800"] } });
+if (window.WebFont) {
+  WebFont.load({ google: { families: ["Rubik:300,regular,500,600,700,800,900", "Baloo 2:800"] } });
+}
 
 !function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);
 

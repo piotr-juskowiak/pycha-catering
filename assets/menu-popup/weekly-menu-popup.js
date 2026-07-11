@@ -9,6 +9,9 @@
   /* ─── Asset paths ─────────────────────────────────────── */
   const scriptTag = document.querySelector('script[src*="weekly-menu-popup.js"]');
   const assetBase = scriptTag ? scriptTag.getAttribute('src').replace('weekly-menu-popup.js', 'generated/') : 'assets/menu-popup/generated/';
+  const imageLoadingAttribute = document.documentElement.dataset.loadOptimization === 'disabled'
+    ? ''
+    : ' loading="lazy"';
 
   const basePhotos = window.PYCHA_MENU_DATA.categoryPhotos || {};
   const categoryPhotos = {};
@@ -188,7 +191,7 @@
           <div class="wmp-list-col">
             <div class="wmp-cat-heading">
               <div class="wmp-cat-heading-icon">
-                <img src="${icon}" alt="" loading="lazy" />
+                <img src="${icon}" alt=""${imageLoadingAttribute} />
               </div>
               <div class="wmp-cat-heading-copy">
                 <h2>${catName}</h2>
@@ -200,7 +203,7 @@
             </div>
           </div>
           <div class="wmp-photo-col">
-            <img class="wmp-food-photo" src="${photo}" alt="${catName}" loading="lazy" />
+            <img class="wmp-food-photo" src="${photo}" alt="${catName}"${imageLoadingAttribute} />
           </div>
         </div>
       </div>
@@ -215,7 +218,7 @@
       <li>
         <button class="wmp-cat-btn${cat === activeCat ? ' active' : ''}" data-cat="${cat}" type="button">
           <div class="wmp-cat-icon-wrap">
-            <img src="${catIcons[cat] || catIcons['Dania mięsne']}" alt="" loading="lazy" />
+            <img src="${catIcons[cat] || catIcons['Dania mięsne']}" alt=""${imageLoadingAttribute} />
           </div>
           ${cat}
         </button>
@@ -226,7 +229,7 @@
       <aside class="wmp-sidebar">
         <div class="wmp-avatar-wrap">
           <div class="wmp-avatar">
-            <img src="${chefAvatar}" alt="Kucharz Pycha Catering" loading="lazy" />
+            <img src="${chefAvatar}" alt="Kucharz Pycha Catering"${imageLoadingAttribute} />
           </div>
         </div>
         <div class="wmp-cat-label">Wybierz kategorię</div>

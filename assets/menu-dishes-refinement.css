@@ -1,0 +1,347 @@
+/* Lighter, rounded typography and visual polish for the static dishes menu. */
+.menu-static {
+  --menu-display-font: "Baloo 2", "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --menu-ui-font: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --menu-panel-radius: 18px;
+  --menu-control-radius: 12px;
+  font-family: var(--menu-ui-font);
+  padding-top: clamp(60px, 5vw, 80px);
+}
+
+.menu-static button,
+.menu-static input,
+.menu-static select {
+  font-family: var(--menu-ui-font);
+}
+
+/* Rounded brand headings */
+.menu-static .menu-filter-head strong,
+.menu-static .menu-filter-help-card strong,
+.menu-static .menu-dish-title,
+.menu-static .menu-empty-state strong,
+.menu-static .menu-drawer-head strong,
+.menu-static .menu-dish-modal-copy h3 {
+  font-family: var(--menu-display-font);
+  font-weight: 700;
+  letter-spacing: -.015em;
+}
+
+.menu-static .menu-filter-head strong {
+  font-size: 32px;
+  line-height: 1.05;
+}
+
+.menu-static .menu-filter-head span,
+.menu-static .menu-search input,
+.menu-static .menu-sort select,
+.menu-static .menu-dish-desc,
+.menu-static .menu-filter-help-card p {
+  font-weight: 400;
+}
+
+.menu-static .menu-filter-option {
+  font-weight: 500;
+}
+
+.menu-static .menu-filter-summary-label,
+.menu-static .menu-sidebar-active-head,
+.menu-static .menu-sidebar-active-head button,
+.menu-static .menu-sort span,
+.menu-static .menu-clear-link,
+.menu-static .menu-filter-help-card a {
+  font-weight: 600;
+}
+
+.menu-static .menu-results-meta p,
+.menu-static .menu-filter-option strong,
+.menu-static .menu-quick-filter,
+.menu-static .menu-dish-badge,
+.menu-static .menu-dish-price,
+.menu-static .menu-dish-details,
+.menu-static .menu-dish-card::after {
+  font-weight: 600;
+}
+
+/* Panels and controls */
+.menu-static .menu-redesign-sidebar,
+.menu-static .menu-controls-panel {
+  border-color: rgba(25, 45, 20, .09);
+  border-radius: var(--menu-panel-radius);
+  background: rgba(255, 254, 249, .97);
+  box-shadow: 0 12px 36px rgba(27, 43, 18, .075);
+}
+
+.menu-static .menu-redesign-sidebar {
+  padding: 22px;
+}
+
+.menu-static .menu-sidebar-active-panel {
+  border-radius: 14px;
+  background: #f0f5e4;
+}
+
+.menu-static .menu-filter-head .menu-clear-link,
+.menu-static .menu-search,
+.menu-static .menu-sort select,
+.menu-static .menu-quick-filter,
+.menu-static .menu-filter-option {
+  border-radius: var(--menu-control-radius);
+}
+
+.menu-static .menu-filter-head .menu-clear-link {
+  background: #fffefa;
+}
+
+.menu-static .menu-filter-head .menu-clear-link:hover {
+  border-color: rgba(49, 94, 39, .3);
+  background: #f7faef;
+}
+
+.menu-static .menu-filter-summary-label {
+  letter-spacing: .045em;
+}
+
+.menu-static .menu-filter-option {
+  transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+}
+
+.menu-static .menu-filter-option:hover,
+.menu-static .menu-filter-option.is-active {
+  border-color: rgba(79, 127, 50, .2);
+  background: #f0f5e5;
+}
+
+.menu-static .menu-filter-option strong {
+  background: #fbfaf3;
+}
+
+.menu-static .menu-filter-help-card {
+  border-radius: 16px;
+}
+
+.menu-static .menu-filter-help-card strong {
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.menu-static .menu-filter-help-card a {
+  box-shadow: 0 7px 18px rgba(15, 84, 31, .14);
+}
+
+.menu-static .menu-controls-panel {
+  gap: 18px 14px;
+  padding: 18px;
+}
+
+.menu-static .menu-search,
+.menu-static .menu-results-meta p,
+.menu-static .menu-sort select {
+  border-color: rgba(35, 54, 25, .1);
+  background: #fffefa;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .82);
+}
+
+.menu-static .menu-results-meta p {
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.menu-static .menu-search input {
+  color: #263024;
+}
+
+.menu-static .menu-search input::placeholder {
+  color: #879180;
+  font-weight: 400;
+}
+
+.menu-static .menu-sort span {
+  color: #6b7566;
+}
+
+.menu-static .menu-sort select {
+  color: #263024;
+  font-weight: 500;
+}
+
+.menu-static .menu-quick-filters {
+  gap: 10px;
+}
+
+.menu-static .menu-quick-filter {
+  min-height: 44px;
+  padding: 0 18px;
+  background: #fffefa;
+  font-size: 13px;
+  box-shadow: 0 3px 10px rgba(27, 43, 18, .035);
+}
+
+.menu-static .menu-quick-filter:hover {
+  transform: translateY(-1px);
+  background: #f7faef;
+}
+
+.menu-static .menu-quick-filter.is-active {
+  background: #0f541f;
+  box-shadow: 0 8px 20px rgba(15, 84, 31, .16);
+}
+
+/* Dish cards */
+.menu-static .menu-dish-grid {
+  gap: 20px;
+}
+
+.menu-static .menu-dish-card {
+  border-color: rgba(25, 45, 20, .09);
+  border-radius: var(--menu-panel-radius);
+  background: linear-gradient(180deg, #fffefa 0%, #fffbf2 100%);
+  box-shadow: 0 8px 26px rgba(27, 43, 18, .07);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.menu-static .menu-dish-card:hover,
+.menu-static .menu-dish-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(15, 84, 31, .2);
+  box-shadow: 0 18px 44px rgba(27, 43, 18, .115);
+}
+
+.menu-static .menu-dish-card::before {
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-color: rgba(35, 54, 25, .11);
+  background: rgba(255, 254, 250, .94);
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(20, 34, 18, .1);
+}
+
+.menu-static .menu-dish-card::after {
+  top: 12px;
+  left: 12px;
+  min-height: 28px;
+  padding: 6px 11px;
+  font-size: 11px;
+  letter-spacing: .01em;
+  box-shadow: 0 5px 14px rgba(87, 56, 0, .13);
+}
+
+.menu-static .menu-dish-media {
+  border-bottom: 1px solid rgba(25, 45, 20, .06);
+}
+
+.menu-static .menu-dish-media::after {
+  opacity: .07;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-media::after {
+  opacity: .04;
+}
+
+.menu-static .menu-dish-body {
+  gap: 11px;
+  padding: 16px 16px 15px;
+}
+
+.menu-static .menu-dish-title {
+  display: -webkit-box;
+  min-height: 50px;
+  overflow: hidden;
+  color: #142014;
+  font-size: clamp(19px, 1.18vw, 22px);
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.menu-static .menu-dish-desc {
+  min-height: 42px;
+  color: #5e685a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.menu-static .menu-dish-badges {
+  gap: 6px;
+}
+
+.menu-static .menu-dish-badge,
+.menu-static .menu-dish-price {
+  min-height: 23px;
+  padding: 4px 9px;
+  border-color: #dce8d0;
+  background: #f2f7eb;
+  color: #36522f;
+}
+
+.menu-static .menu-dish-price::before {
+  font-weight: 600;
+}
+
+.menu-static .menu-dish-details {
+  min-height: 44px;
+  border-radius: var(--menu-control-radius);
+  background: #0f541f;
+  box-shadow: 0 6px 16px rgba(15, 84, 31, .15);
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.menu-static .menu-dish-details::before {
+  font-family: var(--menu-ui-font);
+  font-weight: 600;
+}
+
+.menu-static .menu-dish-details:hover {
+  transform: translateY(-1px);
+  background: #093f16;
+  box-shadow: 0 9px 20px rgba(15, 84, 31, .19);
+}
+
+.menu-static .menu-dish-card:focus-visible {
+  outline: 3px solid rgba(79, 127, 50, .25);
+  outline-offset: 3px;
+}
+
+/* Modal and mobile filter drawer */
+.menu-static .menu-dish-modal-panel,
+.menu-static .menu-drawer-panel {
+  border-radius: var(--menu-panel-radius);
+}
+
+.menu-static .menu-dish-modal-copy h3 {
+  line-height: 1.08;
+}
+
+.menu-static .menu-redesign-primary,
+.menu-static .menu-drawer-footer .menu-clear-link {
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .menu-static {
+    padding-top: 48px;
+  }
+
+  .menu-static .menu-controls-panel {
+    border-radius: 16px;
+  }
+
+  .menu-static .menu-dish-card {
+    border-radius: 16px;
+  }
+
+  .menu-static .menu-dish-title {
+    min-height: 0;
+    font-size: 22px;
+  }
+
+  .menu-static .menu-dish-body {
+    padding: 16px;
+  }
+
+  .menu-static .menu-quick-filter {
+    padding: 0 14px;
+  }
+}
