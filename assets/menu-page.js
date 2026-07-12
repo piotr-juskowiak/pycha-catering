@@ -12,6 +12,9 @@
   const activeCount = root.querySelector('#weeklyMenuActiveCount');
   const mobileFilterCount = root.querySelector('#weeklyMenuMobileFilterCount');
   const emptyState = root.querySelector('#weeklyMenuEmpty');
+  const pagination = root.querySelector('#weeklyMenuPagination');
+  const paginationPages = root.querySelector('#weeklyMenuPaginationPages');
+  const paginationStatus = root.querySelector('#weeklyMenuPaginationStatus');
   const drawer = root.querySelector('#weeklyMenuFilterDrawer');
   const drawerPanel = root.querySelector('.menu-drawer-panel');
   const showResults = root.querySelector('#weeklyMenuShowResults');
@@ -23,10 +26,11 @@
   const modalDescription = root.querySelector('#weeklyMenuDishDescription');
   const modalDetails = root.querySelector('#weeklyMenuDishDetails');
 
-  const labels = { week: 'Tydzień', day: 'Dzień', category: 'Typ dania', diet: 'Dieta', price: 'Poziom kcal', popularity: 'Popularność' };
-  const priceLabels = { all: 'Każdy poziom', 'to-15': 'do 300', '16-20': '300 - 500', '21-plus': '500+', quote: 'Do ustalenia' };
+  const labels = { week: 'Tydzień', day: 'Dzień', category: 'Typ dania', diet: 'Dieta', price: 'Cena', popularity: 'Popularność' };
+  const priceLabels = { all: 'Każda cena', 'to-15': 'do 15 zł', '16-20': '16–20 zł', '21-plus': '21 zł+', quote: 'Do ustalenia' };
   const popularityLabels = { all: '', bestseller: 'Bestsellery', new: 'Nowości' };
-  const state = { week: 'all', day: 'all', category: 'all', diet: 'all', price: 'all', popularity: 'all', search: '', sort: 'default', lastDrawerTrigger: null, lastModalTrigger: null };
+  const PAGE_SIZE = 30;
+  const state = { week: 'all', day: 'all', category: 'all', diet: 'all', price: 'all', popularity: 'all', search: '', sort: 'default', page: 1, lastDrawerTrigger: null, lastModalTrigger: null };
 
   function normalize(value) {
     return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
@@ -85,10 +89,7 @@
     });
 
     root.querySelectorAll('.menu-quick-filter[data-filter-type]').forEach((button) => {
-      let active = state[button.dataset.filterType] === button.dataset.filterValue;
-      if (button.dataset.filterType === 'popularity' && button.dataset.filterValue === 'bestseller' && state.popularity === 'all') {
-        active = ['week', 'day', 'category', 'diet', 'price'].every((type) => state[type] === 'all') && !state.search;
-      }
+      const active = state[button.dataset.filterType] === button.dataset.filterValue;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
@@ -121,6 +122,7 @@
       button.append(text, icon);
       button.addEventListener('click', () => {
         if (item.type === 'search') { state.search = ''; search.value = ''; } else { state[item.type] = 'all'; }
+        state.page = 1;
         render();
       });
       activeFilters.appendChild(button);
@@ -136,12 +138,57 @@
     }
   }
 
+  function renderPagination(totalItems, totalPages) {
+    pagination.hidden = totalPages <= 1;
+    paginationPages.textContent = '';
+    if (totalPages <= 1) return;
+
+    const pageNumbers = [];
+    for (let page = 1; page <= totalPages; page += 1) {
+      if (page === 1 || page === totalPages || Math.abs(page - state.page) <= 2) pageNumbers.push(page);
+    }
+
+    let previousPage = 0;
+    pageNumbers.forEach((page) => {
+      if (previousPage && page - previousPage > 1) {
+        const separator = document.createElement('span');
+        separator.className = 'menu-pagination-ellipsis';
+        separator.textContent = '…';
+        separator.setAttribute('aria-hidden', 'true');
+        paginationPages.appendChild(separator);
+      }
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'menu-pagination-page';
+      button.dataset.menuPage = String(page);
+      button.textContent = String(page);
+      button.setAttribute('aria-label', 'Strona ' + page);
+      if (page === state.page) {
+        button.classList.add('is-active');
+        button.setAttribute('aria-current', 'page');
+      }
+      paginationPages.appendChild(button);
+      previousPage = page;
+    });
+
+    pagination.querySelector('[data-menu-page="prev"]').disabled = state.page === 1;
+    pagination.querySelector('[data-menu-page="next"]').disabled = state.page === totalPages;
+    const firstItem = ((state.page - 1) * PAGE_SIZE) + 1;
+    const lastItem = Math.min(state.page * PAGE_SIZE, totalItems);
+    paginationStatus.textContent = firstItem + '–' + lastItem + ' z ' + totalItems;
+  }
+
   function render() {
     try {
       const visible = sortedCards(cards.filter(matches));
-      const visibleSet = new Set(visible);
+      const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+      state.page = Math.min(Math.max(1, state.page), totalPages);
+      const pageStart = (state.page - 1) * PAGE_SIZE;
+      const pageCards = visible.slice(pageStart, pageStart + PAGE_SIZE);
+      const visibleSet = new Set(pageCards);
 
-      visible.forEach((card, index) => {
+      pageCards.forEach((card, index) => {
         card.hidden = false;
         card.style.setProperty('--card-index', String(index % 18));
         grid.appendChild(card);
@@ -154,6 +201,7 @@
       resultCount.textContent = countLabel;
       emptyState.hidden = visible.length > 0;
       grid.hidden = visible.length === 0;
+      renderPagination(visible.length, totalPages);
       const active = activeFilterCount();
       activeCount.textContent = active === 1 ? '1 aktywny filtr' : active + ' aktywnych filtrów';
       mobileFilterCount.textContent = String(active);
@@ -180,6 +228,7 @@
     state.popularity = 'all';
     state.search = '';
     state.sort = 'default';
+    state.page = 1;
     search.value = '';
     sort.value = 'default';
     render();
@@ -251,7 +300,18 @@
     const filterButton = event.target.closest('[data-filter-type]');
     if (filterButton) {
       state[filterButton.dataset.filterType] = filterButton.dataset.filterValue;
+      state.page = 1;
       render();
+      return;
+    }
+    const pageButton = event.target.closest('[data-menu-page]');
+    if (pageButton && pagination.contains(pageButton)) {
+      const totalPages = Math.max(1, Math.ceil(sortedCards(cards.filter(matches)).length / PAGE_SIZE));
+      if (pageButton.dataset.menuPage === 'prev') state.page = Math.max(1, state.page - 1);
+      else if (pageButton.dataset.menuPage === 'next') state.page = Math.min(totalPages, state.page + 1);
+      else state.page = Math.min(totalPages, Math.max(1, Number(pageButton.dataset.menuPage) || 1));
+      render();
+      root.querySelector('.menu-controls-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
     if (event.target.closest('[data-menu-clear]')) { clearFilters(); return; }
@@ -270,13 +330,13 @@
 
   root.querySelector('#weeklyMenuOpenFilters').addEventListener('click', openDrawer);
   root.querySelectorAll('.menu-filter-dropdown').forEach((dropdown) => {
-    dropdown.open = true;
+    dropdown.open = ['week', 'day', 'category'].includes(dropdown.dataset.filterDropdown);
   });
   drawerPanel.addEventListener('keydown', (event) => trapFocus(event, drawerPanel, closeDrawer));
   modalPanel.addEventListener('keydown', (event) => trapFocus(event, modalPanel, closeModal));
-  search.addEventListener('input', () => { state.search = search.value.trim(); render(); });
-  searchClear.addEventListener('click', () => { state.search = ''; search.value = ''; search.focus(); render(); });
-  sort.addEventListener('change', () => { state.sort = sort.value; render(); });
+  search.addEventListener('input', () => { state.search = search.value.trim(); state.page = 1; render(); });
+  searchClear.addEventListener('click', () => { state.search = ''; state.page = 1; search.value = ''; search.focus(); render(); });
+  sort.addEventListener('change', () => { state.sort = sort.value; state.page = 1; render(); });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (modal.classList.contains('is-open')) closeModal();

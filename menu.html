@@ -339,7 +339,7 @@
 </style>
 <link href="custom-styles.css?v=4" rel="stylesheet"/>
 <link href="assets/cta-styles.css" rel="stylesheet"/>
-<link href="assets/menu-dishes-refinement.css?v=4" rel="stylesheet"/>
+<link href="assets/menu-dishes-refinement.css?v=6" rel="stylesheet"/>
 <link rel="canonical" href="https://pychacatering.pl/menu" />
 </head><body>
 <div class="page-transition-overlay active">
@@ -1288,10 +1288,10 @@ window.addEventListener('resize', () => {
 <details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="diet"><summary><span class="menu-filter-summary-label">Dieta / preferencje</span><strong class="menu-filter-current" data-filter-current="diet">Wszystkie typy</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="diet" data-filter-value="all" aria-pressed="true"><span>Wszystkie typy</span><strong>284</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="diet" data-filter-value="Mięsne" aria-pressed="false"><span>Mięsne</span><strong>83</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="diet" data-filter-value="Wegetariańskie" aria-pressed="false"><span>Wegetariańskie</span><strong>40</strong></button></div></div></details>
-<details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="price"><summary><span class="menu-filter-summary-label">Poziom kcal</span><strong class="menu-filter-current" data-filter-current="price">Każdy poziom</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="price" data-filter-value="all" aria-pressed="true"><span>Każdy poziom</span><strong>284</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="to-15" aria-pressed="false"><span>do 300</span><strong>80</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="16-20" aria-pressed="false"><span>300 - 500</span><strong>123</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="21-plus" aria-pressed="false"><span>500+</span><strong>80</strong></button>
+<details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="price"><summary><span class="menu-filter-summary-label">Cena</span><strong class="menu-filter-current" data-filter-current="price">Każda cena</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="price" data-filter-value="all" aria-pressed="true"><span>Każda cena</span><strong>284</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="to-15" aria-pressed="false"><span>do 15 zł</span><strong>80</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="16-20" aria-pressed="false"><span>16–20 zł</span><strong>123</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="21-plus" aria-pressed="false"><span>21 zł+</span><strong>80</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="quote" aria-pressed="false"><span>Do ustalenia</span><strong>1</strong></button></div></div></details>
 <details class="menu-filter-group menu-filter-dropdown menu-filter-popularity" open data-filter-dropdown="popularity"><summary><span class="menu-filter-summary-label">Popularność</span></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="bestseller" aria-pressed="false"><span>Bestsellery</span><strong>120</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="new" aria-pressed="false"><span>Nowości</span><strong>32</strong></button></div></div></details></div>
@@ -1300,6 +1300,7 @@ window.addEventListener('resize', () => {
 
         <main class="menu-results" aria-label="Lista dań w menu">
           <div class="menu-controls-panel">
+            <div class="menu-toolbar-intro"><span>Pełne menu</span><strong>Znajdź swoje ulubione danie</strong></div>
             <div class="menu-results-toolbar">
               <label class="menu-search" for="weeklyMenuSearch"><span class="menu-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></span><input id="weeklyMenuSearch" type="search" placeholder="Szukaj po nazwie, składnikach lub kategorii..." autocomplete="off" /><button class="menu-search-clear" id="weeklyMenuSearchClear" type="button" aria-label="Wyczyść wyszukiwanie" hidden>×</button></label>
               <button class="menu-mobile-filter-button" id="weeklyMenuOpenFilters" type="button" aria-haspopup="dialog">Filtry <span id="weeklyMenuMobileFilterCount">0</span></button>
@@ -1309,7 +1310,7 @@ window.addEventListener('resize', () => {
             <div class="menu-quick-filters" aria-label="Szybkie filtry menu">
               <button class="menu-quick-filter is-active" type="button" data-filter-type="popularity" data-filter-value="bestseller"><span class="menu-quick-icon" aria-hidden="true"></span>Najpopularniejsze</button>
               <button class="menu-quick-filter" type="button" data-filter-type="popularity" data-filter-value="new"><span class="menu-quick-icon" aria-hidden="true"></span>Nowości</button>
-              <button class="menu-quick-filter" type="button" data-filter-type="price" data-filter-value="to-15"><span class="menu-quick-icon" aria-hidden="true"></span>Fit</button>
+              <button class="menu-quick-filter" type="button" data-filter-type="price" data-filter-value="to-15"><span class="menu-quick-icon" aria-hidden="true"></span>Do 15 zł</button>
               <button class="menu-quick-filter" type="button" data-filter-type="diet" data-filter-value="Wegetariańskie"><span class="menu-quick-icon" aria-hidden="true"></span>Wege</button>
               <button class="menu-quick-filter" type="button" data-filter-type="category" data-filter-value="Zupy"><span class="menu-quick-icon" aria-hidden="true"></span>Zupy</button>
               <button class="menu-quick-filter" type="button" data-filter-type="category" data-filter-value="Stałe codziennie"><span class="menu-quick-icon" aria-hidden="true"></span>Śniadania</button>
@@ -4155,6 +4156,12 @@ window.addEventListener('resize', () => {
     <div class="menu-dish-footer"><strong class="menu-dish-price">21 zł</strong><button class="menu-dish-details" type="button">Szczegóły</button></div>
   </div>
 </article></div>
+          <nav class="menu-pagination" id="weeklyMenuPagination" aria-label="Strony menu" hidden>
+            <button class="menu-pagination-arrow" type="button" data-menu-page="prev" aria-label="Poprzednia strona">←</button>
+            <div class="menu-pagination-pages" id="weeklyMenuPaginationPages"></div>
+            <button class="menu-pagination-arrow" type="button" data-menu-page="next" aria-label="Następna strona">→</button>
+            <span class="menu-pagination-status" id="weeklyMenuPaginationStatus" aria-live="polite"></span>
+          </nav>
           <div class="weekly-menu-empty menu-empty-state" id="weeklyMenuEmpty" hidden><strong>Nie znaleźliśmy dań dla tych filtrów.</strong><span>Zmień kryteria albo wyczyść wyszukiwanie.</span><button type="button" data-menu-clear>Wyczyść filtry</button></div>
           <div class="menu-benefit-strip" aria-label="Atuty Pycha Catering">
             <div class="menu-benefit-item"><span class="menu-benefit-icon" aria-hidden="true"></span><strong>Świeże składniki</strong><p>Współpracujemy z lokalnymi dostawcami.</p></div>
@@ -4203,10 +4210,10 @@ window.addEventListener('resize', () => {
 <details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="diet"><summary><span class="menu-filter-summary-label">Dieta / preferencje</span><strong class="menu-filter-current" data-filter-current="diet">Wszystkie typy</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="diet" data-filter-value="all" aria-pressed="true"><span>Wszystkie typy</span><strong>284</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="diet" data-filter-value="Mięsne" aria-pressed="false"><span>Mięsne</span><strong>83</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="diet" data-filter-value="Wegetariańskie" aria-pressed="false"><span>Wegetariańskie</span><strong>40</strong></button></div></div></details>
-<details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="price"><summary><span class="menu-filter-summary-label">Poziom kcal</span><strong class="menu-filter-current" data-filter-current="price">Każdy poziom</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="price" data-filter-value="all" aria-pressed="true"><span>Każdy poziom</span><strong>284</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="to-15" aria-pressed="false"><span>do 300</span><strong>80</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="16-20" aria-pressed="false"><span>300 - 500</span><strong>123</strong></button>
-<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="21-plus" aria-pressed="false"><span>500+</span><strong>80</strong></button>
+<details class="menu-filter-group menu-filter-dropdown" open data-filter-dropdown="price"><summary><span class="menu-filter-summary-label">Cena</span><strong class="menu-filter-current" data-filter-current="price">Każda cena</strong></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option is-active" type="button" data-filter-type="price" data-filter-value="all" aria-pressed="true"><span>Każda cena</span><strong>284</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="to-15" aria-pressed="false"><span>do 15 zł</span><strong>80</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="16-20" aria-pressed="false"><span>16–20 zł</span><strong>123</strong></button>
+<button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="21-plus" aria-pressed="false"><span>21 zł+</span><strong>80</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="quote" aria-pressed="false"><span>Do ustalenia</span><strong>1</strong></button></div></div></details>
 <details class="menu-filter-group menu-filter-dropdown menu-filter-popularity" open data-filter-dropdown="popularity"><summary><span class="menu-filter-summary-label">Popularność</span></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="bestseller" aria-pressed="false"><span>Bestsellery</span><strong>120</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="new" aria-pressed="false"><span>Nowości</span><strong>32</strong></button></div></div></details></div>
