@@ -1026,6 +1026,24 @@
     linear-gradient(145deg, var(--menu-deep), var(--menu-forest));
 }
 
+.menu-static .menu-filter-head::after {
+  top: auto;
+  right: -8px;
+  bottom: -18px;
+  width: 126px;
+  height: 150px;
+  background: url("menu-illustrations/filter-botanical.png") center / contain no-repeat;
+  opacity: .84;
+  filter: none;
+  transform: none;
+}
+
+.menu-static .menu-filter-head div,
+.menu-static .menu-filter-head .menu-clear-link {
+  position: relative;
+  z-index: 1;
+}
+
 .menu-static .menu-sidebar-active-panel,
 .menu-static .menu-filter-summary-label::before {
   background: #edf3e7;
