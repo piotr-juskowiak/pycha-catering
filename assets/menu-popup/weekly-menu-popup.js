@@ -27,11 +27,11 @@
 
   /* ─── Fixed structure ─────────────────────────────────── */
   const WEEKS       = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];
-  const WEEK_LABELS = window.PYCHA_MENU_DATA.weekLabels || {
-    'Tydzień 1': '15.06 - 19.06',
-    'Tydzień 2': '22.06 - 26.06',
-    'Tydzień 3': '29.06 - 03.07',
-    'Tydzień 4': '06.07 - 10.07',
+  const SCHEDULE = {
+    timeZone: 'Europe/Warsaw',
+    cycleAnchorMonday: '2026-06-15',
+    defaultView: 'current-week',
+    ...(window.PYCHA_MENU_DATA.schedule || {}),
   };
   const DAYS_ORDER  = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   const DAYS_SHORT  = { 'Poniedziałek': 'Pon', 'Wtorek': 'Wt', 'Środa': 'Śr', 'Czwartek': 'Czw', 'Piątek': 'Pt' };
@@ -44,64 +44,72 @@
     ? window.PYCHA_MENU_DATA.sandwiches
     : [];
 
-  function parseWeekDate(dateText, fallbackYear) {
-    const match = String(dateText || '').trim().match(/(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?/);
-    if (!match) return null;
+  const DAY_IN_MS = 86400000;
 
-    const day = parseInt(match[1], 10);
-    const month = parseInt(match[2], 10) - 1;
-    let year = match[3] ? parseInt(match[3], 10) : fallbackYear;
-
-    if (year < 100) year += 2000;
-    if (Number.isNaN(day) || Number.isNaN(month) || Number.isNaN(year)) return null;
-
-    const parsedDate = new Date(year, month, day);
-    return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+  function positiveModulo(value, divisor) {
+    return ((value % divisor) + divisor) % divisor;
   }
 
-  function parseWeekRange(label, fallbackYear) {
-    const parts = String(label || '').split(/\s*(?:-|–|—|do)\s*/i);
-    if (parts.length < 2) return null;
-
-    const start = parseWeekDate(parts[0], fallbackYear);
-    if (!start) return null;
-
-    const end = parseWeekDate(parts[1], start.getFullYear());
-    if (!end) return null;
-
-    if (end < start) {
-      end.setFullYear(end.getFullYear() + 1);
-    }
-
-    start.setHours(0, 0, 0, 0);
-    end.setHours(23, 59, 59, 999);
-
-    return { start, end };
+  function parseIsoCivilDay(value) {
+    const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return Math.floor(Date.UTC(2026, 5, 15) / DAY_IN_MS);
+    return Math.floor(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) / DAY_IN_MS);
   }
 
-  function getCurrentWeekIndex(referenceDate = new Date()) {
-    const today = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate());
-    const ranges = WEEKS.map((weekName, index) => ({
+  function getCivilDayInTimeZone(referenceDate = new Date()) {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: SCHEDULE.timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(referenceDate);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return Math.floor(Date.UTC(Number(values.year), Number(values.month) - 1, Number(values.day)) / DAY_IN_MS);
+  }
+
+  function formatCivilDay(dayNumber) {
+    return new Intl.DateTimeFormat('pl-PL', {
+      timeZone: 'UTC',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(new Date(dayNumber * DAY_IN_MS));
+  }
+
+  function formatCivilWeek(startDay) {
+    return `${formatCivilDay(startDay)} – ${formatCivilDay(startDay + 4)}`;
+  }
+
+  function getMenuWeekSelection(referenceDate = new Date()) {
+    const today = getCivilDayInTimeZone(referenceDate);
+    const weekday = new Date(today * DAY_IN_MS).getUTCDay();
+    const currentMonday = today - positiveModulo(weekday - 1, 7);
+    const targetMonday = weekday === 0 || weekday === 6
+      ? currentMonday + 7
+      : currentMonday;
+    const anchorMonday = parseIsoCivilDay(SCHEDULE.cycleAnchorMonday);
+    const weeksFromAnchor = Math.floor((targetMonday - anchorMonday) / 7);
+    const index = positiveModulo(weeksFromAnchor, WEEKS.length);
+
+    return {
       index,
-      range: parseWeekRange(WEEK_LABELS[weekName], today.getFullYear()),
-    })).filter((entry) => entry.range);
-
-    const activeRange = ranges.find(({ range }) => today >= range.start && today <= range.end);
-    if (activeRange) return activeRange.index;
-
-    const latestStartedRange = [...ranges]
-      .reverse()
-      .find(({ range }) => today >= range.start);
-    if (latestStartedRange) return latestStartedRange.index;
-
-    return ranges.length ? ranges[ranges.length - 1].index : 0;
+      startDay: targetMonday,
+      label: formatCivilWeek(targetMonday),
+    };
   }
 
-  function getCurrentDayIndex(referenceDate = new Date()) {
-    const dayIndex = referenceDate.getDay() - 1;
-    if (dayIndex < 0) return 0;
-    if (dayIndex >= DAYS_ORDER.length) return DAYS_ORDER.length - 1;
-    return dayIndex;
+  function getFourWeekSchedule(referenceDate = new Date()) {
+    const firstWeek = getMenuWeekSelection(referenceDate);
+    return Array.from({ length: WEEKS.length }, (_, offset) => {
+      const startDay = firstWeek.startDay + (offset * 7);
+      const index = positiveModulo(firstWeek.index + offset, WEEKS.length);
+      return {
+        index,
+        weekName: WEEKS[index],
+        startDay,
+        label: formatCivilWeek(startDay),
+      };
+    });
   }
   
   /* ─── SVG icons ─────────────────────────────────────────── */
@@ -125,6 +133,230 @@
     }
     
     return { price, name };
+  }
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function normalizePrintDish(item) {
+    if (typeof item === 'string') {
+      const parsed = parseDish(item);
+      return { name: parsed.name, price: parsed.price || '', weight: '', allergens: '' };
+    }
+
+    return {
+      name: item?.name || '',
+      price: item?.price || '',
+      weight: item?.weight || '',
+      allergens: item?.allergens || '',
+    };
+  }
+
+  function renderPrintCategory(categoryName, items) {
+    if (!Array.isArray(items) || !items.length) return '';
+
+    const dishes = items.map((item) => {
+      const dish = normalizePrintDish(item);
+      const details = [dish.weight, dish.allergens ? `Alergeny: ${dish.allergens}` : '']
+        .filter(Boolean)
+        .map((detail) => `<span>${escapeHtml(detail)}</span>`)
+        .join('');
+
+      return `
+        <li class="print-item">
+          <div class="print-item-copy">
+            <strong>${escapeHtml(dish.name)}</strong>
+            ${details ? `<small>${details}</small>` : ''}
+          </div>
+          ${dish.price ? `<b>${escapeHtml(dish.price)}</b>` : ''}
+        </li>
+      `;
+    }).join('');
+
+    return `
+      <section class="print-category">
+        <h3>${escapeHtml(categoryName)}</h3>
+        <ol>${dishes}</ol>
+      </section>
+    `;
+  }
+
+  function renderPrintDay(weekName, dayName) {
+    const dayData = ((weeklyMenu[weekName] || {})[dayName]) || {};
+    const categories = CAT_ORDER
+      .filter((categoryName) => categoryName !== SANDWICHES_KEY)
+      .map((categoryName) => renderPrintCategory(categoryName, dayData[categoryName]))
+      .filter(Boolean)
+      .join('');
+
+    return `
+      <article class="print-day">
+        <h2>${escapeHtml(dayName)}</h2>
+        ${categories || '<p class="print-empty">Brak pozycji w tym dniu.</p>'}
+      </article>
+    `;
+  }
+
+  function renderPrintWeekSheets(scheduleEntry, weekNumber) {
+    const firstHalf = DAYS_ORDER.slice(0, 3)
+      .map((dayName) => renderPrintDay(scheduleEntry.weekName, dayName))
+      .join('');
+    const secondHalf = DAYS_ORDER.slice(3)
+      .map((dayName) => renderPrintDay(scheduleEntry.weekName, dayName))
+      .join('');
+
+    const header = `
+      <header class="print-header">
+        <div>
+          <span>Pycha Catering</span>
+          <h1>Menu na 4 tygodnie</h1>
+        </div>
+        <p><strong>Tydzień ${weekNumber}</strong>${escapeHtml(scheduleEntry.label)}</p>
+      </header>
+    `;
+
+    return `
+      <section class="print-sheet">
+        ${header}
+        <div class="print-days print-days-three">${firstHalf}</div>
+      </section>
+      <section class="print-sheet">
+        ${header}
+        <div class="print-days print-days-two">${secondHalf}</div>
+      </section>
+    `;
+  }
+
+  function buildFourWeekPrintDocument(referenceDate = new Date()) {
+    const schedule = getFourWeekSchedule(referenceDate);
+    const sheets = schedule
+      .map((entry, index) => renderPrintWeekSheets(entry, index + 1))
+      .join('');
+    const dailyItems = sandwiches.length
+      ? `<section class="print-sheet print-daily-sheet">
+          <header class="print-header">
+            <div><span>Pycha Catering</span><h1>Pozycje dostępne codziennie</h1></div>
+          </header>
+          ${renderPrintCategory('Kanapki', sandwiches)}
+        </section>`
+      : '';
+    const fontUrl = new URL('assets/home-fonts.css', document.baseURI).href;
+
+    return `<!doctype html>
+      <html lang="pl">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Pycha-Catering-menu-4-tygodnie</title>
+          <link rel="stylesheet" href="${escapeHtml(fontUrl)}">
+          <style>
+            @page { size: A4 landscape; margin: 8mm; }
+            * { box-sizing: border-box; }
+            html, body { margin: 0; padding: 0; background: #fff; color: #173415; }
+            body { font-family: "Rubik", Arial, sans-serif; font-size: 9px; line-height: 1.32; }
+            .print-sheet { min-height: 190mm; break-after: page; page-break-after: always; }
+            .print-sheet:last-child { break-after: auto; page-break-after: auto; }
+            .print-header { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 5mm; padding: 0 1mm 3mm; border-bottom: 2px solid #4f7f32; }
+            .print-header span { color: #4f7f32; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+            .print-header h1 { margin: 1mm 0 0; font-family: "Baloo 2", "Rubik", sans-serif; font-size: 23px; line-height: 1; }
+            .print-header p { display: grid; gap: 1mm; margin: 0; text-align: right; }
+            .print-header p strong { color: #4f7f32; font-size: 11px; text-transform: uppercase; }
+            .print-days { display: grid; align-items: start; gap: 4mm; }
+            .print-days-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .print-days-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .print-day { min-width: 0; padding: 3.5mm; border: 1px solid #dce8d0; border-radius: 4mm; background: #fffdf8; break-inside: avoid; }
+            .print-day > h2 { margin: 0 0 3mm; padding-bottom: 2mm; border-bottom: 1px solid #dce8d0; font-family: "Baloo 2", "Rubik", sans-serif; font-size: 17px; line-height: 1; }
+            .print-category { margin-top: 2.6mm; break-inside: avoid; }
+            .print-category h3 { margin: 0 0 1.2mm; color: #4f7f32; font-size: 8px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+            .print-category ol { display: grid; gap: .8mm; margin: 0; padding: 0; list-style: none; }
+            .print-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2mm; align-items: start; padding-bottom: .8mm; border-bottom: 1px dotted #dfe6d9; }
+            .print-item:last-child { border-bottom: 0; }
+            .print-item-copy { min-width: 0; }
+            .print-item-copy strong { display: block; color: #1c281b; font-size: 8.5px; font-weight: 600; }
+            .print-item-copy small { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: .3mm; color: #6a7565; font-size: 7px; }
+            .print-item > b { white-space: nowrap; color: #173415; font-size: 8px; }
+            .print-empty { color: #6a7565; }
+            .print-daily-sheet .print-category { max-width: 180mm; }
+            @media screen { body { padding: 12px; background: #eef3de; } .print-sheet { width: 281mm; margin: 0 auto 12px; padding: 8mm; background: #fff; box-shadow: 0 10px 30px rgba(23, 52, 21, .12); } }
+          </style>
+        </head>
+        <body>${sheets}${dailyItems}</body>
+      </html>`;
+  }
+
+  function waitForPrintAssets(printDocument) {
+    const fontReady = printDocument.fonts?.ready || Promise.resolve();
+    const imageReady = Array.from(printDocument.images).map((image) => {
+      if (image.complete) return Promise.resolve();
+      return new Promise((resolve) => {
+        image.addEventListener('load', resolve, { once: true });
+        image.addEventListener('error', resolve, { once: true });
+      });
+    });
+    return Promise.all([fontReady.catch(() => {}), ...imageReady]);
+  }
+
+  async function printFourWeekMenu(button) {
+    const previousFrame = document.getElementById('pychaFourWeekPrintFrame');
+    if (previousFrame) previousFrame.remove();
+
+    const originalContent = button.innerHTML;
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    button.textContent = 'Przygotowuję menu…';
+
+    const frame = document.createElement('iframe');
+    frame.id = 'pychaFourWeekPrintFrame';
+    frame.title = 'Menu Pycha Catering na cztery tygodnie';
+    Object.assign(frame.style, {
+      position: 'fixed',
+      left: '0',
+      bottom: '0',
+      width: '1px',
+      height: '1px',
+      border: '0',
+      opacity: '0',
+      pointerEvents: 'none',
+    });
+    document.body.appendChild(frame);
+
+    const restoreButton = () => {
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      button.innerHTML = originalContent;
+    };
+
+    try {
+      const printDocument = frame.contentDocument;
+      printDocument.open();
+      printDocument.write(buildFourWeekPrintDocument());
+      printDocument.close();
+      await waitForPrintAssets(printDocument);
+
+      const printWindow = frame.contentWindow;
+      const cleanup = () => {
+        restoreButton();
+        window.setTimeout(() => frame.remove(), 0);
+      };
+      printWindow.addEventListener('afterprint', cleanup, { once: true });
+      printWindow.focus();
+      printWindow.print();
+      window.setTimeout(() => {
+        if (!document.body.contains(frame)) return;
+        restoreButton();
+        frame.remove();
+      }, 60000);
+    } catch (error) {
+      frame.remove();
+      restoreButton();
+      window.alert('Nie udało się przygotować menu do pobrania. Spróbuj ponownie.');
+    }
   }
 
   /* ─── Render menu items ───────────────────────────────── */
@@ -240,19 +472,19 @@
           <h4>Świeże składniki</h4>
           <p>Codziennie wybieramy najlepsze produkty od lokalnych dostawców.</p>
         </div>
-        <button class="wmp-pdf-btn" type="button" data-print-menu>
+        <button class="wmp-pdf-btn" type="button" data-print-all-menu title="Przygotuj pełne menu i zapisz je jako PDF">
           ${svgDownload}
-          Pobierz PDF
+          Pobierz menu na 4 tygodnie
         </button>
       </aside>
     `;
   }
 
   /* ─── Render main area ────────────────────────────────── */
-  function renderMain(weekIdx, dayIdx, activeCat) {
+  function renderMain(weekIdx, dayIdx, activeCat, weekLabel) {
     const weekName = WEEKS[weekIdx];
     const dayName  = DAYS_ORDER[dayIdx];
-    const displayWeek = WEEK_LABELS[weekName] || weekName;
+    const displayWeek = weekLabel || weekName;
 
     const dayTabs = DAYS_ORDER.map((d, i) =>
       `<button class="catering-day-btn${i === dayIdx ? ' active' : ''}" data-day-idx="${i}" type="button" aria-label="${d}">${DAYS_SHORT[d]}</button>`
@@ -352,6 +584,7 @@
     let activeWeekIdx = 0;
     let activeDayIdx  = 0;
     let activeCat     = CAT_ORDER[0]; /* 'Dania mięsne' */
+    let activeWeekLabel = '';
     let isOpen        = false;
     let openTimeline  = null;
     let closeTimeline = null;
@@ -368,9 +601,10 @@
     }
 
     function resetToCurrentWeek() {
-      const now = new Date();
-      activeWeekIdx = getCurrentWeekIndex(now);
-      activeDayIdx = getCurrentDayIndex(now);
+      const selection = getMenuWeekSelection(new Date());
+      activeWeekIdx = selection.index;
+      activeWeekLabel = selection.label;
+      activeDayIdx = 0;
       activeCat = CAT_ORDER[0];
       normalizeActiveCat();
     }
@@ -380,7 +614,7 @@
       normalizeActiveCat();
       const weekName = WEEKS[activeWeekIdx];
       const dayName  = DAYS_ORDER[activeDayIdx];
-      modal.innerHTML = renderSidebar(weekName, dayName, activeCat) + renderMain(activeWeekIdx, activeDayIdx, activeCat);
+      modal.innerHTML = renderSidebar(weekName, dayName, activeCat) + renderMain(activeWeekIdx, activeDayIdx, activeCat, activeWeekLabel);
       wireEvents();
     }
 
@@ -405,8 +639,8 @@
         });
       });
 
-      modal.querySelector('[data-print-menu]')
-        ?.addEventListener('click', () => window.print());
+      const printButton = modal.querySelector('[data-print-all-menu]');
+      printButton?.addEventListener('click', () => printFourWeekMenu(printButton));
     }
 
     /* ── Animate body, execute fn() in the middle ────────── */

@@ -439,6 +439,13 @@ html.weekly-popup-snapshot .catering-modal {
   color: #fff;
 }
 
+.wmp-pdf-btn:disabled {
+  opacity: 0.68;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
 /* ═══════════════════════════════════════════════════════════
    MAIN AREA — spacious, premium
    ═══════════════════════════════════════════════════════════ */

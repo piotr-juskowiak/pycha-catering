@@ -1,5 +1,11 @@
 window.PYCHA_MENU_DATA = {};
 
+window.PYCHA_MENU_DATA.schedule = {
+    timeZone: 'Europe/Warsaw',
+    cycleAnchorMonday: '2026-06-15',
+    defaultView: 'current-week'
+};
+
 window.PYCHA_MENU_DATA.weeklyMenu = {
     "Tydzień 1": {
       "Poniedziałek": {
