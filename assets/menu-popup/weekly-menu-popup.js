@@ -163,7 +163,8 @@
 
     const dishes = items.map((item) => {
       const dish = normalizePrintDish(item);
-      const details = [dish.weight, dish.allergens ? `Alergeny: ${dish.allergens}` : '']
+      // Alergeny widoczne tylko dla admina — nie renderujemy ich dla klientów
+      const details = [dish.weight]
         .filter(Boolean)
         .map((detail) => `<span>${escapeHtml(detail)}</span>`)
         .join('');
@@ -217,7 +218,7 @@
           <span>Pycha Catering</span>
           <h1>Menu na 4 tygodnie</h1>
         </div>
-        <p><strong>Tydzień ${weekNumber}</strong>${escapeHtml(scheduleEntry.label)}</p>
+        <p><strong>${escapeHtml(scheduleEntry.weekName)}</strong>${escapeHtml(scheduleEntry.label)}</p>
       </header>
     `;
 
@@ -383,14 +384,13 @@
       const priceBadge = price ? `<span class="wmp-price-badge-end">${price}</span>` : '';
       
       const weightHtml = weight ? `<span class="wmp-item-weight" style="color: #88a88f; font-size: 0.85em; font-weight: 600; padding-left: 8px;">${weight}</span>` : '';
-      const allergensHtml = allergens ? `<div class="wmp-item-allergens" style="font-size: 0.75em; color: #88a88f; margin-top: 2px;">Alergeny: ${allergens}</div>` : '';
+      // Alergeny widoczne tylko dla admina — nie renderujemy ich dla klientów
       
       return `
         <div class="wmp-menu-item">
           ${numberBadge}
           <div class="wmp-item-body" style="display: flex; flex-direction: column; flex: 1; align-items: flex-start; text-align: left; justify-content: center;">
             <div style="text-align: left;"><span class="wmp-item-name">${name}</span>${weightHtml}</div>
-            ${allergensHtml}
           </div>
           ${priceBadge}
         </div>
