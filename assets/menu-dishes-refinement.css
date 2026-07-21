@@ -1928,8 +1928,416 @@
     gap: 4px;
   }
 
+
   .menu-static .menu-quick-filters {
     margin: 0 -2px -2px;
     border-radius: 13px;
+  }
+}
+
+/* =========================================================
+   Premium Refinement Layer — menu visual enhancements v1
+   ========================================================= */
+
+/* ── Intro: stats row ──────────────────────────────────── */
+.menu-static .menu-page-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1px solid rgba(36, 75, 43, .12);
+  border-radius: 16px;
+  background: rgba(255, 253, 248, .72);
+  backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+.menu-static .menu-page-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 22px;
+}
+
+.menu-static .menu-page-stat strong {
+  color: var(--menu-forest, #123d24);
+  font-family: var(--menu-display-font);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.menu-static .menu-page-stat span {
+  color: #667868;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+
+.menu-static .menu-page-stat-sep {
+  width: 1px;
+  height: 36px;
+  background: rgba(36, 75, 43, .14);
+  flex-shrink: 0;
+}
+
+/* ── Intro: side column wrapper ────────────────────────── */
+.menu-static .menu-page-intro-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: end;
+}
+
+/* ── Intro: category tag strip ─────────────────────────── */
+.menu-static .menu-page-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.menu-static .menu-page-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 13px;
+  border: 1px solid rgba(36, 75, 43, .12);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .8);
+  color: #314a35;
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.menu-static .menu-page-tags span:hover {
+  border-color: rgba(40, 107, 60, .3);
+  background: #ecf5e3;
+  transform: translateY(-2px);
+}
+
+/* ── Improved dish cards ───────────────────────────────── */
+.menu-static .menu-dish-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .24s cubic-bezier(.22, .68, 0, 1.2), box-shadow .24s ease, border-color .24s ease;
+}
+
+.menu-static .menu-dish-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: 0 28px 64px rgba(11, 37, 12, .14);
+}
+
+/* Shimmer on card hover */
+.menu-static .menu-dish-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.0) 40%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.0) 60%);
+  background-size: 200% 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 2;
+}
+
+.menu-static .menu-dish-card:hover::before {
+  opacity: 1;
+  animation: menuCardShimmer 0.6s ease forwards;
+}
+
+@keyframes menuCardShimmer {
+  0%   { background-position: 200% 200%; }
+  100% { background-position: -40% -40%; }
+}
+
+/* Enhanced media overlay */
+.menu-static .menu-dish-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-static .menu-dish-media img {
+  transition: transform .45s cubic-bezier(.22, .68, 0, 1.2);
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-media img {
+  transform: scale(1.07);
+}
+
+/* Gradient overlay on image */
+.menu-static .menu-dish-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8, 28, 14, .2) 0%,
+    transparent 38%,
+    rgba(8, 28, 14, .06) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Improved dish card body ───────────────────────────── */
+.menu-static .menu-dish-body {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.menu-static .menu-dish-title {
+  font-size: clamp(18px, 1.4vw, 23px);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+
+.menu-static .menu-dish-desc {
+  color: #6a756a;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+/* Meta — week · day with styled dots */
+.menu-static .menu-dish-meta {
+  display: flex;
+  gap: 0;
+}
+
+.menu-static .menu-dish-meta span {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(232, 240, 223, .65);
+  color: #5a7260;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.menu-static .menu-dish-meta span + span {
+  margin-left: 5px;
+}
+
+.menu-static .menu-dish-meta span + span::before {
+  display: none;
+}
+
+/* Footer: price + button */
+.menu-static .menu-dish-footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(25, 57, 34, .08);
+  margin-top: 2px;
+}
+
+.menu-static .menu-dish-price {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: var(--menu-lime, #e8f0df);
+  color: var(--menu-forest, #123d24);
+  font-family: var(--menu-display-font);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.menu-static .menu-dish-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 12px;
+  background: var(--menu-forest, #123d24);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  gap: 6px;
+  transition: background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.menu-static .menu-dish-details:hover {
+  background: #0a3018;
+  box-shadow: 0 10px 24px rgba(11, 37, 12, .2);
+  transform: translateY(-1px);
+}
+
+/* Arrow on details button */
+.menu-static .menu-dish-details::after {
+  content: "→";
+  font-size: 14px;
+  transition: transform .18s ease;
+}
+
+.menu-static .menu-dish-details:hover::after {
+  transform: translateX(3px);
+}
+
+/* ── Badge label on card (category pill top-left) ──────── */
+.menu-static .menu-dish-card[data-category]::after {
+  content: attr(data-category);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(18, 61, 36, .88);
+  color: #d8edd0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(11, 37, 12, .2);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.menu-static .menu-dish-card[data-category="Dania wege"]::after,
+.menu-static .menu-dish-card[data-category="Sałatki"]::after {
+  background: rgba(45, 110, 55, .9);
+}
+
+.menu-static .menu-dish-card[data-category="Zupy"]::after,
+.menu-static .menu-dish-card[data-category="Desery"]::after {
+  background: rgba(155, 100, 12, .9);
+  color: #fde8c0;
+}
+
+/* ── Improved toolbar: intro area ──────────────────────── */
+.menu-static .menu-toolbar-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 4px;
+}
+
+.menu-static .menu-toolbar-intro span {
+  color: #6a8272;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.menu-static .menu-toolbar-intro strong {
+  color: #182e1e;
+  font-family: var(--menu-display-font);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.1;
+}
+
+/* ── Quick filters — refined pills ────────────────────── */
+.menu-static .menu-quick-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .7);
+  color: #324537;
+  font-size: 11.5px;
+  font-weight: 600;
+  transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menu-static .menu-quick-filter:hover {
+  border-color: rgba(40, 107, 60, .2);
+  background: rgba(255, 255, 255, .95);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 37, 12, .08);
+}
+
+.menu-static .menu-quick-filter.is-active {
+  border-color: #174b2b;
+  background: #174b2b;
+  color: #cce8d0;
+  box-shadow: 0 8px 20px rgba(23, 75, 43, .18);
+}
+
+/* ── Sidebar: improved filter head ────────────────────── */
+.menu-static .menu-filter-head {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.menu-static .menu-filter-head::before {
+  content: "";
+  position: absolute;
+  right: -28px;
+  bottom: -28px;
+  width: 110px;
+  height: 110px;
+  border: 1.5px solid rgba(255, 255, 255, .1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── Sidebar: filter group summary hover ───────────────── */
+.menu-static .menu-filter-group summary {
+  border-radius: 10px;
+  transition: background .16s ease;
+}
+
+/* ── Result count pill — animated dot ─────────────────── */
+.menu-static .menu-results-meta p::before {
+  animation: menuPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes menuPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 118, 66, .18); }
+  50%       { box-shadow: 0 0 0 6px rgba(52, 118, 66, 0); }
+}
+
+/* ── Responsive: hide stats on mobile ──────────────────── */
+@media (max-width: 760px) {
+  .menu-static .menu-page-stats {
+    padding: 12px 14px;
+  }
+
+  .menu-static .menu-page-stat {
+    padding: 0 14px;
+  }
+
+  .menu-static .menu-page-stat strong {
+    font-size: 24px;
+  }
+
+  .menu-static .menu-page-tags {
+    display: none;
+  }
+
+  .menu-static .menu-page-intro-side {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-static .menu-page-stats {
+    gap: 0;
+    padding: 10px 10px;
+  }
+
+  .menu-static .menu-page-stat {
+    padding: 0 10px;
   }
 }
