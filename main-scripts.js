@@ -550,35 +550,58 @@ let interactiveTimeline = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("pychaCallbackPopup");
+  const dialog = popup ? popup.querySelector(".pycha-callback-dialog") : null;
   const closeButton = document.getElementById("pychaCallbackClose");
   const form = document.getElementById("pychaCallbackForm");
   const submitButton = form ? form.querySelector(".pycha-callback-submit") : null;
+  const submitLabel = submitButton ? submitButton.querySelector("span") : null;
+  const status = document.getElementById("pychaCallbackStatus");
 
-  if (!popup || !closeButton || !form || !submitButton) return;
+  if (!popup || !dialog || !closeButton || !form || !submitButton || !submitLabel) return;
 
   const closedTimestamp = localStorage.getItem("pychaCallbackClosedTimestamp");
   if (closedTimestamp) {
-      const now = new Date().getTime();
-      const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
-      if (now - parseInt(closedTimestamp, 10) < threeDaysInMs) {
-          return; // Skip opening if 3 days haven't passed
-      }
+    const now = Date.now();
+    const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
+    if (now - parseInt(closedTimestamp, 10) < threeDaysInMs) return;
   }
 
+  let openTimer = null;
+  let previouslyFocusedElement = null;
+
   const openPopup = () => {
+    if (popup.classList.contains("active")) return;
+    previouslyFocusedElement = document.activeElement;
     popup.classList.add("active");
     popup.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    window.setTimeout(() => closeButton.focus(), 120);
   };
 
   const closePopup = () => {
+    if (!popup.classList.contains("active")) return;
     popup.classList.remove("active");
     popup.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    localStorage.setItem("pychaCallbackClosedTimestamp", new Date().getTime().toString());
+    localStorage.setItem("pychaCallbackClosedTimestamp", Date.now().toString());
+    if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === "function") {
+      previouslyFocusedElement.focus();
+    }
   };
 
-  window.setTimeout(openPopup, 4000);
+  const schedulePopup = (delay) => {
+    window.clearTimeout(openTimer);
+    openTimer = window.setTimeout(openPopup, delay);
+  };
+
+  // Nie pokazujemy dwóch komunikatów jednocześnie. Jeśli użytkownik nie
+  // wybrał jeszcze ustawień cookies, formularz poczeka na jego decyzję.
+  if (localStorage.getItem("cookiesAccepted") === null) {
+    document.addEventListener("pycha:cookies-resolved", () => schedulePopup(1400), { once: true });
+  } else {
+    schedulePopup(4000);
+  }
+
   closeButton.addEventListener("click", closePopup);
 
   popup.addEventListener("click", (event) => {
@@ -586,8 +609,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && popup.classList.contains("active")) {
-      closePopup();
+    if (!popup.classList.contains("active")) return;
+
+    if (event.key === "Escape") closePopup();
+
+    if (event.key === "Tab") {
+      const focusableElements = Array.from(dialog.querySelectorAll(
+        'button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter((element) => element.offsetParent !== null);
+      if (!focusableElements.length) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     }
   });
 
@@ -596,7 +636,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!form.reportValidity()) return;
 
     form.classList.add("is-success");
-    submitButton.textContent = "Dziękujemy, oddzwonimy!";
-    window.setTimeout(closePopup, 1600);
+    submitButton.disabled = true;
+    submitLabel.textContent = "Dziękujemy!";
+    if (status) status.textContent = "Zgłoszenie zapisane — oddzwonimy najszybciej, jak to możliwe.";
+    window.setTimeout(closePopup, 2200);
   });
 });

@@ -838,18 +838,18 @@ img.about-leaf.about-leaf-left {
 .pycha-callback-popup {
     position: fixed;
     inset: 0;
-    z-index: 10020;
-    display: flex;
+    z-index: 100100;
+    display: grid;
+    place-items: center;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background: rgba(6, 18, 7, 0.72);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    padding: 28px;
+    background: rgba(8, 24, 9, 0.64);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.28s ease, visibility 0.28s ease;
+    transition: opacity 0.32s ease, visibility 0.32s ease;
 }
 
 .pycha-callback-popup.active {
@@ -860,16 +860,19 @@ img.about-leaf.about-leaf-left {
 
 .pycha-callback-dialog {
     position: relative;
-    width: min(100%, 560px);
-    padding: 42px 40px 38px;
-    border: 2px solid #0c260d;
-    border-radius: 22px;
-    background: linear-gradient(180deg, #fffdf4 0%, #f8f4df 100%);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+    width: min(100%, 486px);
+    max-height: calc(100dvh - 56px);
+    padding: 32px 34px 26px;
+    border: 1px solid rgba(31, 65, 25, 0.14);
+    border-radius: 24px;
+    background: #fffdf6;
+    box-shadow: 0 32px 80px rgba(3, 18, 5, 0.34), 0 2px 8px rgba(3, 18, 5, 0.12);
     color: #10280f;
-    transform: translateY(18px) scale(0.96);
-    transition: transform 0.28s ease;
-    overflow: visible;
+    transform: translateY(22px) scale(0.97);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .pycha-callback-popup.active .pycha-callback-dialog {
@@ -877,38 +880,58 @@ img.about-leaf.about-leaf-left {
 }
 
 .pycha-callback-dialog::before {
-    content: "";
-    position: absolute;
-    right: 24px;
-    bottom: 26px;
-    width: 92px;
-    height: 92px;
-    background-image: url("assets/menu-popup/icon-leaf-cluster.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.12;
-    pointer-events: none;
+    display: none;
 }
 
 .pycha-callback-close {
     position: absolute;
-    top: -28px;
-    right: -28px;
-    width: 64px;
-    height: 64px;
-    border: 3px solid #0c260d;
+    top: 18px;
+    right: 18px;
+    z-index: 2;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid rgba(16, 40, 15, 0.14);
     border-radius: 50%;
-    background: #fffdf4;
+    background: rgba(255, 253, 246, 0.82);
     color: #0c260d;
-    font-size: 38px;
-    line-height: 1;
     cursor: pointer;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 18px rgba(16, 40, 15, 0.08);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pycha-callback-close:hover {
+    border-color: rgba(16, 40, 15, 0.28);
+    background: #ffffff;
+    transform: rotate(4deg);
+}
+
+.pycha-callback-close:focus-visible {
+    outline: 3px solid rgba(112, 153, 81, 0.3);
+    outline-offset: 3px;
+}
+
+.pycha-callback-close svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+}
+
+.pycha-callback-brand-row {
+    display: flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .pycha-callback-brand {
-    width: 142px;
-    margin-bottom: 18px;
+    width: 126px;
+    flex: 0 0 auto;
 }
 
 .pycha-callback-logo {
@@ -918,59 +941,121 @@ img.about-leaf.about-leaf-left {
     object-fit: contain;
 }
 
-.pycha-callback-title {
-    max-width: 440px;
-    margin: 0 0 14px;
-    color: #123a15;
-    font-family: 'Baloo 2', 'Rubik', sans-serif;
-    font-size: 46px;
-    line-height: 0.98;
-    font-weight: 800;
-    letter-spacing: 0;
+.pycha-callback-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid rgba(82, 122, 50, 0.14);
+    border-radius: 999px;
+    background: rgba(231, 240, 208, 0.72);
+    color: #41652d;
+    font-family: 'Rubik', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.pycha-callback-availability i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #76a84d;
+    box-shadow: 0 0 0 3px rgba(118, 168, 77, 0.15);
+}
+
+.pycha-callback-eyebrow {
+    margin: 0 0 8px;
+    color: #65923f;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.11em;
     text-transform: uppercase;
 }
 
+.pycha-callback-title {
+    max-width: 400px;
+    margin: 0 auto 10px;
+    color: #123a15;
+    font-family: 'Baloo 2', 'Rubik', sans-serif;
+    font-size: clamp(33px, 4vw, 39px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-align: center;
+    text-transform: none;
+}
+
 .pycha-callback-copy {
-    margin: 0 0 26px;
-    color: #1d331a;
-    font-size: 16px;
+    max-width: 390px;
+    margin: 0 auto 24px;
+    color: #4f5f4b;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
     line-height: 1.55;
-    font-weight: 600;
+    font-weight: 400;
+    text-align: center;
 }
 
 .pycha-callback-form {
     position: relative;
     z-index: 1;
+    width: min(100%, 404px);
+    margin: 0 auto;
+}
+
+.pycha-phone-label {
+    display: block;
+    margin: 0 0 7px;
+    color: #183719;
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .pycha-phone-field {
     display: flex;
-    min-height: 56px;
-    margin-bottom: 16px;
-    border: 2px solid #0c260d;
-    border-radius: 8px;
+    min-height: 58px;
+    margin-bottom: 17px;
+    border: 1.5px solid #b7c2ad;
+    border-radius: 14px;
     background: #fff;
     overflow: hidden;
+    box-shadow: 0 4px 14px rgba(18, 58, 21, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pycha-phone-field:focus-within {
+    border-color: #6e9d49;
+    box-shadow: 0 0 0 4px rgba(110, 157, 73, 0.13), 0 4px 14px rgba(18, 58, 21, 0.05);
 }
 
 .pycha-phone-prefix {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    border-right: 2px solid #0c260d;
-    color: #0c260d;
-    font-size: 16px;
-    font-weight: 800;
+    width: 64px;
+    flex: 0 0 64px;
+    border-right: 1px solid #d8dfd2;
+    background: #f5f8ec;
+    color: #284d28;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .pycha-phone-field input {
     width: 100%;
+    min-width: 0;
     border: 0;
     outline: 0;
-    padding: 0 18px;
+    padding: 0 16px;
     color: #10280f;
-    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
     background: transparent;
 }
 
@@ -978,86 +1063,177 @@ img.about-leaf.about-leaf-left {
     color: rgba(16, 40, 15, 0.48);
 }
 
+.pycha-phone-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 17px;
+    color: #667261;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.pycha-phone-hint svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+    stroke: #6f9f45;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .pycha-consent {
     display: grid;
-    grid-template-columns: 20px 1fr;
-    gap: 12px;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
     align-items: start;
-    margin: 6px 0 16px;
-    color: #10280f;
-    font-size: 13px;
-    line-height: 1.42;
+    margin: 0 0 18px;
+    color: #455440;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
 }
 
 .pycha-consent input {
-    width: 20px;
-    height: 20px;
-    margin: 0;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
     accent-color: #709951;
+    cursor: pointer;
 }
 
 .pycha-consent a,
 .pycha-callback-note a {
     color: #10280f;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.pycha-callback-note {
-    margin: 0 0 22px;
-    color: rgba(16, 40, 15, 0.68);
-    font-size: 12px;
-    line-height: 1.45;
+    font-weight: 600;
+    text-decoration-color: rgba(16, 40, 15, 0.4);
+    text-underline-offset: 3px;
 }
 
 .pycha-callback-submit {
+    display: inline-flex;
     width: 100%;
-    min-height: 58px;
-    border: 2px solid #0c260d;
-    border-radius: 9px;
-    background: #c3db8a;
-    color: #0c260d;
-    font-size: 17px;
-    font-weight: 900;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 14px;
+    background: #6f9f45;
+    color: #fff;
+    font-family: 'Baloo 2', 'Rubik', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: none;
     cursor: pointer;
-    box-shadow: 5px 5px 0 #0c260d;
+    box-shadow: 0 10px 22px rgba(71, 112, 42, 0.22);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+.pycha-callback-submit svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .pycha-callback-submit:hover {
-    background: #d7ed9d;
-    transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0 #0c260d;
+    background: #5f8e39;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(71, 112, 42, 0.28);
+}
+
+.pycha-callback-submit:focus-visible {
+    outline: 3px solid rgba(95, 142, 57, 0.3);
+    outline-offset: 3px;
 }
 
 .pycha-callback-form.is-success .pycha-callback-submit {
-    background: #709951;
+    background: #416f31;
     color: #fff;
+}
+
+.pycha-callback-status {
+    min-height: 0;
+    margin: 0;
+    color: #416f31;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pycha-callback-note {
+    margin: 10px 0 0;
+    color: #798275;
+    font-family: 'Rubik', sans-serif;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
 }
 
 @media (max-width: 640px) {
     .pycha-callback-popup {
-        padding: 18px;
+        align-items: center;
+        padding: 10px;
     }
 
     .pycha-callback-dialog {
-        padding: 34px 24px 30px;
+        max-height: calc(100dvh - 20px);
+        padding: 26px 20px 22px;
+        border-radius: 24px;
     }
 
     .pycha-callback-close {
-        top: -22px;
-        right: -12px;
-        width: 54px;
-        height: 54px;
-        font-size: 32px;
+        top: 14px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
     }
 
     .pycha-callback-title {
-        font-size: 34px;
+        padding: 0 16px;
+        font-size: clamp(29px, 8.5vw, 35px);
+    }
+
+    .pycha-callback-brand-row {
+        min-height: 40px;
+        margin-bottom: 17px;
     }
 
     .pycha-callback-brand {
-        width: 124px;
+        width: 112px;
+    }
+
+    .pycha-callback-availability {
+        display: none;
+    }
+
+    .pycha-callback-copy {
+        margin-bottom: 20px;
+        font-size: 13px;
+    }
+
+    .pycha-phone-field {
+        min-height: 54px;
+    }
+
+    .pycha-consent {
+        margin-bottom: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pycha-callback-popup,
+    .pycha-callback-dialog,
+    .pycha-callback-close,
+    .pycha-callback-submit {
+        transition: none !important;
     }
 }
 
@@ -8565,4 +8741,30 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
     .menu-static .menu-benefit-item:last-child {
         border-bottom: 0;
     }
+}
+
+/* Callback modal owns a calm, solid CTA instead of the global striped button treatment. */
+.pycha-callback-dialog .pycha-callback-submit {
+    min-height: 56px !important;
+    padding: 14px 22px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: #6f9f45 !important;
+    color: #ffffff !important;
+    text-transform: none !important;
+    box-shadow: 0 10px 22px rgba(71, 112, 42, 0.22) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+.pycha-callback-dialog .pycha-callback-submit:hover {
+    background: #5f8e39 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 26px rgba(71, 112, 42, 0.28) !important;
+}
+
+.pycha-callback-dialog .pycha-callback-submit:disabled {
+    background: #416f31 !important;
+    cursor: default !important;
+    transform: none !important;
+    box-shadow: none !important;
 }
