@@ -2,650 +2,659 @@ window.PYCHA_MENU_DATA = {};
 
 window.PYCHA_MENU_DATA.schedule = {
     timeZone: 'Europe/Warsaw',
-    cycleAnchorMonday: '2026-06-15',
-    defaultView: 'current-week'
+    defaultView: 'current-week',
+    menuPeriod: '2026-09-07'
+};
+
+window.PYCHA_MENU_DATA.weekLabels = {
+    'Tydzień 1': '07.09 - 11.09',
+    'Tydzień 2': '14.09 - 18.09',
+    'Tydzień 3': '21.09 - 25.09',
+    'Tydzień 4': '28.09 - 02.10'
 };
 
 window.PYCHA_MENU_DATA.weeklyMenu = {
     "Tydzień 1": {
       "Poniedziałek": {
         "Dania mięsne": [
-          "22 zł Domowy Schabowy z kapustą zasmażaną, ziemniaki gotowane",
-          "21 zł Udziec z kurczaka z ragu, purée ziemniaczane, surówka",
-          "20 zł Klopsiki z sosem pieczarkowym , purée ziemniaczane, surówka z marchewki",
-          "20 zł Cukinia faszerowana mięsem z mozarellą"
+          "21 zł Grillowana pierś z kurczaka z grillowanymi warzywami",
+          "21 zł Pad thai z kurczakiem",
+          "22 zł Klopsiki z sosem pieczarkowym, purée ziemniaczane, surówka",
+          "22 zł Rolada wieprzowa w sosie paprykowym, ziemniaki, surówka"
         ],
         "Dania wege": [
-          "19 zł Spaghetti Aglio Oglio",
-          "19 zł Kotleciki sojowe"
+          "19 zł Lasagne warzywna z ricottą"
         ],
         "Zupy": [
-          "11 zł Ogórkowa",
-          "11 zł Barszcz ukraiński"
+          "11 zł Pomidorowa"
         ],
         "Mączne": [
-          "18 zł Burrito"
+          "18 zł Leniwe"
         ],
         "Desery": [
-          "12 zł Mus jabłkowy pod kruszonką",
-          "12 zł Jogurt z granolą i borówkami"
+          "12 zł Deser Bounty",
+          "12 zł Deser 3BIT"
         ],
         "Sałatki": [
-          "20 zł Tabule",
-          "20 zł Cezar"
+          "21 zł Sałatka z kurczakiem curry",
+          "18 zł Grecka"
         ],
         "Makaron": [
-          "20 zł Penne z kurczakiem w sosie śmietanowym"
+          "20 zł Penne z kurczakiem w sosie szpinakowym"
         ],
         "Stałe codziennie": [
-          "leniwe spaghetti bolognese grecka naleśniki na słodko wrapy"
+          "19 zł Spaghetti Bolognese"
         ]
       },
       "Wtorek": {
         "Dania mięsne": [
-          "20 zł Domowy mielony z buraczkami, purée ziemniaczane",
-          "21 zł Karkówka pieczona w sosie grzybowym z kaszą gryczaną, surówka z kiszonych ogórków",
-          "20 zł Skrzydełka buffalo z sosem gorgonzola , marchewka i seler naciowy w słupkach",
-          "20 zł Kurczak curry z ryżem"
+          "22 zł Polędwiczki wieprzowe po toskańsku, puree ziemniaczane, surówka",
+          "21 zł Glazurowany azjatycki kurczak z sezamem, ryż",
+          "21 zł Pierś z kurczaka w sosie szpinakowym, ziemniaki, surówka",
+          "22 zł Kotlet szwajcarski, ziemniaki opiekane, fasolka szparagowa"
         ],
         "Dania wege": [
-          "19 zł Tajskie curry z tofu marynowym i ryż jasminowy",
-          "19 zł farfalle milanese"
+          "19 zł Pulpety z soczewicy, puree marchewkowe"
         ],
         "Zupy": [
-          "10 zł Rosół",
-          "11 zł Krupnik"
+          "12 zł Tajska z kurczakiem i mleczkiem kokosowym"
         ],
         "Mączne": [
-          "18 zł Pierogi z mięsem"
+          "18 zł Naleśniki na słodko"
         ],
         "Desery": [
-          "12 zł Mus mango z pieczoną gruszka",
-          "12 zł serniczek z czekoladą"
+          "12 zł Panna cotta z musem owocowym",
+          "12 zł Serniczek z czekoladą"
         ],
         "Sałatki": [
-          "20 zł Meksykańska z grillowanym kurczakiem i salsa mango",
-          "19 zł Sałatka z buraka pieczonego z fetą i kolendrą"
+          "21 zł Meksykańska z grillowanym kurczakiem i sosem spicy mayo",
+          "22 zł Bowl kurczak Teriyaki"
         ],
         "Makaron": [
-          "19 zł Arrabbiata Spaghetti"
+          "19 zł Tagliatelle Carbonara"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Środa": {
         "Dania mięsne": [
-          "21 zł Zrazy schabowe w sosie Dijon z koptykami , surówka",
-          "20 zł Kurczak pieczony w pomidorach , ziemniaki zapiekane, surówka",
-          "23 zł kociołek węgierski z plackiem ziemniaczanym",
-          "22 zł de volaille z serem, purée ziemniaczane, buraczki zasmażane"
+          "21 zł Karkówka w musztardzie, ziemniaki, surówka",
+          "20 zł Kurczak pieczony w pomidorach, ziemniaki zapiekane, surówka",
+          "22 zł Wieprzowina po koreańsku z ryżem",
+          "22 zł De volaille z serem, purée ziemniaczane, buraczki zasmażane"
         ],
         "Dania wege": [
-          "19 zł Marynowane Tofu w sosie bbq z ryżem, surówka",
-          "19 zł Cukinia faszerowana mozzarella i suszonymi pomidorami"
+          "19 zł Placki z cukinii z sosem jogurtowo-ziołowym"
         ],
         "Zupy": [
-          "11 zł jarzynowa",
-          "11 zł chłodnik"
+          "12 zł Szczawiowa z jajkiem"
         ],
         "Mączne": [
-          "18 zł krokiety z kapustą i pieczarkami"
+          "18 zł Naleśniki"
         ],
         "Desery": [
-          "12 zł kinder country z prażonym ryżem",
-          "12 zł malina z bezą i mascarpone"
+          "12 zł Deser 3bit",
+          "12 zł Tapioka na mleku kokosowym z owocami"
         ],
         "Sałatki": [
-          "21 zł 4 sery",
-          "20 zł sałatka grillowa"
+          "21 zł Sałatka z falafelem",
+          "20 zł Cezar"
         ],
         "Makaron": [
-          "20 zł Penne americana"
+          "19 zł Penne z kurczakiem i bazyliowym pesto"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Czwartek": {
         "Dania mięsne": [
-          "20 zł Pieczony udziec z kurczaka, ziemniaki młode, marchewka z groszkiem",
-          "20 zł Kotlet mielony z młodymi ziemniakami i mizeria",
-          "19 zł Fasolka po bretońsku",
-          "22 zł Roladki z kurczaka ze szpinakiem na sosie serowym z kopytkami i surówka"
+          "22 zł Schabowy Tonkatsu z ryżem",
+          "21 zł Placek po zbójnicku",
+          "21 zł Kurczak generała Tso",
+          "22 zł Roladki z kurczaka ze szpinakiem na sosie serowym z kaszą gryczaną i surówką"
         ],
         "Dania wege": [
-          "18 zł Placki z cukinii z sosem czosnkowym",
           "20 zł Pad Thai z Tofu"
         ],
         "Zupy": [
-          "11 zł Pomidorowa z makaronem",
-          "12 zł Krem z kalafiora"
+          "12 zł Flaczki drobiowe"
         ],
         "Mączne": [
-          "17 zł Naleśniki z serem i musem owocowym"
+          "18 zł Pierogi na słodko"
         ],
         "Desery": [
-          "12 zł Mus truskawkowy z mascarpone",
-          "12 zł Szarlotka pod kruszonką"
+          "12 zł Rafaello",
+          "12 zł Deser Kinder Bueno"
         ],
         "Sałatki": [
-          "23 zł Bowl z pieczonym łososiem z sosem mango",
-          "19 zł Caprese z pesto i pistacjami"
+          "21 zł Sałatka BBQ z grillowanym kurczakiem",
+          "22 zł Bowl z szarpaną wieprzowiną"
         ],
         "Makaron": [
-          "19 zł Spaghetti Bolognese"
+          "20 zł Makaron po chińsku z wieprzowiną"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Piątek": {
         "Dania mięsne": [
-          "22 zł Dorsz w cieście piwnym z ziemniakami opiekanymi, surówka z kiszonej kapusty",
-          "20 zł Potrawka z kurczaka z ryżem, surówka z marchewki",
-          "20 zł Stripsy w panko z sosem chipotle, zapiekane ziemniaki, surówka",
-          "24 zł Stifado wołowe z kaszą bulgur, buraczki zasmażane"
+          "22 zł Dorsz smażony, ziemniaki zapiekane, surówka z kiszonej kapusty",
+          "20 zł Potrawka z kurczaka z ryżem, surówka",
+          "21 zł Stripsy w panko, zapiekane ziemniaki, surówka",
+          "22 zł Polędwiczki wieprzowe w sosie kurkowym, ziemniaki, surówka"
         ],
         "Dania wege": [
-          "18 zł Kotlet jajeczno-ziemniaczany z sosem porowym, Surówka",
-          "19 zł Penne ze szpinakiem i gorgonzolą"
+          "19 zł Naleśniki szpinakowe z sosem porowym i camembertem"
         ],
         "Zupy": [
-          "12 zł Kapuśniak z młodej kapusty",
-          "12 zł Soczewicowa"
+          "11 zł Jarzynowa"
         ],
         "Mączne": [
-          "18 zł Pierogi z mięsem"
+          "18 zł Leniwe"
         ],
         "Desery": [
-          "12 zł Jogurt z borówkami i kruszonką czekoladową",
-          "12 zł Chia z owocami"
+          "12 zł Serniczek Oreo",
+          "12 zł Tiramisu"
         ],
         "Sałatki": [
-          "20 zł Sałatka z grillowanym Halloumi",
-          "18 zł Grecka"
+          "24 zł Bowl z pieczonym łososiem z sosem Spicy Mayo",
+          "20 zł Sałatka z grillowanym halloumi"
         ],
         "Makaron": [
-          "19 zł Linguine Carbonara"
+          "20 zł Tagliatelle z kurczakiem i sosem z Gorgonzoli i suszonych pomidorów"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       }
     },
-  
+
     "Tydzień 2": {
       "Poniedziałek": {
         "Dania mięsne": [
           "21 zł Czerwone Curry z kurczakiem z ryżem",
-          "20 zł Klopsiki w sosie koperkowym, purée ziemniaczane, surówka",
-          "23 zł Policzki wieprzowe z ziemniakami i surówką",
-          "23 zł Strogonow"
+          "21 zł Klopsiki w sosie koperkowym, purée ziemniaczane, surówka",
+          "21 zł Udziec z kurczaka w sosie musztardowo miodowym, ziemniaki, surówka",
+          "22 zł Kotlet z piersi kurczaka w panierce parmezanowej, ziemniaki zapiekane, marchewka z groszkiem"
         ],
         "Dania wege": [
-          "19 zł tagliatelle z warzywnym ragu",
-          "19 zł Lasagne ze szpinakiem i ricotta"
+          "19 zł Tagliatelle ze szpinakiem i suszonymi pomidorami"
         ],
         "Zupy": [
-          "11 zł krem z warzyw",
-          "12 zł żurek z jajkiem i kiełbasą"
+          "11 zł Kapuśniak ze słodkiej kapusty"
         ],
         "Mączne": [
-          "18 zł krokiety z kapustą i pieczarkami"
+          "18 zł Leniwe"
         ],
         "Desery": [
-          "12 zł pudding chia na mleku",
-          "12 zł topping mango i świeże owoce"
+          "12 zł Deser Bounty",
+          "12 zł Snickers"
         ],
         "Sałatki": [
-          "21 zł burrata z pomidorem z malinowym balsamico",
-          "22 zł bowl z kurczakiem teriyaki"
+          "21 zł Sałatka kurczak z pomarańczą",
+          "22 zł Bowl Kurczak Teriyaki"
         ],
         "Makaron": [
-          "20 zł spaghetti z chorizo"
+          "20 zł Penne z kurczakiem w sosie brokułowym"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Wtorek": {
         "Dania mięsne": [
-          "21 zł Kofta grecka z tzatziki, ziemniaki opiekane, sałata z vinegret",
-          "20 zł Bakłażan faszerowany mięsem",
-          "23 zł gulasz węgierski",
-          "21 zł kurczak z mozzarella i pieczarkami, ryż, surówka"
+          "22 zł Kofta grecka z tzatziki, ziemniaki opiekane, surówka",
+          "21 zł Kurczak z mozzarella i pieczarkami, ziemniaki zapiekane, surówka",
+          "20 zł Kotlet mielony, ziemniaki, buraczki zasmażane",
+          "21 zł Kurczak w 5 smakach, ryż"
         ],
         "Dania wege": [
-          "20 zł tagliatelle z leśnymi grzybami",
           "19 zł Kotleciki z soczewicy z purée i grillowanymi warzywami"
         ],
         "Zupy": [
-          "12 zł chłodnik",
-          "11 zł szczawiowa z jajkiem"
+          "12 zł Barszcz czerwony z uszkami"
         ],
         "Mączne": [
-          "18 zł Pierogi z serem z musem owocowym"
+          "18 zł Pancakes z sosem truskawkowym"
         ],
         "Desery": [
-          "12 zł serniczek z czekoladą",
-          "12 zł kinder bueno deser"
+          "12 zł Bananowy sernik z czekoladą",
+          "12 zł Panna Cotta z owocami"
         ],
         "Sałatki": [
-          "21 zł sałatka z arbuzem typu feta",
-          "21 zł sałatka z pieczonym bobem"
+          "21 zł Sałatka Gyros",
+          "21 zł Sałatka z kaszą kuskus i serem Feta"
         ],
         "Makaron": [
-          "19 zł makaron udon"
+          "20 zł Makaron z kurczakiem po azjatycku"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Środa": {
         "Dania mięsne": [
-          "21 zł udziki zapiekane w bekonie, ziemniaki zapiekane, surówka",
-          "20 zł Gołąbki w sosie pomidorówym z purée",
-          "22 zł schab milanese, sałatka z rukoli z vinegret, ziemniaki z wody",
-          "21 zł butter chicken z ryżem"
+          "22 zł Kotlet schabowy, ziemniaki, mizeria",
+          "20 zł Gołąbki w sosie pomidorowym z purée",
+          "20 zł Wątróbka drobiowa z cebulką i jabłkiem, ziemniaki i surówka",
+          "21 zł Butter Chicken z ryżem"
         ],
         "Dania wege": [
-          "19 zł scorentina",
-          "19 zł Chilli Sin Carne z ryżem"
+          "19 zł Kotlety z kalafiora, ziemniaki, surówka"
         ],
         "Zupy": [
-          "11 zł zacierkowa",
-          "11 zł krem z pomidorów"
+          "12 zł Krem pieczarkowy z grzankami czosnkowymi"
         ],
         "Mączne": [
-          "18 zł pyzy z mięsem"
+          "18 zł Naleśniki na słodko"
         ],
         "Desery": [
-          "12 zł brownie bananowe",
-          "12 zł rafaello deser"
+          "12 zł Brownie bananowe",
+          "12 zł Rafaello"
         ],
         "Sałatki": [
-          "23 zł shrimps bowl",
-          "21 zł kurczak z pomarańczą"
+          "22 zł Sałatka z kurczakiem i mango",
+          "20 zł Sałatka Cezar"
         ],
         "Makaron": [
-          "19 zł penne z kurczakiem i pesto"
+          "19 zł Penne z kurczakiem i pesto pomidorowym"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Czwartek": {
         "Dania mięsne": [
-          "20 zł gyros z ryżem , surówka",
-          "22 zł schab wołyński w sosie kurkowym z purée ziemniaczanym, fasolka szparagowa",
-          "20 zł kurczak w sosie słodko kwasnym z ryżem",
-          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane , surówka"
+          "21 zł Gyros z sosem tzatziki, ryż, surówka",
+          "22 zł Rolada wieprzowa w sosie własnym, kopytka, surówka",
+          "21 zł Kurczak w sosie słodko kwaśnym z ryżem",
+          "21 zł Schab w sosie śmietanowym, ziemniaki, surówka"
         ],
         "Dania wege": [
-          "18 zł tarta ze szpinakiem",
-          "20 zł Risotto grzybowe"
+          "19 zł Placki ziemniaczane z czosnkiem i sosem jogurtowo-ziołowym"
         ],
         "Zupy": [
-          "11 zł chłodnik",
-          "12 zł gulaszowa"
+          "12 zł Zupa tajska z kurczakiem i mleczkiem kokosowym"
         ],
         "Mączne": [
-          "18 zł placki z cukinii sos pieczarkowy"
+          "18 zł Pierogi z truskawkami"
         ],
         "Desery": [
-          "12 zł tapioka",
-          "12 zł mus pomarańczowy z chia"
+          "12 zł Serniczek Oreo",
+          "12 zł Tapioka z musem owocowym"
         ],
         "Sałatki": [
-          "20 zł Cezar",
-          "21 zł rzymska z avocado i mango"
+          "19 zł Grecka",
+          "21 zł Ziemniaczana z boczkiem"
         ],
         "Makaron": [
-          "20 zł farfalle z bekonem i pomidorami"
+          "20 zł Mac & Cheese z kurczakiem BBQ i prażoną cebulką"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Piątek": {
         "Dania mięsne": [
-          "22 zł dorsz panierowany z ziemniakami, surówka z kapusty kiszonej",
-          "19 zł Leczo",
-          "21 zł szynka pieczona w ziołach z kaszą bulgur, surówka",
-          "21 zł sznycel z kurczaka z mozzarella, z ziemniakami opiekanymi, surówka"
+          "22 zł Dorsz smażony z sosem tatarskim, ziemniaki zapiekane, surówka z kiszonej kapusty",
+          "21 zł Stripsy w panko, zapiekane ziemniaki, surówka",
+          "22 zł Polędwiczki wieprzowe w sosie kurkowym, purée ziemniaczane, mizeria",
+          "20 zł Potrawka z kurczaka z ryżem"
         ],
         "Dania wege": [
-          "18 zł udon wege",
-          "19 zł Zapiekanka warzywna z fetą"
+          "20 zł Żółte curry z kalafiorem i ciecierzycą, ryż"
         ],
         "Zupy": [
-          "12 zł meksykanska",
-          "11 zł warzywna"
+          "11 zł Ogórkowa"
         ],
         "Mączne": [
-          "18 zł knedle z owocami"
+          "18 zł Pierogi z mięsem"
         ],
         "Desery": [
-          "12 zł snickers deser",
-          "12 zł śliwka pod kruszonką"
+          "12 zł Chia na mleku kokosowym z owocami",
+          "12 zł Panna Cotta z owocami"
         ],
         "Sałatki": [
-          "23 zł Bowl z pieczonym łososiem z sosem mango",
-          "20 zł Meksykańska z grillowanym kurczakiem i salsa mango"
+          "24 zł Bowl z pieczonym łososiem z sosem Spicy Mayo",
+          "20 zł Sałatka z falafelem z sosem miętowo-jogurtowym"
         ],
         "Makaron": [
-          "21 zł penne z łososiem"
+          "19 zł Tagliatelle carbonara"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       }
     },
-  
+
     "Tydzień 3": {
       "Poniedziałek": {
         "Dania mięsne": [
-          "23 zł Zeberka w sosie BBQ Jack Daniels, Pieczone ziemniaki, Coleslaw",
-          "22 zł Chilli con carne z ryżem, sałatka ze świeżych warzyw",
-          "22 zł Długopieczona Łopatka wieprzowa w jabłkachch, Kasza pęczak , kiszona cebula",
-          "21 zł Rolada z indyka z suszonym pomidorem, Quinoa, Surówka",
-          "21 zł Marynowana pierść z kurczaka z grilla,warzywa grillowane, kasza bulgur"
+          "20 zł Kotlet mielony z ziemniakami i buraczkami zasmażanymi",
+          "21 zł Kurczak po tajlandzku z ryżem basmati",
+          "23 zł Sznycel z indyka, ziemniaki z koperkiem, surówka",
+          "22 zł Karkówka w sosie własnym, kopytka, surówka"
         ],
         "Dania wege": [
-          "19 zł Tarta ze szparagami i ze szpinakiem",
-          "19 zł Falaffel z bulgurem"
+          "19 zł Kotlet z cukinii i serem feta, surówka, sos koperkowy"
         ],
         "Zupy": [
-          "10 zł Rosół",
-          "12 zł Zupa krem ze szparagów"
+          "12 zł Flaki z boczniaków"
         ],
         "Mączne": [
-          "18 zł Burrito z sosem chipotle"
+          "18 zł Leniwe"
         ],
         "Desery": [
-          "12 zł Mus jabłkowy pod kruszonką",
-          "12 zł Jogurt z granolą i borówkami"
+          "12 zł Rafaello",
+          "12 zł Panna Cotta z mango"
         ],
         "Sałatki": [
-          "19 zł Sałatka z buraka pieczonego z fetą i kolendrą",
-          "20 zł Cezar"
+          "20 zł Sałatka z grillowanym halloumi",
+          "21 zł Sałatka kurczak BBQ"
         ],
         "Makaron": [
-          "19 zł Penne putanesca"
+          "19 zł Tagliatelle ze szpinakiem i kurczakiem"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       },
       "Wtorek": {
         "Dania mięsne": [
-          "20 zł kotlety mielone z ziemniakami, buraczkami",
-          "22 zł Kurczak mozzarella pomidor z pesto, młody ziemniak, surówka Kofta Z Łopatki wieprzowej, Ryż, surówka",
-          "23 zł Gulasz z kaszą i ogórkiem",
-          "21 zł Pieczony schab z morelą w sosie własnym, Z purée ziemniaczanym, surówka z buraków"
+          "23 zł Żeberka w sosie BBQ, pieczone ziemniaki, coleslaw",
+          "21 zł Placek po zbójnicku",
+          "22 zł De volaille, ziemniaki, mizeria",
+          "21 zł Marynowana pierś z kurczaka z grilla, warzywa grillowane"
         ],
         "Dania wege": [
-          "20 zł Stek z kalafiora",
-          "20 zł Zielone curry z bakłażanem z tofu ryż"
+          "20 zł Stek z kalafiora z purée z groszku i sosem chimichurri"
         ],
         "Zupy": [
-          "11 zł Pomidorowa",
-          "11 zł Flaki z boczniaka"
+          "12 zł Krem z pieczonych pomidorów z pesto"
         ],
         "Mączne": [
-          "18 zł Pierogi z mięsem"
+          "18 zł Naleśniki na słodko z mango i białą czekoladą"
         ],
         "Desery": [
-          "12 zł Mus mango z pieczoną gruszka",
-          "12 zł serniczek z czekoladą"
-        ],
-        "Sałatki": [
-          "19 zł Kuskus z warzywami i kurczakiem, sos tzaziki",
-          "20 zł Sałatka meksykańska z kurczakiem"
-        ],
-        "Makaron": [
-          "19 zł Tagliatelle szpinakowe"
-        ],
-        "Stałe codziennie": []
-      },
-      "Środa": {
-        "Dania mięsne": [
-          "23 zł Bitki wołowe z purée ziemniaczanym, buraczki",
-          "20 zł Skrzydełka Buffalo, Sos z gorgonzoli marchewka,seler w słupkach",
-          "24 zł Sandacz w sosie cytrynowo-kaparowym, mlode ziemniaki, surówka z kapusty",
-          "21 zł Czerwone curry z kurczakiem, ryż",
-          "21 zł Roladki wieprzowe z ogórkiem, kopytka, surówka z czerwonej kapusty"
-        ],
-        "Dania wege": [
-          "18 zł Placki z cukinii",
-          "19 zł Stir fry z Tofu z makaronym ryżowym"
-        ],
-        "Zupy": [
-          "12 zł meksykanska 18zł1",
-          "11 zł Kalafiorowa"
-        ],
-        "Mączne": [
-          "18 zł Burrito"
-        ],
-        "Desery": [
-          "12 zł kinder country z prażonym ryżem",
-          "12 zł malina z bezą i mascarpone"
-        ],
-        "Sałatki": [
-          "19 zł Sałatka caprese",
-          "22 zł Bowl Z Kurczakiem Teriyaki"
-        ],
-        "Makaron": [
-          "20 zł Linguine grzybowe"
-        ],
-        "Stałe codziennie": []
-      },
-      "Czwartek": {
-        "Dania mięsne": [
-          "22 zł Tikka Masalla w formie szaszłyków, ryż basmati. sałatka z sosem vinegret",
-          "23 zł Gulasz z plackiem ziemniacznym",
-          "23 zł Strogonow",
-          "21 zł Musaka",
-          "20 zł Gołąbki w sosie pomidorówym z purée"
-        ],
-        "Dania wege": [
-          "19 zł Korma z nerkowca, bakłażan, kalafior, Bataty",
-          "19 zł Kasza pęczak z grzybami"
-        ],
-        "Zupy": [
-          "11 zł Chłodnik",
-          "12 zł Żurek z jajkiem"
-        ],
-        "Mączne": [
-          "18 zł Pierogi z serem z musem owocowym"
-        ],
-        "Desery": [
-          "12 zł Mus truskawkowy z mascarpone",
-          "12 zł Szarlotka pod kruszonką"
-        ],
-        "Sałatki": [
-          "21 zł Sałatka tajska z mango z makaronem ryżowym",
-          "20 zł Cezar"
-        ],
-        "Makaron": [
-          "20 zł Spaghetti carbonara"
-        ],
-        "Stałe codziennie": []
-      },
-      "Piątek": {
-        "Dania mięsne": [
-          "20 zł Stripsy z kurczaka, Połówki ziemniaków, Coleslaw",
-          "22 zł Fish n Chips, Z purée z zielonego groszku, sos tatarski",
-          "21 zł Policzki wieprzowe w sosie, z kaszą jaglaną, surówka",
-          "20 zł Potrawka z kurczaka"
-        ],
-        "Dania wege": [
-          "18 zł Tarta warzywna",
-          "19 zł Naleśniki szpinakowe, z porem i camembertem"
-        ],
-        "Zupy": [
-          "12 zł Topcheta",
-          "11 zł Krem z warzyw"
-        ],
-        "Mączne": [
-          "18 zł Pierogi z mięsem"
-        ],
-        "Desery": [
-          "12 zł Jogurt z borówkami i kruszonką czekoladową",
-          "12 zł Chia z owocami"
-        ],
-        "Sałatki": [
-          "21 zł 4 sery",
-          "23 zł Bowl z pieczonym łososiem z sosem mango"
-        ],
-        "Makaron": [
-          "20 zł Spaghetti z kurczakiem i grzybkami"
-        ],
-        "Stałe codziennie": []
-      }
-    },
-  
-    "Tydzień 4": {
-      "Poniedziałek": {
-        "Dania mięsne": [
-          "21 zł Kotleciki Shu Shu z purée ziemniaczanym, surówka",
-          "21 zł Udziki z czerwoną cebulą i balsamika, ryż , surówka",
-          "21 zł Medaliony z polędwiczki wieprzowej w sosie szparagowym, ziemniaki gotowane, surówka",
-          "21 zł Sznycel z indyka z jajkiem sadzonym i cytryną, ziemniaki opiekane, sałatka vinegret"
-        ],
-        "Dania wege": [
-          "19 zł Kotlety z buraka, płatków owsianych i słonecznika",
-          "19 zł Chilli Sin Carne z ryżem"
-        ],
-        "Zupy": [
-          "11 zł Ogórkowa",
-          "11 zł Barszcz ukraiński"
-        ],
-        "Mączne": [
-          "18 zł Burrito z sosem chipotle"
-        ],
-        "Desery": [
-          "12 zł pudding chia na mleku",
-          "12 zł topping mango i świeże owoce"
-        ],
-        "Sałatki": [
-          "20 zł Meksykańska z grillowanym kurczakiem i salsa mango",
-          "19 zł Sałatka z buraka pieczonego z fetą i kolendrą"
-        ],
-        "Makaron": [
-          "20 zł spaghetti z chorizo"
-        ],
-        "Stałe codziennie": []
-      },
-      "Wtorek": {
-        "Dania mięsne": [
-          "22 zł Karkówka z jabłkiem w boczku, ziemniaki opiekane, surówka z buraków",
-          "22 zł Kotlet szwajcarski, purée ziemniaczne , mizeria",
-          "21 zł Sakiewki z mięsa drobiowego z pieczarkami, purée, surówka",
-          "20 zł Kotlet mielony, purée ziemniaczane, buraczki"
-        ],
-        "Dania wege": [
-          "19 zł Tajskie curry z tofu marynowym i ryż jasminowy",
-          "20 zł Risotto grzybowe"
-        ],
-        "Zupy": [
-          "12 zł Zupa Krem z pora z pulpecikami",
-          "11 zł Zupa Fasolowa"
-        ],
-        "Mączne": [
-          "18 zł knedle z owocami"
-        ],
-        "Desery": [
-          "12 zł serniczek z czekoladą",
-          "12 zł kinder bueno deser"
-        ],
-        "Sałatki": [
-          "21 zł burrata z pomidorem z malinowym balsamico",
-          "22 zł bowl z kurczakiem teriyaki"
-        ],
-        "Makaron": [
-          "19 zł makaron udon"
-        ],
-        "Stałe codziennie": []
-      },
-      "Środa": {
-        "Dania mięsne": [
-          "21 zł Kotlet z kurczaka w panierce, purée ziemniaczane, mizeria",
-          "20 zł Wątróbka z cebulką i jabłkami, purée ziemniaczane, surówka z kiszonego ogórka",
-          "21 zł Pulpety w sosie warzywno pomidorówym, ziemniaki gotowane, surówka",
-          "22 zł Bitki wieprzowe, ziemniaki gotowane, surówka"
-        ],
-        "Dania wege": [
-          "19 zł Marynowane Tofu w sosie bbq z ryżem, surówka",
-          "19 zł Cukinia faszerowana mozzarella i suszonymi pomidorami"
-        ],
-        "Zupy": [
-          "11 zł Flaki drobiowe",
-          "12 zł Zupa cebulowa"
-        ],
-        "Mączne": [
-          "18 zł Naleśniki z pieczarkami i serem"
-        ],
-        "Desery": [
-          "12 zł brownie bananowe",
-          "12 zł rafaello deser"
-        ],
-        "Sałatki": [
-          "21 zł sałatka z arbuzem typu feta",
-          "21 zł sałatka z pieczonym bobem"
-        ],
-        "Makaron": [
-          "19 zł Arrabbiata Spaghetti"
-        ],
-        "Stałe codziennie": []
-      },
-      "Czwartek": {
-        "Dania mięsne": [
-          "22 zł Schabowy, mizeria, purée ziemniaczane",
-          "21 zł Kotlet faszerowany śliwką, ziemniaki opiekane, surówka",
-          "21 zł Zielone curry z kurczakiem z ryżem",
-          "22 zł Szynka w sosie chrzanowym, Kasza gryczana, surówka"
-        ],
-        "Dania wege": [
-          "18 zł udon wege",
-          "19 zł Zapiekanka warzywna z fetą"
-        ],
-        "Zupy": [
-          "11 zł Krem z buraka",
-          "11 zł chłodnik"
-        ],
-        "Mączne": [
-          "18 zł Pierogi z serem z musem owocowym"
-        ],
-        "Desery": [
-          "12 zł tapioka",
-          "12 zł mus pomarańczowy z chia"
-        ],
-        "Sałatki": [
-          "23 zł shrimps bowl",
-          "21 zł kurczak z pomarańczą"
-        ],
-        "Makaron": [
-          "20 zł farfalle z bekonem i pomidorami"
-        ],
-        "Stałe codziennie": []
-      },
-      "Piątek": {
-        "Dania mięsne": [
-          "22 zł Dorsz w cieście piwnym, purée ziemniaczane, surówka z kiszonej kapusty",
-          "20 zł Gołąbki w sosie pomidorówym, purée ziemniaczane",
-          "20 zł kurczak w sosie słodko kwasnym z ryżem",
-          "21 zł rolada z kurczaka z pieczarkami, ziemniaki zapiekane , surówka"
-        ],
-        "Dania wege": [
-          "19 zł Spaghetti Aglio Oglio",
-          "19 zł Kotleciki sojowe"
-        ],
-        "Zupy": [
-          "11 zł Ogórkowa",
-          "11 zł Pieczarkowa"
-        ],
-        "Mączne": [
-          "18 zł krokiety z kapustą i pieczarkami"
-        ],
-        "Desery": [
-          "12 zł snickers deser",
-          "12 zł śliwka pod kruszonką"
+          "12 zł Deser 3bit",
+          "12 zł Serniczek Oreo"
         ],
         "Sałatki": [
           "20 zł Cezar",
-          "23 zł Bowl z pieczonym łososiem z sosem mango"
+          "18 zł Grecka"
         ],
         "Makaron": [
-          "21 zł penne z łososiem"
+          "19 zł Penne Arrabbiata"
         ],
-        "Stałe codziennie": []
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Środa": {
+        "Dania mięsne": [
+          "23 zł Schab pieczony w sosie cebulowo-chrzanowym, purée ziemniaczane, buraczki zasmażane",
+          "21 zł Skrzydełka Sweet Chilli, ziemniaki zapiekane, colesław",
+          "22 zł Udziec z kurczaka w sosie pieczarkowym, ziemniaki zapiekane, mizeria",
+          "22 zł Wieprzowina Hoisin z papryką i cebulą, ryż"
+        ],
+        "Dania wege": [
+          "19 zł Kotleciki brokułowo-serowe, marchewka baby, surówka"
+        ],
+        "Zupy": [
+          "12 zł Kalafiorowa"
+        ],
+        "Mączne": [
+          "18 zł Pierogi z truskawkami"
+        ],
+        "Desery": [
+          "12 zł Tapioka",
+          "12 zł Chia na mleku kokosowym z musem owocowym"
+        ],
+        "Sałatki": [
+          "21 zł Sałatka brokułowa z czosnkiem",
+          "22 zł Bowl z kurczakiem Teriyaki"
+        ],
+        "Makaron": [
+          "20 zł Tagliatelle z boczkiem i porem w sosie śmietanowym"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Czwartek": {
+        "Dania mięsne": [
+          "21 zł Glazurowany azjatycki kurczak z sezamem i ryżem",
+          "22 zł Szwedzkie pulpeciki z żurawiną, purée ziemniaczane",
+          "22 zł Kotlet z kurczaka w panierce z ziemniakami opiekanymi, fasolka szparagowa",
+          "22 zł Kotlet pod pierzynką, ziemniaki gotowane, surówka"
+        ],
+        "Dania wege": [
+          "19 zł Papryka faszerowana kuskusem, warzywami i mozzarellą, sos pomidorowo-ziołowy"
+        ],
+        "Zupy": [
+          "12 zł Grzybowa"
+        ],
+        "Mączne": [
+          "18 zł Leniwe"
+        ],
+        "Desery": [
+          "12 zł Serniczek Oreo",
+          "12 zł Deser Kinder Bueno"
+        ],
+        "Sałatki": [
+          "21 zł Sałatka z makaronem orzo i pieczonym bobem",
+          "21 zł Sałatka Gyros"
+        ],
+        "Makaron": [
+          "19 zł Penne Carbonara"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Piątek": {
+        "Dania mięsne": [
+          "21 zł Stripsy z kurczaka, ziemniaki zapiekane, coleslaw",
+          "22 zł Dorsz w cieście piwnym, ziemniaki zapiekane, surówka z białej kapusty",
+          "22 zł Medaliony z polędwiczki wieprzowej w sosie pieczarkowym, ziemniaki gotowane, surówka",
+          "21 zł Pałki z kurczaka, zapiekany ryż, surówka"
+        ],
+        "Dania wege": [
+          "19 zł Naleśniki szpinakowe z sosem czosnkowo-ziołowym"
+        ],
+        "Zupy": [
+          "11 zł Barszcz ukraiński"
+        ],
+        "Mączne": [
+          "18 zł Pierogi ukraińskie"
+        ],
+        "Desery": [
+          "12 zł Deser Snickers",
+          "12 zł Tiramisu"
+        ],
+        "Sałatki": [
+          "21 zł Nicejska",
+          "24 zł Bowl z pieczonym łososiem z spicy mayo"
+        ],
+        "Makaron": [
+          "20 zł Makaron z wieprzowiną po koreańsku"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      }
+    },
+
+    "Tydzień 4": {
+      "Poniedziałek": {
+        "Dania mięsne": [
+          "23 zł Rumsztyk wołowy z cebulą, ziemniaki gotowane, buraczki zasmażane",
+          "20 zł Wątróbka drobiowa, ziemniaki, surówka",
+          "21 zł Pad Thai z kurczakiem",
+          "21 zł Butter Chicken z ryżem basmati"
+        ],
+        "Dania wege": [
+          "19 zł Placki z cukinii z sosem jogurtowo-ziołowym"
+        ],
+        "Zupy": [
+          "12 zł Chińska w 5 smakach"
+        ],
+        "Mączne": [
+          "18 zł Naleśniki na słodko"
+        ],
+        "Desery": [
+          "12 zł Panna cotta",
+          "12 zł Tapioka na mleku kokosowym"
+        ],
+        "Sałatki": [
+          "21 zł Meksykańska z grillowanym kurczakiem i sos mango chilli",
+          "20 zł Sałatka z grillowanym halloumi"
+        ],
+        "Makaron": [
+          "19 zł Tagliatelle z pesto bazyliowym i suszonymi pomidorami"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Wtorek": {
+        "Dania mięsne": [
+          "22 zł Rolada wieprzowa w sosie własnym, kopytka, surówka",
+          "22 zł Pieczone udka z kurczaka, ziemniaki zapiekane, surówka",
+          "21 zł Gyros z kurczaka, ziemniaki zapiekane, sos tzatziki",
+          "21 zł Korean fried chicken z ryżem, colesław"
+        ],
+        "Dania wege": [
+          "19 zł Tajskie curry z tofu marynowanym i ryż jasminowy"
+        ],
+        "Zupy": [
+          "12 zł Krem z białych warzyw z gruszką"
+        ],
+        "Mączne": [
+          "18 zł Leniwe"
+        ],
+        "Desery": [
+          "12 zł Chia na mleku kokosowym",
+          "12 zł Snickers"
+        ],
+        "Sałatki": [
+          "20 zł Cezar",
+          "21 zł Sałatka z awokado i mango"
+        ],
+        "Makaron": [
+          "20 zł Mac n cheese z kurczakiem BBQ i prażoną cebulką"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Środa": {
+        "Dania mięsne": [
+          "22 zł Kotlet z kurczaka w panierce kukurydzianej, ziemniaki zapiekane, mizeria",
+          "21 zł Kurczak Kung Pao, ryż, surówka",
+          "22 zł Rumsztyk wieprzowy z cebulką, kasza gryczana, surówka",
+          "21 zł Kotlet nadziewany szpinakiem i suszonymi pomidorami, ziemniaki gotowane, surówka"
+        ],
+        "Dania wege": [
+          "19 zł Kotlet jajeczny, ziemniaki, surówka"
+        ],
+        "Zupy": [
+          "12 zł Żurek z białą kiełbasą i jajkiem"
+        ],
+        "Mączne": [
+          "18 zł Pierogi z mięsem"
+        ],
+        "Desery": [
+          "12 zł Rafaello",
+          "12 zł Deser Kinder Bueno"
+        ],
+        "Sałatki": [
+          "19 zł Grecka",
+          "22 zł Bowl kurczak Teriyaki"
+        ],
+        "Makaron": [
+          "20 zł Tagliatelle Alfredo z kurczakiem"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Czwartek": {
+        "Dania mięsne": [
+          "22 zł Schabowy, mizeria, ziemniaki",
+          "21 zł Placek po zbójnicku",
+          "22 zł Kurczak w panko z sosem miodowym chilli, ryż",
+          "21 zł Meksykańskie fajitas z kurczakiem, ryż"
+        ],
+        "Dania wege": [
+          "19 zł Makaron po chińsku wege"
+        ],
+        "Zupy": [
+          "12 zł Krem z dyni"
+        ],
+        "Mączne": [
+          "18 zł Naleśniki z malinami i serem"
+        ],
+        "Desery": [
+          "12 zł Tapioka z musem owocowym",
+          "12 zł Toffi"
+        ],
+        "Sałatki": [
+          "21 zł Sałatka pieczony batat",
+          "21 zł Kurczak z pomarańczą"
+        ],
+        "Makaron": [
+          "20 zł Penne z bekonem i pomidorami"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
+      },
+      "Piątek": {
+        "Dania mięsne": [
+          "22 zł Dorsz w cieście piwnym, ziemniaki zapiekane, surówka colesław",
+          "21 zł Gołąbki w sosie pomidorowym, purée ziemniaczane",
+          "21 zł Kurczak w sosie słodko kwaśnym z ryżem",
+          "20 zł Kotlety mielone, ziemniaki, surówka"
+        ],
+        "Dania wege": [
+          "20 zł Kremowe orzo z bobem i cytryną"
+        ],
+        "Zupy": [
+          "11 zł Ogórkowa"
+        ],
+        "Mączne": [
+          "18 zł Pierogi z truskawkami"
+        ],
+        "Desery": [
+          "12 zł 3BIT",
+          "12 zł Serniczek Oreo"
+        ],
+        "Sałatki": [
+          "22 zł Bowl z szarpaną wieprzowiną",
+          "24 zł Bowl z pieczonym łososiem z sosem spicy mayo"
+        ],
+        "Makaron": [
+          "19 zł Tagliatelle carbonara"
+        ],
+        "Stałe codziennie": [
+          "19 zł Spaghetti Bolognese"
+        ]
       }
     }
-  };
+};
 
-window.PYCHA_MENU_DATA.sandwiches = [];
+window.PYCHA_MENU_DATA.sandwiches = [
+    "10 zł Klasyczna Szynka i Ser",
+    "11 zł Pasztet z chrzanem",
+    "13 zł Kurczak Teriyaki",
+    "9 zł Jajeczna ze szczypiorkiem",
+    "14 zł Bajgiel Wege/Mięso",
+    "17 zł Wrap Wege/Mięso"
+];
 
 window.PYCHA_MENU_DATA.categoryPhotos = {
     'Dania mięsne':     `danie_miesne_1781601930040.png`,
@@ -671,8 +680,12 @@ window.PYCHA_MENU_DATA.catIcons = {
     'Kanapki':          `https://i.imgur.com/5dmembW.png`,
 };
 
-// Keep the bundled menu as a safe fallback, but prefer the shared online copy.
-// The popup and editor wait for this promise before they render their content.
+function pychaMenuPeriod(menu) {
+  return String((menu && menu.schedule && menu.schedule.menuPeriod) || '');
+}
+
+// Keep the bundled menu as a safe fallback, but prefer the shared online copy
+// when it belongs to the same or a newer published period.
 window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
   method: 'GET',
   headers: { Accept: 'application/json' },
@@ -684,7 +697,14 @@ window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
     if (!payload.menu || typeof payload.menu !== 'object') {
       throw new Error('Serwer zwrócił nieprawidłowe dane menu.');
     }
-    window.PYCHA_MENU_DATA = payload.menu;
+    const bundled = window.PYCHA_MENU_DATA;
+    const remote = payload.menu;
+    const bundledPeriod = pychaMenuPeriod(bundled);
+    const remotePeriod = pychaMenuPeriod(remote);
+    if (bundledPeriod && remotePeriod < bundledPeriod) {
+      return bundled;
+    }
+    window.PYCHA_MENU_DATA = remote;
     return window.PYCHA_MENU_DATA;
   })
   .catch(() => window.PYCHA_MENU_DATA);

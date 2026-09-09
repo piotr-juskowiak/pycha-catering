@@ -476,23 +476,29 @@
       <h2>Daty Tygodni</h2>
       <div class="section-header-line"></div>
     </div>
-    <div class="nav-container" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+    <p style="margin: -0.4rem 0 1.1rem; max-width: 720px; color: var(--pc-ink-light); font-size: 0.92rem; font-weight: 700; line-height: 1.45;">
+      Te daty decydują, który tydzień widać na stronie. Menu nie zapętla się — po ostatnim tygodniu zostaje ostatni zapisany tydzień.
+    </p>
+    <div class="nav-container" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: end;">
       <div style="flex: 1; min-width: 200px;">
         <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 1</label>
-        <input type="text" class="input-week-label" data-week="Tydzień 1" style="width: 100%;" placeholder="np. 15.06 - 19.06" />
+        <input type="text" class="input-week-label" data-week="Tydzień 1" style="width: 100%;" placeholder="np. 07.09 - 11.09" />
       </div>
       <div style="flex: 1; min-width: 200px;">
         <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 2</label>
-        <input type="text" class="input-week-label" data-week="Tydzień 2" style="width: 100%;" placeholder="np. 22.06 - 26.06" />
+        <input type="text" class="input-week-label" data-week="Tydzień 2" style="width: 100%;" placeholder="np. 14.09 - 18.09" />
       </div>
       <div style="flex: 1; min-width: 200px;">
         <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 3</label>
-        <input type="text" class="input-week-label" data-week="Tydzień 3" style="width: 100%;" placeholder="np. 29.06 - 03.07" />
+        <input type="text" class="input-week-label" data-week="Tydzień 3" style="width: 100%;" placeholder="np. 21.09 - 25.09" />
       </div>
       <div style="flex: 1; min-width: 200px;">
         <label style="font-size: 0.85rem; font-weight: 800; color: var(--pc-ink-light); margin-bottom: 0.3rem; display: block;">Tydzień 4</label>
-        <input type="text" class="input-week-label" data-week="Tydzień 4" style="width: 100%;" placeholder="np. 06.07 - 10.07" />
+        <input type="text" class="input-week-label" data-week="Tydzień 4" style="width: 100%;" placeholder="np. 28.09 - 02.10" />
       </div>
+    </div>
+    <div style="margin-bottom: 2.5rem;">
+      <button type="button" class="btn-secondary" id="fillCurrentWeeksBtn">Ustaw daty od tego tygodnia</button>
     </div>
 
     <div class="nav-container">
@@ -552,12 +558,11 @@
 
       if (!state.data.categoryPhotos) state.data.categoryPhotos = {};
       if (!state.data.catIcons) state.data.catIcons = {};
-      if (!state.data.weekLabels) state.data.weekLabels = {
-        'Tydzień 1': '15.06 - 19.06',
-        'Tydzień 2': '22.06 - 26.06',
-        'Tydzień 3': '29.06 - 03.07',
-        'Tydzień 4': '06.07 - 10.07'
-      };
+      if (!state.data.schedule || typeof state.data.schedule !== 'object') state.data.schedule = {};
+      delete state.data.schedule.cycleAnchorMonday;
+      state.data.schedule.timeZone = state.data.schedule.timeZone || 'Europe/Warsaw';
+      state.data.schedule.defaultView = 'current-week';
+      if (!state.data.weekLabels) state.data.weekLabels = getDefaultWeekLabels();
 
       const weekTabsEl = document.getElementById('weekTabs');
       const dayTabsEl = document.getElementById('dayTabs');
@@ -567,6 +572,34 @@
       const downloadBtn = document.getElementById('downloadBtn');
       const headerSubtitle = document.getElementById('headerSubtitle');
       const unsavedDot = document.getElementById('unsavedDot');
+
+      function formatEditorDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        return `${day}.${month}`;
+      }
+
+      function getMonday(date) {
+        const monday = new Date(date);
+        const weekday = monday.getDay();
+        const offset = weekday === 0 ? -6 : 1 - weekday;
+        monday.setDate(monday.getDate() + offset);
+        monday.setHours(12, 0, 0, 0);
+        return monday;
+      }
+
+      function getDefaultWeekLabels(fromDate = new Date()) {
+        const firstMonday = getMonday(fromDate);
+        const labels = {};
+        WEEKS.forEach((weekName, index) => {
+          const start = new Date(firstMonday);
+          start.setDate(firstMonday.getDate() + (index * 7));
+          const end = new Date(start);
+          end.setDate(start.getDate() + 4);
+          labels[weekName] = `${formatEditorDate(start)} - ${formatEditorDate(end)}`;
+        });
+        return labels;
+      }
 
       const iconTrash = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>`;
       const iconPlus = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
@@ -609,6 +642,12 @@
       
       function getIconForCat(cat) { return state.data.catIcons[cat] || 'https://i.imgur.com/mk96eYb.png'; }
 
+      function syncWeekLabelInputs() {
+        document.querySelectorAll('.input-week-label').forEach(input => {
+          input.value = state.data.weekLabels[input.dataset.week] || '';
+        });
+      }
+
       function initWeekLabels() {
         document.querySelectorAll('.input-week-label').forEach(input => {
           const w = input.dataset.week;
@@ -619,6 +658,13 @@
             markUnsaved();
             renderTabs(); // to update tabs text
           });
+        });
+
+        document.getElementById('fillCurrentWeeksBtn')?.addEventListener('click', () => {
+          state.data.weekLabels = getDefaultWeekLabels();
+          syncWeekLabelInputs();
+          markUnsaved();
+          renderTabs();
         });
       }
 
@@ -898,6 +944,21 @@
         downloadBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg> Zapisywanie...`;
 
         const encodedCredentials = btoa(unescape(encodeURIComponent(`pycha:${password}`)));
+
+        if (!state.data.schedule || typeof state.data.schedule !== 'object') state.data.schedule = {};
+        delete state.data.schedule.cycleAnchorMonday;
+        state.data.schedule.timeZone = state.data.schedule.timeZone || 'Europe/Warsaw';
+        state.data.schedule.defaultView = 'current-week';
+        const firstWeekLabel = state.data.weekLabels && state.data.weekLabels['Tydzień 1'];
+        const firstWeekMatch = String(firstWeekLabel || '').match(/(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?/);
+        if (firstWeekMatch) {
+          const year = firstWeekMatch[3]
+            ? (Number(firstWeekMatch[3]) < 100 ? 2000 + Number(firstWeekMatch[3]) : Number(firstWeekMatch[3]))
+            : new Date().getFullYear();
+          const month = String(firstWeekMatch[2]).padStart(2, '0');
+          const day = String(firstWeekMatch[1]).padStart(2, '0');
+          state.data.schedule.menuPeriod = `${year}-${month}-${day}`;
+        }
 
         fetch('/api/menu', {
           method: 'POST',

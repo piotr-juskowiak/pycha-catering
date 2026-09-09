@@ -29,7 +29,6 @@
   const WEEKS       = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];
   const SCHEDULE = {
     timeZone: 'Europe/Warsaw',
-    cycleAnchorMonday: '2026-06-15',
     defaultView: 'current-week',
     ...(window.PYCHA_MENU_DATA.schedule || {}),
   };
@@ -43,27 +42,24 @@
   const sandwiches = Array.isArray(window.PYCHA_MENU_DATA.sandwiches)
     ? window.PYCHA_MENU_DATA.sandwiches
     : [];
+  const weekLabels = window.PYCHA_MENU_DATA.weekLabels && typeof window.PYCHA_MENU_DATA.weekLabels === 'object'
+    ? window.PYCHA_MENU_DATA.weekLabels
+    : {};
 
   const DAY_IN_MS = 86400000;
 
-  function positiveModulo(value, divisor) {
-    return ((value % divisor) + divisor) % divisor;
-  }
-
-  function parseIsoCivilDay(value) {
-    const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!match) return Math.floor(Date.UTC(2026, 5, 15) / DAY_IN_MS);
-    return Math.floor(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) / DAY_IN_MS);
-  }
-
-  function getCivilDayInTimeZone(referenceDate = new Date()) {
+  function getWarsawDateParts(referenceDate = new Date()) {
     const parts = new Intl.DateTimeFormat('en-CA', {
-      timeZone: SCHEDULE.timeZone,
+      timeZone: SCHEDULE.timeZone || 'Europe/Warsaw',
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
     }).formatToParts(referenceDate);
-    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  }
+
+  function getCivilDayInTimeZone(referenceDate = new Date()) {
+    const values = getWarsawDateParts(referenceDate);
     return Math.floor(Date.UTC(Number(values.year), Number(values.month) - 1, Number(values.day)) / DAY_IN_MS);
   }
 
@@ -80,36 +76,88 @@
     return `${formatCivilDay(startDay)} – ${formatCivilDay(startDay + 4)}`;
   }
 
+  function parseDayMonthToken(token, defaultYear) {
+    const match = String(token || '').trim().match(/^(\d{1,2})[.\-/](\d{1,2})(?:[.\-/](\d{2,4}))?$/);
+    if (!match) return null;
+    const day = Number(match[1]);
+    const month = Number(match[2]);
+    let year = match[3] ? Number(match[3]) : defaultYear;
+    if (year < 100) year += 2000;
+    if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+    return Math.floor(Date.UTC(year, month - 1, day) / DAY_IN_MS);
+  }
+
+  function parseWeekLabelRange(label, defaultYear) {
+    const text = String(label || '').trim();
+    if (!text) return null;
+    const parts = text.split(/\s*[-–—]\s*/);
+    if (parts.length < 2) return null;
+    const startDay = parseDayMonthToken(parts[0], defaultYear);
+    let endDay = parseDayMonthToken(parts[1], defaultYear);
+    if (startDay == null || endDay == null) return null;
+    if (endDay < startDay && !/[.\-/]\d{2,4}\s*$/.test(parts[1])) {
+      endDay = parseDayMonthToken(parts[1], defaultYear + 1);
+    }
+    if (endDay == null || endDay < startDay) return null;
+    return { startDay, endDay };
+  }
+
+  function getPublishedWeeks(referenceDate = new Date()) {
+    const defaultYear = Number(getWarsawDateParts(referenceDate).year);
+    return WEEKS.map((weekName, index) => {
+      const rawLabel = weekLabels[weekName];
+      const range = parseWeekLabelRange(rawLabel, defaultYear);
+      const label = rawLabel && String(rawLabel).trim()
+        ? String(rawLabel).trim()
+        : weekName;
+      return {
+        index,
+        weekName,
+        startDay: range ? range.startDay : null,
+        endDay: range ? range.endDay : null,
+        label,
+      };
+    });
+  }
+
   function getMenuWeekSelection(referenceDate = new Date()) {
     const today = getCivilDayInTimeZone(referenceDate);
     const weekday = new Date(today * DAY_IN_MS).getUTCDay();
-    const currentMonday = today - positiveModulo(weekday - 1, 7);
-    const targetMonday = weekday === 0 || weekday === 6
-      ? currentMonday + 7
-      : currentMonday;
-    const anchorMonday = parseIsoCivilDay(SCHEDULE.cycleAnchorMonday);
-    const weeksFromAnchor = Math.floor((targetMonday - anchorMonday) / 7);
-    const index = positiveModulo(weeksFromAnchor, WEEKS.length);
+    const weeks = getPublishedWeeks(referenceDate);
+    const datedWeeks = weeks.filter((week) => week.startDay != null && week.endDay != null);
 
-    return {
-      index,
-      startDay: targetMonday,
-      label: formatCivilWeek(targetMonday),
-    };
+    if (!datedWeeks.length) {
+      return { index: 0, startDay: today, label: weeks[0].label };
+    }
+
+    const containing = datedWeeks.find((week) => today >= week.startDay && today <= week.endDay);
+    if (containing) {
+      return { index: containing.index, startDay: containing.startDay, label: containing.label };
+    }
+
+    if (weekday === 0 || weekday === 6) {
+      const lookAhead = today + (weekday === 6 ? 2 : 1);
+      const upcoming = datedWeeks.find((week) => lookAhead >= week.startDay && lookAhead <= week.endDay);
+      if (upcoming) {
+        return { index: upcoming.index, startDay: upcoming.startDay, label: upcoming.label };
+      }
+    }
+
+    const first = datedWeeks[0];
+    const last = datedWeeks[datedWeeks.length - 1];
+    if (today < first.startDay) {
+      return { index: first.index, startDay: first.startDay, label: first.label };
+    }
+    return { index: last.index, startDay: last.startDay, label: last.label };
   }
 
   function getFourWeekSchedule(referenceDate = new Date()) {
-    const firstWeek = getMenuWeekSelection(referenceDate);
-    return Array.from({ length: WEEKS.length }, (_, offset) => {
-      const startDay = firstWeek.startDay + (offset * 7);
-      const index = positiveModulo(firstWeek.index + offset, WEEKS.length);
-      return {
-        index,
-        weekName: WEEKS[index],
-        startDay,
-        label: formatCivilWeek(startDay),
-      };
-    });
+    return getPublishedWeeks(referenceDate).map((week) => ({
+      index: week.index,
+      weekName: week.weekName,
+      startDay: week.startDay,
+      label: week.label,
+    }));
   }
   
   /* ─── SVG icons ─────────────────────────────────────────── */
