@@ -42,24 +42,4 @@
     render();
   });
 
-  const footerPhoto = document.querySelector(".pycha-footer-photo");
-  if (!footerPhoto) return;
-
-  let ticking = false;
-  const updateFooterPhoto = () => {
-    const rect = footerPhoto.getBoundingClientRect();
-    const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
-    footerPhoto.style.setProperty("--pycha-footer-parallax", `${(-95 + progress * 150).toFixed(2)}px`);
-    ticking = false;
-  };
-
-  const queueFooterPhoto = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(updateFooterPhoto);
-  };
-
-  window.addEventListener("scroll", queueFooterPhoto, { passive: true });
-  window.addEventListener("resize", queueFooterPhoto, { passive: true });
-  queueFooterPhoto();
 })();

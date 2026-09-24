@@ -317,7 +317,7 @@ html.weekly-popup-snapshot .catering-modal {
 
 /* Active category — green gradient pill with leaf texture */
 .wmp-cat-btn.active {
-    background: url(https://i.imgur.com/j5R5EIY.png) no-repeat center / cover;
+    background: url(/assets/imgur/j5R5EIY.png) no-repeat center / cover;
     color: #ffffff;
     box-shadow: 0 8px 24px rgb(94 126 47 / 49%), 0 3px 8px rgba(47, 125, 50, 0.20);
     padding: 11px 25px;
@@ -370,7 +370,7 @@ html.weekly-popup-snapshot .catering-modal {
   right: -10px;
   width: 140px;
   height: 100%;
-  background: url("https://i.imgur.com/Cz0Y9i4.png") no-repeat right center / contain;
+  background: url("/assets/imgur/Cz0Y9i4.png") no-repeat right center / contain;
   pointer-events: none;
 }
 
@@ -645,7 +645,7 @@ html.weekly-popup-snapshot .catering-modal {
 .catering-day-btn.active {
     border-color: transparent;
     color: #fff;
-    background: url(https://i.imgur.com/EVrO4hh.png) no-repeat center / cover;
+    background: url(/assets/imgur/EVrO4hh.png) no-repeat center / cover;
     box-shadow: 0 8px 24px rgb(90 120 45 / 57%), 0 3px 8px rgba(47, 125, 50, 0.18);
     transform: translateY(-1px);
     position: relative;
@@ -1578,7 +1578,7 @@ html.weekly-popup-snapshot .catering-modal {
     right: -10px;
     width: 100px;
     height: 100%;
-    background: url("https://i.imgur.com/Cz0Y9i4.png") no-repeat right center / contain;
+    background: url("/assets/imgur/Cz0Y9i4.png") no-repeat right center / contain;
     pointer-events: none;
     border: none;
     border-radius: 0;

@@ -228,7 +228,7 @@
     }
 
     .tab.active {
-      background: url(https://i.imgur.com/EVrO4hh.png) no-repeat center / cover;
+      background: url(/assets/imgur/EVrO4hh.png) no-repeat center / cover;
       color: white;
       border-color: transparent;
       box-shadow: 0 4px 14px rgba(47, 125, 50, 0.25);
@@ -458,7 +458,7 @@
 
   <header class="main-header">
     <div class="header-left">
-      <img src="https://i.imgur.com/f0sl5oR.png" alt="Pycha Catering" class="header-logo">
+      <img src="/assets/imgur/f0sl5oR.png" alt="Pycha Catering" class="header-logo">
       <div>
         <h1>Edytor Menu</h1>
         <div class="subtitle" id="headerSubtitle">Ładowanie...</div>
@@ -640,7 +640,7 @@
         return val;
       }
       
-      function getIconForCat(cat) { return state.data.catIcons[cat] || 'https://i.imgur.com/mk96eYb.png'; }
+      function getIconForCat(cat) { return state.data.catIcons[cat] || '/assets/imgur/mk96eYb.png'; }
 
       function syncWeekLabelInputs() {
         document.querySelectorAll('.input-week-label').forEach(input => {

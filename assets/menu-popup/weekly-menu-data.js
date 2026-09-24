@@ -669,15 +669,15 @@ window.PYCHA_MENU_DATA.categoryPhotos = {
 };
 
 window.PYCHA_MENU_DATA.catIcons = {
-    'Dania mięsne':     `https://i.imgur.com/mk96eYb.png`,
-    'Dania wege':       `https://i.imgur.com/VcumTo0.png`,
-    'Zupy':             `https://i.imgur.com/fQPU7Q3.png`,
-    'Mączne':           `https://i.imgur.com/5dmembW.png`,
-    'Desery':           `https://i.imgur.com/hMAugNx.png`,
-    'Sałatki':          `https://i.imgur.com/VcumTo0.png`,
-    'Makaron':          `https://i.imgur.com/mk96eYb.png`,
-    'Stałe codziennie': `https://i.imgur.com/fQPU7Q3.png`,
-    'Kanapki':          `https://i.imgur.com/5dmembW.png`,
+    'Dania mięsne':     `/assets/imgur/mk96eYb.png`,
+    'Dania wege':       `/assets/imgur/VcumTo0.png`,
+    'Zupy':             `/assets/imgur/fQPU7Q3.png`,
+    'Mączne':           `/assets/imgur/5dmembW.png`,
+    'Desery':           `/assets/imgur/hMAugNx.png`,
+    'Sałatki':          `/assets/imgur/VcumTo0.png`,
+    'Makaron':          `/assets/imgur/mk96eYb.png`,
+    'Stałe codziennie': `/assets/imgur/fQPU7Q3.png`,
+    'Kanapki':          `/assets/imgur/5dmembW.png`,
 };
 
 function pychaMenuPeriod(menu) {

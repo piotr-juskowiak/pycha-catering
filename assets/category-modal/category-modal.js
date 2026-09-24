@@ -7,7 +7,7 @@
     'kanapki-wrapy': {
       title: 'Kanapki i wrapy',
       products: [
-        { name: 'Klasyczna Kanapka Premium', desc: 'Świeża bagietka, wolno pieczona szarpana wołowina, rukola, konfitura z czerwonej cebuli i domowy sos aioli.', price: '16,50 zł', img: 'https://i.imgur.com/nfieVTn.jpeg' },
+        { name: 'Klasyczna Kanapka Premium', desc: 'Świeża bagietka, wolno pieczona szarpana wołowina, rukola, konfitura z czerwonej cebuli i domowy sos aioli.', price: '16,50 zł', img: '/assets/imgur/nfieVTn.jpeg' },
         { name: 'Wrap Falafel (Wege)', desc: 'Pełnoziarnista tortilla, chrupiący falafel, świeży hummus, pomidorki koktajlowe, ogórek, szpinak i sos tahini.', price: '18,00 zł', img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&q=80' },
         { name: 'Kanapka z Łososiem', desc: 'Rzemieślnicze pieczywo żytnie, wędzony łosoś atlantycki, serek śmietankowy z koperkiem, świeży ogórek i kapary.', price: '19,50 zł', img: 'https://images.unsplash.com/photo-1550507992-eb63ffee0224?w=800&q=80' },
       ]
@@ -23,7 +23,7 @@
     'zestawy-obiadowe': {
       title: 'Zestawy obiadowe',
       products: [
-        { name: 'Zestaw Polski Tradycyjny', desc: 'Złocisty schabowy z kością smażony na smalcu, ziemniaki z koperkiem oraz zasmażana młoda kapusta.', price: '32,00 zł', img: 'https://i.imgur.com/93WwKW8.jpeg' },
+        { name: 'Zestaw Polski Tradycyjny', desc: 'Złocisty schabowy z kością smażony na smalcu, ziemniaki z koperkiem oraz zasmażana młoda kapusta.', price: '32,00 zł', img: '/assets/imgur/93WwKW8.jpeg' },
         { name: 'Zestaw Włoski', desc: 'Grillowana pierś z kurczaka supreme, kremowe risotto szafranowe i glazurowane szparagi z parmezanem.', price: '36,50 zł', img: 'https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=800&q=80' },
         { name: 'Zestaw Roślinny (Vege)', desc: 'Pieczony batat faszerowany ciecierzycą, kasza pęczak z warzywami korzeniowymi i wegański sos pieczeniowy.', price: '29,00 zł', img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80' },
       ]

@@ -2,7 +2,55 @@
   const root = document.querySelector('[data-static-menu-page]');
   if (!root) return;
 
-  const cards = Array.from(root.querySelectorAll('.menu-dish-card'));
+  let cards = Array.from(root.querySelectorAll('.menu-dish-card'));
+
+  function dedupeDishes(list) {
+    const seen = new Set();
+    const unique = [];
+    list.forEach((card) => {
+      const key = normalize(card.dataset.title);
+      if (!key || seen.has(key)) {
+        card.remove();
+        return;
+      }
+      seen.add(key);
+      card.querySelector('.menu-dish-meta')?.remove();
+      card.querySelector('.menu-dish-badges')?.remove();
+      const description = (card.dataset.description || '').trim();
+      if (!description || /z menu pycha catering/i.test(description)) {
+        card.dataset.description = '';
+        card.querySelector('.menu-dish-desc')?.remove();
+      }
+      if (card.dataset.category) card.dataset.meta = card.dataset.category;
+      const title = sentenceTitle(card.dataset.title);
+      if (title && title !== card.dataset.title) {
+        card.dataset.title = title;
+        const heading = card.querySelector('.menu-dish-title');
+        if (heading) heading.textContent = title;
+      }
+      unique.push(card);
+    });
+    return unique;
+  }
+
+  cards = dedupeDishes(cards);
+  root.querySelectorAll('[data-filter-dropdown="week"], [data-filter-dropdown="day"], [data-filter-dropdown="popularity"]').forEach((group) => group.remove());
+
+  function writeFilterCounts(type, match) {
+    root.querySelectorAll(`[data-filter-type="${type}"]`).forEach((button) => {
+      const value = button.dataset.filterValue;
+      const count = value === 'all' ? cards.length : cards.filter((card) => match(card, value)).length;
+      const strong = button.querySelector('strong');
+      if (strong) strong.textContent = String(count);
+    });
+  }
+
+  writeFilterCounts('category', (card, value) => card.dataset.category === value);
+  writeFilterCounts('diet', (card, value) => card.dataset.diet === value);
+  writeFilterCounts('price', (card, value) => card.dataset.priceBand === value);
+  document.querySelectorAll('[data-menu-dish-count]').forEach((node) => {
+    node.textContent = String(cards.length);
+  });
   const grid = root.querySelector('#weeklyMenuGrid');
   const search = root.querySelector('#weeklyMenuSearch');
   const searchClear = root.querySelector('#weeklyMenuSearchClear');
@@ -32,6 +80,12 @@
   const PAGE_SIZE = 30;
   const state = { week: 'all', day: 'all', category: 'all', diet: 'all', price: 'all', popularity: 'all', search: '', sort: 'default', page: 1, lastDrawerTrigger: null, lastModalTrigger: null };
 
+  function sentenceTitle(value) {
+    const title = String(value || '').trim();
+    if (!title || title !== title.toLowerCase()) return title;
+    return title.charAt(0).toLocaleUpperCase('pl') + title.slice(1);
+  }
+
   function normalize(value) {
     return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
   }
@@ -44,12 +98,10 @@
   }
 
   function activeFilterCount() {
-    return ['week', 'day', 'category', 'diet', 'price', 'popularity'].filter((type) => state[type] !== 'all').length + (state.search ? 1 : 0);
+    return ['category', 'diet', 'price', 'popularity'].filter((type) => state[type] !== 'all').length + (state.search ? 1 : 0);
   }
 
   function matches(card) {
-    if (state.week !== 'all' && card.dataset.week !== state.week) return false;
-    if (state.day !== 'all' && card.dataset.day !== state.day) return false;
     if (state.category !== 'all' && card.dataset.category !== state.category) return false;
     if (state.diet !== 'all' && card.dataset.diet !== state.diet) return false;
     if (state.price !== 'all' && card.dataset.priceBand !== state.price) return false;
@@ -104,7 +156,7 @@
   function renderActiveFilters() {
     activeFilters.textContent = '';
     const items = [];
-    ['week', 'day', 'category', 'diet', 'price', 'popularity'].forEach((type) => {
+    ['category', 'diet', 'price', 'popularity'].forEach((type) => {
       if (state[type] !== 'all') items.push({ type, value: state[type], label: labels[type] + ': ' + filterLabel(type, state[type]) });
     });
     if (state.search) items.push({ type: 'search', value: state.search, label: 'Szukasz: ' + state.search });
@@ -203,6 +255,8 @@
       grid.hidden = visible.length === 0;
       renderPagination(visible.length, totalPages);
       const active = activeFilterCount();
+      const activePanel = root.querySelector('.menu-sidebar-active-panel');
+      if (activePanel) activePanel.hidden = active === 0;
       activeCount.textContent = active === 1 ? '1 aktywny filtr' : active + ' aktywnych filtrów';
       mobileFilterCount.textContent = String(active);
       showResults.textContent = 'Pokaż ' + countLabel;
@@ -275,9 +329,12 @@
     }
     modalKicker.textContent = card.dataset.meta || '';
     modalTitle.textContent = card.dataset.title || '';
-    modalDescription.textContent = card.dataset.description || '';
+    const description = (card.dataset.description || '').trim();
+    modalDescription.textContent = /z menu pycha catering/i.test(description) ? '' : description;
+    modalDescription.hidden = !modalDescription.textContent;
     modalDetails.textContent = '';
-    [['Kategoria', card.dataset.category], ['Dieta', card.dataset.diet === 'none' ? '' : card.dataset.diet]].forEach(([name, value]) => {
+    const priceValue = card.dataset.price && card.dataset.price !== 'quote' ? card.dataset.price + ' zł' : '';
+    [['Kategoria', card.dataset.category], ['Dieta', card.dataset.diet === 'none' ? '' : card.dataset.diet], ['Cena', priceValue]].forEach(([name, value]) => {
       if (!value) return;
       const dt = document.createElement('dt'); dt.textContent = name;
       const dd = document.createElement('dd'); dd.textContent = value;
@@ -330,7 +387,7 @@
 
   root.querySelector('#weeklyMenuOpenFilters').addEventListener('click', openDrawer);
   root.querySelectorAll('.menu-filter-dropdown').forEach((dropdown) => {
-    dropdown.open = ['week', 'day', 'category'].includes(dropdown.dataset.filterDropdown);
+    dropdown.open = dropdown.dataset.filterDropdown === 'category';
   });
   drawerPanel.addEventListener('keydown', (event) => trapFocus(event, drawerPanel, closeDrawer));
   modalPanel.addEventListener('keydown', (event) => trapFocus(event, modalPanel, closeModal));

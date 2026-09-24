@@ -23,7 +23,7 @@
   const catIcons = window.PYCHA_MENU_DATA.catIcons || {};
 
   /* ─── Chef avatar ─────────────────────────────────────── */
-  const chefAvatar = 'https://i.imgur.com/f0sl5oR.png';
+  const chefAvatar = '/assets/imgur/f0sl5oR.png';
 
   /* ─── Fixed structure ─────────────────────────────────── */
   const WEEKS       = ['Tydzień 1', 'Tydzień 2', 'Tydzień 3', 'Tydzień 4'];

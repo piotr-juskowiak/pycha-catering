@@ -1,6 +1,6 @@
 .cta-section-new {
   padding: 100px 0;
-  background-image: url('https://i.imgur.com/TFvjG9W.png');
+  background-image: url('/assets/imgur/TFvjG9W.png');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -923,7 +923,7 @@ a[href*="framer.com/?utm_source=framer-banner-"] {
 .products-redesign {
   background-color: #26471e !important;
   /* rich dark olive-forest green */
-  background-image: url('https://i.imgur.com/6dx0VJH.jpeg') !important;
+  background-image: url('/assets/imgur/6dx0VJH.jpeg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
