@@ -123,33 +123,36 @@
 .order-facts article { padding: 22px 20px; border: 1px solid #d7e0cc; border-radius: 16px; background: #fffdf8; }
 .order-facts h3 { margin: 0 0 8px; color: #3f6a2e; font: 800 18px/1.25 "Baloo 2", "Rubik", sans-serif; }
 .order-facts p { margin: 0; color: var(--order-muted); font-size: 14px; line-height: 1.6; }
-.order-inquiry { padding: clamp(78px, 8vw, 120px) 0; background: var(--order-cream); scroll-margin-top: 96px; }
-.order-inquiry__layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; gap: clamp(45px, 7vw, 115px); }
-.order-inquiry__intro { position: sticky; top: 50px; }
-.order-inquiry h2 { max-width: 460px; font-size: clamp(42px, 4.6vw, 64px); line-height: 1.05; }
-.order-inquiry__intro > p:not(.order-eyebrow) { max-width: 445px; margin: 24px 0 0; color: #41533f; font-size: 17px; line-height: 1.7; }
-.order-inquiry__contact { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 48px; padding-top: 25px; border-top: 1px solid #ced8c4; }
-.order-inquiry__contact span { color: #6e7c6a; font-size: 13px; }
-.order-inquiry__contact a { font-size: 16px; font-weight: 700; text-decoration: none; }
-.order-inquiry__contact a:hover { color: #56823c; }
-.order-inquiry__card { padding: 28px 32px 26px; border: 1px solid rgba(11, 37, 12, .06); border-radius: 28px; background: #fff; box-shadow: none; }
+.order-inquiry { padding: clamp(90px, 8vw, 126px) 0; background: linear-gradient(90deg, rgba(250, 248, 241, .94), rgba(250, 248, 241, .88)), url("/assets/footer-catering-v4/contact-table.webp") center / cover; color: var(--order-green); scroll-margin-top: 96px; }
+.order-inquiry__layout { display: grid; grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr); grid-template-areas: "intro form" "photo form" "contact form"; grid-template-rows: auto auto 1fr; align-items: start; column-gap: clamp(48px, 6vw, 100px); }
+.order-inquiry__intro { grid-area: intro; }
+.order-inquiry .order-eyebrow { color: #5a7c3b; }
+.order-page .order-inquiry h2 { max-width: 9ch; color: var(--order-green); font-size: clamp(50px, 5.3vw, 74px); line-height: .98; }
+.order-inquiry__intro > p:not(.order-eyebrow) { max-width: 33ch; margin: 22px 0 0; color: #4e604d; font-size: 17px; line-height: 1.6; }
+.order-inquiry__photo { grid-area: photo; margin: 30px 0 0; overflow: hidden; border-radius: 20px; box-shadow: 0 14px 34px rgba(11, 37, 12, .09); }
+.order-inquiry__photo img { width: 100%; height: clamp(230px, 19vw, 290px); object-fit: cover; object-position: center 44%; }
+.order-inquiry__contact { display: flex; grid-area: contact; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 26px; padding-top: 22px; border-top: 1px solid #d6decf; }
+.order-inquiry__contact span { margin-bottom: 4px; color: #687b66; font-size: 13px; }
+.order-inquiry__contact a { color: var(--order-green); font-size: 15px; font-weight: 600; text-decoration: none; }
+.order-inquiry__contact a:first-of-type { font: 800 31px/1.1 "Baloo 2", "Rubik", sans-serif; }
+.order-inquiry__contact a:hover { color: #5a7c3b; }
+.order-inquiry__card { grid-area: form; padding: clamp(26px, 3vw, 42px); border: 1px solid #e3e9dd; border-radius: 26px; background: rgba(255, 255, 255, .96); box-shadow: 0 24px 62px rgba(27, 51, 27, .08); }
 .order-form__honeypot { position: absolute !important; left: -9999px !important; opacity: 0 !important; }
-.order-form__hint { margin: 0 0 6px; color: #7a8876; font-size: 12px; letter-spacing: .01em; }
-.order-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; }
-.order-form__field { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
+.order-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px 18px; }
+.order-form__field { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
 .order-form__field--full { grid-column: 1 / -1; }
-.order-form__field label { color: #6d7c69; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.order-form__field input, .order-form__field select, .order-form__field textarea { display: block; width: 100%; min-height: 42px; padding: 8px 2px; border: 0; border-bottom: 1px solid #d5ddd0; border-radius: 0; outline: none; background: transparent; color: var(--order-green); font: 400 15px/1.4 "Rubik", sans-serif; transition: border-color .2s ease; }
-.order-form__field select { appearance: none; padding-right: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%236d7c69' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 2px center; }
-.order-form__field textarea { min-height: 88px; resize: vertical; }
-.order-form__field input::placeholder, .order-form__field textarea::placeholder { color: #a3aea0; }
-.order-form__field input:focus, .order-form__field select:focus, .order-form__field textarea:focus { border-color: #78a44f; box-shadow: none; }
-.order-form__privacy { display: flex; align-items: flex-start; gap: 12px; margin: 22px 0 18px; color: #4f5e4b; font-size: 12px; line-height: 1.6; cursor: pointer; }
-.order-form__privacy input { width: 16px; height: 16px; flex: 0 0 auto; margin: 2px 0 0; accent-color: #78a44f; }
+.order-form__field label { color: #354f38; font-size: 13px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.order-form__field input, .order-form__field select, .order-form__field textarea { display: block; width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid #dbe3d5; border-radius: 11px; outline: none; background: #fff; color: var(--order-green); font: 400 14px/1.4 "Rubik", sans-serif; transition: border-color .2s ease, box-shadow .2s ease; }
+.order-form__field select { appearance: none; padding-right: 34px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%236d7c69' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+.order-form__field textarea { min-height: 50px; max-height: 180px; resize: vertical; }
+.order-form__field input::placeholder, .order-form__field textarea::placeholder { color: #92a08f; }
+.order-form__field input:focus, .order-form__field select:focus, .order-form__field textarea:focus { border-color: #6f984d; box-shadow: 0 0 0 3px rgba(111, 152, 77, .12); }
+.order-form__privacy { display: flex; align-items: flex-start; gap: 12px; margin: 22px 0 20px; color: #4f5e4b; font-size: 12px; line-height: 1.6; cursor: pointer; }
+.order-form__privacy input { width: 17px; height: 17px; flex: 0 0 auto; margin: 1px 0 0; accent-color: #17351e; }
 .order-form__privacy a { font-weight: 600; text-underline-offset: 3px; }
-.order-form__submit { width: auto; min-height: 46px; margin-top: 2px; padding: 0 22px; border: 0; border-radius: 999px; background: #78a44f; gap: 8px; }
-.order-form__submit:hover { background: #5a7c3b; transform: none; box-shadow: none; }
-.order-form__note { margin: 14px 0 0; color: #8a9686; font-size: 12px; line-height: 1.5; text-align: left; }
+.order-form__submit { width: 100%; min-height: 54px; margin-top: 0; padding: 0 22px; border: 0; border-radius: 11px; background: #526f36; gap: 12px; }
+.order-form__submit:hover { background: #3e5829; transform: none; box-shadow: none; }
+.order-form__note { margin: 13px 0 0; color: #748272; font-size: 12px; line-height: 1.5; text-align: center; }
 
 @media (max-width: 1120px) {
   .order-header__inner { gap: 18px; }
@@ -175,7 +178,7 @@
   .order-hero__copy { max-width: 680px; }
   .order-hero__image { max-width: 740px; }
   .order-hero__image img { height: clamp(320px, 55vw, 510px); }
-  .order-inquiry__layout { grid-template-columns: 1fr; }
+  .order-inquiry__layout { grid-template-columns: 1fr; grid-template-areas: "intro" "form" "photo" "contact"; }
   .order-process__layout { grid-template-columns: 1fr; gap: 28px; }
   .order-process .order-section-heading { position: static; }
   .order-occasions__grid { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
@@ -183,7 +186,7 @@
   .order-occasion:first-child { grid-column: 1 / -1; grid-row: auto; min-height: 280px; }
   .order-occasion:nth-child(4), .order-occasion:nth-child(5) { grid-column: auto; }
   .order-facts__grid { grid-template-columns: 1fr 1fr; }
-  .order-inquiry__intro { position: static; }
+  .order-inquiry__intro > p:not(.order-eyebrow) { margin-bottom: 30px; }
   .order-inquiry__contact { margin-top: 24px; }
 }
 
@@ -450,4 +453,36 @@
     left: 28px;
     transform: rotate(90deg);
   }
+}
+
+@media (max-width: 620px) {
+  .order-process__list { gap: 12px; }
+  .order-process__list li { padding: 20px; border-radius: 17px; }
+  .order-process__list li:not(:last-child)::after { display: none; }
+
+  .order-page .order-occasions__grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 18px 12px;
+    margin-inline: -18px;
+  }
+
+  .order-page .order-occasion,
+  .order-page .order-occasion:first-child,
+  .order-page .order-occasion:nth-child(4),
+  .order-page .order-occasion:nth-child(5) {
+    flex: 0 0 min(78vw, 300px);
+    height: 232px;
+    min-height: 232px;
+    scroll-snap-align: start;
+  }
+
+  .order-inquiry { padding: 72px 0 82px; }
+  .order-page .order-inquiry h2 { max-width: 10ch; font-size: clamp(44px, 11vw, 55px); }
+  .order-inquiry__intro > p:not(.order-eyebrow) { margin: 16px 0 27px; font-size: 16px; }
+  .order-inquiry__card { width: 100%; }
+  .order-inquiry__photo { width: 100%; margin-top: 30px; }
+  .order-inquiry__contact { width: 100%; margin-top: 24px; }
 }

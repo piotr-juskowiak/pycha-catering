@@ -22,7 +22,7 @@
   <link href="custom-styles.css?v=2" rel="stylesheet" type="text/css">
   <link href="assets/inline-sections.css?v=13" rel="stylesheet" type="text/css">
   <link href="assets/menu-popup/weekly-menu-popup.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/assets/order-page.css?v=12">
+  <link rel="stylesheet" href="/assets/order-page.css?v=15">
 </head>
 <body class="order-page">
   <a class="order-skip" href="#formularz-zamowienia">Przejdź do formularza</a>
@@ -643,8 +643,7 @@
       <div class="order-shell order-process__layout">
         <div class="order-section-heading">
           <p class="order-eyebrow">Jak to działa</p>
-          <h1 id="order-process-title">Zamów catering w trzech krokach</h1>
-          <p>Od krótkiej wiadomości do dostawy pod drzwi. Na start wystarczy przybliżony plan — resztę doprecyzujemy razem.</p>
+          <h1 id="order-process-title">Catering w trzech krokach</h1>
         </div>
         <ol class="order-process__list">
           <li>
@@ -652,7 +651,7 @@
             <span class="order-process__number">01</span>
             <div>
               <h3>Opowiedz o wydarzeniu</h3>
-              <p>Podaj liczbę osób, termin i miejsce. Wystarczy wstępny plan, bez pełnej listy dań.</p>
+              <p>Podaj miejsce, termin i liczbę gości.</p>
             </div>
           </li>
           <li>
@@ -660,7 +659,7 @@
             <span class="order-process__number">02</span>
             <div>
               <h3>Ustalimy szczegóły</h3>
-              <p>Dobierzemy menu, porcje i sposób podania. Oddzwonimy albo odpiszemy z propozycją.</p>
+              <p>Przygotujemy menu i wrócimy z propozycją.</p>
             </div>
           </li>
           <li>
@@ -668,7 +667,7 @@
             <span class="order-process__number">03</span>
             <div>
               <h3>Przygotujemy catering</h3>
-              <p>Po potwierdzeniu zajmiemy się gotowaniem i dowozem. Jedzenie przyjeżdża gotowe do podania.</p>
+              <p>Dowozimy jedzenie gotowe do podania.</p>
             </div>
           </li>
         </ol>
@@ -680,66 +679,39 @@
         <div class="order-section-heading">
           <p class="order-eyebrow">Na jakie okazje</p>
           <h2 id="order-occasions-title">Jedzenie dopasowane do spotkania</h2>
-          <p>Inaczej szykujemy lunch dla zespołu, inaczej przerwę na szkoleniu, a inaczej poczęstunek dla gości. Napisz, co planujesz — dobierzemy menu i porcje.</p>
         </div>
         <div class="order-occasions__grid">
           <article class="order-occasion">
             <img src="/assets/order-occasions/imprezy.webp" width="1400" height="1050" alt="Wspólny lunch firmowy przy długim stole" loading="lazy">
             <div class="order-occasion__copy">
               <h3>Imprezy firmowe</h3>
-              <p>Menu i porcje pod liczbę gości na integrację, jubileusz albo wspólny obiad.</p>
             </div>
           </article>
           <article class="order-occasion">
             <img src="/assets/order-occasions/szkolenia.webp" width="1400" height="1050" alt="Przerwa kawowa podczas szkolenia" loading="lazy">
             <div class="order-occasion__copy">
               <h3>Szkolenia i konferencje</h3>
-              <p>Przerwy kawowe i lunche między punktami programu.</p>
             </div>
           </article>
           <article class="order-occasion">
             <img src="/assets/order-occasions/spotkania.webp" width="1400" height="1050" alt="Kameralny lunch na spotkanie biznesowe" loading="lazy">
             <div class="order-occasion__copy">
               <h3>Spotkania biznesowe</h3>
-              <p>Lunch i przekąski na narady z klientem albo zespołem.</p>
             </div>
           </article>
           <article class="order-occasion">
             <img src="/assets/order-occasions/uroczystosci.webp" width="1400" height="1050" alt="Stół na uroczystość rodzinną" loading="lazy">
             <div class="order-occasion__copy">
               <h3>Uroczystości rodzinne</h3>
-              <p>Ciepłe dania i słodkości, żeby gospodarze mogli być z bliskimi.</p>
             </div>
           </article>
           <article class="order-occasion">
             <img src="/assets/order-occasions/eventy.webp" width="1400" height="1050" alt="Przekąski na event" loading="lazy">
             <div class="order-occasion__copy">
               <h3>Eventy i premiery</h3>
-              <p>Finger food i podanie, które trzyma oprawę wydarzenia.</p>
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="order-facts" aria-label="Jak dowozimy">
-      <div class="order-shell order-facts__grid">
-        <article>
-          <h3>Sochaczew, Żyrardów i okolice</h3>
-          <p>Dowozimy jedzenie gotowe do podania. W formularzu podaj miejscowość albo adres.</p>
-        </article>
-        <article>
-          <h3>Termin ustalamy razem</h3>
-          <p>Wystarczy przybliżony dzień i godzina. Potwierdzimy, czy zdążymy przygotować catering.</p>
-        </article>
-        <article>
-          <h3>Diety i alergeny</h3>
-          <p>Napisz o wersjach wege, bez glutenu i alergiach. Oznaczymy warianty, żeby nikt nie zgadywał.</p>
-        </article>
-        <article>
-          <h3>Najpierw propozycja, potem zamówienie</h3>
-          <p>Formularz to zapytanie. Oddzwonimy albo odpiszemy z menu i sposobem dostawy.</p>
-        </article>
       </div>
     </section>
 
@@ -747,37 +719,33 @@
       <div class="order-shell order-inquiry__layout">
         <div class="order-inquiry__intro">
           <p class="order-eyebrow">Zapytanie o catering</p>
-          <h2 id="order-form-title">Powiedz nam, czego potrzebujesz.</h2>
-          <p>Wypełnij krótki formularz. Jeśli nie znasz jeszcze wszystkich szczegółów, wpisz przybliżone dane — doprecyzujemy je w rozmowie.</p>
-          <div class="order-inquiry__contact">
-            <span>Wolisz porozmawiać?</span>
-            <a href="tel:888849509">888 849 509</a>
-            <a href="mailto:biuro@pycha-catering.pl">biuro@pycha-catering.pl</a>
-          </div>
+          <h2 id="order-form-title">Zapytaj o catering.</h2>
+          <p>Podaj kilka szczegółów, a przygotujemy propozycję.</p>
         </div>
         <div class="order-inquiry__card">
           <form action="https://formspree.io/f/mgobjjvv" method="POST" class="order-form">
             <input type="hidden" name="_subject" value="Nowe zapytanie o catering — podstrona Zamówienie">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="order-form__honeypot" aria-hidden="true">
-            <p class="order-form__hint">Pola oznaczone * są wymagane.</p>
             <div class="order-form__grid">
               <div class="order-form__field">
-                <label for="order-kind">Rodzaj spotkania *</label>
+                <label for="order-kind">Wydarzenie *</label>
                 <select id="order-kind" name="Rodzaj wydarzenia" required>
-                  <option value="" disabled selected>Wybierz rodzaj wydarzenia</option>
-                  <option>Spotkanie firmowe</option>
+                  <option value="" disabled selected>Wybierz okazję</option>
+                  <option>Impreza firmowa</option>
                   <option>Szkolenie lub konferencja</option>
                   <option>Lunch dla zespołu</option>
+                  <option>Spotkanie biznesowe</option>
                   <option>Uroczystość rodzinna</option>
+                  <option>Event lub premiera</option>
                   <option>Inne wydarzenie</option>
                 </select>
               </div>
               <div class="order-form__field">
-                <label for="order-guests">Liczba osób *</label>
+                <label for="order-guests">Liczba gości *</label>
                 <input id="order-guests" name="Liczba osób" type="number" min="1" step="1" inputmode="numeric" placeholder="np. 25" required>
               </div>
               <div class="order-form__field">
-                <label for="order-date">Termin</label>
+                <label for="order-date">Termin (opcjonalnie)</label>
                 <input id="order-date" name="Termin" type="date">
               </div>
               <div class="order-form__field">
@@ -786,25 +754,33 @@
               </div>
               <div class="order-form__field">
                 <label for="order-name">Imię i nazwisko *</label>
-                <input id="order-name" name="Imię i nazwisko" type="text" autocomplete="name" placeholder="Jak się do Ciebie zwracać?" required>
+                <input id="order-name" name="Imię i nazwisko" type="text" autocomplete="name" placeholder="Twoje imię i nazwisko" required>
               </div>
               <div class="order-form__field">
-                <label for="order-email">Adres e-mail *</label>
+                <label for="order-email">E-mail *</label>
                 <input id="order-email" name="email" type="email" autocomplete="email" placeholder="twoj@email.pl" required>
               </div>
-              <div class="order-form__field order-form__field--full">
-                <label for="order-phone">Numer telefonu</label>
-                <input id="order-phone" name="Telefon" type="tel" autocomplete="tel" placeholder="Opcjonalnie, jeśli wolisz rozmowę">
+              <div class="order-form__field">
+                <label for="order-phone">Telefon (opcjonalnie)</label>
+                <input id="order-phone" name="Telefon" type="tel" autocomplete="tel" placeholder="Numer telefonu">
               </div>
-              <div class="order-form__field order-form__field--full">
-                <label for="order-details">Dodatkowe informacje</label>
-                <textarea id="order-details" name="Dodatkowe informacje" rows="4" maxlength="3000" placeholder="Preferencje menu, godzina dostawy, diety, alergeny lub inne ważne szczegóły"></textarea>
+              <div class="order-form__field">
+                <label for="order-details">Co warto wiedzieć?</label>
+                <textarea id="order-details" name="Dodatkowe informacje" rows="2" maxlength="3000" placeholder="Menu, diety, godzina dostawy"></textarea>
               </div>
             </div>
-            <label class="order-form__privacy" for="order-privacy"><input id="order-privacy" name="Potwierdzenie polityki prywatności" type="checkbox" value="Zapoznałem/am się" required><span>Zapoznałem/am się z <a href="/utility/privacy-policy.html" target="_blank" rel="noopener">polityką prywatności</a> dotyczącą przetwarzania danych. *</span></label>
+            <label class="order-form__privacy" for="order-privacy"><input id="order-privacy" name="Potwierdzenie polityki prywatności" type="checkbox" value="Zapoznałem/am się" required><span>Zapoznałem/am się z <a href="/utility/privacy-policy.html" target="_blank" rel="noopener">polityką prywatności</a>. *</span></label>
             <button class="order-button order-button--solid order-form__submit" type="submit">Wyślij zapytanie <span aria-hidden="true">↗</span></button>
-            <p class="order-form__note">Przesłanie formularza jest zapytaniem o ofertę, nie potwierdzeniem zamówienia.</p>
+            <p class="order-form__note">To zapytanie o ofertę, nie potwierdzenie zamówienia.</p>
           </form>
+        </div>
+        <figure class="order-inquiry__photo">
+          <img src="/assets/order-inquiry-lunch-natural-v2.webp" width="1635" height="962" alt="Dwoje współpracowników rozmawia przy świeżym lunchu" loading="lazy" decoding="async">
+        </figure>
+        <div class="order-inquiry__contact">
+          <span>Wolisz zadzwonić?</span>
+          <a href="tel:888849509">888 849 509</a>
+          <a href="mailto:biuro@pycha-catering.pl">biuro@pycha-catering.pl</a>
         </div>
       </div>
     </section>
