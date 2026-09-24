@@ -254,9 +254,35 @@
 .pycha-blog-card__image::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 37, 12, .26) 0%, transparent 42%);
+  background: linear-gradient(180deg, transparent 58%, rgba(11, 37, 12, .55) 100%);
   content: "";
   pointer-events: none;
+}
+
+.pycha-blog-card__overlay {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: #fff;
+  font: 500 12.5px/1 "Rubik", sans-serif;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 10px rgba(11, 37, 12, .45);
+}
+
+.pycha-blog-card__overlay span {
+  font-weight: 600;
+}
+
+.pycha-blog-card__overlay time {
+  flex: none;
+  color: rgba(255, 255, 255, .82);
+  font-weight: 400;
 }
 
 .pycha-blog-card__image img {
@@ -275,40 +301,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 24px 26px 22px;
-}
-
-.pycha-blog-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px 8px;
-  margin-bottom: 11px;
-  color: #8a9489;
-  font: 700 10.5px/1.45 "Rubik", sans-serif;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.pycha-blog-meta span[aria-hidden] {
-  display: none;
-}
-
-.pycha-blog-meta span:first-child {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 2;
-  margin: 0;
-  padding: 7px 11px;
-  border-radius: 999px;
-  background: rgba(255, 253, 248, .94);
-  color: var(--blog-olive-deep);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  box-shadow: 0 8px 18px rgba(11, 37, 12, .12);
+  padding: 22px 26px 22px;
 }
 
 .pycha-blog-card h3 {
@@ -336,16 +329,11 @@
 }
 
 .pycha-blog-card h3 a {
-  background-image: linear-gradient(var(--blog-olive), var(--blog-olive));
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0 2px;
-  transition: background-size .3s ease, color .2s ease;
+  transition: color .2s ease;
 }
 
 .pycha-blog-card h3 a:hover {
-  background-size: 100% 2px;
-  color: var(--blog-olive-deep);
+  color: var(--blog-olive);
 }
 
 .pycha-blog-card__body > p {
@@ -416,26 +404,27 @@
   display: inline-flex;
   flex: none;
   align-items: center;
-  min-height: 38px;
-  padding: 0 15px;
+  min-height: 30px;
+  padding: 0 11px;
   border-radius: 999px;
   background: var(--blog-olive);
   color: #fff;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .01em;
   text-decoration: none;
   white-space: nowrap;
-  transition: background .2s ease, transform .2s ease;
+  transition: background .2s ease;
 }
 
 .pycha-blog-card__foot a:hover {
   background: var(--blog-olive-deep);
   color: #fff;
-  transform: translateX(2px);
 }
 
 .pycha-blog-card__foot a span {
-  margin-left: 4px;
-  font-size: 17px;
+  margin-left: 3px;
+  font-size: 13px;
   transition: transform .2s ease;
 }
 

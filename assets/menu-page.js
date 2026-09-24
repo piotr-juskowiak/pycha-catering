@@ -16,10 +16,28 @@
       seen.add(key);
       card.querySelector('.menu-dish-meta')?.remove();
       card.querySelector('.menu-dish-badges')?.remove();
-      const description = (card.dataset.description || '').trim();
-      if (!description || /z menu pycha catering/i.test(description)) {
-        card.dataset.description = '';
-        card.querySelector('.menu-dish-desc')?.remove();
+      let description = (card.dataset.description || '').trim();
+      if (!description || /z menu pycha catering/i.test(description)) description = 'Porcja z naszej karty dań.';
+      else description = sentenceTitle(description);
+      card.dataset.description = description;
+      let desc = card.querySelector('.menu-dish-desc');
+      if (!desc) {
+        desc = document.createElement('p');
+        desc.className = 'menu-dish-desc';
+        card.querySelector('.menu-dish-title')?.insertAdjacentElement('afterend', desc);
+      }
+      desc.textContent = description;
+      const media = card.querySelector('.menu-dish-media');
+      if (media && !media.querySelector('.menu-dish-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'menu-dish-overlay';
+        const category = document.createElement('span');
+        category.textContent = card.dataset.category || '';
+        const price = document.createElement('span');
+        const priceNode = card.querySelector('.menu-dish-price');
+        price.textContent = priceNode ? priceNode.textContent.trim() : (card.dataset.price ? `${card.dataset.price} zł` : '');
+        overlay.append(category, price);
+        media.append(overlay);
       }
       if (card.dataset.category) card.dataset.meta = card.dataset.category;
       const title = sentenceTitle(card.dataset.title);
