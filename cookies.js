@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             visibility: visible;
         }
 
-        .pycha-cookie-header {
+        .pycha-cookie-popup .pycha-cookie-header {
             display: grid;
             grid-template-columns: 42px minmax(0, 1fr);
             gap: 13px;
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             margin-bottom: 11px;
         }
 
-        .pycha-cookie-icon {
+        .pycha-cookie-popup .pycha-cookie-icon {
             display: grid;
             width: 42px;
             height: 42px;
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             color: #5e8d3b;
         }
 
-        .pycha-cookie-icon svg {
+        .pycha-cookie-popup .pycha-cookie-icon svg {
             width: 22px;
             height: 22px;
             stroke: currentColor;
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             stroke-linejoin: round;
         }
 
-        .pycha-cookie-kicker {
+        .pycha-cookie-popup .pycha-cookie-kicker {
             display: block;
             margin-bottom: 2px;
             color: #72964f;
@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
             text-transform: uppercase;
         }
 
-        .pycha-cookie-title {
+        .pycha-cookie-popup h2.pycha-cookie-title {
+            max-width: none;
             margin: 0;
             color: #173718;
             font-family: 'Baloo 2', 'Rubik', sans-serif;
@@ -78,16 +79,17 @@ document.addEventListener("DOMContentLoaded", () => {
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.015em;
+            text-transform: none;
         }
 
-        .pycha-cookie-text {
+        .pycha-cookie-popup .pycha-cookie-text {
             margin: 0 0 9px;
             color: #596655;
             font-size: 12px;
             line-height: 1.55;
         }
 
-        .pycha-cookie-details {
+        .pycha-cookie-popup a.pycha-cookie-details {
             display: inline-flex;
             margin-bottom: 17px;
             color: #294d27;
@@ -98,19 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
             text-underline-offset: 3px;
         }
 
-        .pycha-cookie-details:hover {
+        .pycha-cookie-popup a.pycha-cookie-details:hover {
             color: #5f8e39;
             text-decoration-color: currentColor;
         }
 
-        .pycha-cookie-actions {
+        .pycha-cookie-popup .pycha-cookie-actions {
             display: grid;
             grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
             gap: 9px;
         }
 
-        .pycha-cookie-btn-secondary,
-        .pycha-cookie-btn {
+        .pycha-cookie-popup .pycha-cookie-btn-secondary,
+        .pycha-cookie-popup .pycha-cookie-btn {
+            appearance: none;
             min-height: 44px;
             padding: 10px 14px;
             border-radius: 12px;
@@ -122,35 +125,35 @@ document.addEventListener("DOMContentLoaded", () => {
             transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .pycha-cookie-btn-secondary {
+        .pycha-cookie-popup .pycha-cookie-btn-secondary {
             border: 1px solid #ccd6c6;
             background: rgba(255, 255, 255, 0.72);
             color: #3f513b;
         }
 
-        .pycha-cookie-btn-secondary:hover {
+        .pycha-cookie-popup .pycha-cookie-btn-secondary:hover {
             border-color: #95aa84;
             background: #f4f7ec;
             color: #173718;
         }
 
-        .pycha-cookie-btn {
+        .pycha-cookie-popup .pycha-cookie-btn {
             border: 1px solid #6f9f45;
             background: #6f9f45;
             color: #fff;
             box-shadow: 0 8px 18px rgba(71, 112, 42, 0.2);
         }
 
-        .pycha-cookie-btn:hover {
+        .pycha-cookie-popup .pycha-cookie-btn:hover {
             border-color: #5f8e39;
             background: #5f8e39;
             transform: translateY(-1px);
             box-shadow: 0 11px 22px rgba(71, 112, 42, 0.25);
         }
 
-        .pycha-cookie-btn-secondary:focus-visible,
-        .pycha-cookie-btn:focus-visible,
-        .pycha-cookie-details:focus-visible {
+        .pycha-cookie-popup .pycha-cookie-btn-secondary:focus-visible,
+        .pycha-cookie-popup .pycha-cookie-btn:focus-visible,
+        .pycha-cookie-popup a.pycha-cookie-details:focus-visible {
             outline: 3px solid rgba(112, 153, 81, 0.3);
             outline-offset: 3px;
         }
@@ -165,20 +168,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 transform-origin: center bottom;
             }
 
-            .pycha-cookie-actions {
+            .pycha-cookie-popup .pycha-cookie-actions {
                 grid-template-columns: 1fr;
             }
 
-            .pycha-cookie-btn-secondary,
-            .pycha-cookie-btn {
+            .pycha-cookie-popup .pycha-cookie-btn-secondary,
+            .pycha-cookie-popup .pycha-cookie-btn {
                 min-height: 46px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .pycha-cookie-popup,
-            .pycha-cookie-btn-secondary,
-            .pycha-cookie-btn {
+            .pycha-cookie-popup .pycha-cookie-btn-secondary,
+            .pycha-cookie-popup .pycha-cookie-btn {
                 transition: none;
             }
         }

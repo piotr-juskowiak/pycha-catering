@@ -12,9 +12,9 @@ HEAD_LINKS = """  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.c
   <link href="/assets/home-fonts.css" rel="stylesheet" type="text/css" />
   <link href="/assets/home-base.css" rel="stylesheet" type="text/css" />
   <link href="/main-styles.css" rel="stylesheet" type="text/css" />
-  <link href="/custom-styles.css?v=6" rel="stylesheet" type="text/css" />
-  <link href="/assets/inline-sections.css?v=21" rel="stylesheet" type="text/css" />
-  <link href="/assets/offer-landing.css?v=15" rel="stylesheet" type="text/css" />
+  <link href="/custom-styles.css?v=7" rel="stylesheet" type="text/css" />
+  <link href="/assets/inline-sections.css?v=22" rel="stylesheet" type="text/css" />
+  <link href="/assets/offer-landing.css?v=16" rel="stylesheet" type="text/css" />
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>"""
 
 PAGES = [
@@ -28,8 +28,8 @@ PAGES = [
         "meta_title": "Catering na imprezy firmowe Sochaczew i Żyrardów | Pycha",
         "meta_description": "Catering firmowy na integracje, wigilie i jubileusze. Bufet, finger food i ciepłe dania z dowozem w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Impreza firmowa ma swój rytm: powitanie, toast, rozmowy i luźniejsze zakończenie. Układamy menu, ilości i godzinę dostawy tak, żeby stół działał przez całe spotkanie, a organizator mógł zająć się ludźmi.",
-        "image": "/assets/order-occasions/imprezy.webp",
-        "image_alt": "Wspólny lunch firmowy przy długim stole",
+        "image": "/assets/offer-landings/imprezy-hero.webp",
+        "image_alt": "Zespół przy bufecie z kurczakiem i ziemniakami",
         "meta": ["Sochaczew i Żyrardów", "Od kilkunastu do ok. 150 osób", "Ciepłe dania i finger food"],
         "teaser": "Bufet albo porcje na integrację, wigilę i jubileusz firmy.",
         "intro_title": "Jak wygląda catering na imprezy firmowe",
@@ -89,8 +89,8 @@ PAGES = [
         "meta_title": "Catering na szkolenia i konferencje | Sochaczew, Żyrardów",
         "meta_description": "Catering na szkolenia i konferencje: przerwy kawowe, lunch i coffee break pod agendę. Dowóz w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Na szkoleniu liczy się czas. Kawa ma czekać przed pierwszą sesją, a lunch nie może zająć pół popołudnia. Układamy przerwy i posiłki pod agendę, liczbę uczestników i warunki w sali.",
-        "image": "/assets/order-occasions/szkolenia.webp",
-        "image_alt": "Przerwa kawowa podczas szkolenia",
+        "image": "/assets/offer-landings/szkolenia-hero.webp",
+        "image_alt": "Kanapki i napoje na przerwie szkoleniowej",
         "meta": ["Przerwa kawowa i lunch", "Dostawa pod program", "Oznaczone diety"],
         "teaser": "Kawa, przekąski i lunch, które nie rozjeżdżają agendy.",
         "intro_title": "Catering na szkolenia, który nie rozjeżdża agendy",
@@ -150,8 +150,8 @@ PAGES = [
         "meta_title": "Catering na uroczystości rodzinne | Sochaczew i Żyrardów",
         "meta_description": "Catering na chrzciny, komunie i urodziny. Ciepły obiad, przekąski i desery z dowozem do domu w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Rodzinne przyjęcie ma być ciepłe i bez pośpiechu. Dowozimy ciepłe dania, przekąski i słodkości tak, żeby gospodarze mogli świętować z bliskimi, a nie krążyć między kuchnią a stołem.",
-        "image": "/assets/order-occasions/uroczystosci.webp",
-        "image_alt": "Stół na uroczystość rodzinną",
+        "image": "/assets/offer-landings/uroczystosci-hero.webp",
+        "image_alt": "Rodzina przy stole na przyjęciu",
         "meta": ["Chrzciny, komunie, urodziny", "Gotowe do podania", "Spokój dla gospodarzy"],
         "teaser": "Obiad, przekąski i deser, żebyście mogli być z gośćmi.",
         "intro_title": "Catering na uroczystości rodzinne bez dyżuru w kuchni",
@@ -211,8 +211,8 @@ PAGES = [
         "meta_title": "Catering na eventy i premiery | Pycha Catering",
         "meta_description": "Catering na eventy, premiery i otwarcia. Finger food i krótkie menu z dowozem w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Na premierze i otwarciu goście stoją, rozmawiają i robią zdjęcia. Catering ma być częścią oprawy: estetyczny, wygodny do zjedzenia w rozmowie i gotowy, zanim otworzycie drzwi.",
-        "image": "/assets/order-occasions/eventy.webp",
-        "image_alt": "Przekąski na event",
+        "image": "/assets/offer-landings/eventy-hero.webp",
+        "image_alt": "Finger food podawany gościom na evencie",
         "meta": ["Premiery i otwarcia", "Finger food", "Networking bez talerza obiadowego"],
         "teaser": "Finger food i krótkie menu, które dobrze wychodzi na zdjęciach.",
         "intro_title": "Catering na eventy, który nie konkuruje ze sceną",
@@ -272,8 +272,8 @@ PAGES = [
         "meta_title": "Catering na spotkania biznesowe | Lunch do biura",
         "meta_description": "Catering na spotkania biznesowe: schludny lunch i przekąski do biura. Dowóz w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Spotkanie z klientem albo zarządem nie potrzebuje wielkiego bufetu. Potrzebuje porządnego lunchu, czystego podania i ciszy w tle. Przygotowujemy zestawy, które da się rozdać w sali bez chaosu.",
-        "image": "/assets/order-occasions/spotkania.webp",
-        "image_alt": "Kameralny lunch na spotkanie biznesowe",
+        "image": "/assets/offer-landings/spotkania-hero.webp",
+        "image_alt": "Lunch przy stole podczas spotkania w biurze",
         "meta": ["Lunch bento", "Kameralne spotkania", "Biuro i sala konferencyjna"],
         "teaser": "Schludny lunch i przekąski na naradę z klientem albo zarządem.",
         "intro_title": "Catering na spotkania biznesowe, który nie rozprasza",
@@ -333,8 +333,8 @@ PAGES = [
         "meta_title": "Lunch dla firm Sochaczew i Żyrardów | Catering pracowniczy",
         "meta_description": "Lunch dla firm i pracowników. Regularny catering pracowniczy z dowozem do biur w Sochaczewie, Żyrardowie i okolicach.",
         "lead": "Codzienny lunch w firmie działa wtedy, gdy jest przewidywalny: ta sama godzina, jasne porcje i menu, które da się potwierdzić z wyprzedzeniem. Dowozimy świeże posiłki w dni, w których ludzie naprawdę są na miejscu.",
-        "image": "/assets/blog-covers/lunch-pracownikow.webp",
-        "image_alt": "Świeże boxy lunchowe przygotowane do dostawy",
+        "image": "/assets/offer-landings/lunch-hero.webp",
+        "image_alt": "Boxy lunchowe na biurowym blacie",
         "meta": ["Zamówienia cykliczne", "Dostawa do biura", "Menu na tydzień"],
         "teaser": "Regularny lunch do biura, magazynu i zespołu hybrydowego.",
         "intro_title": "Lunch dla firm, który nie spada na jedną osobę z open space",
@@ -394,8 +394,8 @@ PAGES = [
         "meta_title": "Coffee break i przerwa kawowa | Sochaczew, Żyrardów",
         "meta_description": "Coffee break i przerwy kawowe do biura oraz na szkolenie. Kawa, przekąski i woda z dostawą w Sochaczewie i Żyrardowie.",
         "lead": "Przerwa kawowa działa, gdy wszystko stoi zanim ludzie wyjdą z sali. Dobieramy kawę, wodę i przekąski do długości spotkania: rano lżej, po południu trochę bardziej sycąco, zawsze bez bałaganu na stole.",
-        "image": "/assets/footer-catering-v2/refreshments.webp",
-        "image_alt": "Przekąski i napoje na przerwę kawową",
+        "image": "/assets/offer-landings/coffee-hero.webp",
+        "image_alt": "Kawa, ciastka i owoce na przerwę kawową",
         "meta": ["Kawa, herbata, woda", "Krótkie i całodniowe przerwy", "Do biura i na warsztat"],
         "teaser": "Kawa, woda i przekąski gotowe zanim zacznie się przerwa.",
         "intro_title": "Coffee break, który stoi zanim wyjdziecie z sali",
@@ -463,15 +463,15 @@ EXTRAS = {
             ("Format", "Bufet, porcje albo finger food"),
         ],
         "gallery": [
-            ("/assets/order-occasions/imprezy.webp", "Wspólny stół na imprezie firmowej"),
-            ("/assets/blog-covers/catering-dla-firm.webp", "Catering firmowy gotowy do podania"),
+            ("/assets/offer-landings/imprezy-table.webp", "Kurczak i ziemniaki w kuwetach cateringowych"),
+            ("/assets/offer-landings/imprezy-cta.webp", "Zespół przy wspólnym stole z dostawą"),
         ],
         "area_title": "Catering na imprezy firmowe w Sochaczewie i Żyrardowie",
         "area_text": "Dowozimy catering firmowy do biur, sal i ogrodów. Najczęściej jeździmy po Sochaczewie, Żyrardowie i okolicach, więc godzinę dostawy da się dopiąć bez zgadywania trasy.",
         "places": ["Sochaczew", "Żyrardów", "Biura i sale w okolicach", "Ogrody i przestrzenie eventowe"],
         "fits_title": "Na jakie imprezy firmowe przyjeżdżamy",
-        "cta_image": "/assets/catering-cards/imprezy-firmowe-natural-v2.webp",
-        "cta_image_alt": "Zespół przy wspólnym stole z cateringiem firmowym",
+        "cta_image": "/assets/offer-landings/imprezy-cta.webp",
+        "cta_image_alt": "Wspólny lunch firmowy przy stole",
     },
     "szkolenia-i-konferencje": {
         "need": [
@@ -488,15 +488,15 @@ EXTRAS = {
             ("Klucz", "Godziny z agendy"),
         ],
         "gallery": [
-            ("/assets/order-occasions/szkolenia.webp", "Przerwa kawowa na szkoleniu"),
-            ("/assets/blog-covers/szkolenie.webp", "Catering na konferencję"),
+            ("/assets/offer-landings/szkolenia-table.webp", "Kanapki i termos na przerwie szkoleniowej"),
+            ("/assets/offer-landings/szkolenia-cta.webp", "Uczestnicy nabierają lunch na szkoleniu"),
         ],
         "area_title": "Catering na szkolenia w Sochaczewie, Żyrardowie i okolicach",
         "area_text": "Przyjeżdżamy do sal szkoleniowych, hoteli i biur. Krótka trasa z kuchni do obiektu pomaga utrzymać godzinę przerwy i temperaturę lunchu.",
         "places": ["Sochaczew", "Żyrardów", "Hotele i sale szkoleniowe", "Biura i przestrzenie eventowe"],
         "fits_title": "Na jakie szkolenia i konferencje",
-        "cta_image": "/assets/catering-cards/szkolenia-konferencje-natural-v2.webp",
-        "cta_image_alt": "Lunch i przerwa podczas szkolenia",
+        "cta_image": "/assets/offer-landings/szkolenia-cta.webp",
+        "cta_image_alt": "Bufet podczas szkolenia i konferencji",
     },
     "uroczystosci-rodzinne": {
         "need": [
@@ -513,15 +513,15 @@ EXTRAS = {
             ("Co przywozimy", "Obiad gotowy do podania"),
         ],
         "gallery": [
-            ("/assets/order-occasions/uroczystosci.webp", "Stół na uroczystość rodzinną"),
-            ("/assets/footer-catering-v4/danie.webp", "Ciepłe danie cateringowe"),
+            ("/assets/offer-landings/uroczystosci-table.webp", "Obiad rodzinny gotowy do podania"),
+            ("/assets/offer-landings/uroczystosci-cta.webp", "Rodzina przy stole podczas przyjęcia"),
         ],
         "area_title": "Catering na przyjęcia rodzinne w Sochaczewie i Żyrardowie",
         "area_text": "Najczęściej wjeżdżamy pod dom albo do ogrodu. Dowóz w Sochaczewie, Żyrardowie i okolicach planujemy tak, żebyście zdążyli rozstawić stół przed pierwszym gościem.",
         "places": ["Sochaczew", "Żyrardów", "Domy i ogrody", "Kameralne sale"],
         "fits_title": "Na jakie uroczystości rodzinne",
-        "cta_image": "/assets/catering-cards/uroczystosci-rodzinne-natural-v2.webp",
-        "cta_image_alt": "Stół zastawiony na przyjęcie rodzinne",
+        "cta_image": "/assets/offer-landings/uroczystosci-cta.webp",
+        "cta_image_alt": "Rodzina przy obiedzie na uroczystości",
     },
     "eventy-i-premiery": {
         "need": [
@@ -538,15 +538,15 @@ EXTRAS = {
             ("Gdzie", "Sochaczew, Żyrardów, lokale"),
         ],
         "gallery": [
-            ("/assets/order-occasions/eventy.webp", "Finger food na event"),
-            ("/assets/footer-catering-v2/refreshments.webp", "Poczęstunek na premierę"),
+            ("/assets/offer-landings/eventy-table.webp", "Taca finger food na premierę"),
+            ("/assets/offer-landings/eventy-cta.webp", "Goście z przekąskami na evencie"),
         ],
         "area_title": "Catering na eventy w Sochaczewie, Żyrardowie i okolicach",
         "area_text": "Dowozimy do salonów, biur i przestrzeni eventowych. Ustalamy wjazd i godzinę montażu, żeby poczęstunek stał zanim wejdą pierwsi goście.",
         "places": ["Sochaczew", "Żyrardów", "Salony i lokale", "Przestrzenie eventowe"],
         "fits_title": "Na jakie eventy i premiery",
-        "cta_image": "/assets/catering-cards/eventy-premiery-natural-v2.webp",
-        "cta_image_alt": "Poczęstunek przygotowany na event",
+        "cta_image": "/assets/offer-landings/eventy-cta.webp",
+        "cta_image_alt": "Poczęstunek wśród gości na evencie",
     },
     "spotkania-biznesowe": {
         "need": [
@@ -563,15 +563,15 @@ EXTRAS = {
             ("Teren", "Biura w Sochaczewie i Żyrardowie"),
         ],
         "gallery": [
-            ("/assets/order-occasions/spotkania.webp", "Lunch na spotkanie biznesowe"),
-            ("/assets/blog-covers/spotkanie-biznesowe.webp", "Catering do biura"),
+            ("/assets/offer-landings/spotkania-table.webp", "Miski lunchowe na stole konferencyjnym"),
+            ("/assets/offer-landings/spotkania-cta.webp", "Rozmowa przy lunchu w sali spotkań"),
         ],
         "area_title": "Catering na spotkania biznesowe w Sochaczewie i Żyrardowie",
         "area_text": "Wnosimy lunch do sali konferencyjnej albo aneksu. Krótka trasa po Sochaczewie, Żyrardowie i okolicach pomaga trafić w godzinę z kalendarza, nie w korek.",
         "places": ["Sochaczew", "Żyrardów", "Sale konferencyjne", "Aneksy i małe biura"],
         "fits_title": "Na jakie spotkania biznesowe",
-        "cta_image": "/assets/catering-cards/spotkania-biznesowe-natural-v2.webp",
-        "cta_image_alt": "Lunch na spotkaniu w biurze",
+        "cta_image": "/assets/offer-landings/spotkania-cta.webp",
+        "cta_image_alt": "Lunch na spotkaniu biznesowym",
     },
     "lunch-dla-firm": {
         "need": [
@@ -588,15 +588,15 @@ EXTRAS = {
             ("Dostawa", "Sochaczew, Żyrardów i okolice"),
         ],
         "gallery": [
-            ("/assets/blog-covers/lunch-pracownikow.webp", "Lunch boxy dla zespołu"),
-            ("/assets/footer-catering-v4/lunch.webp", "Wspólny lunch pracowników"),
+            ("/assets/offer-landings/lunch-table.webp", "Otwarte boxy lunchowe na blacie"),
+            ("/assets/offer-landings/lunch-cta.webp", "Pracownicy jedzą dostarczony lunch"),
         ],
         "area_title": "Lunch dla firm w Sochaczewie, Żyrardowie i okolicach",
         "area_text": "Regularny catering pracowniczy dowozimy do biur, magazynów i zakładów. Stała godzina ma sens dopiero wtedy, gdy trasa jest krótka i powtarzalna.",
         "places": ["Sochaczew", "Żyrardów", "Biura i open space", "Magazyny i produkcja"],
         "fits_title": "Dla jakich zespołów woźimy lunch",
-        "cta_image": "/assets/order-inquiry-lunch-natural-v2.webp",
-        "cta_image_alt": "Dwoje współpracowników przy świeżym lunchu",
+        "cta_image": "/assets/offer-landings/lunch-cta.webp",
+        "cta_image_alt": "Lunch dla zespołu w aneksie biurowym",
     },
     "coffee-break": {
         "need": [
@@ -613,15 +613,15 @@ EXTRAS = {
             ("Gdzie", "Biura i sale w okolicy"),
         ],
         "gallery": [
-            ("/assets/footer-catering-v2/refreshments.webp", "Przekąski na przerwę kawową"),
-            ("/assets/blog-covers/szkolenie.webp", "Coffee break na szkoleniu"),
+            ("/assets/offer-landings/coffee-table.webp", "Termos, ciastka i winogrona na przerwie"),
+            ("/assets/offer-landings/coffee-cta.webp", "Zespół przy kawie w biurze"),
         ],
         "area_title": "Coffee break w Sochaczewie, Żyrardowie i okolicach",
         "area_text": "Przerwę kawową dowozimy do biur, sal szkoleniowych i eventów. Żeby coffee break zdążył stanąć, musimy znać godzinę przerwy i adres obiektu.",
         "places": ["Sochaczew", "Żyrardów", "Biura", "Sale szkoleniowe i eventy"],
         "fits_title": "Na jakie przerwy kawowe",
-        "cta_image": "/assets/catering-cards/szkolenia-konferencje-natural-v2.webp",
-        "cta_image_alt": "Bufet na przerwę kawową i szkolenie",
+        "cta_image": "/assets/offer-landings/coffee-cta.webp",
+        "cta_image_alt": "Przerwa kawowa przy stole w biurze",
     },
 }
 
@@ -642,8 +642,8 @@ def extract_chrome(index_html: str) -> tuple[str, str]:
 
 def mark_current_header(header: str, slug: str) -> str:
     header = header.replace(
-        '<details class="nav-offer">',
-        '<details class="nav-offer is-current">',
+        '<div class="nav-offer">',
+        '<div class="nav-offer is-current">',
         1,
     )
     return header.replace(
@@ -738,7 +738,7 @@ def render_main(page: dict) -> str:
         for index, (title, text) in enumerate(page["steps"], start=1)
     )
     faqs = "\n".join(
-        f'''        <details>
+        f'''        <details{" open" if index == 1 else ""}>
           <summary><span class="offer-faq__num">{index:02d}</span><span>{question}</span></summary>
           <p>{answer}</p>
         </details>'''

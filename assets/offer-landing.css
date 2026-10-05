@@ -32,6 +32,31 @@ html {
   letter-spacing: -0.03em;
 }
 
+.offer-page .pycha-cookie-popup,
+.offer-page .pycha-cookie-popup * {
+  letter-spacing: normal;
+}
+
+.offer-page .pycha-cookie-popup h2 {
+  max-width: none;
+  margin: 0;
+  color: #173718;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.offer-page .pycha-cookie-popup a {
+  color: #294d27;
+}
+
+.offer-page .pycha-cookie-popup button {
+  appearance: none;
+  font: inherit;
+}
+
 .offer-page .catering-overlay {
   display: none;
   pointer-events: none;
@@ -331,7 +356,7 @@ html {
   padding: 88px 0;
 }
 
-.offer-page h2 {
+.offer-page .offer-wrap h2 {
   max-width: 860px;
   margin: 0 0 28px;
   color: #0b250c;

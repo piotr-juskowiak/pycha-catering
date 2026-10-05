@@ -642,3 +642,35 @@ document.addEventListener("DOMContentLoaded", () => {
     window.setTimeout(closePopup, 2200);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const desktopNav = window.matchMedia("(min-width: 992px)");
+
+  document.querySelectorAll(".header-section .nav-offer").forEach((offer) => {
+    const toggle = offer.querySelector(".nav-offer__toggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
+      if (desktopNav.matches) return;
+      const open = offer.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    offer.addEventListener("mouseenter", () => {
+      if (desktopNav.matches) toggle.setAttribute("aria-expanded", "true");
+    });
+    offer.addEventListener("mouseleave", () => {
+      if (desktopNav.matches) toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (desktopNav.matches) return;
+    document.querySelectorAll(".header-section .nav-offer.is-open").forEach((offer) => {
+      if (offer.contains(event.target)) return;
+      offer.classList.remove("is-open");
+      const toggle = offer.querySelector(".nav-offer__toggle");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+});

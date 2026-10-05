@@ -25,11 +25,30 @@ def dropdown_html(current: str | None) -> str:
         extra = ' is-current" aria-current="page"' if slug == current else '"'
         links.append(f'<a class="nav-offer__link{extra} href="/{slug}">{label}</a>')
     return (
-        f'<details class="nav-offer{current_class}">'
-        f'<summary class="nav-link nav-offer__toggle">Oferta</summary>'
+        f'<div class="nav-offer{current_class}">'
+        f'<button type="button" class="nav-link nav-offer__toggle" aria-expanded="false" aria-haspopup="true">Oferta</button>'
         f'<div class="nav-offer__panel">{"".join(links)}</div>'
-        f"</details>"
+        f"</div>"
     )
+
+
+DETAILS_RE = re.compile(
+    r'<details class="nav-offer( is-current)?">\s*'
+    r'<summary class="nav-link nav-offer__toggle">Oferta</summary>'
+    r'(<div class="nav-offer__panel">.*?</div>)</details>',
+    re.S,
+)
+
+
+def convert_details(text: str) -> tuple[str, bool]:
+    new_text, count = DETAILS_RE.subn(
+        r'<div class="nav-offer\1">'
+        r'<button type="button" class="nav-link nav-offer__toggle" aria-expanded="false" aria-haspopup="true">Oferta</button>'
+        r"\2</div>",
+        text,
+        count=1,
+    )
+    return new_text, count > 0
 
 
 def current_slug_for(path: Path) -> str | None:
@@ -61,12 +80,14 @@ def main() -> None:
         if "node_modules" in path.parts or "assets" in path.parts:
             continue
         text = path.read_text(encoding="utf-8")
-        new_text, changed = inject(text, current_slug_for(path))
+        converted, converted_changed = convert_details(text)
+        new_text, injected = inject(converted, current_slug_for(path))
+        changed = converted_changed or injected
         if changed:
             path.write_text(new_text, encoding="utf-8")
             updated += 1
             print(f"updated {path.relative_to(ROOT)}")
-        elif "nav-offer" in text:
+        elif "nav-offer" in new_text:
             skipped += 1
         elif '<div class="nav-menu"' in text:
             missing += 1
