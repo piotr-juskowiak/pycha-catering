@@ -201,6 +201,11 @@ p {
 
 .home-hero-video {
   overflow: hidden;
+  background: #1e3f20 url("hero-catering-lunch-v4-poster.jpg") center / cover no-repeat;
+}
+
+.home-hero-video.w-background-video {
+  height: 100%;
 }
 
 .home-hero-video,
@@ -210,11 +215,21 @@ p {
   object-fit: cover;
 }
 
-.home-hero-video video {
+.home-hero-video.w-background-video > video {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  z-index: 1;
   width: 112%;
   height: 112%;
   max-width: none;
+  margin: 0;
+  object-fit: cover;
   transform: translate(-5%, -6%);
+  background: transparent;
 }
 
 @media (max-width: 991px) {

@@ -18,10 +18,14 @@
   <meta content="website" property="og:type" />
   <meta content="summary_large_image" name="twitter:card" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="assets/home-preloader.css?v=3" rel="stylesheet" type="text/css" />
   <meta content="Webflow" name="generator" />
   <link href="assets/cdn.prod.website-files.com/68a167c0dafd6cd106a07924/css/forkly.webflow.shared.8b3cd058b.css" rel="stylesheet" type="text/css" />
-  <link href="assets/home-fonts.css" rel="stylesheet" type="text/css" />
-  <link href="assets/home-base.css" rel="stylesheet" type="text/css" />
+  <link href="assets/home-fonts.css?v=8" rel="stylesheet" type="text/css" />
+  <link rel="preload" href="assets/fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/baloo-2-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link href="assets/home-base.css?v=8" rel="stylesheet" type="text/css" />
+  <link rel="preload" href="/assets/hero-catering-lunch-v4-poster.jpg" as="image" fetchpriority="high" />
   <link href="main-styles.css" rel="stylesheet" type="text/css" />
   <link href="custom-styles.css?v=7" rel="stylesheet" type="text/css" />
   <link href="assets/inline-sections.css?v=22" rel="stylesheet" type="text/css" />
@@ -40,7 +44,7 @@
 
   <meta name="google-site-verification" content="d_42b9ChJdsf3E230G-OWM6lX-fgc65ixuM6X8Qo6gA" />
   <!-- Google tag (gtag.js) -->
-  <script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -90,6 +94,62 @@
 </head>
 
 <body>
+  <div class="home-preloader" id="homePreloader" aria-hidden="true">
+    <div class="home-preloader__veil"></div>
+    <div class="home-preloader__sheet">
+      <div class="home-preloader__brand">
+        <img class="home-preloader__logo" src="assets/pycha-logo-transparent.png" alt="" width="512" height="196" />
+        <p class="home-preloader__script">świeżo na stol</p>
+        <span class="home-preloader__line" aria-hidden="true"><span></span></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.getElementById("homePreloader");
+      if (!root) return;
+
+      window.setTimeout(function () {
+        document.documentElement.classList.remove("home-preloader-on");
+        if (root.parentNode) root.remove();
+      }, 4800);
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.remove();
+        return;
+      }
+
+      document.documentElement.classList.add("home-preloader-on");
+
+      var started = performance.now();
+      var minTime = 1500;
+      var released = false;
+
+      var finish = function () {
+        if (released) return;
+        released = true;
+        var wait = Math.max(0, minTime - (performance.now() - started));
+        window.setTimeout(function () {
+          root.style.animation = "none";
+          root.classList.add("is-leaving");
+          window.setTimeout(function () {
+            if (root.parentNode) root.remove();
+            document.documentElement.classList.remove("home-preloader-on");
+          }, 1400);
+        }, wait);
+      };
+
+      window.setTimeout(finish, 3200);
+      if (document.readyState === "complete") finish();
+      else window.addEventListener("load", finish, { once: true });
+
+      window.addEventListener("pageshow", function (event) {
+        if (!event.persisted) return;
+        if (root.parentNode) root.remove();
+        document.documentElement.classList.remove("home-preloader-on");
+      });
+    })();
+  </script>
   <header class="header-section">
     <div class="navbar w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease"
       data-easing2="ease" role="banner">
@@ -743,11 +803,9 @@
         </div>
         <div class="home-hero-video-with-banner-box video-box">
           <div class="home-hero-video-with-banner">
-            <div class="home-hero-video w-background-video w-background-video-atom" data-autoplay="true"
-              data-loop="true" data-video-urls="/assets/hero-catering-lunch-v4.mp4" data-wf-ignore="true"><video autoplay=""
-                data-object-fit="cover" data-wf-ignore="true" id="6f78dc88-b49a-e0f0-9d7d-572588cdf288-video" loop=""
-                muted="" playsinline="" preload="metadata" poster="/assets/hero-catering-lunch-v4-poster.jpg" aria-label="Film przedstawiający lunch firmowy">
-                <source data-wf-ignore="true" src="/assets/hero-catering-lunch-v4.mp4" type="video/mp4" />
+            <div class="home-hero-video w-background-video w-background-video-atom" data-wf-ignore="true"><video
+                data-object-fit="cover" data-src="/assets/hero-catering-lunch-v4.mp4" data-wf-ignore="true" id="6f78dc88-b49a-e0f0-9d7d-572588cdf288-video" loop=""
+                muted="" playsinline="" preload="none" poster="/assets/hero-catering-lunch-v4-poster.jpg" aria-label="Film przedstawiający lunch firmowy">
               </video><noscript>
                 <img alt="Lunch firmowy przygotowany przez Pycha Catering" data-wf-bgvideo-fallback-img="true"
                   src="/assets/hero-catering-lunch-v4-poster.jpg" />
@@ -773,11 +831,11 @@
   <section class="catering-categories-section business-menu-section" style="text-align: center;">
     <div class="container w-container">
       <div class="categories-grid">
-        <img src="assets/optimized-images/lunch-dla-zespolu.png" alt="Lunch dla zespołu"
+        <img src="assets/optimized-images/lunch-dla-zespolu.webp" alt="Lunch dla zespołu" width="1672" height="941"
           style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
-        <img src="assets/optimized-images/roznorodna-kuchnia.png" alt="Różnorodna kuchnia"
+        <img src="assets/optimized-images/roznorodna-kuchnia.webp" alt="Różnorodna kuchnia" width="1672" height="941"
           style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
-        <img src="assets/optimized-images/stale-i-punktualne-dostawy.png" alt="Stałe i punktualne dostawy"
+        <img src="assets/optimized-images/stale-i-punktualne-dostawy.webp" alt="Stałe i punktualne dostawy" width="1672" height="941"
           style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
       </div>
     </div>
@@ -1023,7 +1081,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Dorsz w cieście piwnym" class="company-card-dish-img" src="assets/company-menu/dorsz-w-ciescie.png" />
+            <img alt="Dorsz w cieście piwnym" class="company-card-dish-img" src="assets/company-menu/dorsz-w-ciescie.webp" />
           </div>
         </div>
 
@@ -1054,7 +1112,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Burrata z pomidorem" class="company-card-dish-img" src="assets/company-menu/burrata-z-pomidorem.png" />
+            <img alt="Burrata z pomidorem" class="company-card-dish-img" src="assets/company-menu/burrata-z-pomidorem.webp" />
           </div>
         </div>
 
@@ -1085,7 +1143,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Roladki z kurczaka" class="company-card-dish-img" src="assets/company-menu/roladki-z-kurczaka.png" />
+            <img alt="Roladki z kurczaka" class="company-card-dish-img" src="assets/company-menu/roladki-z-kurczaka.webp" />
           </div>
         </div>
 
@@ -1118,7 +1176,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Pad thai z tofu" class="company-card-dish-img" src="assets/company-menu/pad-thai-z-tofu.png" />
+            <img alt="Pad thai z tofu" class="company-card-dish-img" src="assets/company-menu/pad-thai-z-tofu.webp" />
           </div>
         </div>
 
@@ -1148,7 +1206,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Stifado wołowe" class="company-card-dish-img" src="assets/company-menu/stifado-wolowe.png" />
+            <img alt="Stifado wołowe" class="company-card-dish-img" src="assets/company-menu/stifado-wolowe.webp" />
           </div>
         </div>
 
@@ -1179,7 +1237,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Gołąbki w sosie" class="company-card-dish-img" src="assets/company-menu/golabki-w-sosie.png" />
+            <img alt="Gołąbki w sosie" class="company-card-dish-img" src="assets/company-menu/golabki-w-sosie.webp" />
           </div>
         </div>
 
@@ -1210,7 +1268,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Polędwiczki wieprzowe" class="company-card-dish-img" src="assets/company-menu/roladki-z-kurczaka.png" />
+            <img alt="Polędwiczki wieprzowe" class="company-card-dish-img" src="assets/company-menu/roladki-z-kurczaka.webp" />
           </div>
         </div>
 
@@ -1241,7 +1299,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Gnocchi ze szpinakiem" class="company-card-dish-img" src="assets/company-menu/pad-thai-z-tofu.png" />
+            <img alt="Gnocchi ze szpinakiem" class="company-card-dish-img" src="assets/company-menu/pad-thai-z-tofu.webp" />
           </div>
         </div>
 
@@ -1274,7 +1332,7 @@
             </div>
           </div>
           <div class="company-card-right">
-            <img alt="Łosoś teriyaki" class="company-card-dish-img" src="assets/company-menu/dorsz-w-ciescie.png" />
+            <img alt="Łosoś teriyaki" class="company-card-dish-img" src="assets/company-menu/dorsz-w-ciescie.webp" />
           </div>
         </div>
       </div>
@@ -1290,8 +1348,8 @@
         <!-- HIT 1 -->
         <div class="hit-card" style="display: flex; align-items: center; position: relative;">
           <div style="width: 55%; z-index: 1;">
-            <img src="/assets/imgur/7synHWz.png"
-              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" / alt="Pycha Catering - posiłki dla firm">
+            <img src="/assets/imgur/7synHWz.webp" alt="Pycha Catering - posiłki dla firm" loading="lazy" decoding="async"
+              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" />
           </div>
           <div
             style="width: 55%; margin-left: -10%; z-index: 2; background: linear-gradient(145deg, #0b250c 0%, #1a421b 100%); padding: 50px; border-radius: 20px; box-shadow: 0 30px 60px rgba(11,37,12,0.4); border: 1px solid rgba(194,164,63,0.3);">
@@ -1320,8 +1378,8 @@
         <div class="hit-card"
           style="display: flex; align-items: center; position: relative; flex-direction: row-reverse;">
           <div style="width: 55%; z-index: 1;">
-            <img src="/assets/imgur/YDePnDk.jpeg"
-              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" / alt="Pycha Catering - posiłki dla firm">
+            <img src="/assets/imgur/YDePnDk.jpeg" alt="Pycha Catering - posiłki dla firm" loading="lazy" decoding="async"
+              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" />
           </div>
           <div
             style="width: 55%; margin-right: -10%; z-index: 2; background: linear-gradient(145deg, #0b250c 0%, #1a421b 100%); padding: 50px; border-radius: 20px; box-shadow: 0 30px 60px rgba(11,37,12,0.4); border: 1px solid rgba(194,164,63,0.3);">
@@ -1349,8 +1407,8 @@
         <!-- HIT 3 -->
         <div class="hit-card" style="display: flex; align-items: center; position: relative;">
           <div style="width: 55%; z-index: 1;">
-            <img src="assets/cdn.prod.website-files.com/68a16aa64bc7bbb4ba7899bf/68b687938dacda1efed8e031_pd-8.avif"
-              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" / alt="Pycha Catering - posiłki dla firm">
+            <img src="assets/cdn.prod.website-files.com/68a16aa64bc7bbb4ba7899bf/68b687938dacda1efed8e031_pd-8.avif" alt="Pycha Catering - posiłki dla firm" loading="lazy" decoding="async"
+              style="width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);" />
           </div>
           <div
             style="width: 55%; margin-left: -10%; z-index: 2; background: linear-gradient(145deg, #0b250c 0%, #1a421b 100%); padding: 50px; border-radius: 20px; box-shadow: 0 30px 60px rgba(11,37,12,0.4); border: 1px solid rgba(194,164,63,0.3);">
@@ -1387,7 +1445,7 @@
         <div class="pycha-catering-types__track">
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/order-occasions/imprezy.webp" alt="Wspólny lunch firmowy przy długim stole" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/order-occasions/imprezy.webp" alt="Wspólny lunch firmowy przy długim stole" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Integracje</span>
             </div>
             <h3 class="pycha-catering-card__title">Imprezy firmowe</h3>
@@ -1396,7 +1454,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/order-occasions/szkolenia.webp" alt="Przerwa kawowa podczas szkolenia" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/order-occasions/szkolenia.webp" alt="Przerwa kawowa podczas szkolenia" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Szkolenia</span>
             </div>
             <h3 class="pycha-catering-card__title">Szkolenia i konferencje</h3>
@@ -1405,7 +1463,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/order-occasions/uroczystosci.webp" alt="Stół na uroczystość rodzinną" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/order-occasions/uroczystosci.webp" alt="Stół na uroczystość rodzinną" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">W domu</span>
             </div>
             <h3 class="pycha-catering-card__title">Uroczystości rodzinne</h3>
@@ -1414,7 +1472,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/order-occasions/eventy.webp" alt="Przekąski na event" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/order-occasions/eventy.webp" alt="Przekąski na event" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Premiery</span>
             </div>
             <h3 class="pycha-catering-card__title">Eventy i premiery</h3>
@@ -1423,7 +1481,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/order-occasions/spotkania.webp" alt="Kameralny lunch na spotkanie biznesowe" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/order-occasions/spotkania.webp" alt="Kameralny lunch na spotkanie biznesowe" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Narady</span>
             </div>
             <h3 class="pycha-catering-card__title">Spotkania biznesowe</h3>
@@ -1432,7 +1490,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/blog-covers/lunch-pracownikow.webp" alt="Świeże boxy lunchowe przygotowane do dostawy" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/blog-covers/lunch-pracownikow.webp" alt="Świeże boxy lunchowe przygotowane do dostawy" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Zespół</span>
             </div>
             <h3 class="pycha-catering-card__title">Lunch dla firm</h3>
@@ -1441,7 +1499,7 @@
           </article>
           <article class="pycha-catering-card">
             <div class="pycha-catering-card__image-wrapper">
-              <img class="pycha-catering-card__image" src="/assets/footer-catering-v2/refreshments.webp" alt="Przekąski i napoje na przerwę kawową" width="1400" height="1050" loading="lazy" decoding="async" />
+              <img class="pycha-catering-card__image" src="/assets/footer-catering-v2/refreshments.webp" alt="Przekąski i napoje na przerwę kawową" width="1400" height="1050" decoding="async" />
               <span class="pycha-catering-card__tag">Przerwa</span>
             </div>
             <h3 class="pycha-catering-card__title">Coffee break</h3>
@@ -2066,7 +2124,7 @@
   </section>
   <!-- WHY US SECTION -->
   <section class="why-us-section"
-    style="display: none; padding: 140px 0; background-color: #0b250c; background-image: linear-gradient(to bottom, rgba(11,37,12,0.85), rgba(11,37,12,0.95)), url('/assets/imgur/VTWyAnK.jpeg'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; position: relative;">
+    style="display: none; padding: 140px 0; background-color: #0b250c; color: #fff; position: relative;">
     <div class="container w-container" style="position: relative; z-index: 2;">
       <div style="text-align: center; margin-bottom: 80px;">
         <h4
@@ -2312,6 +2370,27 @@
   <script src="assets/menu-popup/weekly-menu-popup.js"></script>
   <script src="main-scripts.js"></script>
   <script src="cookies.js"></script>
-<script src="assets/cart-popup-fix.js"></script></body>
+<script src="assets/cart-popup-fix.js"></script>
+<script>
+(function () {
+  var video = document.querySelector(".home-hero-video video[data-src]");
+  if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var start = function () {
+    if (video.querySelector("source")) return;
+    var source = document.createElement("source");
+    source.type = "video/mp4";
+    source.src = video.getAttribute("data-src");
+    video.appendChild(source);
+    video.load();
+    var play = video.play();
+    if (play && typeof play.catch === "function") play.catch(function () {});
+  };
+
+  if (document.readyState === "complete") start();
+  else window.addEventListener("load", start, { once: true });
+})();
+</script>
+</body>
 
 </html>
