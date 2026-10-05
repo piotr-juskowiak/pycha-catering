@@ -3,14 +3,14 @@ window.PYCHA_MENU_DATA = {};
 window.PYCHA_MENU_DATA.schedule = {
     timeZone: 'Europe/Warsaw',
     defaultView: 'current-week',
-    menuPeriod: '2026-09-07'
+    menuPeriod: '2026-10-05'
 };
 
 window.PYCHA_MENU_DATA.weekLabels = {
-    'Tydzień 1': '07.09 - 11.09',
-    'Tydzień 2': '14.09 - 18.09',
-    'Tydzień 3': '21.09 - 25.09',
-    'Tydzień 4': '28.09 - 02.10'
+    'Tydzień 1': '05.10 - 09.10',
+    'Tydzień 2': '12.10 - 16.10',
+    'Tydzień 3': '19.10 - 23.10',
+    'Tydzień 4': '26.10 - 30.10'
 };
 
 window.PYCHA_MENU_DATA.weeklyMenu = {
@@ -680,12 +680,7 @@ window.PYCHA_MENU_DATA.catIcons = {
     'Kanapki':          `/assets/imgur/5dmembW.png`,
 };
 
-function pychaMenuPeriod(menu) {
-  return String((menu && menu.schedule && menu.schedule.menuPeriod) || '');
-}
-
-// Keep the bundled menu as a safe fallback, but prefer the shared online copy
-// when it belongs to the same or a newer published period.
+// Keep the bundled menu as a safe fallback, but prefer the shared online copy.
 window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
   method: 'GET',
   headers: { Accept: 'application/json' },
@@ -697,14 +692,7 @@ window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
     if (!payload.menu || typeof payload.menu !== 'object') {
       throw new Error('Serwer zwrócił nieprawidłowe dane menu.');
     }
-    const bundled = window.PYCHA_MENU_DATA;
-    const remote = payload.menu;
-    const bundledPeriod = pychaMenuPeriod(bundled);
-    const remotePeriod = pychaMenuPeriod(remote);
-    if (bundledPeriod && remotePeriod < bundledPeriod) {
-      return bundled;
-    }
-    window.PYCHA_MENU_DATA = remote;
+    window.PYCHA_MENU_DATA = payload.menu;
     return window.PYCHA_MENU_DATA;
   })
   .catch(() => window.PYCHA_MENU_DATA);

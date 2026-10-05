@@ -102,6 +102,12 @@
     return { startDay, endDay };
   }
 
+  function getTargetMonday(today) {
+    const weekday = new Date(today * DAY_IN_MS).getUTCDay();
+    const currentMonday = today - ((weekday + 6) % 7);
+    return weekday === 0 || weekday === 6 ? currentMonday + 7 : currentMonday;
+  }
+
   function getPublishedWeeks(referenceDate = new Date()) {
     const defaultYear = Number(getWarsawDateParts(referenceDate).year);
     return WEEKS.map((weekName, index) => {
@@ -120,6 +126,18 @@
     });
   }
 
+  function getContinuingWeekSelection(today, lastWeek) {
+    const thisMonday = getTargetMonday(today);
+    const nextPeriodMonday = lastWeek.startDay + 7;
+    const weeksElapsed = Math.max(0, Math.floor((thisMonday - nextPeriodMonday) / 7));
+    const index = (lastWeek.index + 1 + weeksElapsed) % WEEKS.length;
+    return {
+      index,
+      startDay: thisMonday,
+      label: formatCivilWeek(thisMonday),
+    };
+  }
+
   function getMenuWeekSelection(referenceDate = new Date()) {
     const today = getCivilDayInTimeZone(referenceDate);
     const weekday = new Date(today * DAY_IN_MS).getUTCDay();
@@ -127,7 +145,8 @@
     const datedWeeks = weeks.filter((week) => week.startDay != null && week.endDay != null);
 
     if (!datedWeeks.length) {
-      return { index: 0, startDay: today, label: weeks[0].label };
+      const thisMonday = getTargetMonday(today);
+      return { index: 0, startDay: thisMonday, label: formatCivilWeek(thisMonday) };
     }
 
     const containing = datedWeeks.find((week) => today >= week.startDay && today <= week.endDay);
@@ -148,16 +167,39 @@
     if (today < first.startDay) {
       return { index: first.index, startDay: first.startDay, label: first.label };
     }
-    return { index: last.index, startDay: last.startDay, label: last.label };
+    return getContinuingWeekSelection(today, last);
   }
 
   function getFourWeekSchedule(referenceDate = new Date()) {
-    return getPublishedWeeks(referenceDate).map((week) => ({
-      index: week.index,
-      weekName: week.weekName,
-      startDay: week.startDay,
-      label: week.label,
-    }));
+    const today = getCivilDayInTimeZone(referenceDate);
+    const weeks = getPublishedWeeks(referenceDate);
+    const datedWeeks = weeks.filter((week) => week.startDay != null && week.endDay != null);
+    const last = datedWeeks[datedWeeks.length - 1];
+    const stillInPublishedPeriod = datedWeeks.length
+      && last.endDay != null
+      && today <= last.endDay
+      && today >= datedWeeks[0].startDay;
+
+    if (stillInPublishedPeriod) {
+      return datedWeeks.map((week) => ({
+        index: week.index,
+        weekName: week.weekName,
+        startDay: week.startDay,
+        label: week.label,
+      }));
+    }
+
+    const firstWeek = getMenuWeekSelection(referenceDate);
+    return Array.from({ length: WEEKS.length }, (_, offset) => {
+      const index = (firstWeek.index + offset) % WEEKS.length;
+      const startDay = firstWeek.startDay + (offset * 7);
+      return {
+        index,
+        weekName: WEEKS[index],
+        startDay,
+        label: formatCivilWeek(startDay),
+      };
+    });
   }
   
   /* ─── SVG icons ─────────────────────────────────────────── */
