@@ -1,5 +1,5 @@
 .pycha-article {
-  padding: 36px 0 96px;
+  padding: 152px 0 96px;
   background:
     radial-gradient(circle at 8% 0%, rgba(112, 153, 81, 0.12), transparent 28%),
     linear-gradient(180deg, #f7f4ea 0%, #fffdf8 220px, #ffffff 520px);
@@ -243,7 +243,7 @@
 
 @media (max-width: 860px) {
   .pycha-article {
-    padding: 24px 0 72px;
+    padding: 128px 0 72px;
   }
 
   .pycha-article__container {
