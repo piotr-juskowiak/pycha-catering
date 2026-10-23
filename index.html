@@ -29,7 +29,7 @@
   <link rel="preload" href="/assets/hero-catering-lunch-v4-poster.jpg" as="image" fetchpriority="high" />
   <link href="main-styles.css" rel="stylesheet" type="text/css" />
   <link href="custom-styles.css?v=7" rel="stylesheet" type="text/css" />
-  <link href="assets/inline-sections.css?v=24" rel="stylesheet" type="text/css" />
+  <link href="assets/inline-sections.css?v=27" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png?v=7" />
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=7" />
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=7" />
@@ -100,7 +100,7 @@
     <div class="home-preloader__sheet">
       <div class="home-preloader__brand">
         <img class="home-preloader__logo" src="assets/pycha-logo-transparent.png" alt="" width="512" height="196" />
-        <p class="home-preloader__script">dobre jedzenie, lepszy dzień !</p>
+        <p class="home-preloader__script">dobre jedzenie, lepszy dzien !</p>
         <span class="home-preloader__line" aria-hidden="true"><span></span></span>
       </div>
     </div>
@@ -154,8 +154,8 @@
   <header class="header-section">
     <aside class="pycha-top-banner" aria-label="Aktualna promocja">
       <div class="pycha-top-banner__inner">
-        <span class="pycha-top-banner__label">Nowość</span>
-        <p>Posiłki regeneracyjne <strong>1000 kcal</strong> dla pracownika — ciepły obiad na zmianę.</p>
+        <span class="pycha-top-banner__label">Promocja</span>
+        <p>Tydzień próbny lunchu dla nowej firmy — sprawdźcie dostawę, porcje i diety.</p>
         <a href="/promocje">Zobacz promocje <span aria-hidden="true">→</span></a>
       </div>
     </aside>
@@ -848,26 +848,56 @@
       </div>
     </div>
   </section>
-  <section class="pycha-home-promos" id="promocje" aria-label="Aktualne promocje">
-    <div class="pycha-home-promos__container">
-      <div class="pycha-home-promos__intro">
-        <div>
-          <p class="pycha-home-promos__eyebrow">Promocje</p>
-          <h2>Aktualne oferty dla firm</h2>
+  <section class="pycha-kcal-slider" aria-labelledby="pychaKcalTitle" data-pycha-kcal-slider>
+    <div class="pycha-kcal-slider__container">
+      <h2 class="pycha-kcal-slider__sr" id="pychaKcalTitle">Posiłki regeneracyjne 1000 kcal</h2>
+      <div class="pycha-kcal-slider__stage">
+        <article class="pycha-kcal-slider__slide is-active" data-kcal-slide>
+          <div class="pycha-kcal-slider__media">
+            <img src="/assets/offer-landings/posilki-hero.webp" alt="Ciepły posiłek regeneracyjny około 1000 kcal" width="1600" height="1000" decoding="async" />
+          </div>
+          <div class="pycha-kcal-slider__copy">
+            <span>Ok. 1000 kcal</span>
+            <h3>Ciepły obiad, który trzyma zmianę</h3>
+            <p>Danie główne, dodatek i zupa albo napój. Porcja dla ludzi z produkcji, magazynu i terenu.</p>
+            <a href="/posilki-regeneracyjne">Zobacz ofertę <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="pycha-kcal-slider__slide" data-kcal-slide>
+          <div class="pycha-kcal-slider__media">
+            <img src="/assets/offer-landings/posilki-table.webp" alt="Posiłek regeneracyjny gotowy do wydania w przerwie" width="1600" height="1000" decoding="async" />
+          </div>
+          <div class="pycha-kcal-slider__copy">
+            <span>Na przerwę</span>
+            <h3>Gotowe do wydania, bez kolejki</h3>
+            <p>Dostawa schodzi się z godziną przerwy. Porcje są podpisane i od razu trafiają do zespołu.</p>
+            <a href="/posilki-regeneracyjne">Zobacz ofertę <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="pycha-kcal-slider__slide" data-kcal-slide>
+          <div class="pycha-kcal-slider__media">
+            <img src="/assets/offer-landings/posilki-cta.webp" alt="Pracownicy jedzą dostarczony posiłek regeneracyjny" width="1600" height="1000" decoding="async" />
+          </div>
+          <div class="pycha-kcal-slider__copy">
+            <span>Dla firmy</span>
+            <h3>Dla produkcji, magazynu i terenu</h3>
+            <p>Ustalamy liczbę porcji i diety. Resztę woźimy gotową do Sochaczewa, Żyrardowa i okolic.</p>
+            <a href="/posilki-regeneracyjne">Zobacz ofertę <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <div class="pycha-kcal-slider__controls">
+          <button class="pycha-kcal-slider__arrow" type="button" data-kcal-prev aria-label="Poprzedni slajd posiłków regeneracyjnych">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+          </button>
+          <div class="pycha-kcal-slider__dots" data-kcal-dots>
+            <button type="button" data-kcal-dot aria-label="Slajd 1" aria-current="true"></button>
+            <button type="button" data-kcal-dot aria-label="Slajd 2"></button>
+            <button type="button" data-kcal-dot aria-label="Slajd 3"></button>
+          </div>
+          <button class="pycha-kcal-slider__arrow" type="button" data-kcal-next aria-label="Następny slajd posiłków regeneracyjnych">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+          </button>
         </div>
-        <a class="pycha-home-promos__all" href="/promocje">Wszystkie promocje →</a>
-      </div>
-      <div class="pycha-home-promos__grid">
-        <a class="pycha-home-promos__card pycha-home-promos__card--kcal" href="/posilki-regeneracyjne">
-          <span>Dla pracowników</span>
-          <strong>Posiłki regeneracyjne 1000 kcal</strong>
-          <p>Ciepły, sycący obiad na zmianę. Dla produkcji, magazynu i zespołów w terenie.</p>
-        </a>
-        <a class="pycha-home-promos__card pycha-home-promos__card--lunch" href="/lunch-dla-firm">
-          <span>Lunch firmowy</span>
-          <strong>Tydzień próbny dla nowej firmy</strong>
-          <p>Kilka dni lunchu, żeby sprawdzić godzinę dostawy, porcje i diety.</p>
-        </a>
       </div>
     </div>
   </section>
@@ -2293,7 +2323,7 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/inline-sections.js?v=2"></script>
+  <script src="/assets/inline-sections.js?v=3"></script>
   <!-- END CULINI FOOTER IMPORT -->
   <script
     src="assets/d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8%EF%B9%96site=68a167c0dafd6cd106a07924.js"

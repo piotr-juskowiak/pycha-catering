@@ -23,7 +23,7 @@ HEAD_LINKS = """  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.c
   <link href="/assets/home-base.css" rel="stylesheet" type="text/css" />
   <link href="/main-styles.css" rel="stylesheet" type="text/css" />
   <link href="/custom-styles.css?v=7" rel="stylesheet" type="text/css" />
-  <link href="/assets/inline-sections.css?v=24" rel="stylesheet" type="text/css" />
+  <link href="/assets/inline-sections.css?v=25" rel="stylesheet" type="text/css" />
   <link href="/assets/offer-landing.css?v=17" rel="stylesheet" type="text/css" />
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>"""
 

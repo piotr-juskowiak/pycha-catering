@@ -42,4 +42,65 @@
     render();
   });
 
+  document.querySelectorAll("[data-pycha-kcal-slider]").forEach((slider) => {
+    const slides = Array.from(slider.querySelectorAll("[data-kcal-slide]"));
+    const previous = slider.querySelector("[data-kcal-prev]");
+    const next = slider.querySelector("[data-kcal-next]");
+    const dots = Array.from(slider.querySelectorAll("[data-kcal-dot]"));
+    if (!slides.length) return;
+
+    let index = 0;
+    let timer = 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const render = () => {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+      dots.forEach((dot, dotIndex) => {
+        if (dotIndex === index) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
+
+    const go = (nextIndex) => {
+      index = (nextIndex + slides.length) % slides.length;
+      render();
+    };
+
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = 0;
+    };
+
+    const start = () => {
+      if (reduceMotion) return;
+      stop();
+      timer = window.setInterval(() => go(index + 1), 6500);
+    };
+
+    previous?.addEventListener("click", () => {
+      go(index - 1);
+      start();
+    });
+    next?.addEventListener("click", () => {
+      go(index + 1);
+      start();
+    });
+    dots.forEach((dot, dotIndex) => {
+      dot.addEventListener("click", () => {
+        go(dotIndex);
+        start();
+      });
+    });
+
+    slider.addEventListener("mouseenter", stop);
+    slider.addEventListener("mouseleave", start);
+    slider.addEventListener("focusin", stop);
+    slider.addEventListener("focusout", start);
+
+    render();
+    start();
+  });
+
 })();
