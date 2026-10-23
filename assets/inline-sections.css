@@ -1787,7 +1787,7 @@
 .pycha-kcal-slider {
   padding: 8px 0 72px;
   background: transparent;
-  color: #fff8e4;
+  color: #0b250c;
   font-family: "Rubik", sans-serif;
 }
 
@@ -1848,8 +1848,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(11, 37, 12, .72) 0%, rgba(11, 37, 12, .18) 48%, rgba(11, 37, 12, .08) 100%),
-    linear-gradient(180deg, rgba(11, 37, 12, .08) 30%, rgba(11, 37, 12, .78) 100%);
+    linear-gradient(90deg, rgba(255, 248, 228, .94) 0%, rgba(255, 248, 228, .62) 38%, rgba(255, 248, 228, .12) 72%, rgba(255, 248, 228, 0) 100%),
+    linear-gradient(180deg, rgba(255, 248, 228, .08) 40%, rgba(255, 248, 228, .72) 100%);
 }
 
 .pycha-kcal-slider__media img {
@@ -1874,8 +1874,8 @@
   margin-bottom: 16px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: #4a7a31;
-  color: #fff;
+  background: #e8f0dc;
+  color: #2f7d32;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .06em;
@@ -1884,7 +1884,7 @@
 
 .pycha-kcal-slider__copy h3 {
   margin: 0 0 12px;
-  color: #fff8e4;
+  color: #0b250c;
   font-family: "Baloo 2", "Rubik", sans-serif;
   font-size: clamp(30px, 3vw, 48px);
   font-weight: 800;
@@ -1895,7 +1895,7 @@
 .pycha-kcal-slider__copy p {
   margin: 0 0 18px;
   max-width: 38ch;
-  color: rgba(255, 248, 228, .88);
+  color: rgba(11, 37, 12, .78);
   font-size: 17px;
   line-height: 1.55;
 }
@@ -1903,13 +1903,13 @@
 .pycha-kcal-slider__copy a {
   display: inline-flex;
   align-items: center;
-  color: #fff8e4;
+  color: #2f7d32;
   font-weight: 800;
   text-decoration: none;
 }
 
 .pycha-kcal-slider__copy a:hover {
-  color: #d6ecb4;
+  color: #0b250c;
 }
 
 .pycha-kcal-slider__copy a span {
@@ -1934,10 +1934,10 @@
 .pycha-kcal-slider__arrow {
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(255, 248, 228, .28);
+  border: 1px solid rgba(11, 37, 12, .14);
   border-radius: 50%;
-  background: rgba(11, 37, 12, .42);
-  color: #fff8e4;
+  background: rgba(255, 248, 228, .9);
+  color: #0b250c;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1953,6 +1953,7 @@
 .pycha-kcal-slider__arrow:hover {
   background: #4a7a31;
   border-color: #4a7a31;
+  color: #fff8e4;
 }
 
 .pycha-kcal-slider__dots {
@@ -1966,13 +1967,13 @@
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 248, 228, .38);
+  background: rgba(11, 37, 12, .22);
   cursor: pointer;
 }
 
 .pycha-kcal-slider__dots button[aria-current="true"] {
   width: 28px;
-  background: #fff8e4;
+  background: #0b250c;
 }
 
 @media (max-width: 991px) {
