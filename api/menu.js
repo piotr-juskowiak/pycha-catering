@@ -140,7 +140,9 @@ module.exports = async function menuHandler(request, response) {
         });
       }
 
-      const savedRecord = { menu, updatedAt: new Date().toISOString() };
+      const updatedAt = new Date().toISOString();
+      menu.updatedAt = updatedAt;
+      const savedRecord = { menu, updatedAt };
       await redisCommand(['SET', MENU_KEY, JSON.stringify(savedRecord)]);
 
       return sendJson(response, 200, {

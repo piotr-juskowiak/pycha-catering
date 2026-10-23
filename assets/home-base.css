@@ -110,7 +110,7 @@ p {
   position: relative;
   z-index: 100;
   min-height: 760px;
-  padding-top: 168px;
+  padding-top: 210px;
   padding-bottom: 52px;
   overflow: hidden;
   background: url("optimized-images/hero-catering.webp") center / cover no-repeat;
@@ -248,7 +248,7 @@ p {
 
   .home-hero-section {
     min-height: auto;
-    padding-top: 130px;
+    padding-top: 168px;
   }
 
   .home-hero-content-wrap {
@@ -283,7 +283,7 @@ p {
   }
 
   .home-hero-section {
-    padding-top: 104px;
+    padding-top: 142px;
   }
 
   .home-hero-title {

@@ -13,8 +13,8 @@ HEAD_LINKS = """  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.c
   <link href="/assets/home-base.css" rel="stylesheet" type="text/css" />
   <link href="/main-styles.css" rel="stylesheet" type="text/css" />
   <link href="/custom-styles.css?v=7" rel="stylesheet" type="text/css" />
-  <link href="/assets/inline-sections.css?v=22" rel="stylesheet" type="text/css" />
-  <link href="/assets/offer-landing.css?v=16" rel="stylesheet" type="text/css" />
+  <link href="/assets/inline-sections.css?v=24" rel="stylesheet" type="text/css" />
+  <link href="/assets/offer-landing.css?v=17" rel="stylesheet" type="text/css" />
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>"""
 
 PAGES = [
@@ -445,6 +445,67 @@ PAGES = [
         ],
         "form_hint": "Godzina przerwy, liczba osób i czy to krótki briefing, czy cały dzień",
     },
+    {
+        "slug": "posilki-regeneracyjne",
+        "nav": "Posiłki regeneracyjne",
+        "kicker": "Dla pracowników",
+        "title": "Posiłki regeneracyjne",
+        "title_accent": "1000 kcal dla pracownika",
+        "full_title": "Posiłki regeneracyjne 1000 kcal dla pracownika",
+        "meta_title": "Posiłki regeneracyjne 1000 kcal dla pracownika | Pycha Catering",
+        "meta_description": "Posiłki regeneracyjne ok. 1000 kcal dla pracowników. Ciepły obiad z dowozem do firm, magazynów i zakładów w Sochaczewie, Żyrardowie i okolicach.",
+        "lead": "Ciepły, sycący posiłek dla ludzi, którzy naprawdę pracują. Około 1000 kcal w porcji, którą da się zjeść w przerwie: zupa albo dodatek, danie główne i coś do picia. Dowozimy do biur, magazynów i zakładów.",
+        "image": "/assets/offer-landings/posilki-hero.webp",
+        "image_alt": "Ciepły posiłek regeneracyjny przygotowany dla pracowników",
+        "meta": ["Ok. 1000 kcal", "Produkcja, magazyn, teren", "Stała dostawa w dni robocze"],
+        "teaser": "Sycący posiłek ok. 1000 kcal dla pracowników na zmianie.",
+        "intro_title": "Posiłek, który trzyma zmianę, a nie tylko wygląda w ofercie",
+        "story": [
+            "Posiłek regeneracyjny ma dać energię na resztę dnia, nie zająć pół przerwy. Pracownicy z produkcji, magazynu, chłodni albo terenu potrzebują konkretnego obiadu, a nie sałatki z karty bistro.",
+            "Dlatego składamy porcję około 1000 kcal: ciepłe danie główne, sycący dodatek i zupę albo napój. Menu rotuje w tygodniu, żeby zespół nie jadł tego samego od poniedziałku do piątku.",
+            "To oferta typowo dla firm. Nie zbieramy zamówień od każdej osoby na czacie. Ustalamy liczbę porcji, godzinę przerwy i warianty diet. Resztę woźimy gotową do wydania.",
+            "Dowozimy do Sochaczewa, Żyrardowa i okolic. Stała godzina ma sens przy zmianach, które kończą się o tej samej porze. Przy pracy zmianowej da się zaplanować dwie dostawy.",
+            "Jeśli potrzebujecie też zwykłego lunchu biurowego albo przerw kawowych, da się to połączyć. Posiłek regeneracyjny zostaje osobną, większą porcją dla ludzi z większym wydatkiem energii.",
+        ],
+        "note": "Do startu wystarczą liczba osób, godzina przerwy i adres. Gramaturę i kaloryczność dopinamy do Waszego zapytania, nie odwrotnie.",
+        "fits": [
+            "Zakład, magazyn i produkcja",
+            "Praca w chłodni, na zewnątrz albo przy dużym wysiłku",
+            "Zmiany, które kończą się o stałej godzinie",
+            "Firmy, które chcą dać pracownikom ciepły obiad zamiast snacku",
+            "Zespół mieszany: część biura, część hali",
+        ],
+        "cards_title": "Jak składamy posiłek regeneracyjny",
+        "cards_intro": "Tu nie chodzi o ozdobny box. Chodzi o porcję, która syci, dojeżdża ciepła i da się zjeść w czasie przerwy.",
+        "cards": [
+            ("Ok. 1000 kcal w jednej dostawie", "Danie główne, dodatek i zupa albo napój. Kaloryczność trzymamy w okolicach tysiąca kilokalorii, bez dokładania deseru na siłę."),
+            ("Rytm pod zmianę", "Dostawa schodzi się z przerwą. Porcje są podpisane i gotowe do wydania, żeby nikt nie stał w kolejce z menażką."),
+            ("Bez zbierania zamówień od każdego", "Firma podaje liczbę porcji i diety. My woźimy ten sam, czytelny zestaw — z wariantem wegetariańskim, jeśli jest potrzebny."),
+        ],
+        "included_title": "Co wchodzi w posiłek regeneracyjny",
+        "included": [
+            ("Danie główne", "Mięso, ryba albo wariant wegetariański z dodatkiem skrobiowym: ziemniaki, kasza, ryż albo makaron."),
+            ("Zupa albo ciepły dodatek", "Żeby porcja była kompletna i trzymała kaloryczność, nie tylko talerz z mięsem."),
+            ("Warzywa i surówka", "Świeży dodatek, który równoważy sycące danie i da się jeść od razu."),
+            ("Stała dostawa", "Poniedziałek–piątek albo wybrane dni zmiany. Godzinę ustalamy raz i trzymamy."),
+        ],
+        "steps_title": "Jak zacząć wozić posiłki regeneracyjne",
+        "steps": [
+            ("Napiszcie, ilu pracowników ma jeść", "Do tego godzina przerwy, adres i czy potrzebny wariant wegetariański albo bezglutenowy."),
+            ("Dostajecie propozycję porcji", "Skład, kaloryczność i cenę za sztukę. Można zacząć od kilku dni próbnych."),
+            ("Wjeżdżamy o stałej godzinie", "Posiłki przyjeżdżają gotowe do wydania. Po tygodniu korygujemy ilości, jeśli zmiana jest cieńsza."),
+        ],
+        "faq_title": "Najczęstsze pytania",
+        "faqs": [
+            ("Czy posiłek naprawdę ma około 1000 kcal?", "Tak, tak składamy standardową porcję regeneracyjną. Jeśli potrzebujecie innego widełek kalorycznych, doliczymy albo odejmiemy dodatek już na etapie oferty."),
+            ("Czy to to samo co lunch dla biura?", "Nie. Lunch biurowy jest lżejszy. Posiłek regeneracyjny jest sycący i liczony pod ludzi z większym wydatkiem energii."),
+            ("Czy dowozicie na produkcję i do magazynu?", "Tak. To nasz naturalny teren: zakład, hala, magazyn i biuro przy hali w Sochaczewie, Żyrardowie i okolicach."),
+            ("Czy trzeba zamawiać na cały miesiąc?", "Nie. Część firm zaczyna od tygodnia próbnego. Potem zostaje stała liczba porcji w wybrane dni."),
+            ("Czy da się zrobić wariant wegetariański?", "Tak. Ustalamy, ile porcji ma być mięsnych, a ile bez mięsa. Nie mieszamy ich w jednej kuwecie."),
+            ("Czy posiłki regeneracyjne można połączyć z lunchem dla biura?", "Tak. Często woźimy dwa warianty w jednej dostawie: lżejszy lunch i sycącą porcję 1000 kcal."),
+        ],
+        "form_hint": "Liczba pracowników, godzina przerwy i czy potrzebny wariant wegetariański",
+    },
 ]
 
 EXTRAS = {
@@ -579,7 +640,7 @@ EXTRAS = {
             "Liczba porcji i warianty diet",
             "Godzina przerwy i adres firmy",
         ],
-        "related": ["coffee-break", "szkolenia-i-konferencje", "spotkania-biznesowe"],
+        "related": ["posilki-regeneracyjne", "coffee-break", "szkolenia-i-konferencje"],
         "cta_title": "Zacznijcie od kilku dni na próbę",
         "cta_text": "Podajcie dni, liczbę porcji i godzinę przerwy. Ułożymy lunch, który da się potwierdzać bez zbierania zamówień na czacie.",
         "highlights": [
@@ -622,6 +683,31 @@ EXTRAS = {
         "fits_title": "Na jakie przerwy kawowe",
         "cta_image": "/assets/offer-landings/coffee-cta.webp",
         "cta_image_alt": "Przerwa kawowa przy stole w biurze",
+    },
+    "posilki-regeneracyjne": {
+        "need": [
+            "Liczba porcji i godzina przerwy",
+            "Adres zakładu, magazynu albo biura",
+            "Ile wariantów mięsnych, wegetariańskich albo bezglutenowych",
+        ],
+        "related": ["lunch-dla-firm", "szkolenia-i-konferencje", "coffee-break"],
+        "cta_title": "Zamów posiłki regeneracyjne dla zespołu",
+        "cta_text": "Podajcie liczbę osób i godzinę przerwy. Ułożymy porcję ok. 1000 kcal i dowieziemy ją gotową do wydania.",
+        "highlights": [
+            ("Porcja", "Ok. 1000 kcal"),
+            ("Dla kogo", "Produkcja, magazyn, teren"),
+            ("Dostawa", "Sochaczew, Żyrardów i okolice"),
+        ],
+        "gallery": [
+            ("/assets/offer-landings/posilki-table.webp", "Ciepłe danie regeneracyjne w opakowaniu"),
+            ("/assets/offer-landings/posilki-cta.webp", "Pracownicy jedzą dostarczony posiłek"),
+        ],
+        "area_title": "Posiłki regeneracyjne w Sochaczewie, Żyrardowie i okolicach",
+        "area_text": "Dowozimy sycące porcje do zakładów, magazynów i biur przy hali. Krótka, powtarzalna trasa pozwala trafić w przerwę na zmianie.",
+        "places": ["Sochaczew", "Żyrardów", "Zakłady i magazyny", "Biura przy produkcji"],
+        "fits_title": "Dla jakich zespołów woźimy posiłki regeneracyjne",
+        "cta_image": "/assets/offer-landings/posilki-cta.webp",
+        "cta_image_alt": "Zespół podczas przerwy na ciepły posiłek",
     },
 }
 

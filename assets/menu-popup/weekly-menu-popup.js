@@ -208,6 +208,13 @@
   const svgClose = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 
   /* ─── Price badge parser ──────────────────────────────── */
+  function formatPublicWeight(value) {
+    const text = String(value || '').trim();
+    if (!text) return '';
+    if (/^\d+$/.test(text)) return '';
+    return text;
+  }
+
   function parseDish(text) {
     const m = String(text).match(/^(\d+\s*zł)\s+([\s\S]*)/);
     let price = null;
@@ -254,7 +261,7 @@
     const dishes = items.map((item) => {
       const dish = normalizePrintDish(item);
       // Alergeny widoczne tylko dla admina — nie renderujemy ich dla klientów
-      const details = [dish.weight]
+      const details = [formatPublicWeight(dish.weight)]
         .filter(Boolean)
         .map((detail) => `<span>${escapeHtml(detail)}</span>`)
         .join('');
@@ -473,7 +480,8 @@
       const numberBadge = `<span class="wmp-item-num">${i + 1}.</span>`;
       const priceBadge = price ? `<span class="wmp-price-badge-end">${price}</span>` : '';
       
-      const weightHtml = weight ? `<span class="wmp-item-weight" style="color: #88a88f; font-size: 0.85em; font-weight: 600; padding-left: 8px;">${weight}</span>` : '';
+      const publicWeight = formatPublicWeight(weight);
+      const weightHtml = publicWeight ? `<span class="wmp-item-weight" style="color: #88a88f; font-size: 0.85em; font-weight: 600; padding-left: 8px;">${publicWeight}</span>` : '';
       // Alergeny widoczne tylko dla admina — nie renderujemy ich dla klientów
       
       return `

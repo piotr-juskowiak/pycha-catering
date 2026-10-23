@@ -13,6 +13,7 @@ OFFERS = [
     ("spotkania-biznesowe", "Spotkania biznesowe"),
     ("lunch-dla-firm", "Lunch dla firm"),
     ("coffee-break", "Coffee break"),
+    ("posilki-regeneracyjne", "Posiłki regeneracyjne"),
 ]
 NAV_RE = re.compile(r'(<div class="nav-menu"[^>]*>)(.*?)(</div>)', re.S)
 MARKER = "Kim jesteśmy?</a>"

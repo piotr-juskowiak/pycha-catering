@@ -124,7 +124,7 @@ html {
 
 .offer-hero {
   position: relative;
-  padding: 168px 0 80px;
+  padding: 210px 0 80px;
   overflow: hidden;
   background:
     radial-gradient(circle at 88% 16%, rgba(120, 164, 79, 0.18), transparent 34%),
@@ -1152,7 +1152,7 @@ html {
   }
 
   .offer-hero {
-    padding: 148px 0 64px;
+    padding: 186px 0 64px;
   }
 
   .offer-section,
@@ -1173,7 +1173,7 @@ html {
   }
 
   .offer-hero {
-    padding: 128px 0 48px;
+    padding: 166px 0 48px;
   }
 
   .offer-hero h1 {
@@ -1243,5 +1243,72 @@ html {
   .offer-chips li {
     min-height: 44px;
     padding: 10px 16px;
+  }
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.promo-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid rgba(11, 37, 12, .08);
+  text-decoration: none;
+  color: inherit;
+}
+
+.promo-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.promo-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 24px 28px;
+  flex: 1;
+}
+
+.promo-card span {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8f0dc;
+  color: #2f7d32;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.promo-card h2,
+.promo-card h3 {
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.promo-card p {
+  color: rgba(11, 37, 12, .78);
+  line-height: 1.6;
+}
+
+.promo-card strong {
+  margin-top: auto;
+  font-weight: 800;
+}
+
+@media (max-width: 800px) {
+  .promo-grid {
+    grid-template-columns: 1fr;
   }
 }

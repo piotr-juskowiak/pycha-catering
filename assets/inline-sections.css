@@ -1576,3 +1576,224 @@
     margin: 0 0 18px;
   }
 }
+
+.pycha-top-banner {
+  background: #fff8e4;
+  border-bottom: 1px solid rgba(74, 122, 49, .14);
+  color: #1c4a24;
+  font-family: "Rubik", sans-serif;
+}
+
+.pycha-top-banner__inner {
+  width: min(100% - 40px, 1650px);
+  min-height: 42px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 18px;
+  padding: 9px 0;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.pycha-top-banner__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(74, 122, 49, .12);
+  color: #2f7d32;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.pycha-top-banner p {
+  margin: 0;
+  color: #1c4a24;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pycha-top-banner strong {
+  font-weight: 800;
+  color: #0b250c;
+}
+
+.pycha-top-banner a {
+  color: #2f7d32;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pycha-top-banner a:hover {
+  color: #0b250c;
+}
+
+.pycha-top-banner a span {
+  display: inline-block;
+  margin-left: 2px;
+  transition: transform .2s ease;
+}
+
+.pycha-top-banner a:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 760px) {
+  .pycha-top-banner__inner {
+    gap: 8px 12px;
+    padding: 8px 0;
+  }
+
+  .pycha-top-banner p,
+  .pycha-top-banner a {
+    font-size: 13px;
+  }
+}
+
+.pycha-home-promos {
+  padding: 72px 0 24px;
+  background: #fff8e4;
+  color: #0b250c;
+  font-family: "Rubik", sans-serif;
+}
+
+.pycha-home-promos__container {
+  width: min(100% - 120px, 1650px);
+  margin: 0 auto;
+}
+
+.pycha-home-promos__intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.pycha-home-promos__eyebrow {
+  margin: 0 0 8px;
+  color: #4a7a31;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.pycha-home-promos h2 {
+  margin: 0;
+  max-width: 720px;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+}
+
+.pycha-home-promos__all {
+  color: #0b250c;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pycha-home-promos__all:hover {
+  color: #4a7a31;
+}
+
+.pycha-home-promos__grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 24px;
+}
+
+.pycha-home-promos__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 280px;
+  padding: 28px;
+  border-radius: 24px;
+  text-decoration: none;
+  color: inherit;
+  background: #0b250c center / cover no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+.pycha-home-promos__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 37, 12, .18) 0%, rgba(11, 37, 12, .78) 100%);
+}
+
+.pycha-home-promos__card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pycha-home-promos__card span {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #4a7a31;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.pycha-home-promos__card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff8e4;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.pycha-home-promos__card p {
+  margin: 0;
+  max-width: 38ch;
+  color: rgba(255, 248, 228, .88);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pycha-home-promos__card--kcal {
+  background-image: url("/assets/offer-landings/posilki-hero.webp");
+}
+
+.pycha-home-promos__card--lunch {
+  background-image: url("/assets/offer-landings/lunch-cta.webp");
+}
+
+@media (max-width: 991px) {
+  .pycha-home-promos__container {
+    width: min(100% - 40px, 1650px);
+  }
+
+  .pycha-home-promos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pycha-home-promos__card {
+    min-height: 240px;
+  }
+}
