@@ -2099,8 +2099,16 @@ window.PYCHA_MENU_DATA_READY = fetch('/api/menu', {
     }
     const bundledAt = pychaParseMenuTimestamp(window.PYCHA_MENU_BUNDLED_AT);
     const remoteAt = pychaParseMenuTimestamp(payload.updatedAt || payload.menu.updatedAt);
+    const bundledPhotos = window.PYCHA_MENU_DATA.categoryPhotos;
+    const bundledIcons = window.PYCHA_MENU_DATA.catIcons;
     if (remoteAt > bundledAt) {
       window.PYCHA_MENU_DATA = payload.menu;
+    }
+    if (!window.PYCHA_MENU_DATA.categoryPhotos || !Object.keys(window.PYCHA_MENU_DATA.categoryPhotos).length) {
+      window.PYCHA_MENU_DATA.categoryPhotos = bundledPhotos;
+    }
+    if (!window.PYCHA_MENU_DATA.catIcons || !Object.keys(window.PYCHA_MENU_DATA.catIcons).length) {
+      window.PYCHA_MENU_DATA.catIcons = bundledIcons;
     }
     pychaStripPdfQuantityMarks(window.PYCHA_MENU_DATA);
     return window.PYCHA_MENU_DATA;

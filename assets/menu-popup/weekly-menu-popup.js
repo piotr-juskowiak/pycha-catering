@@ -8,15 +8,26 @@
   menuDataReady.catch(() => window.PYCHA_MENU_DATA).then(() => {
   /* ─── Asset paths ─────────────────────────────────────── */
   const scriptTag = document.querySelector('script[src*="weekly-menu-popup.js"]');
-  const assetBase = scriptTag ? scriptTag.getAttribute('src').replace('weekly-menu-popup.js', 'generated/') : 'assets/menu-popup/generated/';
+  const scriptSrc = scriptTag && scriptTag.getAttribute('src');
+  const assetBase = scriptSrc
+    ? scriptSrc.split('?')[0].replace(/weekly-menu-popup\.js$/, 'generated/')
+    : '/assets/menu-popup/generated/';
   const imageLoadingAttribute = document.documentElement.dataset.loadOptimization === 'disabled'
     ? ''
     : ' loading="lazy"';
 
   const basePhotos = window.PYCHA_MENU_DATA.categoryPhotos || {};
   const categoryPhotos = {};
+  function resolveCategoryPhoto(value) {
+    const filename = String(value || '').trim();
+    if (!filename) return '';
+    if (/^(https?:)?\/\//i.test(filename) || filename.startsWith('/') || filename.includes('generated/')) {
+      return filename;
+    }
+    return `${assetBase}${filename}`;
+  }
   for (const key in basePhotos) {
-    categoryPhotos[key] = `${assetBase}${basePhotos[key]}`;
+    categoryPhotos[key] = resolveCategoryPhoto(basePhotos[key]);
   }
 
   /* ─── Category icons ──────────────────────────────────── */
