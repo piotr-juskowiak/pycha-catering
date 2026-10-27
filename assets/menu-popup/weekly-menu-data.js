@@ -2065,20 +2065,10 @@ function pychaParseMenuTimestamp(value) {
 }
 
 function pychaStripPdfQuantityMarks(menu) {
-  if (!menu || typeof menu !== 'object' || !menu.weeklyMenu) return menu;
-  Object.values(menu.weeklyMenu).forEach((week) => {
-    if (!week || typeof week !== 'object') return;
-    Object.values(week).forEach((day) => {
-      if (!day || typeof day !== 'object') return;
-      Object.values(day).forEach((items) => {
-        if (!Array.isArray(items)) return;
-        items.forEach((item) => {
-          if (!item || typeof item !== 'object') return;
-          if (/^\d+$/.test(String(item.weight || '').trim())) item.weight = '';
-        });
-      });
-    });
-  });
+  // This function previously erased weight values that were pure digits (e.g. "400", "300"),
+  // which caused gramatura to reset on every page refresh.
+  // The weight field must not be modified here — it is set intentionally by admins.
+  if (!menu || typeof menu !== 'object') return menu;
   return menu;
 }
 
