@@ -221,8 +221,6 @@
   /* ─── Price badge parser ──────────────────────────────── */
   function formatPublicWeight(value) {
     const text = String(value || '').trim();
-    if (!text) return '';
-    if (/^\d+$/.test(text)) return '';
     return text;
   }
 
