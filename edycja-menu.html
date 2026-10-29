@@ -434,6 +434,104 @@
     .media-preview-box { width: 100%; height: 180px; background: var(--pc-cream-light); border: 1px solid var(--pc-border-subtle); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 0.5rem; }
     .media-preview-img { width: 100%; height: 100%; object-fit: cover; }
     .media-preview-empty { color: var(--pc-muted); font-size: 0.9rem; font-weight: 600; }
+
+    /* Promo Banner Upload */
+    .promo-upload-card {
+      background: var(--pc-card-bg);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 8px 32px var(--pc-shadow);
+      border: 1px solid var(--pc-border-subtle);
+      max-width: 900px;
+      margin-bottom: 3rem;
+    }
+    .promo-drop-zone {
+      width: 100%;
+      min-height: 220px;
+      border: 2.5px dashed rgba(63,143,53,0.35);
+      border-radius: var(--radius-lg);
+      background: var(--pc-cream-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+    .promo-drop-zone.drag-over {
+      border-color: var(--pc-green);
+      background: rgba(63,143,53,0.06);
+    }
+    .promo-drop-zone img.promo-preview-img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      position: absolute; inset: 0;
+      border-radius: var(--radius-lg);
+    }
+    .promo-drop-zone__label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pc-ink-light);
+      text-align: center;
+      padding: 1rem;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .promo-drop-zone input[type=file] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+      font-size: 0;
+    }
+    .promo-actions { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+    .promo-title-input {
+      flex: 1; min-width: 180px;
+      padding: 0.65rem 1rem;
+      border: 1px solid rgba(22,60,30,0.15);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      outline: none;
+      background: #fff;
+      color: var(--pc-ink);
+      transition: all 0.2s;
+    }
+    .promo-title-input:focus {
+      border-color: var(--pc-green);
+      box-shadow: 0 0 0 3px rgba(63,143,53,0.14);
+    }
+    #promoStatus {
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.5rem 0;
+      min-height: 1.5rem;
+    }
+    #promoStatus.ok  { color: var(--pc-green-mid); }
+    #promoStatus.err { color: #dc2626; }
+    .promo-current-info {
+      font-size: 0.83rem;
+      color: var(--pc-ink-light);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+    .btn-danger-outline {
+      background: white;
+      color: #dc2626;
+      border: 2px solid #fca5a5;
+      border-radius: 10px;
+      padding: 0.65rem 1.2rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-danger-outline:hover { background: #fef2f2; border-color: #ef4444; }
   </style>
   <link href="assets/page-transitions.css" rel="stylesheet" type="text/css" />
 </head>
@@ -535,6 +633,38 @@
       <div class="section-header-line"></div>
     </div>
     <div id="mediaGrid" class="editor-grid"></div>
+
+    <div class="section-header" style="margin-top: 3rem;">
+      <h2>Grafika Promocji</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <p style="margin: -0.4rem 0 1.5rem; max-width: 720px; color: var(--pc-ink-light); font-size: 0.92rem; font-weight: 700; line-height: 1.45;">
+      Wgraj grafike, ktora wyswietli sie na stronie <a href="/promocje" target="_blank" style="color: var(--pc-green-mid);">Promocje</a>. Jesli nie ma zadnej grafiki, strona pokazuje domyslny layout. Maks. 4 MB.
+    </p>
+
+    <div class="promo-upload-card" id="promoUploadCard">
+      <div class="promo-current-info" id="promoCurrentInfo">Ladowanie obecnej promocji...</div>
+
+      <div class="promo-drop-zone" id="promoDropZone">
+        <input type="file" id="promoFileInput" accept="image/*" />
+        <div class="promo-drop-zone__label" id="promoDropLabel">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 0.4rem;display:block;color:var(--pc-green-mid);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Przeciagnij grafike tutaj lub <u>kliknij, zeby wybrac</u>
+        </div>
+      </div>
+
+      <div class="promo-actions">
+        <input type="text" class="promo-title-input" id="promoTitleInput" placeholder="Tytul (opcjonalnie, do podgladu w panelu)" />
+        <button class="btn-primary" id="promoSaveBtn" style="white-space:nowrap;" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Zapisz grafike
+        </button>
+        <button class="btn-danger-outline" id="promoDeleteBtn" style="display:none;">
+          Usun promocje
+        </button>
+      </div>
+      <div id="promoStatus"></div>
+    </div>
   </div>
 
   <script src="assets/menu-popup/weekly-menu-data.js?v=20261023"></script>
@@ -1056,6 +1186,171 @@
       setAutosaveStatus('Po pierwszym zapisie menu będzie się samo zapisywać co ok. minutę.');
     });
   </script>
+
+  <script>
+  /* ===== Promo Banner Upload ===== */
+  (function () {
+    var dropZone   = document.getElementById('promoDropZone');
+    var fileInput  = document.getElementById('promoFileInput');
+    var saveBtn    = document.getElementById('promoSaveBtn');
+    var deleteBtn  = document.getElementById('promoDeleteBtn');
+    var dropLabel  = document.getElementById('promoDropLabel');
+    var titleInput = document.getElementById('promoTitleInput');
+    var statusEl   = document.getElementById('promoStatus');
+    var infoEl     = document.getElementById('promoCurrentInfo');
+
+    var pendingBase64 = null;
+
+    function setStatus(msg, type) {
+      statusEl.textContent = msg;
+      statusEl.className   = type || '';
+    }
+
+    function getAdminPassword() {
+      return sessionStorage.getItem('pychaMenuAdminPassword') || '';
+    }
+
+    function authHeaders() {
+      var pw = getAdminPassword();
+      if (!pw) return {};
+      return { 'Authorization': 'Basic ' + btoa(':' + pw) };
+    }
+
+    function loadCurrentPromo() {
+      fetch('/api/promo')
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+          if (json.status === 'success' && json.promo && json.promo.image) {
+            var p = json.promo;
+            var updated = p.updatedAt ? new Date(p.updatedAt).toLocaleString('pl-PL') : '';
+            infoEl.textContent = 'Aktywna grafika: ' + (p.title || 'bez tytulu') + (updated ? ' (zaktualizowana ' + updated + ')' : '');
+            showPreview(p.image);
+            deleteBtn.style.display = '';
+          } else {
+            infoEl.textContent = 'Brak aktywnej grafiki promocji.';
+            deleteBtn.style.display = 'none';
+          }
+        })
+        .catch(function() {
+          infoEl.textContent = 'Nie udalo sie pobrac danych promocji.';
+        });
+    }
+
+    function showPreview(dataUrl) {
+      var img = dropZone.querySelector('img.promo-preview-img');
+      if (!img) {
+        img = document.createElement('img');
+        img.className = 'promo-preview-img';
+        dropZone.insertBefore(img, dropZone.firstChild);
+      }
+      img.src = dataUrl;
+      dropLabel.style.display = 'none';
+    }
+
+    function clearPreview() {
+      var img = dropZone.querySelector('img.promo-preview-img');
+      if (img) img.parentNode.removeChild(img);
+      dropLabel.style.display = '';
+      pendingBase64 = null;
+      saveBtn.disabled = true;
+    }
+
+    function readFile(file) {
+      if (!file || !file.type.match(/^image\//)) {
+        setStatus('Wybierz plik graficzny (JPG, PNG, WebP...)', 'err');
+        return;
+      }
+      if (file.size > 4 * 1024 * 1024) {
+        setStatus('Plik jest za duzy - maks. 4 MB.', 'err');
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        pendingBase64 = e.target.result;
+        showPreview(pendingBase64);
+        saveBtn.disabled = false;
+        setStatus('');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    fileInput.addEventListener('change', function() { readFile(fileInput.files[0]); });
+
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropZone.classList.add('drag-over');
+    });
+    dropZone.addEventListener('dragleave', function() {
+      dropZone.classList.remove('drag-over');
+    });
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      readFile(e.dataTransfer.files[0]);
+    });
+
+    saveBtn.addEventListener('click', function() {
+      if (!pendingBase64) return;
+      var pw = getAdminPassword();
+      if (!pw) {
+        var entered = prompt('Podaj haslo administratora:');
+        if (!entered) return;
+        sessionStorage.setItem('pychaMenuAdminPassword', entered);
+      }
+      setStatus('Zapisywanie...');
+      saveBtn.disabled = true;
+      var headers = Object.assign({ 'Content-Type': 'application/json' }, authHeaders());
+      var body = JSON.stringify({ image: pendingBase64, title: titleInput.value.trim() || 'Grafika promocji' });
+      fetch('/api/promo', { method: 'POST', headers: headers, body: body })
+        .then(function(res) { return res.json().then(function(j) { return { ok: res.ok, json: j }; }); })
+        .then(function(r) {
+          if (r.ok && r.json.status === 'success') {
+            setStatus('Zapisano! Grafika jest aktywna na stronie Promocje.', 'ok');
+            deleteBtn.style.display = '';
+            pendingBase64 = null;
+            var updated = r.json.promo.updatedAt ? new Date(r.json.promo.updatedAt).toLocaleString('pl-PL') : '';
+            infoEl.textContent = 'Aktywna grafika: ' + (r.json.promo.title || 'bez tytulu') + (updated ? ' (zaktualizowana ' + updated + ')' : '');
+          } else {
+            setStatus('Blad: ' + (r.json.message || 'nieznany'), 'err');
+            saveBtn.disabled = false;
+          }
+        })
+        .catch(function(e) {
+          setStatus('Blad polaczenia: ' + e.message, 'err');
+          saveBtn.disabled = false;
+        });
+    });
+
+    deleteBtn.addEventListener('click', function() {
+      if (!confirm('Na pewno usunac aktywna grafike promocji?')) return;
+      var pw = getAdminPassword();
+      if (!pw) {
+        var entered = prompt('Podaj haslo administratora:');
+        if (!entered) return;
+        sessionStorage.setItem('pychaMenuAdminPassword', entered);
+      }
+      setStatus('Usuwanie...');
+      fetch('/api/promo', { method: 'DELETE', headers: authHeaders() })
+        .then(function(res) { return res.json().then(function(j) { return { ok: res.ok, json: j }; }); })
+        .then(function(r) {
+          if (r.ok && r.json.status === 'success') {
+            setStatus('Promocja usunieta.', 'ok');
+            clearPreview();
+            deleteBtn.style.display = 'none';
+            infoEl.textContent = 'Brak aktywnej grafiki promocji.';
+          } else {
+            setStatus('Blad: ' + (r.json.message || 'nieznany'), 'err');
+          }
+        })
+        .catch(function(e) {
+          setStatus('Blad polaczenia: ' + e.message, 'err');
+        });
+    });
+
+    loadCurrentPromo();
+  })();
+  </script>
+
   <script src="assets/page-transitions.js"></script>
 </body>
 </html>

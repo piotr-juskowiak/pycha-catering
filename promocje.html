@@ -650,59 +650,12 @@
     </div>
   </header>
   <main>
-    <section class="offer-hero">
-      <div class="offer-wrap">
-        <nav class="offer-crumb" aria-label="Okruszki">
-          <a href="/">Strona główna</a><span>/</span>
-          <strong>Promocje</strong>
-        </nav>
-        <div class="offer-hero__grid">
-          <div class="offer-hero__copy">
-            <p class="offer-kicker">Dla firm</p>
-            <h1>Aktualne <em>promocje</em></h1>
-            <p class="offer-hero__lead">Tu trzymamy oferty, które aktualnie warto wziąć dla zespołu: tydzień próbny lunchu, coffee break na pierwsze szkolenie i sezonowe zestawy. Gdy pojawi się nowa promocja, wjedzie najpierw tutaj i na górze strony.</p>
-            <div class="offer-hero__actions">
-              <a class="offer-btn offer-btn--primary" href="#zamow-catering">Zapytaj o promocję</a>
-              <a class="offer-btn offer-btn--ghost" href="/lunch-dla-firm">Lunch dla firm</a>
-            </div>
-            <p class="offer-hero__phone">Albo zadzwoń: <a class="offer-hero__phone-link" href="tel:888849509">888 849 509</a></p>
-          </div>
-          <figure class="offer-hero__media">
-            <img src="/assets/offer-landings/lunch-hero.webp" alt="Aktualne promocje cateringu dla firm" width="1400" height="1050" />
-            <span>Promocje</span>
-          </figure>
-        </div>
-      </div>
+    <!-- Dynamic promo banner loaded from /api/promo -->
+    <section id="promoSection">
+      <!-- Content injected by JS below -->
     </section>
 
-    <section class="offer-section offer-section--paper">
-      <div class="offer-wrap">
-        <p class="offer-section__kicker">Teraz</p>
-        <h2>Co można wziąć dla zespołu</h2>
-        <p class="offer-section__intro">Krótka lista aktualnych ofert. Jeśli potrzebujecie czegoś pod konkretną zmianę albo event, napiszcie — ułożymy zestaw poza tym, co wisi na stronie.</p>
-        <div class="promo-grid">
-          <a class="promo-card" href="/lunch-dla-firm">
-            <img src="/assets/offer-landings/lunch-cta.webp" alt="Tydzień próbny lunchu dla firm" width="1200" height="800" />
-            <div class="promo-card__body">
-              <span>Lunch firmowy</span>
-              <h3>Tydzień próbny dla nowej firmy</h3>
-              <p>Kilka dni lunchu, żeby sprawdzić godzinę, porcje i diety zanim wejdziecie w stały rytm.</p>
-              <strong>Zobacz lunch dla firm →</strong>
-            </div>
-          </a>
-          <a class="promo-card" href="/coffee-break">
-            <img src="/assets/offer-landings/coffee-hero.webp" alt="Coffee break na pierwsze szkolenie" width="1200" height="800" />
-            <div class="promo-card__body">
-              <span>Przerwa kawowa</span>
-              <h3>Coffee break na pierwsze szkolenie</h3>
-              <p>Zestaw na jedno spotkanie: kawa, woda i przekąski. Sprawdźcie przerwę, zanim wejdziecie w stały rytm.</p>
-              <strong>Zobacz coffee break →</strong>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
+    <!-- CTA / contact form always visible -->
     <section class="offer-cta" id="zamow-catering">
       <div class="offer-wrap">
         <div class="offer-cta__copy">
@@ -740,6 +693,119 @@
       </div>
     </section>
   </main>
+
+  <style>
+    /* Promo banner display on promocje.html */
+    .promo-banner-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 3rem auto 2rem;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+    }
+    .promo-banner-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 12px 48px rgba(15, 61, 30, 0.15);
+    }
+    .promo-banner-section figcaption {
+      font-size: 0.85rem;
+      color: rgba(15,61,30,0.5);
+      text-align: center;
+      margin-top: 0.6rem;
+      font-weight: 600;
+    }
+    /* Static fallback */
+    .promo-fallback { padding: 0 0 2rem; }
+  </style>
+
+  <script>
+  (function() {
+    var section = document.getElementById('promoSection');
+    fetch('/api/promo')
+      .then(function(r) { return r.json(); })
+      .then(function(json) {
+        if (json.status === 'success' && json.promo && json.promo.image && json.promo.active !== false) {
+          /* Show uploaded banner only */
+          var fig = document.createElement('figure');
+          fig.className = 'promo-banner-section';
+          var img = document.createElement('img');
+          img.src = json.promo.image;
+          img.alt = json.promo.title || 'Aktualna promocja';
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          fig.appendChild(img);
+          if (json.promo.title) {
+            var cap = document.createElement('figcaption');
+            cap.textContent = json.promo.title;
+            fig.appendChild(cap);
+          }
+          section.appendChild(fig);
+        } else {
+          showFallback();
+        }
+      })
+      .catch(function() { showFallback(); });
+
+    function showFallback() {
+      section.innerHTML = [
+        '<section class="offer-hero promo-fallback">',
+        '  <div class="offer-wrap">',
+        '    <nav class="offer-crumb" aria-label="Okruszki">',
+        '      <a href="/">Strona g\u0142\u00f3wna</a><span>/</span>',
+        '      <strong>Promocje</strong>',
+        '    </nav>',
+        '    <div class="offer-hero__grid">',
+        '      <div class="offer-hero__copy">',
+        '        <p class="offer-kicker">Dla firm</p>',
+        '        <h1>Aktualne <em>promocje</em></h1>',
+        '        <p class="offer-hero__lead">Tu trzymamy oferty, kt\u00f3re aktualnie warto wzi\u0105\u0107 dla zesp\u00f3\u0142u: tydzie\u0144 pr\u00f3bny lunchu, coffee break na pierwsze szkolenie i sezonowe zestawy.</p>',
+        '        <div class="offer-hero__actions">',
+        '          <a class="offer-btn offer-btn--primary" href="#zamow-catering">Zapytaj o promocj\u0119</a>',
+        '          <a class="offer-btn offer-btn--ghost" href="/lunch-dla-firm">Lunch dla firm</a>',
+        '        </div>',
+        '        <p class="offer-hero__phone">Albo zadzwo\u0144: <a class="offer-hero__phone-link" href="tel:888849509">888 849 509</a></p>',
+        '      </div>',
+        '      <figure class="offer-hero__media">',
+        '        <img src="/assets/offer-landings/lunch-hero.webp" alt="Aktualne promocje cateringu dla firm" width="1400" height="1050" />',
+        '        <span>Promocje</span>',
+        '      </figure>',
+        '    </div>',
+        '  </div>',
+        '</section>',
+        '<section class="offer-section offer-section--paper">',
+        '  <div class="offer-wrap">',
+        '    <p class="offer-section__kicker">Teraz</p>',
+        '    <h2>Co mo\u017cna wzi\u0105\u0107 dla zesp\u00f3\u0142u</h2>',
+        '    <p class="offer-section__intro">Kr\u00f3tka lista aktualnych ofert.</p>',
+        '    <div class="promo-grid">',
+        '      <a class="promo-card" href="/lunch-dla-firm">',
+        '        <img src="/assets/offer-landings/lunch-cta.webp" alt="Tydzie\u0144 pr\u00f3bny lunchu dla firm" width="1200" height="800" />',
+        '        <div class="promo-card__body">',
+        '          <span>Lunch firmowy</span>',
+        '          <h3>Tydzie\u0144 pr\u00f3bny dla nowej firmy</h3>',
+        '          <p>Kilka dni lunchu, \u017ceby sprawdzi\u0107 godzin\u0119, porcje i diety zanim wejdziecie w sta\u0142y rytm.</p>',
+        '          <strong>Zobacz lunch dla firm \u2192</strong>',
+        '        </div>',
+        '      </a>',
+        '      <a class="promo-card" href="/coffee-break">',
+        '        <img src="/assets/offer-landings/coffee-hero.webp" alt="Coffee break na pierwsze szkolenie" width="1200" height="800" />',
+        '        <div class="promo-card__body">',
+        '          <span>Przerwa kawowa</span>',
+        '          <h3>Coffee break na pierwsze szkolenie</h3>',
+        '          <p>Zestaw na jedno spotkanie: kawa, woda i przek\u0105ski.</p>',
+        '          <strong>Zobacz coffee break \u2192</strong>',
+        '        </div>',
+        '      </a>',
+        '    </div>',
+        '  </div>',
+        '</section>'
+      ].join('\n');
+    }
+  })();
+  </script>
 <!-- CULINI FOOTER IMPORT -->
   <footer class="pycha-site-footer">
     <div class="pycha-site-footer__container">
