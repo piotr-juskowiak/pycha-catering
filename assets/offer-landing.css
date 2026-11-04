@@ -1733,6 +1733,21 @@ html {
   font-size: 20px;
 }
 
+.promo-benefit-card__icon svg,
+.imprezy-stat-box__icon svg,
+.imprezy-occasion-item__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  display: block;
+  flex-shrink: 0;
+}
+
+.imprezy-occasion-item__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
 .promo-benefit-card h4 {
   margin: 0;
   font-family: "Baloo 2", "Rubik", sans-serif;
