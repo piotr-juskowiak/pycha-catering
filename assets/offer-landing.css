@@ -2080,3 +2080,118 @@ html {
   font-size: 15px;
   font-weight: 600;
 }
+
+/* Featured B2B Banner Card on Imprezy Firmowe */
+.imprezy-banner-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(74, 122, 49, 0.2);
+  box-shadow: 0 16px 44px rgba(15, 61, 30, 0.08);
+  margin-top: 36px;
+  transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, border-color .3s ease;
+}
+
+.imprezy-banner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 52px rgba(15, 61, 30, 0.12);
+  border-color: rgba(47, 125, 50, 0.35);
+}
+
+.imprezy-banner-card__badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: #2f7d32;
+  color: #ffffff;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.imprezy-banner-card picture,
+.imprezy-banner-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.imprezy-banner-card__caption {
+  padding: 20px 28px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid rgba(74, 122, 49, 0.12);
+}
+
+.imprezy-banner-card__text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.imprezy-banner-card__text strong {
+  display: block;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: #0b250c;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.imprezy-banner-card__text span {
+  display: block;
+  font-size: 14.5px;
+  color: #355034;
+  line-height: 1.5;
+}
+
+.imprezy-banner-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .imprezy-banner-card {
+    border-radius: 20px;
+    margin-top: 24px;
+  }
+  .imprezy-banner-card__badge {
+    top: 12px;
+    left: 12px;
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+  .imprezy-banner-card__caption {
+    padding: 16px;
+  }
+  .imprezy-banner-card__text strong {
+    font-size: 16.5px;
+  }
+  .imprezy-banner-card__text span {
+    font-size: 13.5px;
+  }
+  .imprezy-banner-card__actions {
+    width: 100%;
+  }
+  .imprezy-banner-card__actions .offer-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
