@@ -673,4 +673,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (toggle) toggle.setAttribute("aria-expanded", "false");
     });
   });
+
+  // Smooth accordion behavior for .offer-faq details
+  document.querySelectorAll(".offer-faq").forEach((faq) => {
+    const details = faq.querySelectorAll("details");
+    details.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (item.open) {
+          details.forEach((other) => {
+            if (other !== item && other.open) {
+              other.open = false;
+            }
+          });
+        }
+      });
+    });
+  });
 });

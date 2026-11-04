@@ -26,8 +26,7 @@ html {
 
 .offer-page h1,
 .offer-page h2,
-.offer-page h3,
-.offer-page .offer-faq summary {
+.offer-page h3 {
   text-transform: none;
   letter-spacing: -0.03em;
 }
@@ -426,8 +425,7 @@ html {
 .offer-card h3,
 .offer-included h3,
 .offer-related h3,
-.offer-step h3,
-.offer-faq summary {
+.offer-step h3 {
   margin: 0 0 12px;
   color: #0b250c;
   font-family: "Baloo 2", "Rubik", sans-serif;
@@ -756,37 +754,47 @@ html {
 
 .offer-faq {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .offer-faq details {
-  padding: 6px 26px 6px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 61, 30, 0.08);
   border-left: 4px solid transparent;
-  background: #fff;
-  box-shadow: 0 14px 32px rgba(11, 37, 12, 0.05);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(11, 37, 12, 0.04);
+  padding: 0 24px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
 .offer-faq details:hover {
-  box-shadow: 0 20px 42px rgba(11, 37, 12, 0.09);
+  border-color: rgba(74, 122, 49, 0.28);
+  box-shadow: 0 10px 28px rgba(11, 37, 12, 0.07);
+  transform: translateY(-2px);
 }
 
 .offer-page .offer-faq details[open] {
-  border-left: 4px solid #78a44f;
-  background: #fffdf6;
+  border-left-color: #2f7d32;
+  border-color: rgba(47, 125, 50, 0.22);
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 61, 30, 0.08);
 }
 
 .offer-faq summary {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 0;
-  font-size: 20px;
+  padding: 22px 0;
   cursor: pointer;
   list-style: none;
+  user-select: none;
+  outline: none;
+  margin: 0;
 }
 
-.offer-faq summary::-webkit-details-marker {
+.offer-faq summary::-webkit-details-marker,
+.offer-faq summary::marker {
   display: none;
 }
 
@@ -795,23 +803,39 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #e7efd8;
-  color: #4a7a31;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: #eef5e6;
+  color: #2f7d32;
   font-family: "Baloo 2", "Rubik", sans-serif;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 800;
+  transition: all 0.25s ease;
+}
+
+.offer-faq details:hover .offer-faq__num {
+  background: #e2edd4;
 }
 
 .offer-faq details[open] .offer-faq__num {
-  background: #78a44f;
-  color: #fff;
+  background: #2f7d32;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(47, 125, 50, 0.25);
 }
 
 .offer-faq summary > span:nth-child(2) {
   flex: 1;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 18.5px;
+  font-weight: 700;
+  color: #0b250c;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.offer-faq details:hover summary > span:nth-child(2) {
+  color: #1b5321;
 }
 
 .offer-faq summary::after {
@@ -820,24 +844,47 @@ html {
   height: 36px;
   margin-left: auto;
   border-radius: 50%;
-  background: #f3f6ea;
-  color: #4a7a31;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 36px;
-  text-align: center;
-  content: "+";
+  background-color: #f1f6ea;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%232f7d32' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  content: "";
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.offer-faq details:hover summary::after {
+  background-color: #e5f0dc;
 }
 
 .offer-faq details[open] summary::after {
-  background: #0b250c;
-  color: #fff;
-  content: "–";
+  transform: rotate(180deg);
+  background-color: #2f7d32;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  box-shadow: 0 4px 12px rgba(47, 125, 50, 0.25);
+}
+
+.offer-faq details p {
+  margin: 0;
+  max-width: 72ch;
+  padding: 0 16px 24px 52px;
+  color: #355034;
+  font-size: 15.5px;
+  line-height: 1.7;
 }
 
 .offer-faq details[open] p {
-  max-width: 68ch;
-  padding: 0 0 22px 54px;
+  animation: faqItemIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes faqItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .offer-related {
@@ -1221,15 +1268,36 @@ html {
   }
 
   .offer-faq details {
-    padding: 6px 18px 6px 16px;
-  }
-
-  .offer-faq details[open] p {
-    padding-left: 0;
+    padding: 0 16px;
+    border-radius: 16px;
   }
 
   .offer-faq summary {
-    font-size: 18px;
+    padding: 16px 0;
+    gap: 12px;
+  }
+
+  .offer-faq summary > span:nth-child(2) {
+    font-size: 16px;
+  }
+
+  .offer-faq__num {
+    width: 32px;
+    height: 32px;
+    font-size: 12.5px;
+    border-radius: 10px;
+  }
+
+  .offer-faq summary::after {
+    width: 32px;
+    height: 32px;
+  }
+
+  .offer-faq details p,
+  .offer-faq details[open] p {
+    padding: 0 0 18px 44px;
+    font-size: 14.5px;
+    line-height: 1.65;
   }
 
   .offer-page a.offer-cta__phone {
