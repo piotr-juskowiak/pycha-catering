@@ -27,7 +27,7 @@
   <link href="/main-styles.css" rel="stylesheet" type="text/css" />
   <link href="/custom-styles.css?v=7" rel="stylesheet" type="text/css" />
   <link href="/assets/inline-sections.css?v=25" rel="stylesheet" type="text/css" />
-  <link href="/assets/offer-landing.css?v=17" rel="stylesheet" type="text/css" />
+  <link href="/assets/offer-landing.css?v=18" rel="stylesheet" type="text/css" />
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 </head>
 <body class="offer-page">
@@ -35,8 +35,7 @@
         <aside class="pycha-top-banner" aria-label="Aktualna promocja">
       <div class="pycha-top-banner__inner">
         <span class="pycha-top-banner__label">Promocja</span>
-        <p>Tydzień próbny lunchu dla nowej firmy — sprawdźcie dostawę, porcje i diety.</p>
-        <a href="/promocje">Zobacz promocje <span aria-hidden="true">→</span></a>
+        <a class="pycha-top-banner__link" href="/promocje">Tydzień próbny lunchu dla nowej firmy — sprawdźcie dostawę, porcje i diety.</a>
       </div>
     </aside>
 <div class="navbar w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease"
@@ -650,9 +649,271 @@
     </div>
   </header>
   <main>
-    <!-- Dynamic promo banner loaded from /api/promo -->
-    <section id="promoSection">
-      <!-- Content injected by JS below -->
+    <section class="offer-hero promo-page-hero">
+      <div class="offer-wrap">
+        <nav class="offer-crumb" aria-label="Okruszki">
+          <a href="/">Strona główna</a><span>/</span>
+          <strong>Promocje</strong>
+        </nav>
+        <div class="offer-hero__grid">
+          <div class="offer-hero__copy">
+            <p class="offer-kicker">Oferty specjalne dla firm</p>
+            <h1>Aktualne <em>promocje cateringowe</em></h1>
+            <p class="offer-hero__lead">Przetestujcie Pycha Catering na preferencyjnych warunkach. Zamówcie tydzień próbny lunchu dla biura, odbierzcie powitalny poczęstunek na szkolenie lub zgarnijcie rabat na pierwszy bufet firmowy w Sochaczewie i Żyrardowie.</p>
+            <div class="offer-hero__actions">
+              <a class="offer-btn offer-btn--primary" href="#zamow-catering">Zapytaj o promocję</a>
+              <a class="offer-btn offer-btn--ghost" href="/menu.html">Zobacz menu firmowe</a>
+            </div>
+            <p class="offer-hero__phone">Szybki kontakt z kucharzem: <a class="offer-hero__phone-link" href="tel:888849509">888 849 509</a></p>
+          </div>
+          <figure class="offer-hero__media">
+            <img src="/assets/offer-landings/promocje-hero-v2.webp" alt="Aktualne promocje Pycha Catering dla firm" width="1376" height="768" />
+            <span>Pakiety promocyjne</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Promo Banner from Admin (if active in Redis) -->
+    <div id="dynamicPromoBanner" class="promo-dynamic-banner-wrap"></div>
+
+    <!-- Active Promotions Grid -->
+    <section class="offer-section offer-section--paper" id="oferty-promocyjne">
+      <div class="offer-wrap">
+        <p class="offer-section__kicker">Wybrane pakiety</p>
+        <h2>Co aktualnie warto wziąć dla zespołu</h2>
+        <p class="offer-section__intro">Dopasowane porcje, świeże składniki i zero ukrytych kosztów. Wybierz pakiet testowy lub promocyjny na start:</p>
+
+        <div class="promo-cards-grid">
+          <!-- Card 1: Tydzien probny -->
+          <article class="promo-rich-card">
+            <div class="promo-rich-card__media">
+              <span class="promo-rich-card__badge promo-rich-card__badge--highlight">Bestseller dla firm</span>
+              <img src="/assets/offer-landings/promocje-lunch-box-v2.webp" alt="Tydzień próbny lunchu dla firm" width="1200" height="896" loading="lazy" decoding="async" />
+            </div>
+            <div class="promo-rich-card__body">
+              <span class="promo-rich-card__tag">Lunch dla pracowników</span>
+              <h3 class="promo-rich-card__title">Tydzień próbny dla nowej firmy</h3>
+              <p class="promo-rich-card__desc">Kilka dni pełnowartościowego lunchu (3–5 dni), żeby zespół sprawdził smak, wielkość porcji i punktualność dostawy zanim zdecydujecie o stałym rytmie.</p>
+              <ul class="promo-rich-card__perks">
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Indywidualne, ekologiczne zgrzewane opakowania</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Do wyboru dania mięsne, rybne i wegetariańskie</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Dostawa w termoboxach na dokładną przerwę obiadową</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Bez długoterminowej umowy – pełna elastyczność</span>
+                </li>
+              </ul>
+              <div class="promo-rich-card__footer">
+                <span class="promo-rich-card__price">Rabat powitalny na start</span>
+                <a class="promo-rich-card__btn" href="#zamow-catering" onclick="document.querySelector('textarea[name=Opis]').value='Zapytanie o Tydzień próbny lunchu dla nowej firmy';">Wybieram ten test →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Coffee Break -->
+          <article class="promo-rich-card">
+            <div class="promo-rich-card__media">
+              <span class="promo-rich-card__badge">Powitanie na szkolenie</span>
+              <img src="/assets/offer-landings/coffee-hero.webp" alt="Coffee break na szkolenie" width="1200" height="800" loading="lazy" decoding="async" />
+            </div>
+            <div class="promo-rich-card__body">
+              <span class="promo-rich-card__tag">Przerwy kawowe</span>
+              <h3 class="promo-rich-card__title">Coffee break na pierwsze szkolenie</h3>
+              <p class="promo-rich-card__desc">Organizujecie szkolenie, warsztaty lub rekrutację? Przy pierwszym zamówieniu dorzucamy gratisowy poczęstunek maślanych croissantów i kruchych tartinek.</p>
+              <ul class="promo-rich-card__perks">
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Świeżo parzona kawa w termosach + herbaty jakościowe</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Woda z miętą i cytrusami oraz soki 100%</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Przekąski finger food, mini kanapki i świeże owoce</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Kompletne przygotowanie kącika kawowego na sali</span>
+                </li>
+              </ul>
+              <div class="promo-rich-card__footer">
+                <span class="promo-rich-card__price">Dla grup od 10 osób</span>
+                <a class="promo-rich-card__btn" href="#zamow-catering" onclick="document.querySelector('textarea[name=Opis]').value='Zapytanie o Coffee break na pierwsze szkolenie';">Sprawdź termin →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Imprezy & Bufet -->
+          <article class="promo-rich-card">
+            <div class="promo-rich-card__media">
+              <span class="promo-rich-card__badge promo-rich-card__badge--highlight">Rabat -10% na Finger Food</span>
+              <img src="/assets/offer-landings/imprezy-firmowe-buffet-v2.webp" alt="Bufet firmowy i impreza integracyjna" width="1376" height="768" loading="lazy" decoding="async" />
+            </div>
+            <div class="promo-rich-card__body">
+              <span class="promo-rich-card__tag">Integracje & Bankiety</span>
+              <h3 class="promo-rich-card__title">Bufet firmowy z bezpłatną degustacją</h3>
+              <p class="promo-rich-card__desc">Szykujecie jubileusz firmy, wigilię lub integrację po projekcie? Przy pierwszym evencie od 20 osób oferujemy bezpłatną próbkę menu lub 10% rabatu na zestaw finger food.</p>
+              <ul class="promo-rich-card__perks">
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Ciepłe dania w eleganckich bemarach ze stali nierdzewnej</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Wytrawne tartaletki, burgery, szaszłyczki i deski antipasti</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Wszystkie diety oznaczone z wyprzedzeniem (wege, GF, bez laktozy)</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Darmowy dowóz i estetyczne rozstawienie stołu</span>
+                </li>
+              </ul>
+              <div class="promo-rich-card__footer">
+                <span class="promo-rich-card__price">Dla grup 15–150 osób</span>
+                <a class="promo-rich-card__btn" href="/imprezy-firmowe">Zobacz imprezy →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Posilki stalej wspolpracy -->
+          <article class="promo-rich-card">
+            <div class="promo-rich-card__media">
+              <span class="promo-rich-card__badge">Dla zakładów i magazynów</span>
+              <img src="/assets/offer-landings/posilki-hero.webp" alt="Posiłki regeneracyjne dla firm" width="1200" height="800" loading="lazy" decoding="async" />
+            </div>
+            <div class="promo-rich-card__body">
+              <span class="promo-rich-card__tag">Stała współpraca B2B</span>
+              <h3 class="promo-rich-card__title">Dzień degustacyjny dla zakładów i produkcji</h3>
+              <p class="promo-rich-card__desc">Potrzebujesz regularnych obiadów pracowniczych lub posiłków regeneracyjnych zgodnych z BHP (>1000 kcal)? Przyjedziemy z bezpłatnym zestawem próbnym dla osób decyzyjnych.</p>
+              <ul class="promo-rich-card__perks">
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Posiłki regeneracyjne i profilaktyczne wg norm BHP</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Dostawa w zgrzewanych opakowaniach z podziałem na zmiany</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Wygodne rozliczenie zbiorcze raz w miesiącu na FV</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  <span>Elastyczna korekta liczby posiłków rano każdego dnia</span>
+                </li>
+              </ul>
+              <div class="promo-rich-card__footer">
+                <span class="promo-rich-card__price">Darmowy test dla kierowników</span>
+                <a class="promo-rich-card__btn" href="/posilki-regeneracyjne">Zobacz posiłki →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use promo in 3 steps -->
+    <section class="offer-section offer-section--sage">
+      <div class="offer-wrap">
+        <p class="offer-section__kicker">Prosty start</p>
+        <h2>Jak skorzystać z promocji w 3 krokach</h2>
+        <p class="offer-section__intro">Żadnych długich formularzy i skomplikowanych procedur. Działamy szybko, po partnersku.</p>
+        
+        <div class="promo-steps-grid">
+          <div class="promo-step-card">
+            <div class="promo-step-card__num">1</div>
+            <h3>Wybierz ofertę i napisz do nas</h3>
+            <p>Wypełnij krótki formularz na dole strony lub zadzwoń. Wskaż liczbę osób w zespole, preferowane dni i adres biura w Sochaczewie, Żyrardowie lub okolicach.</p>
+          </div>
+          <div class="promo-step-card">
+            <div class="promo-step-card__num">2</div>
+            <h3>Dopinamy menu i godziny w 2 godziny</h3>
+            <p>Oddzwaniamy z konkretną propozycją dań, sprawdzamy diety (wege, bez laktozy) i potwierdzamy dokładną godzinę, na którą jedzenie ma czekać ciepłe na stole.</p>
+          </div>
+          <div class="promo-step-card">
+            <div class="promo-step-card__num">3</div>
+            <h3>Dostawa bez żadnych zobowiązań</h3>
+            <p>Nasz kierowca przywozi gotowe jedzenie w termoboksach. Wy po prostu sprawdzacie smak i decydujecie, czy chcecie z nami współpracować dalej.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Pycha Catering (Trust & Quality) -->
+    <section class="offer-section offer-section--cream">
+      <div class="offer-wrap">
+        <p class="offer-section__kicker">Dlaczego my</p>
+        <h2>Co zyskujesz testując Pycha Catering</h2>
+        <p class="offer-section__intro">Gotujemy lokalnie w Sochaczewie i dowozimy posiłki każdego ranka z zachowaniem najwyższych standardów świeżości.</p>
+
+        <div class="promo-benefits-grid">
+          <div class="promo-benefit-card">
+            <div class="promo-benefit-card__icon">⏱️</div>
+            <h4>Punktualna dostawa</h4>
+            <p>Wiemy, jak cenna jest przerwa obiadowa. Nasze trasy planujemy z marginesem, by posiłki czekały na pracowników, a nie odwrotnie.</p>
+          </div>
+          <div class="promo-benefit-card">
+            <div class="promo-benefit-card__icon">🥗</div>
+            <h4>Prawdziwy domowy smak</h4>
+            <p>Żadnych półproduktów z torebki i głębokich mrożonek. Gotujemy ze świeżych warzyw, dobrego mięsa i ziół od lokalnych dostawców.</p>
+          </div>
+          <div class="promo-benefit-card">
+            <div class="promo-benefit-card__icon">📑</div>
+            <h4>Jedna faktura B2B</h4>
+            <p>Wygodne comiesięczne rozliczenie zbiorcze ze szczegółowym wykazem, dostosowane do działu księgowości i kadr.</p>
+          </div>
+          <div class="promo-benefit-card">
+            <div class="promo-benefit-card__icon">🤝</div>
+            <h4>Elastyczność z dnia na dzień</h4>
+            <p>Ktoś poszedł na urlop lub doszli nowi pracownicy? Liczbę dań możesz swobodnie skorygować bez zbędnych formalności.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="offer-section offer-section--faq">
+      <div class="offer-wrap offer-faq__grid">
+        <div class="offer-faq__intro">
+          <p class="offer-section__kicker">FAQ</p>
+          <h2>Pytania o promocje cateringowe</h2>
+          <p class="offer-section__intro">Najczęstsze wątpliwości przed pierwszym zamówieniem. Jeśli masz dodatkowe pytanie, śmiało dzwoń: 888 849 509.</p>
+        </div>
+        <div class="offer-faq">
+          <details open>
+            <summary><span class="offer-faq__num">01</span><span>Czy tydzień próbny zobowiązuje do podpisania stałej umowy?</span></summary>
+            <p>Absolutnie nie! Tydzień próbny powstał po to, aby zespół mógł w praktyce ocenić nasze dania. Po zakończeniu testu decydujecie, czy przechodzimy na stały abonament, czy poprzestajecie na jednorazowym zamówieniu.</p>
+          </details>
+          <details>
+            <summary><span class="offer-faq__num">02</span><span>Od ilu osób dowozicie posiłki w promocji?</span></summary>
+            <p>W przypadku obiadów firmowych i lunchu dowozimy zamówienia już od 5 osób w Sochaczewie, Żyrardowie i okolicach. Obsługujemy zarówno kameralne biura, jak i zakłady produkcyjne liczące ponad 100 pracowników.</p>
+          </details>
+          <details>
+            <summary><span class="offer-faq__num">03</span><span>Gdzie dokładnie dowozicie zamówienia promocyjne?</span></summary>
+            <p>Działamy w promieniu ok. 30 km od Sochaczewa: obsługujemy Sochaczew, Żyrardów, Błonie, Grodzisk Mazowiecki, Mszczonów, Teresin, Wiskitki i okoliczne strefy przemysłowe.</p>
+          </details>
+          <details>
+            <summary><span class="offer-faq__num">04</span><span>Jak szybko możemy rozpocząć tydzień próbny?</span></summary>
+            <p>Jeśli skontaktujesz się z nami do godziny 12:00, pierwszy promocyjny lunch możemy dostarczyć już następnego dnia rano!</p>
+          </details>
+        </div>
+      </div>
     </section>
 
     <!-- CTA / contact form always visible -->
@@ -694,116 +955,26 @@
     </section>
   </main>
 
-  <style>
-    /* Promo banner display on promocje.html */
-    .promo-banner-section {
-      width: 100%;
-      max-width: 1200px;
-      margin: 3rem auto 2rem;
-      padding: 0 1.5rem;
-      box-sizing: border-box;
-    }
-    .promo-banner-section img {
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      display: block;
-      box-shadow: 0 12px 48px rgba(15, 61, 30, 0.15);
-    }
-    .promo-banner-section figcaption {
-      font-size: 0.85rem;
-      color: rgba(15,61,30,0.5);
-      text-align: center;
-      margin-top: 0.6rem;
-      font-weight: 600;
-    }
-    /* Static fallback */
-    .promo-fallback { padding: 0 0 2rem; }
-  </style>
-
   <script>
   (function() {
-    var section = document.getElementById('promoSection');
+    var bannerContainer = document.getElementById('dynamicPromoBanner');
+    if (!bannerContainer) return;
     fetch('/api/promo')
       .then(function(r) { return r.json(); })
       .then(function(json) {
         if (json.status === 'success' && json.promo && json.promo.image && json.promo.active !== false) {
-          /* Show uploaded banner only */
-          var fig = document.createElement('figure');
-          fig.className = 'promo-banner-section';
-          var img = document.createElement('img');
-          img.src = json.promo.image;
-          img.alt = json.promo.title || 'Aktualna promocja';
-          img.loading = 'lazy';
-          img.decoding = 'async';
-          fig.appendChild(img);
-          if (json.promo.title) {
-            var cap = document.createElement('figcaption');
-            cap.textContent = json.promo.title;
-            fig.appendChild(cap);
-          }
-          section.appendChild(fig);
-        } else {
-          showFallback();
+          bannerContainer.innerHTML = [
+            '<div class="promo-dynamic-card">',
+            '  <span class="promo-dynamic-badge">★ Aktualna promocja specjalna</span>',
+            '  <a href="#zamow-catering">',
+            '    <img src="' + json.promo.image + '" alt="' + (json.promo.title || 'Aktualna promocja cateringowa') + '" loading="lazy" decoding="async" />',
+            '  </a>',
+            (json.promo.title ? '  <div class="promo-dynamic-caption"><span>' + json.promo.title + '</span><a class="offer-btn offer-btn--primary" href="#zamow-catering" style="padding:8px 18px;font-size:13px;">Skorzystaj z promocji</a></div>' : ''),
+            '</div>'
+          ].join('');
         }
       })
-      .catch(function() { showFallback(); });
-
-    function showFallback() {
-      section.innerHTML = [
-        '<section class="offer-hero promo-fallback">',
-        '  <div class="offer-wrap">',
-        '    <nav class="offer-crumb" aria-label="Okruszki">',
-        '      <a href="/">Strona g\u0142\u00f3wna</a><span>/</span>',
-        '      <strong>Promocje</strong>',
-        '    </nav>',
-        '    <div class="offer-hero__grid">',
-        '      <div class="offer-hero__copy">',
-        '        <p class="offer-kicker">Dla firm</p>',
-        '        <h1>Aktualne <em>promocje</em></h1>',
-        '        <p class="offer-hero__lead">Tu trzymamy oferty, kt\u00f3re aktualnie warto wzi\u0105\u0107 dla zesp\u00f3\u0142u: tydzie\u0144 pr\u00f3bny lunchu, coffee break na pierwsze szkolenie i sezonowe zestawy.</p>',
-        '        <div class="offer-hero__actions">',
-        '          <a class="offer-btn offer-btn--primary" href="#zamow-catering">Zapytaj o promocj\u0119</a>',
-        '          <a class="offer-btn offer-btn--ghost" href="/lunch-dla-firm">Lunch dla firm</a>',
-        '        </div>',
-        '        <p class="offer-hero__phone">Albo zadzwo\u0144: <a class="offer-hero__phone-link" href="tel:888849509">888 849 509</a></p>',
-        '      </div>',
-        '      <figure class="offer-hero__media">',
-        '        <img src="/assets/offer-landings/lunch-hero.webp" alt="Aktualne promocje cateringu dla firm" width="1400" height="1050" />',
-        '        <span>Promocje</span>',
-        '      </figure>',
-        '    </div>',
-        '  </div>',
-        '</section>',
-        '<section class="offer-section offer-section--paper">',
-        '  <div class="offer-wrap">',
-        '    <p class="offer-section__kicker">Teraz</p>',
-        '    <h2>Co mo\u017cna wzi\u0105\u0107 dla zesp\u00f3\u0142u</h2>',
-        '    <p class="offer-section__intro">Kr\u00f3tka lista aktualnych ofert.</p>',
-        '    <div class="promo-grid">',
-        '      <a class="promo-card" href="/lunch-dla-firm">',
-        '        <img src="/assets/offer-landings/lunch-cta.webp" alt="Tydzie\u0144 pr\u00f3bny lunchu dla firm" width="1200" height="800" />',
-        '        <div class="promo-card__body">',
-        '          <span>Lunch firmowy</span>',
-        '          <h3>Tydzie\u0144 pr\u00f3bny dla nowej firmy</h3>',
-        '          <p>Kilka dni lunchu, \u017ceby sprawdzi\u0107 godzin\u0119, porcje i diety zanim wejdziecie w sta\u0142y rytm.</p>',
-        '          <strong>Zobacz lunch dla firm \u2192</strong>',
-        '        </div>',
-        '      </a>',
-        '      <a class="promo-card" href="/coffee-break">',
-        '        <img src="/assets/offer-landings/coffee-hero.webp" alt="Coffee break na pierwsze szkolenie" width="1200" height="800" />',
-        '        <div class="promo-card__body">',
-        '          <span>Przerwa kawowa</span>',
-        '          <h3>Coffee break na pierwsze szkolenie</h3>',
-        '          <p>Zestaw na jedno spotkanie: kawa, woda i przek\u0105ski.</p>',
-        '          <strong>Zobacz coffee break \u2192</strong>',
-        '        </div>',
-        '      </a>',
-        '    </div>',
-        '  </div>',
-        '</section>'
-      ].join('\n');
-    }
+      .catch(function(e) { console.debug('Promo load bypassed:', e); });
   })();
   </script>
 <!-- CULINI FOOTER IMPORT -->

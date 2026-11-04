@@ -1312,3 +1312,688 @@ html {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   ENHANCED STYLES: PROMOCJE & IMPREZY FIRMOWE
+   ========================================================================== */
+
+/* Fix top padding for promo hero so it never gets cut off by header */
+.promo-page-hero {
+  position: relative;
+  padding: 215px 0 72px !important;
+  background:
+    radial-gradient(circle at 88% 16%, rgba(120, 164, 79, 0.18), transparent 34%),
+    radial-gradient(circle at 6% 86%, rgba(255, 255, 255, 0.7), transparent 32%),
+    #fff8e4;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .promo-page-hero {
+    padding: 185px 0 54px !important;
+  }
+}
+
+/* Dynamic promo banner container */
+.promo-dynamic-banner-wrap {
+  width: min(100% - 96px, 1440px);
+  margin: 0 auto 36px;
+}
+
+.promo-dynamic-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(74, 122, 49, 0.18);
+  box-shadow: 0 16px 40px rgba(15, 61, 30, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.promo-dynamic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(15, 61, 30, 0.12);
+}
+
+.promo-dynamic-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #2f7d32;
+  color: #ffffff;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+.promo-dynamic-card img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.promo-dynamic-caption {
+  padding: 16px 24px;
+  background: #ffffff;
+  color: #1c4a24;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Rich 4-card Promo Grid */
+.promo-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 36px;
+}
+
+@media (max-width: 900px) {
+  .promo-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.promo-rich-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 61, 30, 0.09);
+  overflow: hidden;
+  box-shadow: 0 10px 32px rgba(15, 61, 30, 0.05);
+  transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, border-color .3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.promo-rich-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 50px rgba(15, 61, 30, 0.12);
+  border-color: rgba(74, 122, 49, 0.28);
+}
+
+.promo-rich-card__media {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: #eae6d5;
+}
+
+.promo-rich-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.promo-rich-card:hover .promo-rich-card__media img {
+  transform: scale(1.04);
+}
+
+.promo-rich-card__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  color: #1f5627;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.promo-rich-card__badge--highlight {
+  background: #2f7d32;
+  color: #ffffff;
+}
+
+.promo-rich-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex: 1;
+}
+
+.promo-rich-card__tag {
+  color: #558739;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.promo-rich-card__title {
+  margin: 0 0 14px;
+  color: #0b250c;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.promo-rich-card__desc {
+  margin: 0 0 20px;
+  color: #355034;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.promo-rich-card__perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.promo-rich-card__perks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #1c4a24;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.promo-rich-card__perks li svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  color: #2f7d32;
+  margin-top: 1px;
+}
+
+.promo-rich-card__footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(15, 61, 30, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.promo-rich-card__price {
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #2f7d32;
+}
+
+.promo-rich-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #f0f7ea;
+  color: #1f5627;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.promo-rich-card:hover .promo-rich-card__btn {
+  background: #2f7d32;
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Promo Steps / How it works */
+.promo-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+
+@media (max-width: 860px) {
+  .promo-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.promo-step-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 28px;
+  border: 1px solid rgba(15, 61, 30, 0.08);
+  box-shadow: 0 8px 24px rgba(15, 61, 30, 0.04);
+}
+
+.promo-step-card__num {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #e9f2df;
+  color: #2f7d32;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.promo-step-card h3 {
+  margin: 0 0 10px;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  color: #0b250c;
+}
+
+.promo-step-card p {
+  margin: 0;
+  color: #355034;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Promo Benefits grid */
+.promo-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+@media (max-width: 991px) {
+  .promo-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .promo-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.promo-benefit-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  border: 1px solid rgba(15, 61, 30, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.promo-benefit-card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #f0f7ea;
+  color: #2f7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.promo-benefit-card h4 {
+  margin: 0;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b250c;
+}
+
+.promo-benefit-card p {
+  margin: 0;
+  color: #355034;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   IMPREZY FIRMOWE ELEVATION STYLES
+   ========================================================================== */
+
+/* Enhanced Stats on Imprezy Firmowe */
+.imprezy-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+
+@media (max-width: 991px) {
+  .imprezy-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .imprezy-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imprezy-stat-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 24px;
+  border: 1px solid rgba(74, 122, 49, 0.14);
+  box-shadow: 0 8px 24px rgba(15, 61, 30, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.imprezy-stat-box:hover {
+  transform: translateY(-2px);
+  border-color: #2f7d32;
+}
+
+.imprezy-stat-box__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #e9f3df;
+  color: #2f7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+.imprezy-stat-box__copy dt {
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #558739;
+  margin-bottom: 4px;
+}
+
+.imprezy-stat-box__copy dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b250c;
+  line-height: 1.35;
+}
+
+/* Occasions rich cards grid */
+.imprezy-occasions-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+
+@media (max-width: 900px) {
+  .imprezy-occasions-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .imprezy-occasions-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imprezy-occasion-item {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 26px 24px;
+  border: 1px solid rgba(15, 61, 30, 0.08);
+  box-shadow: 0 6px 20px rgba(15, 61, 30, 0.04);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.imprezy-occasion-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 61, 30, 0.1);
+  border-color: rgba(74, 122, 49, 0.25);
+}
+
+.imprezy-occasion-item__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.imprezy-occasion-item__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #f0f7ea;
+  color: #2f7d32;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imprezy-occasion-item h3 {
+  margin: 0;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0b250c;
+  line-height: 1.2;
+}
+
+.imprezy-occasion-item p {
+  margin: 0;
+  color: #355034;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+/* Sample Event Packages */
+.imprezy-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+
+@media (max-width: 991px) {
+  .imprezy-packages-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.imprezy-package-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 34px 28px;
+  border: 1px solid rgba(15, 61, 30, 0.09);
+  box-shadow: 0 10px 32px rgba(15, 61, 30, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.imprezy-package-card--popular {
+  border: 2px solid #2f7d32;
+  box-shadow: 0 16px 44px rgba(47, 125, 50, 0.14);
+}
+
+.imprezy-package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(15, 61, 30, 0.12);
+}
+
+.imprezy-package-tag {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #e8f0dc;
+  color: #2f7d32;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.imprezy-package-card--popular .imprezy-package-tag {
+  background: #2f7d32;
+  color: #ffffff;
+}
+
+.imprezy-package-card h3 {
+  margin: 0 0 10px;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0b250c;
+  line-height: 1.2;
+}
+
+.imprezy-package-card__desc {
+  margin: 0 0 20px;
+  color: #355034;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.imprezy-package-card__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.imprezy-package-card__menu li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #1c4a24;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.imprezy-package-card__menu li svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  color: #2f7d32;
+  margin-top: 1px;
+}
+
+.imprezy-package-card__footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(15, 61, 30, 0.14);
+}
+
+.imprezy-package-btn {
+  display: block;
+  text-align: center;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: #f0f7ea;
+  color: #1f5627;
+  font-family: "Baloo 2", "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.imprezy-package-card--popular .imprezy-package-btn,
+.imprezy-package-btn:hover {
+  background: #2f7d32;
+  color: #ffffff;
+}
+
+/* Enhanced Gallery */
+.imprezy-gallery-enhanced {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 36px;
+}
+
+@media (max-width: 768px) {
+  .imprezy-gallery-enhanced {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.imprezy-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #eae6d5;
+  box-shadow: 0 12px 36px rgba(15, 61, 30, 0.08);
+}
+
+.imprezy-gallery-item img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imprezy-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.imprezy-gallery-item figcaption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(11, 37, 12, 0.88), transparent);
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}

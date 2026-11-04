@@ -1582,6 +1582,7 @@
   border-bottom: 1px solid rgba(74, 122, 49, .14);
   color: #1c4a24;
   font-family: "Rubik", sans-serif;
+  transition: background .2s ease;
 }
 
 .pycha-top-banner__inner {
@@ -1611,41 +1612,33 @@
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
+  flex-shrink: 0;
+  pointer-events: none;
 }
 
-.pycha-top-banner p {
+.pycha-top-banner__link,
+.pycha-top-banner p,
+.pycha-top-banner a {
   margin: 0;
   color: #1c4a24;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
+  text-decoration: none;
+  transition: color .2s ease, text-decoration .2s ease;
+  cursor: pointer;
+}
+
+.pycha-top-banner__link:hover,
+.pycha-top-banner a:hover {
+  color: #2f7d32;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .pycha-top-banner strong {
   font-weight: 800;
   color: #0b250c;
-}
-
-.pycha-top-banner a {
-  color: #2f7d32;
-  font-size: 14px;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.pycha-top-banner a:hover {
-  color: #0b250c;
-}
-
-.pycha-top-banner a span {
-  display: inline-block;
-  margin-left: 2px;
-  transition: transform .2s ease;
-}
-
-.pycha-top-banner a:hover span {
-  transform: translateX(3px);
 }
 
 @media (max-width: 760px) {
@@ -1655,7 +1648,8 @@
   }
 
   .pycha-top-banner p,
-  .pycha-top-banner a {
+  .pycha-top-banner a,
+  .pycha-top-banner__link {
     font-size: 13px;
   }
 }
