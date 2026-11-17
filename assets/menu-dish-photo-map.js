@@ -10,7 +10,7 @@ window.PYCHA_DISH_PHOTOS = {
   "de volaille z serem": "assets/menu-popup/generated/meal-boxes/dania-miesne/de-volaille-z-serem-puree-ziemniaczane-buraczki-zasmazane.jpg",
   "dlugopieczona lopatka wieprzowa w jablkachch": "assets/menu-popup/generated/meal-boxes/dania-miesne/dlugopieczona-lopatka-wieprzowa-w-jablkachch-kasza-peczak-kiszona-cebula.jpg",
   "domowy mielony z buraczkami": "assets/menu-popup/generated/meal-boxes/dania-miesne/domowy-mielony-z-buraczkami-puree-ziemniaczane.jpg",
-  "domowy schabowy z kapusta zasmazana": "assets/menu-popup/generated/meal-boxes/dania-miesne/domowy-schabowy-z-kapusta-zasmazana-ziemniaki-gotowane.jpg",
+  "domowy schabowy z kapusta zasmazana": "assets/menu-popup/generated/pork-cutlet-fresh.jpg",
   "dorsz panierowany z ziemniakami": "assets/menu-popup/generated/meal-boxes/dania-miesne/dorsz-panierowany-z-ziemniakami-surowka-z-kapusty-kiszonej.jpg",
   "dorsz w ciescie piwnym": "assets/menu-popup/generated/meal-boxes/dania-miesne/dorsz-w-ciescie-piwnym-puree-ziemniaczane-surowka-z-kiszonej-kapusty.jpg",
   "dorsz w ciescie piwnym z ziemniakami opiekanymi": "assets/menu-popup/generated/meal-boxes/dania-miesne/dorsz-w-ciescie-piwnym-z-ziemniakami-opiekanymi-surowka-z-kiszonej-kapusty.jpg",
