@@ -3535,51 +3535,72 @@
   filter: brightness(1.03) saturate(1.08);
 }
 
-/* Gradient vignette on image */
+/* Gradient vignette on image — smooth full height, seamless soft bottom fade */
 .menu-static .menu-dish-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
   background: linear-gradient(
     180deg,
-    transparent 50%,
-    rgba(8, 28, 14, .32) 100%
+    transparent 0%,
+    transparent 65%,
+    rgba(11, 37, 12, .2) 100%
   );
   pointer-events: none;
   transition: opacity .3s ease;
 }
 
 .menu-static .menu-dish-card:hover .menu-dish-media::after {
-  opacity: .7;
+  opacity: .5;
 }
 
-/* ── Category badge on image ────────────────────────────── */
-.menu-static .menu-dish-card[data-category]::after {
-  content: attr(data-category);
+/* ── Modern floating pills overlay on photo (category + price) ── */
+.menu-static .menu-dish-overlay {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .88);
-  backdrop-filter: blur(12px) saturate(1.6);
-  -webkit-backdrop-filter: blur(12px) saturate(1.6);
-  color: #1a3d20;
-  font-family: var(--menu-ui-font);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  box-shadow: 0 4px 16px rgba(11, 37, 12, .12);
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
   z-index: 3;
-  pointer-events: none;
-  transition: background .2s ease, transform .2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.menu-static .menu-dish-card:hover[data-category]::after {
-  background: rgba(255, 255, 255, .95);
+.menu-static .menu-dish-overlay span {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  color: #1a3d20;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  box-shadow: 0 4px 14px rgba(11, 37, 12, .12);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.menu-static .menu-dish-overlay span + span {
+  background: rgba(18, 61, 36, .92);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  box-shadow: 0 4px 14px rgba(18, 61, 36, .2);
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-overlay span {
   transform: translateY(-1px);
+}
+
+/* Disable duplicate card ::after badge (handled by .menu-dish-overlay) */
+.menu-static .menu-dish-card[data-category]::after,
+.menu-static .menu-dish-card::after {
+  content: none !important;
+  display: none !important;
 }
 
 /* Price badge (bottom-right of image) */
