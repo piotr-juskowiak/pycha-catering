@@ -3447,3 +3447,368 @@
 .menu-static .menu-filter-group[open] summary {
   background: transparent;
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   MODERN CARD REDESIGN v2 — glass-morphism, micro-animations
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Card container: glassmorphism base ─────────────────── */
+.menu-static .menu-dish-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow:
+    0 1px 2px rgba(11, 37, 12, .04),
+    0 4px 12px rgba(11, 37, 12, .06),
+    0 16px 40px rgba(11, 37, 12, .05);
+  transition:
+    transform .32s cubic-bezier(.22, .68, 0, 1.1),
+    box-shadow .32s ease,
+    border-color .32s ease;
+  cursor: pointer;
+}
+
+.menu-static .menu-dish-card:hover,
+.menu-static .menu-dish-card:focus-visible {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(120, 164, 79, .35);
+  box-shadow:
+    0 4px 8px rgba(11, 37, 12, .05),
+    0 20px 48px rgba(11, 37, 12, .12),
+    0 0 0 1px rgba(120, 164, 79, .12);
+}
+
+/* Shimmer — refined sweep */
+.menu-static .menu-dish-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, .25) 50%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  background-size: 250% 250%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+  z-index: 2;
+}
+
+.menu-static .menu-dish-card:hover::before {
+  opacity: 1;
+  animation: cardShimmerV2 .7s ease forwards;
+}
+
+@keyframes cardShimmerV2 {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -60% 0; }
+}
+
+/* ── Media / image area ─────────────────────────────────── */
+.menu-static .menu-dish-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  margin: 8px 8px 0;
+}
+
+.menu-static .menu-dish-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform .5s cubic-bezier(.22, .68, 0, 1.1), filter .4s ease;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-media img {
+  transform: scale(1.06);
+  filter: brightness(1.03) saturate(1.08);
+}
+
+/* Gradient vignette on image */
+.menu-static .menu-dish-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(8, 28, 14, .32) 100%
+  );
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-media::after {
+  opacity: .7;
+}
+
+/* ── Category badge on image ────────────────────────────── */
+.menu-static .menu-dish-card[data-category]::after {
+  content: attr(data-category);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(12px) saturate(1.6);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  color: #1a3d20;
+  font-family: var(--menu-ui-font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(11, 37, 12, .12);
+  z-index: 3;
+  pointer-events: none;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.menu-static .menu-dish-card:hover[data-category]::after {
+  background: rgba(255, 255, 255, .95);
+  transform: translateY(-1px);
+}
+
+/* Price badge (bottom-right of image) */
+.menu-static .menu-dish-price {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #dcefd0, #c8e4b4);
+  color: #0f3a1c;
+  font-family: var(--menu-display-font);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  box-shadow: 0 2px 8px rgba(11, 37, 12, .08);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-price {
+  transform: scale(1.04);
+  box-shadow: 0 4px 14px rgba(11, 37, 12, .14);
+}
+
+.menu-static .menu-dish-price::before {
+  display: none;
+}
+
+/* ── Card body ──────────────────────────────────────────── */
+.menu-static .menu-dish-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px 20px;
+  flex: 1;
+}
+
+.menu-static .menu-dish-badges {
+  display: none; /* hide inline badges — category shown via ::after on card */
+}
+
+.menu-static .menu-dish-title {
+  font-family: var(--menu-display-font);
+  font-size: clamp(16px, 1.3vw, 20px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  color: #0f2a14;
+  margin: 0;
+  transition: color .2s ease;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-title {
+  color: #1a4a24;
+}
+
+.menu-static .menu-dish-desc {
+  color: #6a7d6c;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Meta tags */
+.menu-static .menu-dish-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.menu-static .menu-dish-meta span {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(232, 240, 223, .5);
+  color: #5a7260;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  transition: background .18s ease;
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-meta span {
+  background: rgba(220, 239, 208, .6);
+}
+
+.menu-static .menu-dish-meta span + span {
+  margin-left: 0;
+}
+
+.menu-static .menu-dish-meta span + span::before {
+  display: none;
+}
+
+/* ── Footer: price + details ────────────────────────────── */
+.menu-static .menu-dish-footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(25, 57, 34, .06);
+  margin-top: auto;
+}
+
+/* Details button — modern pill */
+.menu-static .menu-dish-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #174b2b, #0f3a1c);
+  color: #d4ecd6;
+  font-family: var(--menu-ui-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease, gap .2s ease;
+}
+
+.menu-static .menu-dish-details:hover {
+  background: linear-gradient(135deg, #1e5a34, #174b2b);
+  box-shadow: 0 8px 24px rgba(15, 58, 28, .22);
+  transform: translateY(-2px);
+  gap: 10px;
+}
+
+.menu-static .menu-dish-details::after {
+  content: "→";
+  font-size: 14px;
+  transition: transform .22s ease;
+}
+
+.menu-static .menu-dish-details:hover::after {
+  transform: translateX(4px);
+}
+
+/* ── Category color accents ─────────────────────────────── */
+.menu-static .menu-dish-card[data-category="Dania wege"]::after,
+.menu-static .menu-dish-card[data-category="Sałatki"]::after {
+  background: rgba(220, 245, 220, .9);
+  color: #1b5a2a;
+}
+
+.menu-static .menu-dish-card[data-category="Zupy"]::after {
+  background: rgba(255, 243, 220, .9);
+  color: #6b4a0c;
+}
+
+.menu-static .menu-dish-card[data-category="Desery"]::after {
+  background: rgba(255, 230, 240, .9);
+  color: #7a2048;
+}
+
+.menu-static .menu-dish-card[data-category="Makaron"]::after {
+  background: rgba(255, 240, 220, .9);
+  color: #7a4a10;
+}
+
+.menu-static .menu-dish-card[data-category="Mączne"]::after {
+  background: rgba(245, 235, 255, .9);
+  color: #4a2a7a;
+}
+
+/* ── Cards without images: subtle placeholder ───────────── */
+.menu-static .menu-dish-card:not(:has(.menu-dish-media)) {
+  background: rgba(255, 255, 255, .82);
+}
+
+.menu-static .menu-dish-card:not(:has(.menu-dish-media)) .menu-dish-body {
+  padding-top: 22px;
+}
+
+/* ── Grid refinement ────────────────────────────────────── */
+.menu-static .menu-dish-grid {
+  gap: 22px;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .menu-static .menu-dish-card {
+    border-radius: 20px;
+  }
+
+  .menu-static .menu-dish-media {
+    border-radius: 16px;
+    margin: 6px 6px 0;
+  }
+
+  .menu-static .menu-dish-media img {
+    border-radius: 16px;
+  }
+
+  .menu-static .menu-dish-media::after {
+    border-radius: 16px;
+  }
+
+  .menu-static .menu-dish-body {
+    padding: 14px 16px 16px;
+  }
+
+  .menu-static .menu-dish-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 540px) {
+  .menu-static .menu-dish-grid {
+    gap: 16px;
+  }
+
+  .menu-static .menu-dish-card {
+    border-radius: 18px;
+  }
+
+  .menu-static .menu-dish-media {
+    border-radius: 14px;
+    margin: 5px 5px 0;
+  }
+
+  .menu-static .menu-dish-media img,
+  .menu-static .menu-dish-media::after {
+    border-radius: 14px;
+  }
+}
