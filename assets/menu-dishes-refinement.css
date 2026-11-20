@@ -3835,6 +3835,55 @@
 }
 
 /* ── Serving suggestion note (disclaimer) ───────────────── */
+.menu-static .menu-sidebar-serving-card {
+  margin: 14px 4px 6px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #f4f7ee;
+  border: 1px solid rgba(79, 127, 50, .14);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.menu-static .menu-sidebar-serving-card:hover {
+  border-color: rgba(79, 127, 50, .25);
+  box-shadow: 0 4px 14px rgba(60, 95, 35, .06);
+}
+
+.menu-static .menu-sidebar-serving-card[hidden] {
+  display: none !important;
+}
+
+.menu-static .menu-serving-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Baloo 2', 'Rubik', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #3f6824;
+  letter-spacing: .01em;
+}
+
+.menu-static .menu-serving-card-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5a8e34;
+  box-shadow: 0 0 0 3px rgba(90, 142, 52, .18);
+  flex-shrink: 0;
+}
+
+.menu-static .menu-serving-card-text {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #5e6d5a;
+}
+
 .menu-static .menu-dishes-serving-note {
   display: flex;
   align-items: center;

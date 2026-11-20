@@ -1304,6 +1304,13 @@ window.addEventListener('resize', () => {
 <button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="quote" aria-pressed="false"><span>Do ustalenia</span><strong>1</strong></button></div></div></details>
 <details class="menu-filter-group menu-filter-dropdown menu-filter-popularity" open data-filter-dropdown="popularity"><summary><span class="menu-filter-summary-label">Popularność</span></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="bestseller" aria-pressed="false"><span>Bestsellery</span><strong>120</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="new" aria-pressed="false"><span>Nowości</span><strong>32</strong></button></div></div></details></div>
+          <div class="menu-sidebar-serving-card" id="weeklyMenuServingNote" aria-label="Informacja o sposobie podania">
+            <div class="menu-serving-card-badge">
+              <span class="menu-serving-card-dot" aria-hidden="true"></span>
+              <span>Propozycja serwowania</span>
+            </div>
+            <p class="menu-serving-card-text">Fotografie dań przedstawiają estetyczne propozycje podania na talerzu. Wszystkie posiłki dostarczamy świeżo przygotowane, w higienicznych i szczelnych opakowaniach cateringowych gotowych do podgrzania.</p>
+          </div>
           <div class="menu-filter-help-card"><span class="menu-filter-help-icon" aria-hidden="true"></span><strong>Nie wiesz co wybrać?</strong><p>Zostaw to nam! Ułożymy menu idealnie dopasowane do Ciebie.</p><a href="#zamow-catering">Dobierz dla mnie</a></div>
         </aside>
 
@@ -1324,10 +1331,6 @@ window.addEventListener('resize', () => {
               <button class="menu-quick-filter" type="button" data-filter-type="category" data-filter-value="Desery">Desery</button>
               <button class="menu-quick-filter" type="button" data-filter-type="price" data-filter-value="to-15">Do 15 zł</button>
             </div>
-          </div>
-          <div class="menu-dishes-serving-note" id="weeklyMenuServingNote" aria-label="Informacja o sposobie podania">
-            <span class="menu-serving-note-symbol" aria-hidden="true">*</span>
-            <span>Prezentowane zdjęcia to propozycje podania – my dostarczamy catering.</span>
           </div>
           <div class="weekly-menu-grid menu-dish-grid menu-static-grid" id="weeklyMenuGrid" aria-live="polite"><article class="menu-dish-card" tabindex="0" data-week="Tydzień 1" data-day="Poniedziałek" data-category="Dania mięsne" data-diet="Mięsne" data-price="22" data-price-band="21-plus" data-search="domowy schabowy z kapusta zasmazana ziemniaki gotowane 22 zł domowy schabowy z kapusta zasmazana, ziemniaki gotowane tydzien 1 poniedziałek dania miesne miesne 22 zł" data-title="Domowy Schabowy z kapustą zasmażaną" data-description="złocisty schab w chrupiącej panierce, ciepła kapusta zasmażana, ziemniaki gotowane z koperkiem" data-meta="Tydzień 1 • Poniedziałek • Dania mięsne" style="--card-index:0">
   <div class="menu-dish-media"><img src="assets/menu-popup/generated/dish-schabowy-fresh.jpg" alt="Domowy Schabowy z kapustą zasmażaną – Pycha Catering" loading="lazy" decoding="async" width="640" height="430" /></div>
@@ -4244,6 +4247,13 @@ window.addEventListener('resize', () => {
 <button class="menu-filter-option" type="button" data-filter-type="price" data-filter-value="quote" aria-pressed="false"><span>Do ustalenia</span><strong>1</strong></button></div></div></details>
 <details class="menu-filter-group menu-filter-dropdown menu-filter-popularity" open data-filter-dropdown="popularity"><summary><span class="menu-filter-summary-label">Popularność</span></summary><div class="menu-filter-options"><div class="menu-filter-stack"><button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="bestseller" aria-pressed="false"><span>Bestsellery</span><strong>120</strong></button>
 <button class="menu-filter-option" type="button" data-filter-type="popularity" data-filter-value="new" aria-pressed="false"><span>Nowości</span><strong>32</strong></button></div></div></details></div>
+      <div class="menu-sidebar-serving-card menu-drawer-serving-card" aria-label="Informacja o sposobie podania">
+        <div class="menu-serving-card-badge">
+          <span class="menu-serving-card-dot" aria-hidden="true"></span>
+          <span>Propozycja serwowania</span>
+        </div>
+        <p class="menu-serving-card-text">Fotografie dań przedstawiają estetyczne propozycje podania na talerzu. Wszystkie posiłki dostarczamy świeże, w higienicznych i szczelnych opakowaniach cateringowych gotowych do podgrzania.</p>
+      </div>
       <footer class="menu-drawer-footer"><button class="menu-clear-link" type="button" data-menu-clear>Wyczyść filtry</button><button class="menu-redesign-primary" type="button" data-menu-drawer-close id="weeklyMenuShowResults">Pokaż wyniki</button></footer>
     </section>
   </div>
@@ -4253,7 +4263,7 @@ window.addEventListener('resize', () => {
     <section class="menu-dish-modal-panel" role="dialog" aria-modal="true" aria-labelledby="weeklyMenuDishTitle" tabindex="-1">
       <button class="menu-dish-modal-close" type="button" aria-label="Zamknij szczegóły" data-menu-modal-close>×</button>
       <div class="menu-dish-modal-media" id="weeklyMenuDishMedia"></div>
-      <div class="menu-dish-modal-copy"><span class="menu-dish-modal-kicker" id="weeklyMenuDishKicker"></span><h3 id="weeklyMenuDishTitle"></h3><p id="weeklyMenuDishDescription"></p><dl class="menu-dish-modal-list" id="weeklyMenuDishDetails"></dl><p class="menu-dish-modal-serving-note" id="weeklyMenuModalServingNote"><span class="menu-serving-note-symbol" aria-hidden="true">*</span> Prezentowane zdjęcia to propozycje podania – my dostarczamy catering.</p><div class="menu-dish-modal-actions"><a class="menu-redesign-primary" href="#zamow-catering">Zapytaj o catering</a><a class="menu-redesign-secondary" href="tel:888849509">Zadzwoń</a></div></div>
+      <div class="menu-dish-modal-copy"><span class="menu-dish-modal-kicker" id="weeklyMenuDishKicker"></span><h3 id="weeklyMenuDishTitle"></h3><p id="weeklyMenuDishDescription"></p><dl class="menu-dish-modal-list" id="weeklyMenuDishDetails"></dl><p class="menu-dish-modal-serving-note" id="weeklyMenuModalServingNote"><span class="menu-serving-note-symbol" aria-hidden="true">*</span> Fotografie dań przedstawiają propozycję ich zaserwowania na talerzu. Posiłki dostarczamy w higienicznych opakowaniach cateringowych.</p><div class="menu-dish-modal-actions"><a class="menu-redesign-primary" href="#zamow-catering">Zapytaj o catering</a><a class="menu-redesign-secondary" href="tel:888849509">Zadzwoń</a></div></div>
     </section>
   </div>
 </section>
