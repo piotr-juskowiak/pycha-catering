@@ -13,6 +13,7 @@ window.PYCHA_DISH_PHOTOS = {
   "tabule": "assets/menu-popup/generated/dish-tabule.jpg",
   "cezar": "assets/menu-popup/generated/dish-cezar.jpg",
   "penne z kurczakiem w sosie smietanowym": "assets/menu-popup/generated/dish-penne-kurczak.jpg",
+  "dania stale nalesniki na slodko i klasyki": "assets/menu-popup/generated/dish-stale-codziennie.jpg",
   "leniwe spaghetti bolognese grecka nalesniki na slodko wrapy": "assets/menu-popup/generated/dish-stale-codziennie.jpg",
   "domowy mielony z buraczkami": "assets/menu-popup/generated/dish-mielony-buraczki.jpg",
   "karkowka pieczona w sosie grzybowym z kasza gryczana": "assets/menu-popup/generated/dish-karkowka-grzyby.jpg",
