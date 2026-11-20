@@ -48,9 +48,9 @@
     "key": "cukinia faszerowana miesem z mozarella",
     "category": "Dania mięsne",
     "title": "Cukinia faszerowana mięsem z mozarellą",
-    "description": "",
+    "description": "młoda cukinia zapiekana z aromatycznym farszem mięsno-warzywnym w sosie pomidorowym, pod złocistą mozzarellą i ziołami",
     "fullDishName": "Cukinia faszerowana mięsem z mozarellą",
-    "webPath": "assets/menu-popup/generated/meal-boxes/dania-miesne/cukinia-faszerowana-miesem-z-mozarella.jpg",
+    "webPath": "assets/menu-popup/generated/dish-cukinia-faszerowana.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Cukinia faszerowana mięsem z mozarellą\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a matte black rectangular three-compartment catering meal-prep box, with the meat or fish in the large compartment and the named sides neatly separated; the food must visibly and accurately match \"Cukinia faszerowana mięsem z mozarellą\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {
@@ -768,9 +768,9 @@
     "key": "kotleciki sojowe",
     "category": "Dania wege",
     "title": "Kotleciki sojowe",
-    "description": "",
+    "description": "panierowane kotleciki sojowe w chrupiącej złocistej panierce, podane z aksamitnym purée ziemniaczanym i domową mizerią",
     "fullDishName": "Kotleciki sojowe",
-    "webPath": "assets/menu-popup/generated/meal-boxes/dania-wege/kotleciki-sojowe.jpg",
+    "webPath": "assets/menu-popup/generated/dish-kotleciki-sojowe.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Kotleciki sojowe\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a matte black rectangular three-compartment catering meal-prep box, with the vegetarian main in the large compartment and any named sides neatly separated; the food must visibly and accurately match \"Kotleciki sojowe\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {
@@ -885,9 +885,9 @@
     "key": "spaghetti aglio oglio",
     "category": "Dania wege",
     "title": "Spaghetti Aglio Oglio",
-    "description": "",
+    "description": "włoski makaron spaghetti al dente z oliwą extra virgin, złocistym czosnkiem, płatkami chilli, natką pietruszki i parmezanem",
     "fullDishName": "Spaghetti Aglio Oglio",
-    "webPath": "assets/menu-popup/generated/meal-boxes/dania-wege/spaghetti-aglio-oglio.jpg",
+    "webPath": "assets/menu-popup/generated/dish-spaghetti-aglio-olio.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Spaghetti Aglio Oglio\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a matte black rectangular three-compartment catering meal-prep box, with the vegetarian main in the large compartment and any named sides neatly separated; the food must visibly and accurately match \"Spaghetti Aglio Oglio\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {
@@ -1299,9 +1299,9 @@
     "key": "burrito",
     "category": "Mączne",
     "title": "Burrito",
-    "description": "",
+    "description": "grillowana tortilla pszenna wypełniona przyprawionym mielonym mięsem, czerwoną fasolą, kukurydzą, ryżem, cheddarem i salsą",
     "fullDishName": "Burrito",
-    "webPath": "assets/menu-popup/generated/meal-boxes/maczne/burrito.jpg",
+    "webPath": "assets/menu-popup/generated/dish-burrito.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Burrito\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a matte black rectangular two-compartment catering meal-prep box, with the named dumplings, pancakes or flour-based dish arranged naturally; the food must visibly and accurately match \"Burrito\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {
@@ -1587,9 +1587,9 @@
     "key": "barszcz ukrainski",
     "category": "Zupy",
     "title": "Barszcz ukraiński",
-    "description": "",
+    "description": "esencjonalny barszcz z tartych buraków, białej fasoli, białej kapusty i ziemniaków, wykończony kleksem śmietany i koperkiem",
     "fullDishName": "Barszcz ukraiński",
-    "webPath": "assets/menu-popup/generated/meal-boxes/zupy/barszcz-ukrainski.jpg",
+    "webPath": "assets/menu-popup/generated/dish-barszcz-ukrainski.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Barszcz ukraiński\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a premium matte black rectangular catering tray with a fitted round soup insert filled with the named soup, plus only a small appropriate side compartment when naturally suitable; the food must visibly and accurately match \"Barszcz ukraiński\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {
@@ -1722,9 +1722,9 @@
     "key": "ogorkowa",
     "category": "Zupy",
     "title": "Ogórkowa",
-    "description": "",
+    "description": "tradycyjna zupa z tartych ogórków kiszonych z domowej beczki, z ziemniakami, warzywami korzeniowymi i wiejską śmietanką",
     "fullDishName": "Ogórkowa",
-    "webPath": "assets/menu-popup/generated/meal-boxes/zupy/ogorkowa.jpg",
+    "webPath": "assets/menu-popup/generated/dish-zupa-ogorkowa.jpg",
     "prompt": "Use case: product-mockup\nAsset type: website menu card photograph\nPrimary request: photorealistic product photo of the Polish catering dish \"Ogórkowa\" served in a catering box\nScene/backdrop: clean warm cream studio tabletop with a very subtle natural texture and no additional props\nSubject: a premium matte black rectangular catering tray with a fitted round soup insert filled with the named soup, plus only a small appropriate side compartment when naturally suitable; the food must visibly and accurately match \"Ogórkowa\"\nStyle/medium: premium photorealistic commercial food photography, realistic portion, natural food texture, consistent catalog series\nComposition/framing: landscape 3:2, consistent 45-degree overhead view, the entire box visible and centered, generous even padding, suitable for a 640x430 website crop\nLighting/mood: soft diffused daylight, appetizing but natural colors, gentle controlled shadow\nConstraints: exactly one catering box; no ceramic plate; no text; no logo; no watermark; no hands; no cutlery; no napkin; no packaging lid; no extra dishes; no unrelated garnish"
   },
   {

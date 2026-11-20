@@ -91,6 +91,8 @@
   const modalTitle = root.querySelector('#weeklyMenuDishTitle');
   const modalDescription = root.querySelector('#weeklyMenuDishDescription');
   const modalDetails = root.querySelector('#weeklyMenuDishDetails');
+  const servingNote = root.querySelector('#weeklyMenuServingNote');
+  const modalServingNote = root.querySelector('#weeklyMenuModalServingNote');
 
   const labels = { week: 'Tydzień', day: 'Dzień', category: 'Typ dania', diet: 'Dieta', price: 'Cena', popularity: 'Popularność' };
   const priceLabels = { all: 'Każda cena', 'to-15': 'do 15 zł', '16-20': '16–20 zł', '21-plus': '21 zł+', quote: 'Do ustalenia' };
@@ -271,6 +273,7 @@
       resultCount.textContent = countLabel;
       emptyState.hidden = visible.length > 0;
       grid.hidden = visible.length === 0;
+      if (servingNote) servingNote.hidden = visible.length === 0;
       renderPagination(visible.length, totalPages);
       const active = activeFilterCount();
       const activePanel = root.querySelector('.menu-sidebar-active-panel');
@@ -345,6 +348,7 @@
       image.loading = 'eager';
       modalMedia.appendChild(image);
     }
+    if (modalServingNote) modalServingNote.hidden = !sourceImage;
     modalKicker.textContent = card.dataset.meta || '';
     modalTitle.textContent = card.dataset.title || '';
     const description = (card.dataset.description || '').trim();
