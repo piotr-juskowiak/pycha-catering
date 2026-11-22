@@ -3585,15 +3585,23 @@
 }
 
 .menu-static .menu-dish-overlay span + span {
-  background: rgba(18, 61, 36, .92);
-  color: #fff;
+  background: rgba(255, 255, 255, .88) !important;
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  color: #0b250c !important;
   font-weight: 800;
   letter-spacing: -.01em;
-  box-shadow: 0 4px 14px rgba(18, 61, 36, .2);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .1);
 }
 
 .menu-static .menu-dish-card:hover .menu-dish-overlay span {
   transform: translateY(-1px);
+}
+
+.menu-static .menu-dish-card:hover .menu-dish-overlay span + span {
+  background: rgba(255, 255, 255, .96) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .14);
 }
 
 /* Disable duplicate card ::after badge (handled by .menu-dish-overlay) */
@@ -3709,40 +3717,52 @@
   margin-top: auto;
 }
 
-/* Details button — modern pill */
+/* Details button — modern bright green pill */
 .menu-static .menu-dish-details {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-height: 38px;
+  gap: 7px;
+  min-height: 36px;
+  padding: 7px 18px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #174b2b, #0f3a1c);
-  color: #d4ecd6;
-  font-family: var(--menu-ui-font);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .02em;
+  border-radius: 999px !important;
+  background: #78a44f !important;
+  color: #ffffff !important;
+  font-family: var(--menu-ui-font, 'Rubik', sans-serif);
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .01em;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(120, 164, 79, .28);
   transition: background .2s ease, box-shadow .2s ease, transform .2s ease, gap .2s ease;
+  margin-left: auto;
+  width: fit-content;
 }
 
 .menu-static .menu-dish-details:hover {
-  background: linear-gradient(135deg, #1e5a34, #174b2b);
-  box-shadow: 0 8px 24px rgba(15, 58, 28, .22);
+  background: #689241 !important;
+  box-shadow: 0 6px 18px rgba(120, 164, 79, .42) !important;
   transform: translateY(-2px);
-  gap: 10px;
+  gap: 9px;
+  color: #ffffff !important;
+}
+
+.menu-static .menu-dish-details::before {
+  content: none !important;
+  display: none !important;
 }
 
 .menu-static .menu-dish-details::after {
-  content: "→";
-  font-size: 14px;
+  content: "→" !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
   transition: transform .22s ease;
 }
 
 .menu-static .menu-dish-details:hover::after {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* ── Category color accents ─────────────────────────────── */

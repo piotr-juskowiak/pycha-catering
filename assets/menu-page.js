@@ -16,6 +16,8 @@
       seen.add(key);
       card.querySelector('.menu-dish-meta')?.remove();
       card.querySelector('.menu-dish-badges')?.remove();
+      const detailBtn = card.querySelector('.menu-dish-details');
+      if (detailBtn) detailBtn.textContent = 'Więcej';
       let description = (card.dataset.description || '').trim();
       if (!description || /z menu pycha catering/i.test(description)) description = 'Porcja z naszej karty dań.';
       else description = sentenceTitle(description);

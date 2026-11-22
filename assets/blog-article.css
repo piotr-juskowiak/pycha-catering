@@ -1,8 +1,8 @@
 .pycha-article {
-  padding: 152px 0 96px;
+  padding: 240px 0 96px;
   background:
     radial-gradient(circle at 8% 0%, rgba(112, 153, 81, 0.12), transparent 28%),
-    linear-gradient(180deg, #f7f4ea 0%, #fffdf8 220px, #ffffff 520px);
+    linear-gradient(180deg, #f7f4ea 0%, #fffdf8 300px, #ffffff 620px);
   color: #173315;
   font-family: "Rubik", sans-serif;
 }
@@ -243,7 +243,7 @@
 
 @media (max-width: 860px) {
   .pycha-article {
-    padding: 128px 0 72px;
+    padding: 210px 0 72px;
   }
 
   .pycha-article__container {
@@ -285,6 +285,12 @@
   .pycha-article__body h2 {
     margin-top: 40px;
     font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pycha-article {
+    padding: 175px 0 60px;
   }
 }
 
