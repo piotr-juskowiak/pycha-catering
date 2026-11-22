@@ -2042,3 +2042,256 @@
     min-height: 240px;
   }
 }
+
+/* ==========================================================================
+   ENHANCED PROFESSIONAL FOOTER (Pycha Catering)
+   ========================================================================== */
+
+/* Trust Features Row (Top Grid of 4 Pillars) */
+.pycha-site-footer__features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(74, 122, 49, 0.16);
+}
+
+.pycha-footer-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(74, 122, 49, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(11, 37, 12, 0.03);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.pycha-footer-feature:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 24px rgba(11, 37, 12, 0.07);
+  border-color: rgba(74, 122, 49, 0.26);
+}
+
+.pycha-footer-feature__icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #edf5ea;
+  color: #2b611e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbead5;
+}
+
+.pycha-footer-feature__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  color: #4b6348;
+  line-height: 1.4;
+}
+
+.pycha-footer-feature__text strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0b250c;
+}
+
+/* Expanded Main Footer Grid (Gallery + 4 Link Columns) */
+.pycha-site-footer__main {
+  display: grid !important;
+  grid-template-columns: minmax(340px, 1.25fr) repeat(4, minmax(130px, 0.6fr)) !important;
+  gap: clamp(24px, 2.5vw, 40px) !important;
+  padding: 44px 0 !important;
+  border-top: 1px solid rgba(74, 122, 49, 0.16) !important;
+}
+
+.pycha-site-footer__gallery-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pycha-site-footer__badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #274c1a;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 122, 49, 0.18);
+  box-shadow: 0 2px 8px rgba(11, 37, 12, 0.04);
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.pycha-badge-star {
+  color: #d97706;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pycha-badge-sep {
+  color: #8da482;
+}
+
+.pycha-badge-text {
+  white-space: nowrap;
+}
+
+/* Additional Row: Operational & Service Info */
+.pycha-site-footer__info-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 26px 32px;
+  margin: 10px 0 32px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(74, 122, 49, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 6px 22px rgba(11, 37, 12, 0.04);
+}
+
+.pycha-footer-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pycha-footer-info-block__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #3b6b23;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pycha-footer-info-block__title svg {
+  color: #4a7a31;
+  flex-shrink: 0;
+}
+
+.pycha-footer-info-block__desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #485c45;
+}
+
+.pycha-footer-info-block__desc strong {
+  color: #0b250c;
+  font-weight: 600;
+}
+
+/* Bottom Bar Enhancements */
+.pycha-site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 24px !important;
+  border-top: 1px solid rgba(74, 122, 49, 0.16) !important;
+}
+
+.pycha-site-footer__bottom-note {
+  font-size: 13px;
+  color: #4b6348;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .pycha-site-footer__features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pycha-site-footer__main {
+    grid-template-columns: minmax(300px, 1.2fr) repeat(4, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .pycha-site-footer__main {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+  }
+
+  .pycha-site-footer__gallery-col {
+    grid-column: 1 / -1;
+  }
+
+  .pycha-site-footer__info-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 22px;
+  }
+
+  .pycha-site-footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pycha-site-footer__features {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .pycha-footer-feature {
+    padding: 14px 16px;
+  }
+
+  .pycha-site-footer__main {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 16px !important;
+  }
+
+  .pycha-site-footer__gallery-col {
+    grid-column: 1 / -1;
+  }
+
+  .pycha-site-footer__badge-pill {
+    font-size: 12px;
+    padding: 6px 14px;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pycha-site-footer__info-row {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .pycha-site-footer__bottom {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pycha-site-footer__bottom-note {
+    text-align: left;
+  }
+}
+
