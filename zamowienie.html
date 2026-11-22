@@ -22,7 +22,7 @@
   <link href="custom-styles.css?v=7" rel="stylesheet" type="text/css">
   <link href="assets/inline-sections.css?v=13" rel="stylesheet" type="text/css">
   <link href="assets/menu-popup/weekly-menu-popup.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/assets/order-page.css?v=16">
+  <link rel="stylesheet" href="/assets/order-page.css?v=18">
 </head>
 <body class="order-page">
   <a class="order-skip" href="#formularz-zamowienia">Przejdź do formularza</a>
@@ -720,117 +720,131 @@
       </div>
     </section>
 
-    <section class="order-occasions" aria-labelledby="order-occasions-title">
+    <section class="order-occasions" aria-labelledby="order-occasions-title" data-order-occasions-slider>
       <div class="order-shell">
-        <div class="order-section-heading">
-          <p class="order-eyebrow">Na jakie okazje</p>
-          <h2 id="order-occasions-title">Jedzenie dopasowane do Twojego wydarzenia</h2>
-          <p class="order-occasions__lead">Od kameralnych narad w biurze po duże bankiety i uroczystości rodzinne. Wybierz okazję i sprawdź dedykowaną ofertę.</p>
+        <div class="order-occasions__header">
+          <div class="order-section-heading">
+            <p class="order-eyebrow">Na jakie okazje</p>
+            <h2 id="order-occasions-title">Jedzenie dopasowane do Twojego wydarzenia</h2>
+            <p class="order-occasions__lead">Od kameralnych narad w biurze po duże bankiety i uroczystości rodzinne. Przesuń i wybierz dedykowaną ofertę.</p>
+          </div>
+          <div class="order-occasions__controls" aria-label="Nawigacja po okazjach">
+            <button type="button" class="order-occasions__arrow order-occasions__arrow--prev" data-order-slider-prev aria-label="Poprzednia okazja" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="order-occasions__arrow order-occasions__arrow--next" data-order-slider-next aria-label="Następna okazja">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
         </div>
 
-        <div class="order-occasions__grid">
-          <article class="order-occasion-card">
-            <a href="/imprezy-firmowe" class="order-occasion-card__link" aria-label="Sprawdź catering na imprezy firmowe">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/imprezy.webp" width="1586" height="992" alt="Elegancki bufet cateringowy na imprezie firmowej" loading="lazy">
-                <span class="order-occasion-card__tag">Bankiety i jubileusze</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Imprezy firmowe</h3>
-                <p>Ciepłe dania, bogata zimna płyta i wykwintny finger food na gale, integracje i jubileusze firmy.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+        <div class="order-occasions__viewport" data-order-slider-viewport>
+          <div class="order-occasions__track" data-order-slider-track>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/imprezy-firmowe" class="order-occasion-card__link" aria-label="Sprawdź catering na imprezy firmowe">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/imprezy-firmowe-buffet-v2.webp" width="1376" height="768" alt="Elegancki stół bankietowy, finger food i bemary na imprezie firmowej" decoding="async">
+                  <span class="order-occasion-card__tag">Bankiety i jubileusze</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Imprezy firmowe</h3>
+                  <p>Ciepłe dania w bemarach, bogata zimna płyta i wykwintny finger food na gale, integracje i jubileusze firmy.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
 
-          <article class="order-occasion-card">
-            <a href="/szkolenia-i-konferencje" class="order-occasion-card__link" aria-label="Sprawdź catering na szkolenia i konferencje">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/szkolenia.webp" width="1586" height="992" alt="Przerwa kawowa i bufet na konferencji" loading="lazy">
-                <span class="order-occasion-card__tag">Przerwy kawowe i bufet</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Szkolenia i konferencje</h3>
-                <p>Świeżo parzona kawa, maślane wypieki, kanapki bankietowe oraz pożywny ciepły lunch na przerwę.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/szkolenia-i-konferencje" class="order-occasion-card__link" aria-label="Sprawdź catering na szkolenia i konferencje">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/szkolenia-hero.webp" width="1400" height="1050" alt="Bufet cateringowy i kanapki na przerwę szkoleniową w sali konferencyjnej" decoding="async">
+                  <span class="order-occasion-card__tag">Przerwy kawowe i bufet</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Szkolenia i konferencje</h3>
+                  <p>Świeżo parzona kawa, maślane wypieki, chrupiące bagietki bankietowe oraz pożywny ciepły lunch na przerwę.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
 
-          <article class="order-occasion-card">
-            <a href="/spotkania-biznesowe" class="order-occasion-card__link" aria-label="Sprawdź catering na spotkania biznesowe">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/spotkania.webp" width="1586" height="992" alt="Elegancki lunch biznesowy w sali spotkań" loading="lazy">
-                <span class="order-occasion-card__tag">Kameralne narady</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Spotkania biznesowe</h3>
-                <p>Dyskretny serwis, estetyczne porcje jednogarnkowe lub wytworny lunch dla zarządu i kontrahentów.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/spotkania-biznesowe" class="order-occasion-card__link" aria-label="Sprawdź catering na spotkania biznesowe">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/spotkania-table.webp" width="1200" height="900" alt="Elegancki lunch biznesowy w miskach ceramicznych" decoding="async">
+                  <span class="order-occasion-card__tag">Kameralne narady</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Spotkania biznesowe</h3>
+                  <p>Dyskretny serwis, estetyczne porcje jednogarnkowe lub wytworny lunch dla zarządu i kontrahentów.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
 
-          <article class="order-occasion-card">
-            <a href="/lunch-dla-firm" class="order-occasion-card__link" aria-label="Sprawdź regularne lunche dla firm">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/lunch-dla-firm.webp" width="1600" height="900" alt="Świeże lunche pracownicze dostarczone do biura" loading="lazy">
-                <span class="order-occasion-card__tag">Abonamenty pracownicze</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Lunch dla pracowników</h3>
-                <p>Codzienne pożywne obiady dostarczane o stałej porze. Różnorodne menu bez nudy i pełna obsługa diet.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/lunch-dla-firm" class="order-occasion-card__link" aria-label="Sprawdź regularne lunche dla firm">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/lunch-table.webp" width="1200" height="900" alt="Świeże ciepłe boxy obiadowe dostarczone do biura" decoding="async">
+                  <span class="order-occasion-card__tag">Abonamenty pracownicze</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Lunch dla pracowników</h3>
+                  <p>Codzienne pożywne obiady dostarczane o stałej porze. Różnorodne menu bez nudy i pełna obsługa diet.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
 
-          <article class="order-occasion-card">
-            <a href="/uroczystosci-rodzinne" class="order-occasion-card__link" aria-label="Sprawdź catering na uroczystości rodzinne">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/uroczystosci.webp" width="1568" height="1003" alt="Uroczysty stół biesiadny na przyjęcie rodzinne" loading="lazy">
-                <span class="order-occasion-card__tag">Chrzciny, komunie, rocznice</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Uroczystości rodzinne</h3>
-                <p>Domowe polskie smaki przygotowane ze starannością restauracji. Ciepłe dania i ciasta bez spędzania godzin w kuchni.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/uroczystosci-rodzinne" class="order-occasion-card__link" aria-label="Sprawdź catering na uroczystości rodzinne">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/uroczystosci-table.webp" width="1200" height="900" alt="Tradycyjny polski obiad na przyjęcie rodzinne: pieczony kurczak, młode ziemniaki i mizeria" decoding="async">
+                  <span class="order-occasion-card__tag">Chrzciny, komunie, rocznice</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Uroczystości rodzinne</h3>
+                  <p>Domowe polskie smaki przygotowane ze starannością restauracji. Ciepłe dania i ciasta bez spędzania godzin w kuchni.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
 
-          <article class="order-occasion-card">
-            <a href="/eventy-i-premiery" class="order-occasion-card__link" aria-label="Sprawdź catering na eventy i premiery">
-              <div class="order-occasion-card__media">
-                <img src="/assets/order-occasions/eventy.webp" width="1586" height="992" alt="Kreatywne przekąski i finger food na wernisaż" loading="lazy">
-                <span class="order-occasion-card__tag">Wernisaże i gale</span>
-              </div>
-              <div class="order-occasion-card__content">
-                <h3>Eventy i premiery</h3>
-                <p>Kreatywne finger food, przekąski koktajlowe i desery jednoporcjowe, które budują prestiż wydarzenia.</p>
-                <span class="order-occasion-card__btn">
-                  <span>Zobacz ofertę</span>
-                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </span>
-              </div>
-            </a>
-          </article>
+            <article class="order-occasion-card" data-order-slide>
+              <a href="/eventy-i-premiery" class="order-occasion-card__link" aria-label="Sprawdź catering na eventy i premiery">
+                <div class="order-occasion-card__media">
+                  <img src="/assets/offer-landings/eventy-table.webp" width="1200" height="900" alt="Kreatywne przekąski finger food na wernisaż: crostini z łososiem i pieczone pieczarki" decoding="async">
+                  <span class="order-occasion-card__tag">Wernisaże i gale</span>
+                </div>
+                <div class="order-occasion-card__content">
+                  <h3>Eventy i premiery</h3>
+                  <p>Kreatywne finger food, przekąski koktajlowe i desery jednoporcjowe, które budują prestiż wydarzenia.</p>
+                  <span class="order-occasion-card__btn">
+                    <span>Zobacz ofertę</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                  </span>
+                </div>
+              </a>
+            </article>
+          </div>
         </div>
+
+        <div class="order-occasions__pagination" data-order-slider-pagination aria-hidden="true"></div>
       </div>
     </section>
 
@@ -974,7 +988,7 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/inline-sections.js?v=3"></script>
+  <script src="/assets/inline-sections.js?v=4"></script>
 
   <div aria-hidden="true" class="catering-overlay" id="cateringOverlay">
     <div aria-labelledby="cateringTitle" aria-modal="true" class="catering-modal" id="cateringModal" role="dialog"
