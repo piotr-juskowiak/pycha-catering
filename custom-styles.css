@@ -8994,64 +8994,157 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 /* ==========================================================================
-   ENHANCED PROFESSIONAL FOOTER (Pycha Catering)
+   UNIFIED TRUST & OPERATIONS HUB (Footer Re-design)
    ========================================================================== */
 
-/* Trust Features Row (Top Grid of 4 Pillars) */
-.pycha-site-footer__features {
+.pycha-site-footer__trust-hub {
+    margin: 36px 0 16px;
+    background: #ffffff;
+    border: 1px solid rgba(74, 122, 49, 0.16);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(11, 37, 12, 0.05);
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pycha-site-footer__trust-hub:hover {
+    box-shadow: 0 14px 38px rgba(11, 37, 12, 0.08);
+    border-color: rgba(74, 122, 49, 0.24);
+}
+
+/* Row 1: 4 Features */
+.pycha-trust-hub__features {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-top: 36px;
-    padding-top: 36px;
-    border-top: 1px solid rgba(74, 122, 49, 0.16);
+    background: #ffffff;
 }
 
-.pycha-footer-feature {
+.pycha-trust-feature {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
-    padding: 18px 20px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(74, 122, 49, 0.14);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(11, 37, 12, 0.03);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    gap: 16px;
+    padding: 24px 22px;
+    position: relative;
+    transition: background 0.2s ease;
 }
 
-.pycha-footer-feature:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 10px 24px rgba(11, 37, 12, 0.07);
-    border-color: rgba(74, 122, 49, 0.26);
+.pycha-trust-feature:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 18%;
+    bottom: 18%;
+    right: 0;
+    width: 1px;
+    background: rgba(74, 122, 49, 0.12);
 }
 
-.pycha-footer-feature__icon {
+.pycha-trust-feature:hover {
+    background: rgba(246, 250, 244, 0.65);
+}
+
+.pycha-trust-feature__icon-wrap {
     flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: #edf5ea;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f0f7ee 0%, #e3f0e0 100%);
     color: #2b611e;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #dbead5;
+    border: 1px solid #d3e7ce;
+    box-shadow: 0 2px 6px rgba(43, 97, 30, 0.06);
+    transition: transform 0.22s ease, background 0.22s ease;
 }
 
-.pycha-footer-feature__text {
+.pycha-trust-feature:hover .pycha-trust-feature__icon-wrap {
+    transform: translateY(-2px) scale(1.05);
+    background: linear-gradient(135deg, #e3f2df 0%, #d4eacc 100%);
+    color: #1e4a14;
+}
+
+.pycha-trust-feature__content {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    font-size: 13px;
-    color: #4b6348;
-    line-height: 1.4;
+    gap: 4px;
 }
 
-.pycha-footer-feature__text strong {
+.pycha-trust-feature__title {
+    font-family: "Rubik", sans-serif;
     font-size: 14px;
     font-weight: 700;
     color: #0b250c;
+    line-height: 1.3;
+}
+
+.pycha-trust-feature__desc {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #556952;
+}
+
+/* Row 2: Details / Info Bar integrated at bottom of hub */
+.pycha-trust-hub__details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #fbf9f4;
+    border-top: 1px solid rgba(74, 122, 49, 0.12);
+    padding: 18px 24px;
+    gap: 20px;
+}
+
+.pycha-trust-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    padding: 4px 10px;
+}
+
+.pycha-trust-detail:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -10px;
+    width: 1px;
+    background: rgba(74, 122, 49, 0.1);
+}
+
+.pycha-trust-detail__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pycha-trust-detail__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a7a31;
+    flex-shrink: 0;
+}
+
+.pycha-trust-detail__title {
+    font-family: "Rubik", sans-serif;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #4a7a31;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.pycha-trust-detail__text {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #485c45;
+}
+
+.pycha-trust-detail__text strong {
+    color: #0b250c;
+    font-weight: 600;
 }
 
 /* Expanded Main Footer Grid (Gallery + 4 Link Columns) */
@@ -9099,54 +9192,6 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
     white-space: nowrap;
 }
 
-/* Additional Row: Operational & Service Info */
-.pycha-site-footer__info-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    padding: 26px 32px;
-    margin: 10px 0 32px;
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid rgba(74, 122, 49, 0.15);
-    border-radius: 20px;
-    box-shadow: 0 6px 22px rgba(11, 37, 12, 0.04);
-}
-
-.pycha-footer-info-block {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.pycha-footer-info-block__title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "Rubik", sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    color: #3b6b23;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
-
-.pycha-footer-info-block__title svg {
-    color: #4a7a31;
-    flex-shrink: 0;
-}
-
-.pycha-footer-info-block__desc {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.55;
-    color: #485c45;
-}
-
-.pycha-footer-info-block__desc strong {
-    color: #0b250c;
-    font-weight: 600;
-}
-
 /* Bottom Bar Enhancements */
 .pycha-site-footer__bottom {
     display: flex;
@@ -9166,8 +9211,17 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-    .pycha-site-footer__features {
+    .pycha-trust-hub__features {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pycha-trust-feature:nth-child(2)::after {
+        display: none;
+    }
+
+    .pycha-trust-feature:nth-child(1),
+    .pycha-trust-feature:nth-child(2) {
+        border-bottom: 1px solid rgba(74, 122, 49, 0.1);
     }
 
     .pycha-site-footer__main {
@@ -9177,6 +9231,20 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 @media (max-width: 991px) {
+    .pycha-trust-hub__details {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 18px 20px;
+    }
+
+    .pycha-trust-detail:not(:last-child)::after {
+        display: none;
+    }
+
+    .pycha-trust-detail {
+        padding: 0;
+    }
+
     .pycha-site-footer__main {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 30px !important;
@@ -9184,12 +9252,6 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 
     .pycha-site-footer__gallery-col {
         grid-column: 1 / -1;
-    }
-
-    .pycha-site-footer__info-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 22px;
     }
 
     .pycha-site-footer__bottom {
@@ -9201,15 +9263,36 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 @media (max-width: 640px) {
-    .pycha-site-footer__features {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-top: 24px;
-        padding-top: 24px;
+    .pycha-site-footer__trust-hub {
+        margin: 24px 0 10px;
+        border-radius: 18px;
     }
 
-    .pycha-footer-feature {
-        padding: 14px 16px;
+    .pycha-trust-hub__features {
+        grid-template-columns: 1fr;
+    }
+
+    .pycha-trust-feature {
+        padding: 16px;
+    }
+
+    .pycha-trust-feature:not(:last-child)::after {
+        display: none;
+    }
+
+    .pycha-trust-feature:not(:last-child) {
+        border-bottom: 1px solid rgba(74, 122, 49, 0.08);
+    }
+
+    .pycha-trust-feature__icon-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+    }
+
+    .pycha-trust-hub__details {
+        padding: 16px;
+        gap: 14px;
     }
 
     .pycha-site-footer__main {
@@ -9228,11 +9311,6 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
         text-align: center;
         justify-content: center;
         width: 100%;
-    }
-
-    .pycha-site-footer__info-row {
-        padding: 18px 16px;
-        border-radius: 16px;
     }
 
     .pycha-site-footer__bottom {
