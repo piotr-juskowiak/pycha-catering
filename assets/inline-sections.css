@@ -2048,15 +2048,15 @@
    ========================================================================== */
 
 .pycha-site-footer {
-  padding: clamp(46px, 4.5vw, 62px) 0 34px;
+  padding: clamp(48px, 4.8vw, 66px) 0 34px;
 }
 
 .pycha-site-footer__top {
   display: grid;
-  grid-template-columns: minmax(290px, 0.88fr) minmax(0, 1.32fr);
-  align-items: stretch;
-  gap: 18px;
-  padding: 0 0 18px;
+  grid-template-columns: minmax(290px, 0.86fr) minmax(0, 1.34fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 44px);
+  padding: 0 0 26px;
   border: 0;
 }
 
@@ -2064,28 +2064,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 14px;
-  max-width: none;
-  padding: 26px 28px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(74, 122, 49, 0.13);
-  border-radius: 22px;
-  box-shadow: 0 8px 24px rgba(11, 37, 12, 0.035);
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 470px;
+  padding: 6px 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .pycha-site-footer__logo {
-  width: clamp(148px, 12vw, 170px);
+  width: clamp(160px, 13vw, 182px);
   margin: 0;
 }
 
 .pycha-site-footer__description {
-  max-width: 44ch;
+  max-width: 43ch;
   margin: 0;
-  color: #3f523d;
+  color: #384c37;
   font-family: "Rubik", sans-serif;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.62;
+  line-height: 1.65;
 }
 
 .pycha-site-footer__contact {
@@ -2100,13 +2101,14 @@
   gap: 10px 16px;
   align-content: center;
   align-items: center;
-  min-height: 178px;
-  padding: 26px 250px 26px 30px;
-  border: 1px solid rgba(74, 122, 49, 0.14);
-  border-radius: 22px;
-  background: #ffffff;
-  background-image: none;
-  box-shadow: 0 12px 32px rgba(11, 37, 12, 0.05);
+  min-height: 186px;
+  padding: 28px 264px 28px 34px;
+  border: 1px solid rgba(136, 184, 88, 0.24);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(140, 196, 86, 0.2), transparent 55%),
+    linear-gradient(135deg, #164226 0%, #10321c 58%, #0b2414 100%);
+  box-shadow: 0 20px 44px rgba(11, 37, 12, 0.14);
   overflow: hidden;
 }
 
@@ -2123,13 +2125,15 @@
   bottom: 10px;
   left: auto;
   z-index: 1;
-  width: 220px;
+  width: 230px;
   height: auto;
-  border-radius: 15px;
+  border-radius: 18px;
   background:
-    linear-gradient(180deg, rgba(11, 37, 12, 0) 62%, rgba(11, 37, 12, 0.08) 100%),
+    linear-gradient(180deg, rgba(11, 37, 12, 0) 60%, rgba(11, 37, 12, 0.14) 100%),
     url("/assets/footer-catering-v4/contact-bg.webp") center / cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(11, 37, 12, 0.06);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   opacity: 1;
   pointer-events: none;
 }
@@ -2140,9 +2144,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #4a7a31;
+  color: #cde6ad;
   font: 700 11px/1.2 "Rubik", sans-serif;
-  letter-spacing: .13em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
@@ -2151,26 +2155,26 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #6fa345;
-  box-shadow: 0 0 0 3px rgba(111, 163, 69, 0.18);
+  background: #8cc456;
+  box-shadow: 0 0 0 4px rgba(140, 196, 86, 0.22);
   flex-shrink: 0;
 }
 
 .pycha-site-footer__phone {
   grid-area: phone;
   justify-self: start;
-  color: #0b250c;
+  color: #ffffff !important;
   font-family: "Baloo 2", "Rubik", sans-serif;
-  font-size: clamp(30px, 2.3vw, 38px);
+  font-size: clamp(32px, 2.5vw, 40px);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1;
   letter-spacing: -.025em;
   text-decoration: none;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .pycha-site-footer__phone:hover {
-  color: #2b611e;
+  color: #d6edb8 !important;
 }
 
 .pycha-site-footer__email {
@@ -2179,21 +2183,23 @@
   display: inline-flex;
   align-items: center;
   min-height: 38px;
-  padding: 6px 15px;
-  border: 1px solid rgba(74, 122, 49, 0.14);
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: 999px;
-  background: #f4f7ee;
-  color: #24481e !important;
-  font: 600 13px/1.2 "Rubik", sans-serif;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f4f9ee !important;
+  font: 500 13.5px/1.2 "Rubik", sans-serif;
   white-space: nowrap;
   text-decoration: none;
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
 .pycha-site-footer__email:hover {
-  background: #e6f0da;
-  border-color: rgba(74, 122, 49, 0.28);
-  color: #163712 !important;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(214, 237, 184, 0.45);
+  color: #ffffff !important;
 }
 
 .pycha-site-footer__socials {
@@ -2208,17 +2214,17 @@
   flex: 0 0 38px;
   width: 38px;
   height: 38px;
-  border: 1px solid rgba(74, 122, 49, 0.14);
-  background: #f4f7ee;
-  color: #24481e;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
   box-shadow: none;
 }
 
 .pycha-site-footer__socials a:hover {
-  border-color: #2b611e;
-  background: #2b611e;
-  color: #ffffff;
-  box-shadow: 0 6px 14px rgba(43, 97, 30, 0.18);
+  border-color: #8cc456;
+  background: #8cc456;
+  color: #0c2614;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 .pycha-site-footer__trust-hub {
@@ -2481,16 +2487,16 @@
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .pycha-site-footer__top {
-    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.3fr);
-    gap: 16px;
+    grid-template-columns: minmax(260px, 0.84fr) minmax(0, 1.32fr);
+    gap: 24px;
   }
 
   .pycha-site-footer__contact {
-    padding: 24px 206px 24px 26px;
+    padding: 26px 218px 26px 28px;
   }
 
   .pycha-site-footer__contact::after {
-    width: 180px;
+    width: 190px;
   }
 
   .pycha-trust-hub__features {
@@ -2507,17 +2513,22 @@
 @media (max-width: 1024px) {
   .pycha-site-footer__top {
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding-bottom: 14px;
+    gap: 20px;
+    padding-bottom: 22px;
+  }
+
+  .pycha-site-footer__brand {
+    max-width: 60ch;
+    padding: 0;
   }
 
   .pycha-site-footer__contact {
-    min-height: 164px;
-    padding: 24px 236px 24px 26px;
+    min-height: 170px;
+    padding: 26px 242px 26px 28px;
   }
 
   .pycha-site-footer__contact::after {
-    width: 210px;
+    width: 214px;
   }
 }
 
@@ -2555,12 +2566,12 @@
 
 @media (max-width: 640px) {
   .pycha-site-footer {
-    padding: 38px 0 28px;
+    padding: 40px 0 28px;
   }
 
   .pycha-site-footer__brand {
-    padding: 20px;
-    border-radius: 18px;
+    padding: 0;
+    border-radius: 0;
   }
 
   .pycha-site-footer__contact {
@@ -2573,12 +2584,18 @@
     align-items: start;
     gap: 10px;
     min-height: 0;
-    padding: 20px;
-    border-radius: 18px;
+    padding: 22px;
+    border-radius: 20px;
   }
 
   .pycha-site-footer__contact::after {
-    display: none;
+    display: block;
+    position: static;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 130px;
+    margin-top: 6px;
+    border-radius: 14px;
   }
 
   .pycha-site-footer__email {
