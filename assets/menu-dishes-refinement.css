@@ -4008,3 +4008,54 @@
   }
 }
 
+/* ── Sticky filters clearance & unclipped controls ──────── */
+.menu-static .menu-controls-panel {
+  position: static;
+  top: auto;
+  scroll-margin-top: var(--menu-sticky-top, 184px);
+}
+
+.menu-static .menu-redesign-layout {
+  scroll-margin-top: var(--menu-sticky-top, 184px);
+}
+
+@media (min-width: 1081px) {
+  .menu-static .menu-redesign-sidebar {
+    position: sticky;
+    top: var(--menu-sticky-top, 184px);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: none;
+    gap: 10px;
+    height: auto;
+    min-height: 0;
+    max-height: calc(100vh - var(--menu-sticky-top, 184px) - 16px);
+    max-height: calc(100dvh - var(--menu-sticky-top, 184px) - 16px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 164, 79, .35) transparent;
+    scroll-margin-top: var(--menu-sticky-top, 184px);
+  }
+
+  .menu-static .menu-redesign-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .menu-static .menu-redesign-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(120, 164, 79, .32);
+  }
+
+  .menu-static .menu-redesign-sidebar > * {
+    flex: none;
+  }
+
+  .menu-static .menu-redesign-sidebar .menu-filter-groups {
+    overflow: visible;
+    max-height: none;
+  }
+}
+

@@ -2,6 +2,18 @@
   const root = document.querySelector('[data-static-menu-page]');
   if (!root) return;
 
+  const fixedHeader = document.querySelector('.header-section');
+  const syncStickyOffset = () => {
+    if (!fixedHeader) return;
+    const h = Math.ceil(fixedHeader.getBoundingClientRect().height);
+    if (h > 0) root.style.setProperty('--menu-sticky-top', `${h + 16}px`);
+  };
+  syncStickyOffset();
+  window.addEventListener('resize', syncStickyOffset, { passive: true });
+  if (fixedHeader && typeof ResizeObserver === 'function') {
+    new ResizeObserver(syncStickyOffset).observe(fixedHeader);
+  }
+
   let cards = Array.from(root.querySelectorAll('.menu-dish-card'));
 
   function dedupeDishes(list) {
