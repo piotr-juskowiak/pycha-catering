@@ -6328,18 +6328,17 @@ body.pycha-cart-open .w-commerce-commercecartcontainerwrapper.cart-wrapper[data-
 }
 
 .menu-static .menu-dish-title {
-    display: -webkit-box;
-    min-height: 40px;
+    display: block;
+    min-height: 0;
     margin: 0;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--menu-ink);
     font-family: "Baloo 2", "Rubik", sans-serif;
     font-size: clamp(18px, 1.2vw, 21px);
     font-weight: 800;
-    line-height: 1.02;
-    overflow-wrap: anywhere;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    line-height: 1.22;
 }
 
 .menu-static .menu-dish-desc {
@@ -6746,11 +6745,14 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 .menu-static .menu-dish-title {
-    min-height: 42px;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-family: "Rubik", sans-serif;
     font-size: clamp(18px, 1.18vw, 21px);
     font-weight: 950;
-    line-height: 1.12;
+    line-height: 1.22;
     letter-spacing: 0;
 }
 
@@ -7044,11 +7046,14 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 .menu-static .menu-dish-title {
-    min-height: 44px;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #102010;
     font-size: clamp(18px, 1.12vw, 20px);
     font-weight: 900;
-    line-height: 1.15;
+    line-height: 1.22;
 }
 
 .menu-static .menu-dish-desc {
@@ -7285,11 +7290,14 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 .menu-static .menu-dish-title {
-    min-height: 46px;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-family: "Rubik", sans-serif;
     font-size: clamp(18px, 1.16vw, 21px);
     font-weight: 900;
-    line-height: 1.16;
+    line-height: 1.22;
     text-transform: none;
 }
 
@@ -8443,13 +8451,16 @@ body.menu-overlay-open .mobile-menu-sticky-btn {
 }
 
 .menu-static .menu-dish-title {
-    min-height: 50px;
+    min-height: 0;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #101610;
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(19px, 1.35vw, 23px);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.22;
     text-transform: none;
 }
 

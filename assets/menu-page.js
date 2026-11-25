@@ -45,8 +45,11 @@
       const title = sentenceTitle(card.dataset.title);
       if (title && title !== card.dataset.title) {
         card.dataset.title = title;
-        const heading = card.querySelector('.menu-dish-title');
-        if (heading) heading.textContent = title;
+      }
+      const heading = card.querySelector('.menu-dish-title');
+      if (heading) {
+        if (title) heading.textContent = title;
+        heading.setAttribute('title', card.dataset.title || heading.textContent.trim());
       }
       unique.push(card);
     });
