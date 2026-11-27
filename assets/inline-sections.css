@@ -2659,3 +2659,466 @@
   }
 }
 
+/* ==========================================================================
+   SEASONAL WINTER DECOR: HANGING HEADER LIGHTS & FALLING SNOW
+   ========================================================================== */
+
+.header-section.has-holiday-lights .nav-dash-hr-wrap {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.header-section.has-holiday-lights + .blog-product-section {
+  padding-top: 192px !important;
+}
+
+.header-section.has-holiday-lights + .contact-page-content .contact-hero {
+  padding-top: clamp(172px, 15vw, 200px);
+}
+
+.pycha-holiday-lights {
+  --wire-h: 12px;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  height: 36px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+  user-select: none;
+}
+
+.pycha-holiday-lights__track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.pycha-holiday-lights__swag {
+  position: relative;
+  flex: 0 0 168px;
+  width: 168px;
+  height: 36px;
+}
+
+.pycha-holiday-lights__wire {
+  display: block;
+  width: 100%;
+  height: var(--wire-h);
+  overflow: visible;
+}
+
+.pycha-light-bulb {
+  --bulb-glow: rgba(245, 168, 28, 0.42);
+  --bulb-halo: rgba(255, 208, 92, 0.36);
+  --bulb-top: #fff6c9;
+  --bulb-mid: #f7b628;
+  --bulb-edge: #d97706;
+  --bulb-sway-duration: 3.8s;
+  --bulb-twinkle-duration: 2.8s;
+  --bulb-delay: 0s;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16px;
+  margin-left: -8px;
+  transform-origin: 50% 0%;
+  animation: pychaLightSway var(--bulb-sway-duration) ease-in-out infinite alternate;
+  animation-delay: var(--bulb-delay);
+  will-change: transform;
+}
+
+.pycha-light-bulb__cord {
+  width: 1.5px;
+  height: 2px;
+  background: #1b3b1e;
+  border-radius: 1px;
+}
+
+.pycha-light-bulb__socket {
+  position: relative;
+  z-index: 2;
+  width: 5.5px;
+  height: 4.5px;
+  border-radius: 2px 2px 1px 1px;
+  background: linear-gradient(180deg, #1d3f20 0%, #2d5930 65%, #cfa64e 65%, #b5892e 100%);
+  box-shadow: 0 1px 1.5px rgba(11, 37, 12, 0.28);
+}
+
+.pycha-light-bulb__halo {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bulb-halo) 0%, rgba(255, 255, 255, 0) 72%);
+  transform: translate3d(-50%, 0, 0) scale(0.95);
+  pointer-events: none;
+  animation: pychaLightHalo var(--bulb-twinkle-duration) ease-in-out infinite alternate;
+  animation-delay: var(--bulb-delay);
+  will-change: transform, opacity;
+}
+
+.pycha-light-bulb__glass {
+  position: relative;
+  z-index: 1;
+  width: 8px;
+  height: 12px;
+  margin-top: -0.5px;
+  border-radius: 46% 46% 52% 52% / 36% 36% 64% 64%;
+  background: radial-gradient(
+    circle at 38% 36%,
+    var(--bulb-top) 0%,
+    var(--bulb-mid) 56%,
+    var(--bulb-edge) 100%
+  );
+  box-shadow:
+    inset 0 -2px 3px rgba(11, 37, 12, 0.14),
+    0 1px 2px rgba(11, 37, 12, 0.2),
+    0 2px 8px var(--bulb-glow);
+  animation: pychaLightTwinkle var(--bulb-twinkle-duration) ease-in-out infinite alternate;
+  animation-delay: var(--bulb-delay);
+  will-change: opacity, filter, transform;
+}
+
+.pycha-light-bulb__glass::before {
+  content: "";
+  position: absolute;
+  top: 2.5px;
+  left: 2px;
+  width: 2.4px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  transform: rotate(-14deg);
+}
+
+.pycha-light-bulb__glass::after {
+  content: "";
+  position: absolute;
+  top: 4.5px;
+  left: 50%;
+  width: 3px;
+  height: 4.5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  filter: blur(0.6px);
+  transform: translateX(-50%);
+}
+
+.pycha-light-bulb--gold {
+  --bulb-top: #fff9d6;
+  --bulb-mid: #f7b829;
+  --bulb-edge: #d87a08;
+  --bulb-glow: rgba(245, 168, 28, 0.56);
+  --bulb-halo: rgba(255, 198, 66, 0.44);
+}
+
+.pycha-light-bulb--red {
+  --bulb-top: #ffe2e2;
+  --bulb-mid: #ef4b4f;
+  --bulb-edge: #b91c26;
+  --bulb-glow: rgba(225, 52, 58, 0.50);
+  --bulb-halo: rgba(240, 74, 78, 0.36);
+}
+
+.pycha-light-bulb--green {
+  --bulb-top: #eefcdb;
+  --bulb-mid: #7cc242;
+  --bulb-edge: #3d7d24;
+  --bulb-glow: rgba(110, 178, 62, 0.50);
+  --bulb-halo: rgba(124, 194, 66, 0.38);
+}
+
+.pycha-light-bulb--warm {
+  --bulb-top: #ffffff;
+  --bulb-mid: #ffe8a6;
+  --bulb-edge: #d1aa50;
+  --bulb-glow: rgba(244, 198, 92, 0.58);
+  --bulb-halo: rgba(255, 224, 134, 0.46);
+}
+
+@keyframes pychaLightSway {
+  0% {
+    transform: rotate(-3.2deg);
+  }
+  100% {
+    transform: rotate(3.2deg);
+  }
+}
+
+@keyframes pychaLightTwinkle {
+  0% {
+    opacity: 0.72;
+    filter: brightness(0.9) saturate(0.95);
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.94;
+    filter: brightness(1.06) saturate(1.06);
+    transform: scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1.16) saturate(1.12);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pychaLightHalo {
+  0% {
+    opacity: 0.35;
+    transform: translate3d(-50%, 0, 0) scale(0.84);
+  }
+  100% {
+    opacity: 0.92;
+    transform: translate3d(-50%, 0, 0) scale(1.18);
+  }
+}
+
+.pycha-snow-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 710;
+  pointer-events: none;
+}
+
+.header-section .nav-btn-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+.pycha-btn-snow-cap {
+  position: absolute;
+  top: -7px;
+  left: 3px;
+  right: 3px;
+  height: 22px;
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 2px 3px rgba(11, 37, 12, 0.14));
+  transition: transform 0.2s ease;
+}
+
+.header-section .nav-btn-wrap #openMenuModal:hover + .pycha-btn-snow-cap,
+.header-section .nav-btn-wrap #openMenuModal:focus-visible + .pycha-btn-snow-cap {
+  transform: translateY(-2px);
+}
+
+.pycha-btn-snow-cap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  .header-section.has-holiday-lights + .home-hero-section {
+    padding-top: 162px;
+  }
+
+  .header-section.has-holiday-lights + .blog-product-section {
+    padding-top: 164px !important;
+  }
+
+  .header-section.has-holiday-lights + .contact-page-content .contact-hero {
+    padding-top: 204px;
+  }
+
+  .pycha-holiday-lights {
+    --wire-h: 10px;
+    height: 30px;
+  }
+
+  .pycha-holiday-lights__swag {
+    flex: 0 0 132px;
+    width: 132px;
+    height: 30px;
+  }
+
+  .pycha-light-bulb__cord {
+    height: 1.5px;
+  }
+
+  .pycha-light-bulb__socket {
+    width: 4.5px;
+    height: 3.5px;
+  }
+
+  .pycha-light-bulb__glass {
+    width: 6.5px;
+    height: 10px;
+  }
+
+  .pycha-light-bulb__halo {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pycha-light-bulb,
+  .pycha-light-bulb__glass,
+  .pycha-light-bulb__halo {
+    animation: none !important;
+  }
+
+  .pycha-snow-canvas {
+    display: none !important;
+  }
+}
+
+@media print {
+  .pycha-holiday-lights,
+  .pycha-snow-canvas,
+  .pycha-btn-snow-cap,
+  .pycha-footer-festive {
+    display: none !important;
+  }
+}
+
+.pycha-site-footer.has-festive-decor {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(88px, 7.6vw, 112px);
+}
+
+.pycha-site-footer.has-festive-decor .pycha-site-footer__container {
+  position: relative;
+  z-index: 2;
+}
+
+.pycha-footer-festive {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 150px;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.pycha-footer-festive__cluster {
+  position: absolute;
+  top: -3px;
+  overflow: visible;
+}
+
+.pycha-footer-festive__cluster--left {
+  left: -10px;
+  width: 360px;
+  height: 140px;
+}
+
+.pycha-footer-festive__cluster--right {
+  right: -10px;
+  width: 360px;
+  height: 140px;
+}
+
+.pycha-footer-festive__cluster--center {
+  left: 50%;
+  width: 460px;
+  height: 118px;
+  transform: translateX(-50%);
+}
+
+.pycha-footer-festive__cluster svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pycha-footer-bauble {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: pychaBaubleSway var(--bauble-sway, 4.4s) ease-in-out infinite alternate;
+  animation-delay: var(--bauble-delay, 0s);
+  will-change: transform;
+}
+
+.pycha-footer-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pychaStarGlint var(--star-dur, 3.2s) ease-in-out infinite alternate;
+  animation-delay: var(--star-delay, 0s);
+}
+
+@keyframes pychaBaubleSway {
+  0% {
+    transform: rotate(-2.8deg);
+  }
+  100% {
+    transform: rotate(2.8deg);
+  }
+}
+
+@keyframes pychaStarGlint {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.84) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.12) rotate(12deg);
+  }
+}
+
+@media (max-width: 1180px) {
+  .pycha-footer-festive__cluster--left,
+  .pycha-footer-festive__cluster--right {
+    width: 280px;
+    height: 116px;
+  }
+
+  .pycha-footer-festive__cluster--center {
+    width: 360px;
+    height: 98px;
+  }
+}
+
+@media (max-width: 780px) {
+  .pycha-site-footer.has-festive-decor {
+    padding-top: 92px;
+  }
+
+  .pycha-footer-festive__cluster--left,
+  .pycha-footer-festive__cluster--right {
+    width: 210px;
+    height: 96px;
+  }
+
+  .pycha-footer-festive__cluster--center {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pycha-site-footer.has-festive-decor {
+    padding-top: 86px;
+  }
+
+  .pycha-footer-festive__cluster--left,
+  .pycha-footer-festive__cluster--right {
+    width: 175px;
+    height: 82px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pycha-footer-bauble,
+  .pycha-footer-star {
+    animation: none !important;
+  }
+}
+
+
